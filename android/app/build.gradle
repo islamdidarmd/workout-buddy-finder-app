@@ -33,8 +33,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.workout_buddy_finder"
+        applicationId "com.islamdidarmd.workout_buddy_finder"
         minSdkVersion 16
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
@@ -56,12 +55,12 @@ android {
             applicationIdSuffix ".dev"
             versionNameSuffix "-dev"
 
-            resValue("string", "app_name", "Flutter App Dev")
+            resValue("string", "app_name", "WBF Dev")
         }
 
         production{
             dimension "version"
-            resValue("string", "app_name", "Flutter App")
+            resValue("string", "app_name", "Workout Buddy Finder")
         }
     }
 }
