@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'constants.dart';
 
 import 'flutter_app.dart';
-import 'service_locator.dart';
+import '../di/service_locator.dart';
 
 enum EnvType { Development, Production }
 
