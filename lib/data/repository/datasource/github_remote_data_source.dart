@@ -33,11 +33,10 @@ class GithubRemoteDataSourceImpl implements GithubRemoteDataSource {
         final parsed = RepoSearchResponse.fromJson(decoded);
         return Right(parsed);
       } else {
-        return Left(
-            AppError(type: ErrorType.Unknown, message: 'Unknown error'));
+        return Left(AppError.unknown());
       }
     } catch (e) {
-      return Left(AppError(type: ErrorType.Unknown, message: e.toString()));
+      return Left(AppError.unknown());
     }
   }
 }
