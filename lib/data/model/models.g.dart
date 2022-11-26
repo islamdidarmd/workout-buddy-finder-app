@@ -6,13 +6,11 @@ part of 'models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-OwnerModel _$OwnerModelFromJson(Map<String, dynamic> json) {
-  return OwnerModel(
-    id: json['id'] as int,
-    avatarUrl: json['avatar_url'] as String?,
-    htmlUrl: json['html_url'] as String,
-  );
-}
+OwnerModel _$OwnerModelFromJson(Map<String, dynamic> json) => OwnerModel(
+      id: json['id'] as int,
+      avatarUrl: json['avatar_url'] as String?,
+      htmlUrl: json['html_url'] as String,
+    );
 
 Map<String, dynamic> _$OwnerModelToJson(OwnerModel instance) =>
     <String, dynamic>{
@@ -21,17 +19,17 @@ Map<String, dynamic> _$OwnerModelToJson(OwnerModel instance) =>
       'html_url': instance.htmlUrl,
     };
 
-RepositoryModel _$RepositoryModelFromJson(Map<String, dynamic> json) {
-  return RepositoryModel(
-    id: json['id'] as int,
-    name: json['name'] as String,
-    owner: OwnerModel.fromJson(json['owner'] as Map<String, dynamic>),
-    private: json['private'] as bool,
-    repoLink: json['html_url'] as String,
-    description: json['description'] as String?,
-    topics: (json['topics'] as List<dynamic>).map((e) => e as String).toList(),
-  );
-}
+RepositoryModel _$RepositoryModelFromJson(Map<String, dynamic> json) =>
+    RepositoryModel(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      owner: OwnerModel.fromJson(json['owner'] as Map<String, dynamic>),
+      private: json['private'] as bool,
+      repoLink: json['html_url'] as String,
+      description: json['description'] as String?,
+      topics:
+          (json['topics'] as List<dynamic>).map((e) => e as String).toList(),
+    );
 
 Map<String, dynamic> _$RepositoryModelToJson(RepositoryModel instance) =>
     <String, dynamic>{
@@ -44,13 +42,12 @@ Map<String, dynamic> _$RepositoryModelToJson(RepositoryModel instance) =>
       'topics': instance.topics,
     };
 
-RepoSearchResponse _$RepoSearchResponseFromJson(Map<String, dynamic> json) {
-  return RepoSearchResponse(
-    items: (json['items'] as List<dynamic>)
-        .map((e) => RepositoryModel.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
+RepoSearchResponse _$RepoSearchResponseFromJson(Map<String, dynamic> json) =>
+    RepoSearchResponse(
+      items: (json['items'] as List<dynamic>)
+          .map((e) => RepositoryModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$RepoSearchResponseToJson(RepoSearchResponse instance) =>
     <String, dynamic>{
