@@ -1,4 +1,4 @@
-import 'package:workout_buddy_finder/app/env.dart';
+import 'package:workout_buddy_finder/env/env.dart';
 
 const defaultAppName = 'Workout Buddy Finder';
 const defaultEnv = EnvType.Development;

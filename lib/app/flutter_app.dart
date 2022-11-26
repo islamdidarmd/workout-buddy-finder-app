@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:workout_buddy_finder/app/env.dart';
+import 'package:workout_buddy_finder/env/env.dart';
 import 'routes.dart';
 
 class FlutterApp extends StatelessWidget {
