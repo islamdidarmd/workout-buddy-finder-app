@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'constants.dart';
+import '../app/constants.dart';
 
-import 'flutter_app.dart';
+import '../app/flutter_app.dart';
 import '../di/service_locator.dart';
 
 enum EnvType { Development, Production }
