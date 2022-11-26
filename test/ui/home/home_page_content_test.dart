@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:workout_buddy_finder/app/constants.dart';
 import 'package:workout_buddy_finder/app/flutter_app.dart';
-import 'package:workout_buddy_finder/app/service_locator.dart';
+import 'package:workout_buddy_finder/di/service_locator.dart';
 import 'package:workout_buddy_finder/data/model/models.dart';
 import 'package:workout_buddy_finder/domain/domain.dart';
 import 'package:workout_buddy_finder/ui/home/repo_list_item.dart';
