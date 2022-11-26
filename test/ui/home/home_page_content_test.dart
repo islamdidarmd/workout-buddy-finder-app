@@ -17,7 +17,7 @@ void main() {
 
   setUp(() {
     sl.reset();
-    setUpDependencies(slInstance: GetIt.instance);
+    configureDependencies(getIt: sl);
     repository = Repository(
       id: 123,
       name: "name",

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 abstract class NetworkingClient {
   Future<Response<T>> get<T>({
@@ -7,6 +8,7 @@ abstract class NetworkingClient {
   });
 }
 
+@Injectable(as: NetworkingClient)
 class NetworkingClientImpl implements NetworkingClient {
   final Dio dio = Dio();
 

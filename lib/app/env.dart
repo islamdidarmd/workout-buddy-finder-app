@@ -13,7 +13,7 @@ class Env {
 
   void init({required GetIt slInstance}) {
     WidgetsFlutterBinding.ensureInitialized();
-    setUpDependencies(slInstance: slInstance);
+    configureDependencies(getIt: slInstance);
   }
 
   void startApplication() {

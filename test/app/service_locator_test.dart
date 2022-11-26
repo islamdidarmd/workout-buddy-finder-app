@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 void main() {
   test('Service locator is set up', () async {
     final sl = GetIt.instance;
-    setUpDependencies(slInstance: sl);
+    configureDependencies(getIt: sl);
     assert(sl.allReadySync());
   });
 }
