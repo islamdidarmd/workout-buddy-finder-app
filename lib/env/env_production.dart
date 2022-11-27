@@ -1,4 +1,4 @@
-import 'package:workout_buddy_finder/app/constants.dart';
+import 'package:workout_buddy_finder/env/constants.dart';
 import 'package:get_it/get_it.dart';
 
 import 'env.dart';

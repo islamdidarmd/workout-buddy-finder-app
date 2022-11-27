@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:workout_buddy_finder/env/env.dart';
-import 'routes.dart';
+import '../navigation/router.dart';
 
 class FlutterApp extends StatelessWidget {
   final String appName;
@@ -17,11 +17,10 @@ class FlutterApp extends StatelessWidget {
   }
 
   Widget _createApp() {
-    return MaterialApp(
+    return MaterialApp.router(
       title: appName,
       themeMode: ThemeMode.light,
-      initialRoute: initialRoute,
-      routes: appRoutes,
+      routerConfig: router,
     );
   }
 }
