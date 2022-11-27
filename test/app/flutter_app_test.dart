@@ -1,4 +1,4 @@
-import 'package:workout_buddy_finder/app/constants.dart';
+import 'package:workout_buddy_finder/env/constants.dart';
 import 'package:workout_buddy_finder/app/flutter_app.dart';
 import 'package:workout_buddy_finder/di/service_locator.dart';
 import 'package:flutter_test/flutter_test.dart';

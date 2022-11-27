@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '../app/constants.dart';
+import 'constants.dart';
 
 import '../app/flutter_app.dart';
 import '../di/service_locator.dart';
