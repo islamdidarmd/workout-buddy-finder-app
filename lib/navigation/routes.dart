@@ -1,15 +1,24 @@
-final initialRoute = appRoutesMap[AppRoute.home];
+import 'dart:core';
 
-enum AppRoute {
-  home,
+final initialRoute = rootRouteMap[RootRoute.suggestion];
+
+enum RootRoute {
+  suggestion,
   profile,
   chat,
   settings,
 }
 
-const Map<AppRoute, String> appRoutesMap = const {
-  AppRoute.home: "/home",
-  AppRoute.profile: "/profile",
-  AppRoute.chat: "/chat",
-  AppRoute.settings: "/settings",
+enum FullScreenRoute { login, signup }
+
+const Map<RootRoute, String> rootRouteMap = const {
+  RootRoute.suggestion: "/suggestion",
+  RootRoute.profile: "/profile",
+  RootRoute.chat: "/chat",
+  RootRoute.settings: "/settings",
+};
+
+const Map<FullScreenRoute, String> fullScreenRouteMap = const {
+  FullScreenRoute.login: '/login',
+  FullScreenRoute.signup: '/sign-up',
 };

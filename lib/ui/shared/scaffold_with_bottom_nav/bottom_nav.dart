@@ -18,22 +18,22 @@ class BottomNav extends StatelessWidget {
 
   List<BottomNavItem> get _bottomNavItems => [
         BottomNavItem(
-          initialLocation: appRoutesMap[AppRoute.home]!,
+          initialLocation: rootRouteMap[RootRoute.suggestion]!,
           icon: Icon(Icons.home_filled),
           label: 'Home',
         ),
         BottomNavItem(
-          initialLocation: appRoutesMap[AppRoute.profile]!,
+          initialLocation: rootRouteMap[RootRoute.profile]!,
           icon: Icon(Icons.account_circle),
           label: 'Profile',
         ),
         BottomNavItem(
-          initialLocation: appRoutesMap[AppRoute.chat]!,
+          initialLocation: rootRouteMap[RootRoute.chat]!,
           icon: Icon(Icons.chat),
           label: 'Chat',
         ),
         BottomNavItem(
-          initialLocation: appRoutesMap[AppRoute.settings]!,
+          initialLocation: rootRouteMap[RootRoute.settings]!,
           icon: Icon(Icons.settings),
           label: 'Settings',
         ),
