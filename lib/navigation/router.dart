@@ -18,7 +18,9 @@ final router = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: rootRouteMap[RootRoute.suggestion],
   errorBuilder: (context, state) => ErrorIndicator(),
-  redirect: (context, state) => fullScreenRouteMap[FullScreenRoute.login],
+  redirect: (context, state) {
+    return fullScreenRouteMap[FullScreenRoute.login];
+  },
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
