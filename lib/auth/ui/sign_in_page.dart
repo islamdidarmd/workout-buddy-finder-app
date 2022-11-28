@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'sign_in_with_google_button.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -23,11 +23,7 @@ class SignInPage extends StatelessWidget {
               const SizedBox(height: 8),
               _subSlogan(context),
               const SizedBox(height: 60),
-              ElevatedButton.icon(
-                onPressed: () => {},
-                label: Text('Continue with Google'),
-                icon: Icon(FontAwesomeIcons.google),
-              )
+              SignInWithGoogleButton(),
             ],
           ),
         ),
@@ -40,7 +36,10 @@ class SignInPage extends StatelessWidget {
   Widget _slogan(BuildContext context) => Text(
         key: ValueKey('Login Page Slogan'),
         'Welcome to Fitness Buddy Finder',
-        style: Theme.of(context).textTheme.titleLarge,
+        style: Theme.of(context)
+            .textTheme
+            .titleLarge
+            ?.copyWith(fontWeight: FontWeight.bold),
       );
 
   Widget _subSlogan(BuildContext context) => Text(
