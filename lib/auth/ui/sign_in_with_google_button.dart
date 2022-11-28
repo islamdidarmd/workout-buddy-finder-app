@@ -13,15 +13,15 @@ class SignInWithGoogleButton extends StatelessWidget {
       builder: (_, state) {
         if (state is AuthLoadingState) {
           return CircularProgressIndicator();
-        } else if (state is AuthSignedOutState) {
-          return ElevatedButton.icon(
-            onPressed: () =>
-                context.read<AuthBloc>().add(AuthSignInWithGoogleEvent()),
-            label: Text('Continue with Google'),
-            icon: Icon(FontAwesomeIcons.google),
-          );
+        } else if (state is AuthSignedInState) {
+          return const SizedBox();
         }
-        return const SizedBox();
+        return ElevatedButton.icon(
+          onPressed: () =>
+              context.read<AuthBloc>().add(AuthSignInWithGoogleEvent()),
+          label: Text('Continue with Google'),
+          icon: Icon(FontAwesomeIcons.google),
+        );
       },
     );
   }

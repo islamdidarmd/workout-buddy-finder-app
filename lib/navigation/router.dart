@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:workout_buddy_finder/navigation/routes.dart';
-import 'package:workout_buddy_finder/auth/auth.dart';
-import 'package:workout_buddy_finder/ui/chat/chat_page.dart';
-import 'package:workout_buddy_finder/suggestion/suggestion.dart';
-import 'package:workout_buddy_finder/ui/profile/profile_page.dart';
-import 'package:workout_buddy_finder/ui/settings/settings_page.dart';
-import 'package:workout_buddy_finder/ui/shared/error_indicator.dart';
-import 'package:workout_buddy_finder/ui/shared/scaffold_with_bottom_nav/scaffold_with_bottom_nav.dart';
+import 'routes.dart';
+import '../auth/auth.dart';
+import '../ui/chat/chat_page.dart';
+import '../suggestion/suggestion.dart';
+import '../ui/profile/profile_page.dart';
+import '../ui/settings/settings_page.dart';
+import '../core/core.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
