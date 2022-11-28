@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:workout_buddy_finder/navigation/routes.dart';
 import 'package:workout_buddy_finder/auth/auth.dart';
 import 'package:workout_buddy_finder/ui/chat/chat_page.dart';
-import 'package:workout_buddy_finder/ui/suggestion/suggestions_page.dart';
+import 'package:workout_buddy_finder/suggestion/suggestion.dart';
 import 'package:workout_buddy_finder/ui/profile/profile_page.dart';
 import 'package:workout_buddy_finder/ui/settings/settings_page.dart';
 import 'package:workout_buddy_finder/ui/shared/error_indicator.dart';
