@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -8,16 +9,25 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          height: double.infinity,
+          width: double.infinity,
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               _logo,
               const SizedBox(height: 20),
               _slogan(context),
-              const SizedBox(height: 20),
+              const SizedBox(height: 8),
               _subSlogan(context),
-              const SizedBox(height: 20),
+              const SizedBox(height: 60),
+              ElevatedButton.icon(
+                onPressed: () => {},
+                label: Text('Continue with Google'),
+                icon: Icon(FontAwesomeIcons.google),
+              )
             ],
           ),
         ),
