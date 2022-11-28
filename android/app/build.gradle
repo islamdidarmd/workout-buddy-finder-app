@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         applicationId "com.islamdidarmd.workout_buddy_finder"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
