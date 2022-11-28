@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:workout_buddy_finder/navigation/routes.dart';
-import 'package:workout_buddy_finder/ui/auth/login_page.dart';
+import 'package:workout_buddy_finder/ui/auth/login/login_page.dart';
 import 'package:workout_buddy_finder/ui/auth/sign_up_page.dart';
 import 'package:workout_buddy_finder/ui/chat/chat_page.dart';
 import 'package:workout_buddy_finder/ui/suggestion/suggestions_page.dart';
