@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'routes.dart';
 import '../auth/auth.dart';
-import '../ui/chat/chat_page.dart';
+import '../chat/chat.dart';
 import '../suggestion/suggestion.dart';
 import '../profile/ui/profile_page.dart';
-import '../ui/settings/settings_page.dart';
+import '../settings/settings.dart';
 import '../core/core.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
