@@ -5,7 +5,7 @@ import 'routes.dart';
 import '../auth/auth.dart';
 import '../ui/chat/chat_page.dart';
 import '../suggestion/suggestion.dart';
-import '../ui/profile/profile_page.dart';
+import '../profile/ui/profile_page.dart';
 import '../ui/settings/settings_page.dart';
 import '../core/core.dart';
 
@@ -21,6 +21,7 @@ final router = GoRouter(
     if (authBloc.state is AuthSignedInState) {
       return null;
     }
+
     return fullScreenRouteMap[FullScreenRoute.login];
   },
   routes: [
