@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "246633292825",
+    "project_id": "workout-buddy-finder",
+    "storage_bucket": "workout-buddy-finder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246633292825:android:6406ab446b15f6a7253688",
+        "android_client_info": {
+          "package_name": "com.islamdidarmd.workout_buddy_finder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246633292825-5hqh9spmitq47ebtkt5sjceeshbr5lci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4E5hFPIcG8ETo_tkrna4MbEIFU40ut9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246633292825-5hqh9spmitq47ebtkt5sjceeshbr5lci.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "246633292825-gf12qrsdeac6l62433ib7ulckukfckad.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterProjectTemplate"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246633292825:android:d99300d639aa05da253688",
+        "android_client_info": {
+          "package_name": "com.islamdidarmd.workout_buddy_finder.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246633292825-5hqh9spmitq47ebtkt5sjceeshbr5lci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4E5hFPIcG8ETo_tkrna4MbEIFU40ut9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246633292825-5hqh9spmitq47ebtkt5sjceeshbr5lci.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "246633292825-gf12qrsdeac6l62433ib7ulckukfckad.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterProjectTemplate"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
