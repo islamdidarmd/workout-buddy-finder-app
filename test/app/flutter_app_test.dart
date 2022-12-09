@@ -1,5 +1,4 @@
 import 'package:workout_buddy_finder/env/constants.dart';
-import 'package:workout_buddy_finder/app/flutter_app.dart';
 import 'package:workout_buddy_finder/di/service_locator.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
@@ -12,7 +11,7 @@ void main() {
 
   testWidgets('App runs and Homepage shows', (widgetTester) async {
     await widgetTester
-        .pumpWidget(FlutterApp(appName: defaultAppName, envType: defaultEnv));
+        .pumpWidget(WBFApp(appName: defaultAppName, envType: defaultEnv));
     final titleFinder = find.text("Home");
     expect(titleFinder, findsOneWidget);
   });
