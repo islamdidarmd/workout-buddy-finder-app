@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:workout_buddy_finder/firebase_options.dart';
 import 'constants.dart';
-
-import '../app/flutter_app.dart';
+import 'package:firebase_core/firebase_core.dart';
+import '../app/wbf_app.dart';
 import '../di/service_locator.dart';
 
 enum EnvType { Development, Production }
@@ -16,12 +17,10 @@ class Env {
     configureDependencies(getIt: slInstance);
   }
 
-  void startApplication() {
-    runApp(
-      FlutterApp(
-        envType: envType,
-        appName: appName,
-      ),
+  Future<void> startApplication() async {
+    final firebaseApp = await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
     );
+    runApp(WBFApp(envType: envType, appName: appName));
   }
 }

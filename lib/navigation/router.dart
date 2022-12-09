@@ -17,7 +17,7 @@ final router = GoRouter(
   initialLocation: rootRouteMap[RootRoute.suggestion],
   errorBuilder: (context, state) => ErrorIndicator(),
   redirect: (context, _) {
-    final authBloc = context.read<AuthBloc>();
+    final AuthBloc authBloc = context.read();
     if (authBloc.state is AuthSignedInState) {
       return null;
     }
