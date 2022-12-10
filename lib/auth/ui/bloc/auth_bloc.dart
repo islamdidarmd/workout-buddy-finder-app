@@ -14,9 +14,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginWithGoogleUseCase loginWithGoogleUseCase;
   final IsLoggedInUseCase isLoggedInUseCase;
 
-  AppUser? _appUser;
+  AppUser _appUser = AppUser.empty();
 
-  AppUser? get appUser => _appUser;
+  AppUser get appUser => _appUser;
 
   AuthBloc({
     required this.loginWithGoogleUseCase,
@@ -26,7 +26,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthLoadingState());
       final Either<AppUser, AppError> result = await loginWithGoogleUseCase();
       result.fold(
-        (user) => emit(AuthSignedInState()),
+        (user) {
+          _appUser = user;
+          emit(AuthSignedInState());
+        },
         (error) => emit(AuthSignInFailureState(error: error)),
       );
     });
@@ -35,7 +38,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthLoadingState());
       final result = await isLoggedInUseCase();
       result.fold(
-        (user) => emit(AuthSignedInState()),
+        (user) {
+          _appUser = user;
+          emit(AuthSignedInState());
+        },
         (error) => emit(AuthSignedOutState()),
       );
     });
