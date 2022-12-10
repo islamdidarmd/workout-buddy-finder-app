@@ -5,4 +5,5 @@ import '../domain.dart';
 
 abstract class AuthRepository {
   Future<Either<AppUser, AppError>> loginWithGoogle();
+  Future<Either<AppUser, AppError>> isLoggedIn();
 }

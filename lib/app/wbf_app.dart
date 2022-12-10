@@ -17,27 +17,16 @@ class WBFApp extends StatelessWidget {
     required this.envType,
   });
 
-  void _onAuthStateChange(BuildContext _, AuthState state) {
-    if (state is AuthSignedInState) {
-      router.go(rootRouteMap[RootRoute.suggestion]!);
-    } else if (state is AuthSignedOutState) {
-      router.go(fullScreenRouteMap[FullScreenRoute.login]!);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AuthBloc>(
       create: (_) => sl(),
-      child: BlocListener<AuthBloc, AuthState>(
-        listener: _onAuthStateChange,
-        child: MaterialApp.router(
-          title: appName,
-          themeMode: ThemeMode.system,
-          theme: theme,
-          darkTheme: darkTheme,
-          routerConfig: router,
-        ),
+      child: MaterialApp.router(
+        title: appName,
+        themeMode: ThemeMode.system,
+        theme: theme,
+        darkTheme: darkTheme,
+        routerConfig: router,
       ),
     );
   }
