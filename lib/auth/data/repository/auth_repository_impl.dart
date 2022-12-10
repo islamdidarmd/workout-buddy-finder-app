@@ -56,9 +56,9 @@ class AuthRepositoryImpl implements AuthRepository {
     } else {
       final appUserModel = AppUserModel(
         userId: firebaseUser.uid,
-        name: firebaseUser.displayName,
-        email: firebaseUser.email,
-        profilePicture: firebaseUser.photoURL,
+        name: firebaseUser.displayName ?? '',
+        email: firebaseUser.email ?? '',
+        profilePicture: firebaseUser.photoURL ?? '',
         registered: firebaseUser.metadata.creationTime!.toUtc(),
       );
       userDoc.reference.set(appUserModel.toJson());

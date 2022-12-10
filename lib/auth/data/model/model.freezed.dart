@@ -23,9 +23,9 @@ mixin _$AppUserModel {
   String get userId => throw _privateConstructorUsedError;
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get registered => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
-  String? get profilePicture => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get profilePicture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,9 +43,9 @@ abstract class $AppUserModelCopyWith<$Res> {
       {String userId,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime registered,
-      String? name,
-      String? email,
-      String? profilePicture});
+      String name,
+      String email,
+      String profilePicture});
 }
 
 /// @nodoc
@@ -63,9 +63,9 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
   $Res call({
     Object? userId = null,
     Object? registered = null,
-    Object? name = freezed,
-    Object? email = freezed,
-    Object? profilePicture = freezed,
+    Object? name = null,
+    Object? email = null,
+    Object? profilePicture = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -76,18 +76,18 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
           ? _value.registered
           : registered // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
+              as String,
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profilePicture: freezed == profilePicture
+              as String,
+      profilePicture: null == profilePicture
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -104,9 +104,9 @@ abstract class _$$_AppUserModelCopyWith<$Res>
       {String userId,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime registered,
-      String? name,
-      String? email,
-      String? profilePicture});
+      String name,
+      String email,
+      String profilePicture});
 }
 
 /// @nodoc
@@ -122,9 +122,9 @@ class __$$_AppUserModelCopyWithImpl<$Res>
   $Res call({
     Object? userId = null,
     Object? registered = null,
-    Object? name = freezed,
-    Object? email = freezed,
-    Object? profilePicture = freezed,
+    Object? name = null,
+    Object? email = null,
+    Object? profilePicture = null,
   }) {
     return _then(_$_AppUserModel(
       userId: null == userId
@@ -135,18 +135,18 @@ class __$$_AppUserModelCopyWithImpl<$Res>
           ? _value.registered
           : registered // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
+              as String,
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profilePicture: freezed == profilePicture
+              as String,
+      profilePicture: null == profilePicture
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -158,9 +158,9 @@ class _$_AppUserModel extends _AppUserModel {
       {required this.userId,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required this.registered,
-      this.name,
-      this.email,
-      this.profilePicture})
+      this.name = '',
+      this.email = '',
+      this.profilePicture = ''})
       : super._();
 
   factory _$_AppUserModel.fromJson(Map<String, dynamic> json) =>
@@ -172,11 +172,14 @@ class _$_AppUserModel extends _AppUserModel {
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   final DateTime registered;
   @override
-  final String? name;
+  @JsonKey()
+  final String name;
   @override
-  final String? email;
+  @JsonKey()
+  final String email;
   @override
-  final String? profilePicture;
+  @JsonKey()
+  final String profilePicture;
 
   @override
   String toString() {
@@ -221,9 +224,9 @@ abstract class _AppUserModel extends AppUserModel {
       {required final String userId,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required final DateTime registered,
-      final String? name,
-      final String? email,
-      final String? profilePicture}) = _$_AppUserModel;
+      final String name,
+      final String email,
+      final String profilePicture}) = _$_AppUserModel;
   _AppUserModel._() : super._();
 
   factory _AppUserModel.fromJson(Map<String, dynamic> json) =
@@ -235,11 +238,11 @@ abstract class _AppUserModel extends AppUserModel {
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get registered;
   @override
-  String? get name;
+  String get name;
   @override
-  String? get email;
+  String get email;
   @override
-  String? get profilePicture;
+  String get profilePicture;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserModelCopyWith<_$_AppUserModel> get copyWith =>
