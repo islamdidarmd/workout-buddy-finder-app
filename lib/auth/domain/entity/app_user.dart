@@ -4,6 +4,8 @@ class AppUser {
   final String name;
   final String email;
   final String profilePicture;
+  final double lat;
+  final double long;
 
   bool get isEmpty => userId.isEmpty;
 
@@ -13,6 +15,8 @@ class AppUser {
     required this.name,
     required this.email,
     required this.profilePicture,
+    required this.lat,
+    required this.long,
   });
 
   factory AppUser.empty() => AppUser(
@@ -21,5 +25,7 @@ class AppUser {
         name: '',
         email: '',
         profilePicture: '',
+        lat: 0.0,
+        long: 0.0,
       );
 }

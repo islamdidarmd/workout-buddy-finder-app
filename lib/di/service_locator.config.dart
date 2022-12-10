@@ -13,8 +13,10 @@ import 'package:workout_buddy_finder/auth/domain/domain.dart' as _i4;
 import 'package:workout_buddy_finder/auth/domain/use_case/is_logged_in_use_case.dart'
     as _i6;
 import 'package:workout_buddy_finder/auth/domain/use_case/login_with_google_use_case.dart'
-    as _i7;
+    as _i8;
 import 'package:workout_buddy_finder/auth/ui/bloc/auth_bloc.dart' as _i3;
+import 'package:workout_buddy_finder/location/ui/bloc/location_retriever_bloc.dart'
+    as _i7;
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -36,8 +38,9 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i4.AuthRepository>(() => _i5.AuthRepositoryImpl());
     gh.factory<_i6.IsLoggedInUseCase>(
         () => _i6.IsLoggedInUseCase(authRepository: gh<_i4.AuthRepository>()));
-    gh.factory<_i7.LoginWithGoogleUseCase>(() =>
-        _i7.LoginWithGoogleUseCase(authRepository: gh<_i4.AuthRepository>()));
+    gh.factory<_i7.LocationRetrieverBloc>(() => _i7.LocationRetrieverBloc());
+    gh.factory<_i8.LoginWithGoogleUseCase>(() =>
+        _i8.LoginWithGoogleUseCase(authRepository: gh<_i4.AuthRepository>()));
     return this;
   }
 }
