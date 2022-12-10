@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:workout_buddy_finder/app/firestore_constants.dart';
+import 'package:workout_buddy_finder/auth/data/model/model.dart';
 import 'package:workout_buddy_finder/auth/domain/domain.dart';
 import 'package:workout_buddy_finder/core/error/app_error.dart';
 
@@ -14,12 +17,13 @@ class AuthRepositoryImpl implements AuthRepository {
 
     try {
       final userCredential = await _signInWithGoogle();
-      if (userCredential.user == null) {
-        result = Right(UnknownError());
-      } else {
-        final User firebaseUser = userCredential.user!;
-        final AppUser appUser = AppUser(userId: firebaseUser.uid);
+      final User? firebaseUser = userCredential.user;
+
+      if (firebaseUser != null) {
+        final AppUser appUser = await _getOrCreateUserById(firebaseUser);
         result = Left(appUser);
+      } else {
+        result = Right(UnknownError());
       }
     } on FirebaseAuthMultiFactorException catch (error) {
       result = Right(AppError(message: error.code));
@@ -28,6 +32,39 @@ class AuthRepositoryImpl implements AuthRepository {
     }
 
     return result!;
+  }
+
+  @override
+  Future<Either<AppUser, AppError>> isLoggedIn() async {
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+
+    return Either.cond(
+      firebaseUser == null,
+      await _getOrCreateUserById(firebaseUser!),
+      UserNotLoggedInError(),
+    );
+  }
+
+  Future<AppUser> _getOrCreateUserById(User firebaseUser) async {
+    final usersDb = FirebaseFirestore.instance.collection(users);
+    final DocumentSnapshot<Map<String, dynamic>> userDoc =
+        await usersDb.doc(firebaseUser.uid).get();
+    final data = userDoc.data();
+
+    if (userDoc.exists && data != null) {
+      return AppUserModel.fromJson(data).toEntity();
+    } else {
+      final appUserModel = AppUserModel(
+        userId: firebaseUser.uid,
+        name: firebaseUser.displayName,
+        email: firebaseUser.email,
+        profilePicture: firebaseUser.photoURL,
+        registered: firebaseUser.metadata.creationTime!.toUtc(),
+      );
+      userDoc.reference.set(appUserModel.toJson());
+
+      return appUserModel.toEntity();
+    }
   }
 
   Future<UserCredential> _signInWithGoogle() async {
