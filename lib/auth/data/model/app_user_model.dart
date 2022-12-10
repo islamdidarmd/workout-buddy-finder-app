@@ -11,6 +11,8 @@ class AppUserModel with _$AppUserModel {
     @Default('') String name,
     @Default('') String email,
     @Default('') String profilePicture,
+    @Default(0.0) double lat,
+    @Default(0.0) double long,
   }) = _AppUserModel;
 
   factory AppUserModel.fromJson(Map<String, dynamic> json) =>
@@ -22,5 +24,7 @@ class AppUserModel with _$AppUserModel {
         email: email,
         profilePicture: profilePicture,
         registered: registered,
+        lat: lat,
+        long: long,
       );
 }
