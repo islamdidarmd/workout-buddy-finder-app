@@ -5,6 +5,8 @@ class AppUser {
   String? email;
   String? profilePicture;
 
+  bool get isEmpty => userId.isEmpty;
+
   AppUser({
     required this.userId,
     required this.registered,
@@ -12,4 +14,6 @@ class AppUser {
     this.email,
     this.profilePicture,
   });
+
+  factory AppUser.empty() => AppUser(userId: '', registered: DateTime.now());
 }
