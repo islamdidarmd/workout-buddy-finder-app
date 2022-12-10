@@ -8,9 +8,9 @@ class AppUserModel with _$AppUserModel {
     required String userId,
     @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
         required DateTime registered,
-    String? name,
-    String? email,
-    String? profilePicture,
+    @Default('') String name,
+    @Default('') String email,
+    @Default('') String profilePicture,
   }) = _AppUserModel;
 
   factory AppUserModel.fromJson(Map<String, dynamic> json) =>

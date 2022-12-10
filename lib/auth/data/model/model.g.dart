@@ -10,9 +10,9 @@ _$_AppUserModel _$$_AppUserModelFromJson(Map<String, dynamic> json) =>
     _$_AppUserModel(
       userId: json['userId'] as String,
       registered: dateTimeFromJson(json['registered'] as int),
-      name: json['name'] as String?,
-      email: json['email'] as String?,
-      profilePicture: json['profilePicture'] as String?,
+      name: json['name'] as String? ?? '',
+      email: json['email'] as String? ?? '',
+      profilePicture: json['profilePicture'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_AppUserModelToJson(_$_AppUserModel instance) =>
