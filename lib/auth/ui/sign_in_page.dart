@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:workout_buddy_finder/navigation/routes.dart';
 import 'bloc/auth_bloc.dart';
 import 'sign_in_with_google_button.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);
 
-  Widget get _logo => Image.asset('assets/icon/app_logo.png');
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<AuthBloc>()..add(AuthCheckAuthStateEvent());
+  }
+
+  String get _logo => 'assets/icon/app_logo.png';
 
   Widget _slogan(BuildContext context) => Text(
         key: ValueKey('Login Page Slogan'),
@@ -23,8 +36,12 @@ class SignInPage extends StatelessWidget {
       );
 
   void _onAuthBlocStateChange(BuildContext context, AuthState state) {
-    if (state is AuthSignInFailureState) {
-      ScaffoldMessenger.of(context).showSnackBar(
+    if (state is AuthSignedInState) {
+      context.go(rootRouteMap[RootRoute.suggestion]!);
+    } else if (state is AuthSignedOutState) {
+      context.go(fullScreenRouteMap[FullScreenRoute.login]!);
+    } else if (state is AuthSignInFailureState) {
+      final scaffoldController = ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(state.error.message)),
       );
     }
@@ -45,7 +62,7 @@ class SignInPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                _logo,
+                Image.asset(_logo),
                 const SizedBox(height: 20),
                 _slogan(context),
                 const SizedBox(height: 8),

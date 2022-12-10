@@ -7,4 +7,6 @@ abstract class AuthEvent extends Equatable {
   const AuthEvent();
 }
 
+class AuthCheckAuthStateEvent extends AuthEvent {}
+
 class AuthSignInWithGoogleEvent extends AuthEvent {}

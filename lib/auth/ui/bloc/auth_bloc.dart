@@ -12,18 +12,31 @@ part 'auth_state.dart';
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginWithGoogleUseCase loginWithGoogleUseCase;
+  final IsLoggedInUseCase isLoggedInUseCase;
 
   AppUser? _appUser;
 
   AppUser? get appUser => _appUser;
 
-  AuthBloc({required this.loginWithGoogleUseCase}) : super(AuthInitialState()) {
+  AuthBloc({
+    required this.loginWithGoogleUseCase,
+    required this.isLoggedInUseCase,
+  }) : super(AuthInitialState()) {
     on<AuthSignInWithGoogleEvent>((event, emit) async {
       emit(AuthLoadingState());
       final Either<AppUser, AppError> result = await loginWithGoogleUseCase();
       result.fold(
         (user) => emit(AuthSignedInState()),
         (error) => emit(AuthSignInFailureState(error: error)),
+      );
+    });
+
+    on<AuthCheckAuthStateEvent>((event, emit) async {
+      emit(AuthLoadingState());
+      final result = await isLoggedInUseCase();
+      result.fold(
+        (user) => emit(AuthSignedInState()),
+        (error) => emit(AuthSignedOutState()),
       );
     });
   }
