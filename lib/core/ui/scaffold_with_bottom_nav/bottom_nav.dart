@@ -9,13 +9,11 @@ class BottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      currentIndex: _getIndexForLocation(GoRouter.of(context).location),
-      items: _bottomNavItems,
-      onTap: (index) => context.go(_getLocationForIndex(index)),
+    return NavigationBar(
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+      selectedIndex: _getIndexForLocation(GoRouter.of(context).location),
+      destinations: _bottomNavItems,
+      onDestinationSelected: (index) => context.go(_getLocationForIndex(index)),
     );
   }
 

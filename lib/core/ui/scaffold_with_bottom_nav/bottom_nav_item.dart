@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BottomNavItem extends BottomNavigationBarItem {
+class BottomNavItem extends NavigationDestination {
   final String initialLocation;
 
   const BottomNavItem({
