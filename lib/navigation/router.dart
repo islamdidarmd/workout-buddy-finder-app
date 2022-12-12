@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:workout_buddy_finder/profile/ui/profile_details_page.dart';
 import 'routes.dart';
 import '../auth/auth.dart';
 import '../chat/chat.dart';
@@ -43,6 +44,10 @@ List<GoRoute> get _rootRoutes => [
       GoRoute(
         path: rootRouteMap[RootRoute.profile]!,
         pageBuilder: (context, state) => NoTransitionPage(child: ProfilePage()),
+      ),
+      GoRoute(
+        path: rootRouteMap[RootRoute.profile_details]!,
+        pageBuilder: (context, state) => NoTransitionPage(child: ProfileDetailsPage()),
       ),
       GoRoute(
         path: rootRouteMap[RootRoute.chat]!,
