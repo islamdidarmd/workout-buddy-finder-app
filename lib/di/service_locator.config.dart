@@ -11,12 +11,14 @@ import 'package:workout_buddy_finder/auth/data/repository/auth_repository_impl.d
     as _i5;
 import 'package:workout_buddy_finder/auth/domain/domain.dart' as _i4;
 import 'package:workout_buddy_finder/auth/domain/use_case/is_logged_in_use_case.dart'
-    as _i6;
-import 'package:workout_buddy_finder/auth/domain/use_case/login_with_google_use_case.dart'
-    as _i8;
-import 'package:workout_buddy_finder/auth/ui/bloc/auth_bloc.dart' as _i3;
-import 'package:workout_buddy_finder/location/ui/bloc/location_retriever_bloc.dart'
     as _i7;
+import 'package:workout_buddy_finder/auth/domain/use_case/login_with_google_use_case.dart'
+    as _i9;
+import 'package:workout_buddy_finder/auth/ui/bloc/auth_bloc.dart' as _i3;
+import 'package:workout_buddy_finder/location/domain/usecase/get_address_from_lat_long_use_case.dart'
+    as _i6;
+import 'package:workout_buddy_finder/location/ui/bloc/location_retriever_bloc.dart'
+    as _i8;
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -36,11 +38,13 @@ extension GetItInjectableX on _i1.GetIt {
           isLoggedInUseCase: gh<_i4.IsLoggedInUseCase>(),
         ));
     gh.factory<_i4.AuthRepository>(() => _i5.AuthRepositoryImpl());
-    gh.factory<_i6.IsLoggedInUseCase>(
-        () => _i6.IsLoggedInUseCase(authRepository: gh<_i4.AuthRepository>()));
-    gh.factory<_i7.LocationRetrieverBloc>(() => _i7.LocationRetrieverBloc());
-    gh.factory<_i8.LoginWithGoogleUseCase>(() =>
-        _i8.LoginWithGoogleUseCase(authRepository: gh<_i4.AuthRepository>()));
+    gh.factory<_i6.GetAddressFromLatLongUseCase>(
+        () => _i6.GetAddressFromLatLongUseCase());
+    gh.factory<_i7.IsLoggedInUseCase>(
+        () => _i7.IsLoggedInUseCase(authRepository: gh<_i4.AuthRepository>()));
+    gh.factory<_i8.LocationRetrieverBloc>(() => _i8.LocationRetrieverBloc());
+    gh.factory<_i9.LoginWithGoogleUseCase>(() =>
+        _i9.LoginWithGoogleUseCase(authRepository: gh<_i4.AuthRepository>()));
     return this;
   }
 }
