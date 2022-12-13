@@ -18,49 +18,49 @@ class InfoSection extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Container(
-      padding: EdgeInsets.all(_padding),
       height: 120,
-      decoration: BoxDecoration(
-        color: Theme.of(context).splashColor,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ProfileAvatar(
-            user: user,
-            size: 100,
-          ),
-          SizedBox(width: 8),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.all(_padding),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                user.name,
-                style: textTheme.titleMedium
-                    ?.copyWith(fontWeight: FontWeight.bold),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+              ProfileAvatar(
+                user: user,
+                size: 100,
               ),
-              const SizedBox(height: 4),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              SizedBox(width: 8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    FontAwesomeIcons.locationCrosshairs,
-                    size: 12,
+                  Text(
+                    user.name,
+                    style: textTheme.titleMedium
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(width: 2),
-                  LocationText(
-                    lat: user.lat,
-                    long: user.long,
+                  const SizedBox(height: 4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        FontAwesomeIcons.locationCrosshairs,
+                        size: 12,
+                      ),
+                      SizedBox(width: 2),
+                      LocationText(
+                        lat: user.lat,
+                        long: user.long,
+                      ),
+                    ],
                   ),
                 ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
