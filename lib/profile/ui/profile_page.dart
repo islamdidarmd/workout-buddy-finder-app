@@ -30,7 +30,7 @@ class ProfilePage extends StatelessWidget {
               right: 0,
               bottom: 0,
               child: FloatingActionButton(
-                onPressed: () => context.push(rootRouteMap[RootRoute.profile_details]!),
+                onPressed: () => context.push(rootRouteMap[RootRoute.profile_edit]!),
                 child: Icon(FontAwesomeIcons.penToSquare),
               ),
             ),

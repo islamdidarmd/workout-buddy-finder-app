@@ -179,7 +179,7 @@ class __$$_AppUserModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppUserModel extends _AppUserModel {
+class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
   _$_AppUserModel(
       {required this.userId,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
@@ -216,8 +216,22 @@ class _$_AppUserModel extends _AppUserModel {
   final double long;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppUserModel(userId: $userId, registered: $registered, name: $name, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppUserModel'))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('registered', registered))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('profilePicture', profilePicture))
+      ..add(DiagnosticsProperty('lat', lat))
+      ..add(DiagnosticsProperty('long', long));
   }
 
   @override

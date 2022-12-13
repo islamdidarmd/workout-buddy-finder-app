@@ -8,7 +8,7 @@ class GetAddressFromLatLongUseCase {
   Future<Either<String, AppError>> call(double lat, double long) async {
     List<Placemark> placeMarkList = await placemarkFromCoordinates(lat, long);
     if (placeMarkList.isEmpty) {
-      return Right(DataNotLoggedInError());
+      return Right(DataNotFoundError());
     }
     final buffer = StringBuffer()
       ..write(placeMarkList.first.locality)

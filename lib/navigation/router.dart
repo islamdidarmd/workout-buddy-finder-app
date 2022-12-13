@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:workout_buddy_finder/profile/ui/profile_details_page.dart';
 import 'routes.dart';
 import '../auth/auth.dart';
 import '../chat/chat.dart';
 import '../suggestion/suggestion.dart';
-import '../profile/ui/profile_page.dart';
+import '../profile/profile.dart';
 import '../settings/settings.dart';
 import '../core/core.dart';
 
@@ -47,7 +46,13 @@ List<GoRoute> get _rootRoutes => [
       ),
       GoRoute(
         path: rootRouteMap[RootRoute.profile_details]!,
-        pageBuilder: (context, state) => NoTransitionPage(child: ProfileDetailsPage()),
+        pageBuilder: (context, state) =>
+            NoTransitionPage(child: ProfileDetailsPage()),
+      ),
+      GoRoute(
+        path: rootRouteMap[RootRoute.profile_edit]!,
+        pageBuilder: (context, state) =>
+            NoTransitionPage(child: ProfileEditPage()),
       ),
       GoRoute(
         path: rootRouteMap[RootRoute.chat]!,
