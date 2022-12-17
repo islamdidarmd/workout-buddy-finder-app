@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'entities.dart';
+part of 'model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Interest _$InterestFromJson(Map<String, dynamic> json) {
-  return _Interest.fromJson(json);
+InterestModel _$InterestModelFromJson(Map<String, dynamic> json) {
+  return _InterestModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Interest {
+mixin _$InterestModel {
   @JsonKey(name: 'doc_id')
   String get docId => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
@@ -27,22 +27,23 @@ mixin _$Interest {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $InterestCopyWith<Interest> get copyWith =>
+  $InterestModelCopyWith<InterestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $InterestCopyWith<$Res> {
-  factory $InterestCopyWith(Interest value, $Res Function(Interest) then) =
-      _$InterestCopyWithImpl<$Res, Interest>;
+abstract class $InterestModelCopyWith<$Res> {
+  factory $InterestModelCopyWith(
+          InterestModel value, $Res Function(InterestModel) then) =
+      _$InterestModelCopyWithImpl<$Res, InterestModel>;
   @useResult
   $Res call({@JsonKey(name: 'doc_id') String docId, String icon, String name});
 }
 
 /// @nodoc
-class _$InterestCopyWithImpl<$Res, $Val extends Interest>
-    implements $InterestCopyWith<$Res> {
-  _$InterestCopyWithImpl(this._value, this._then);
+class _$InterestModelCopyWithImpl<$Res, $Val extends InterestModel>
+    implements $InterestModelCopyWith<$Res> {
+  _$InterestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -74,21 +75,22 @@ class _$InterestCopyWithImpl<$Res, $Val extends Interest>
 }
 
 /// @nodoc
-abstract class _$$_InterestCopyWith<$Res> implements $InterestCopyWith<$Res> {
-  factory _$$_InterestCopyWith(
-          _$_Interest value, $Res Function(_$_Interest) then) =
-      __$$_InterestCopyWithImpl<$Res>;
+abstract class _$$_InterestModelCopyWith<$Res>
+    implements $InterestModelCopyWith<$Res> {
+  factory _$$_InterestModelCopyWith(
+          _$_InterestModel value, $Res Function(_$_InterestModel) then) =
+      __$$_InterestModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({@JsonKey(name: 'doc_id') String docId, String icon, String name});
 }
 
 /// @nodoc
-class __$$_InterestCopyWithImpl<$Res>
-    extends _$InterestCopyWithImpl<$Res, _$_Interest>
-    implements _$$_InterestCopyWith<$Res> {
-  __$$_InterestCopyWithImpl(
-      _$_Interest _value, $Res Function(_$_Interest) _then)
+class __$$_InterestModelCopyWithImpl<$Res>
+    extends _$InterestModelCopyWithImpl<$Res, _$_InterestModel>
+    implements _$$_InterestModelCopyWith<$Res> {
+  __$$_InterestModelCopyWithImpl(
+      _$_InterestModel _value, $Res Function(_$_InterestModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -98,7 +100,7 @@ class __$$_InterestCopyWithImpl<$Res>
     Object? icon = null,
     Object? name = null,
   }) {
-    return _then(_$_Interest(
+    return _then(_$_InterestModel(
       docId: null == docId
           ? _value.docId
           : docId // ignore: cast_nullable_to_non_nullable
@@ -117,14 +119,14 @@ class __$$_InterestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Interest implements _Interest {
-  _$_Interest(
+class _$_InterestModel with DiagnosticableTreeMixin implements _InterestModel {
+  _$_InterestModel(
       {@JsonKey(name: 'doc_id') required this.docId,
       required this.icon,
       required this.name});
 
-  factory _$_Interest.fromJson(Map<String, dynamic> json) =>
-      _$$_InterestFromJson(json);
+  factory _$_InterestModel.fromJson(Map<String, dynamic> json) =>
+      _$$_InterestModelFromJson(json);
 
   @override
   @JsonKey(name: 'doc_id')
@@ -135,15 +137,25 @@ class _$_Interest implements _Interest {
   final String name;
 
   @override
-  String toString() {
-    return 'Interest(docId: $docId, icon: $icon, name: $name)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'InterestModel(docId: $docId, icon: $icon, name: $name)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'InterestModel'))
+      ..add(DiagnosticsProperty('docId', docId))
+      ..add(DiagnosticsProperty('icon', icon))
+      ..add(DiagnosticsProperty('name', name));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Interest &&
+            other is _$_InterestModel &&
             (identical(other.docId, docId) || other.docId == docId) &&
             (identical(other.icon, icon) || other.icon == icon) &&
             (identical(other.name, name) || other.name == name));
@@ -156,24 +168,25 @@ class _$_Interest implements _Interest {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InterestCopyWith<_$_Interest> get copyWith =>
-      __$$_InterestCopyWithImpl<_$_Interest>(this, _$identity);
+  _$$_InterestModelCopyWith<_$_InterestModel> get copyWith =>
+      __$$_InterestModelCopyWithImpl<_$_InterestModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InterestToJson(
+    return _$$_InterestModelToJson(
       this,
     );
   }
 }
 
-abstract class _Interest implements Interest {
-  factory _Interest(
+abstract class _InterestModel implements InterestModel {
+  factory _InterestModel(
       {@JsonKey(name: 'doc_id') required final String docId,
       required final String icon,
-      required final String name}) = _$_Interest;
+      required final String name}) = _$_InterestModel;
 
-  factory _Interest.fromJson(Map<String, dynamic> json) = _$_Interest.fromJson;
+  factory _InterestModel.fromJson(Map<String, dynamic> json) =
+      _$_InterestModel.fromJson;
 
   @override
   @JsonKey(name: 'doc_id')
@@ -184,6 +197,6 @@ abstract class _Interest implements Interest {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_InterestCopyWith<_$_Interest> get copyWith =>
+  _$$_InterestModelCopyWith<_$_InterestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

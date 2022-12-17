@@ -2,8 +2,9 @@ part of 'profile_bloc.dart';
 
 @freezed
 class ProfileState with _$ProfileState {
-  const factory ProfileState.initial() = _Initial;
-  const factory ProfileState.loading() = _Loading;
-  const factory ProfileState.interestsLoadedState(List<Interest> interestList) = _InterestLoaded;
-  const factory ProfileState.error(AppError error) = _Error;
+  const factory ProfileState.initial() = _InitialState;
+  const factory ProfileState.loading() = _LoadingState;
+  const factory ProfileState.userProfileUpdated(AppUser appUser) = _UserProfileUpdatedState;
+  const factory ProfileState.interestsLoaded(List<InterestViewModel> interestList) = _InterestLoadedState;
+  const factory ProfileState.error(AppError error) = _ErrorState;
 }

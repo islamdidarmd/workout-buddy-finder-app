@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../auth/ui/bloc/auth_bloc.dart';
 import 'routes.dart';
 import '../auth/auth.dart';
 import '../chat/chat.dart';
@@ -18,7 +19,7 @@ final router = GoRouter(
   errorBuilder: (context, state) => ErrorIndicator(),
   redirect: (context, _) {
     final AuthBloc authBloc = context.read();
-    if (authBloc.state is AuthSignedInState) {
+    if (authBloc.isSignedIn) {
       return null;
     }
 

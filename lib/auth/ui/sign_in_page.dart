@@ -16,7 +16,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   void initState() {
     super.initState();
-    context.read<AuthBloc>()..add(AuthCheckAuthStateEvent());
+    context.read<AuthBloc>()..add(AuthEvent.initial());
   }
 
   String get _logo => 'assets/icon/app_logo.png';
@@ -36,15 +36,16 @@ class _SignInPageState extends State<SignInPage> {
       );
 
   void _onAuthBlocStateChange(BuildContext context, AuthState state) {
-    if (state is AuthSignedInState) {
-      context.go(rootRouteMap[RootRoute.suggestion]!);
-    } else if (state is AuthSignedOutState) {
-      context.go(fullScreenRouteMap[FullScreenRoute.login]!);
-    } else if (state is AuthSignInFailureState) {
-      final scaffoldController = ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(state.error.message)),
-      );
-    }
+    state.maybeWhen(
+      signedIn: () => context.go(rootRouteMap[RootRoute.suggestion]!),
+      signedOut: () => context.go(fullScreenRouteMap[FullScreenRoute.login]!),
+      signInFailure: (error) {
+        final scaffoldController = ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(error.message)),
+        );
+      },
+      orElse: () {},
+    );
   }
 
   @override

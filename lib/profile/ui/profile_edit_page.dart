@@ -23,7 +23,7 @@ class ProfileEditPage extends StatelessWidget {
                 builder: (_, state) {
                   return state.maybeWhen(
                     loading: () => CircularProgressIndicator(),
-                    interestsLoadedState: (interestList) => Wrap(
+                    interestsLoaded: (interestList) => Wrap(
                       children: interestList
                           .map((e) => ChoiceChip(
                                 avatar: CircleAvatar(),
