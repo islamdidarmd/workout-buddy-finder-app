@@ -13,18 +13,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   @override
-  Future<Either<AppUser, AppError>> loginWithGoogle(Position location) async {
-    Either<AppUser, AppError>? result;
+  bool get isSignedIn => FirebaseAuth.instance.currentUser != null;
 
+  @override
+  Future<Either<void, AppError>> loginWithGoogle(Position location) async {
+    Either<void, AppError>? result;
     try {
       final userCredential = await _signInWithGoogle();
       final User? firebaseUser = userCredential.user;
-
-      if (firebaseUser != null) {
-        final AppUser appUser = await _getOrCreateUser(firebaseUser, location);
-        result = Left(appUser);
+      if (firebaseUser == null) {
+        result = Left({});
       } else {
-        result = Right(UnknownError());
+        final appUser = _createUserIfDoesNotExist(firebaseUser, location);
       }
     } on FirebaseAuthMultiFactorException catch (error) {
       result = Right(AppError(message: error.code));
@@ -36,17 +36,37 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<AppUser, AppError>> isLoggedIn() async {
-    final firebaseUser = FirebaseAuth.instance.currentUser;
+  Stream<UserAuthState> getAuthStateStream() {
+    return FirebaseAuth.instance.authStateChanges().map(
+      (firebaseUser) {
+        if (firebaseUser == null) {
+          return UserAuthState.signedOut;
+        }
 
-    if (firebaseUser == null) {
-      return Right(UserNotLoggedInError());
-    }
-
-    return Left(await _getUser(firebaseUser!));
+        return UserAuthState.signedIn;
+      },
+    );
   }
 
-  Future<AppUser> _getOrCreateUser(
+  @override
+  Stream<AppUser> getAppUserStream() {
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+    final usersDb = FirebaseFirestore.instance.collection(users);
+    final userDoc = usersDb.doc(firebaseUser?.uid).snapshots();
+
+    return userDoc.map(
+      (doc) {
+        final data = doc.data();
+        if (data == null) {
+          return AppUser.empty();
+        }
+
+        return AppUserModel.fromJson(data).toEntity();
+      },
+    );
+  }
+
+  Future<AppUser> _createUserIfDoesNotExist(
     User firebaseUser,
     Position location,
   ) async {
@@ -71,15 +91,6 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return appUserModel.toEntity();
     }
-  }
-
-  Future<AppUser> _getUser(User firebaseUser) async {
-    final usersDb = FirebaseFirestore.instance.collection(users);
-    final DocumentSnapshot<Map<String, dynamic>> userDoc =
-        await usersDb.doc(firebaseUser.uid).get();
-    final data = userDoc.data();
-
-    return AppUserModel.fromJson(data!).toEntity();
   }
 
   Future<UserCredential> _signInWithGoogle() async {
