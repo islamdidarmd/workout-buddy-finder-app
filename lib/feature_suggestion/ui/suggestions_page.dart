@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:workout_buddy_finder/suggestion/ui/intro.dart';
-import 'package:workout_buddy_finder/suggestion/ui/suggestion_card.dart';
+import 'intro.dart';
+import 'suggestion_card.dart';
 
 class SuggestionsPage extends StatelessWidget {
   const SuggestionsPage({Key? key}) : super(key: key);

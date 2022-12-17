@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:workout_buddy_finder/auth/auth.dart';
-import 'package:workout_buddy_finder/profile/ui/location_text.dart';
-import 'package:workout_buddy_finder/profile/ui/profile_avatar.dart';
+import '../../feature_auth/auth.dart';
+import 'location_text.dart';
+import 'profile_avatar.dart';
 
 class InfoSection extends StatelessWidget {
   const InfoSection({

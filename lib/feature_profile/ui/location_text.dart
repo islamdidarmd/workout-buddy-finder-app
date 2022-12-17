@@ -1,6 +1,6 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
-import '../../location/domain/domain.dart';
+import '../../feature_location/domain/domain.dart';
 
 import '../../core/error/app_error.dart';
 import '../../di/service_locator.dart';
