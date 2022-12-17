@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../auth/ui/bloc/auth_bloc.dart';
 import 'routes.dart';
-import '../auth/auth.dart';
-import '../chat/chat.dart';
-import '../suggestion/suggestion.dart';
-import '../profile/profile.dart';
-import '../settings/settings.dart';
+import '../feature_auth/auth.dart';
+import '../feature_chat/chat.dart';
+import '../feature_suggestion/suggestion.dart';
+import '../feature_profile/profile.dart';
+import '../feature_settings/settings.dart';
 import '../core/core.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();

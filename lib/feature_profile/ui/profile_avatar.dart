@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:workout_buddy_finder/auth/auth.dart';
+import '../../feature_auth/auth.dart';
 
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({

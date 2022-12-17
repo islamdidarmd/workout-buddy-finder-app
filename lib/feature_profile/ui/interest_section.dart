@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:workout_buddy_finder/auth/auth.dart';
+import '../../feature_auth/auth.dart';
 
 class InterestSection extends StatelessWidget {
   const InterestSection({

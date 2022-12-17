@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_buddy_finder/di/service_locator.dart';
-import '../navigation/routes.dart';
+import '../di/service_locator.dart';
 import '../env/env.dart';
-import '../auth/auth.dart';
-import '../navigation/router.dart';
+import '../feature_auth/auth.dart';
+import '../feature_navigation/router.dart';
 import '../theme/dark_theme.dart';
 import '../theme/light_theme.dart';
 
