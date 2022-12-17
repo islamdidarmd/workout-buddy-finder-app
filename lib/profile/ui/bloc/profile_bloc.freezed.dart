@@ -18,33 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getUserProfile,
     required TResult Function() loadInterests,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUserProfile,
     TResult? Function()? loadInterests,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUserProfile,
     TResult Function()? loadInterests,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Interests value) loadInterests,
+    required TResult Function(_UserProfileEvent value) getUserProfile,
+    required TResult Function(_InterestsEvent value) loadInterests,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Interests value)? loadInterests,
+    TResult? Function(_UserProfileEvent value)? getUserProfile,
+    TResult? Function(_InterestsEvent value)? loadInterests,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Interests value)? loadInterests,
+    TResult Function(_UserProfileEvent value)? getUserProfile,
+    TResult Function(_InterestsEvent value)? loadInterests,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,25 +75,137 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
 }
 
 /// @nodoc
-abstract class _$$_InterestsCopyWith<$Res> {
-  factory _$$_InterestsCopyWith(
-          _$_Interests value, $Res Function(_$_Interests) then) =
-      __$$_InterestsCopyWithImpl<$Res>;
+abstract class _$$_UserProfileEventCopyWith<$Res> {
+  factory _$$_UserProfileEventCopyWith(
+          _$_UserProfileEvent value, $Res Function(_$_UserProfileEvent) then) =
+      __$$_UserProfileEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InterestsCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_Interests>
-    implements _$$_InterestsCopyWith<$Res> {
-  __$$_InterestsCopyWithImpl(
-      _$_Interests _value, $Res Function(_$_Interests) _then)
+class __$$_UserProfileEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_UserProfileEvent>
+    implements _$$_UserProfileEventCopyWith<$Res> {
+  __$$_UserProfileEventCopyWithImpl(
+      _$_UserProfileEvent _value, $Res Function(_$_UserProfileEvent) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Interests with DiagnosticableTreeMixin implements _Interests {
-  const _$_Interests();
+class _$_UserProfileEvent
+    with DiagnosticableTreeMixin
+    implements _UserProfileEvent {
+  const _$_UserProfileEvent();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ProfileEvent.getUserProfile()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'ProfileEvent.getUserProfile'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UserProfileEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getUserProfile,
+    required TResult Function() loadInterests,
+  }) {
+    return getUserProfile();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUserProfile,
+    TResult? Function()? loadInterests,
+  }) {
+    return getUserProfile?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUserProfile,
+    TResult Function()? loadInterests,
+    required TResult orElse(),
+  }) {
+    if (getUserProfile != null) {
+      return getUserProfile();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserProfileEvent value) getUserProfile,
+    required TResult Function(_InterestsEvent value) loadInterests,
+  }) {
+    return getUserProfile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UserProfileEvent value)? getUserProfile,
+    TResult? Function(_InterestsEvent value)? loadInterests,
+  }) {
+    return getUserProfile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserProfileEvent value)? getUserProfile,
+    TResult Function(_InterestsEvent value)? loadInterests,
+    required TResult orElse(),
+  }) {
+    if (getUserProfile != null) {
+      return getUserProfile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserProfileEvent implements ProfileEvent {
+  const factory _UserProfileEvent() = _$_UserProfileEvent;
+}
+
+/// @nodoc
+abstract class _$$_InterestsEventCopyWith<$Res> {
+  factory _$$_InterestsEventCopyWith(
+          _$_InterestsEvent value, $Res Function(_$_InterestsEvent) then) =
+      __$$_InterestsEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InterestsEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_InterestsEvent>
+    implements _$$_InterestsEventCopyWith<$Res> {
+  __$$_InterestsEventCopyWithImpl(
+      _$_InterestsEvent _value, $Res Function(_$_InterestsEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_InterestsEvent
+    with DiagnosticableTreeMixin
+    implements _InterestsEvent {
+  const _$_InterestsEvent();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -103,7 +221,7 @@ class _$_Interests with DiagnosticableTreeMixin implements _Interests {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Interests);
+        (other.runtimeType == runtimeType && other is _$_InterestsEvent);
   }
 
   @override
@@ -112,6 +230,7 @@ class _$_Interests with DiagnosticableTreeMixin implements _Interests {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getUserProfile,
     required TResult Function() loadInterests,
   }) {
     return loadInterests();
@@ -120,6 +239,7 @@ class _$_Interests with DiagnosticableTreeMixin implements _Interests {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUserProfile,
     TResult? Function()? loadInterests,
   }) {
     return loadInterests?.call();
@@ -128,6 +248,7 @@ class _$_Interests with DiagnosticableTreeMixin implements _Interests {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUserProfile,
     TResult Function()? loadInterests,
     required TResult orElse(),
   }) {
@@ -140,7 +261,8 @@ class _$_Interests with DiagnosticableTreeMixin implements _Interests {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Interests value) loadInterests,
+    required TResult Function(_UserProfileEvent value) getUserProfile,
+    required TResult Function(_InterestsEvent value) loadInterests,
   }) {
     return loadInterests(this);
   }
@@ -148,7 +270,8 @@ class _$_Interests with DiagnosticableTreeMixin implements _Interests {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Interests value)? loadInterests,
+    TResult? Function(_UserProfileEvent value)? getUserProfile,
+    TResult? Function(_InterestsEvent value)? loadInterests,
   }) {
     return loadInterests?.call(this);
   }
@@ -156,7 +279,8 @@ class _$_Interests with DiagnosticableTreeMixin implements _Interests {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Interests value)? loadInterests,
+    TResult Function(_UserProfileEvent value)? getUserProfile,
+    TResult Function(_InterestsEvent value)? loadInterests,
     required TResult orElse(),
   }) {
     if (loadInterests != null) {
@@ -166,8 +290,8 @@ class _$_Interests with DiagnosticableTreeMixin implements _Interests {
   }
 }
 
-abstract class _Interests implements ProfileEvent {
-  const factory _Interests() = _$_Interests;
+abstract class _InterestsEvent implements ProfileEvent {
+  const factory _InterestsEvent() = _$_InterestsEvent;
 }
 
 /// @nodoc
@@ -176,7 +300,9 @@ mixin _$ProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Interest> interestList) interestsLoadedState,
+    required TResult Function(AppUser appUser) userProfileUpdated,
+    required TResult Function(List<InterestViewModel> interestList)
+        interestsLoaded,
     required TResult Function(AppError error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -184,7 +310,8 @@ mixin _$ProfileState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Interest> interestList)? interestsLoadedState,
+    TResult? Function(AppUser appUser)? userProfileUpdated,
+    TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -192,33 +319,38 @@ mixin _$ProfileState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Interest> interestList)? interestsLoadedState,
+    TResult Function(AppUser appUser)? userProfileUpdated,
+    TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_InterestLoaded value) interestsLoadedState,
-    required TResult Function(_Error value) error,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_UserProfileUpdatedState value)
+        userProfileUpdated,
+    required TResult Function(_InterestLoadedState value) interestsLoaded,
+    required TResult Function(_ErrorState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_InterestLoaded value)? interestsLoadedState,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult? Function(_InterestLoadedState value)? interestsLoaded,
+    TResult? Function(_ErrorState value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_InterestLoaded value)? interestsLoadedState,
-    TResult Function(_Error value)? error,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult Function(_InterestLoadedState value)? interestsLoaded,
+    TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -243,24 +375,25 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialStateCopyWith<$Res> {
+  factory _$$_InitialStateCopyWith(
+          _$_InitialState value, $Res Function(_$_InitialState) then) =
+      __$$_InitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$_InitialStateCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$_InitialState>
+    implements _$$_InitialStateCopyWith<$Res> {
+  __$$_InitialStateCopyWithImpl(
+      _$_InitialState _value, $Res Function(_$_InitialState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial with DiagnosticableTreeMixin implements _Initial {
-  const _$_Initial();
+class _$_InitialState with DiagnosticableTreeMixin implements _InitialState {
+  const _$_InitialState();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -276,7 +409,7 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$_InitialState);
   }
 
   @override
@@ -287,7 +420,9 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Interest> interestList) interestsLoadedState,
+    required TResult Function(AppUser appUser) userProfileUpdated,
+    required TResult Function(List<InterestViewModel> interestList)
+        interestsLoaded,
     required TResult Function(AppError error) error,
   }) {
     return initial();
@@ -298,7 +433,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Interest> interestList)? interestsLoadedState,
+    TResult? Function(AppUser appUser)? userProfileUpdated,
+    TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) {
     return initial?.call();
@@ -309,7 +445,8 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Interest> interestList)? interestsLoadedState,
+    TResult Function(AppUser appUser)? userProfileUpdated,
+    TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
   }) {
@@ -322,10 +459,12 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_InterestLoaded value) interestsLoadedState,
-    required TResult Function(_Error value) error,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_UserProfileUpdatedState value)
+        userProfileUpdated,
+    required TResult Function(_InterestLoadedState value) interestsLoaded,
+    required TResult Function(_ErrorState value) error,
   }) {
     return initial(this);
   }
@@ -333,10 +472,11 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_InterestLoaded value)? interestsLoadedState,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult? Function(_InterestLoadedState value)? interestsLoaded,
+    TResult? Function(_ErrorState value)? error,
   }) {
     return initial?.call(this);
   }
@@ -344,10 +484,11 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_InterestLoaded value)? interestsLoadedState,
-    TResult Function(_Error value)? error,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult Function(_InterestLoadedState value)? interestsLoaded,
+    TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -357,29 +498,30 @@ class _$_Initial with DiagnosticableTreeMixin implements _Initial {
   }
 }
 
-abstract class _Initial implements ProfileState {
-  const factory _Initial() = _$_Initial;
+abstract class _InitialState implements ProfileState {
+  const factory _InitialState() = _$_InitialState;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$_LoadingStateCopyWith<$Res> {
+  factory _$$_LoadingStateCopyWith(
+          _$_LoadingState value, $Res Function(_$_LoadingState) then) =
+      __$$_LoadingStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$_LoadingStateCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$_LoadingState>
+    implements _$$_LoadingStateCopyWith<$Res> {
+  __$$_LoadingStateCopyWithImpl(
+      _$_LoadingState _value, $Res Function(_$_LoadingState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading with DiagnosticableTreeMixin implements _Loading {
-  const _$_Loading();
+class _$_LoadingState with DiagnosticableTreeMixin implements _LoadingState {
+  const _$_LoadingState();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -395,7 +537,7 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$_LoadingState);
   }
 
   @override
@@ -406,7 +548,9 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Interest> interestList) interestsLoadedState,
+    required TResult Function(AppUser appUser) userProfileUpdated,
+    required TResult Function(List<InterestViewModel> interestList)
+        interestsLoaded,
     required TResult Function(AppError error) error,
   }) {
     return loading();
@@ -417,7 +561,8 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Interest> interestList)? interestsLoadedState,
+    TResult? Function(AppUser appUser)? userProfileUpdated,
+    TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) {
     return loading?.call();
@@ -428,7 +573,8 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Interest> interestList)? interestsLoadedState,
+    TResult Function(AppUser appUser)? userProfileUpdated,
+    TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
   }) {
@@ -441,10 +587,12 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_InterestLoaded value) interestsLoadedState,
-    required TResult Function(_Error value) error,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_UserProfileUpdatedState value)
+        userProfileUpdated,
+    required TResult Function(_InterestLoadedState value) interestsLoaded,
+    required TResult Function(_ErrorState value) error,
   }) {
     return loading(this);
   }
@@ -452,10 +600,11 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_InterestLoaded value)? interestsLoadedState,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult? Function(_InterestLoadedState value)? interestsLoaded,
+    TResult? Function(_ErrorState value)? error,
   }) {
     return loading?.call(this);
   }
@@ -463,10 +612,11 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_InterestLoaded value)? interestsLoadedState,
-    TResult Function(_Error value)? error,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult Function(_InterestLoadedState value)? interestsLoaded,
+    TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -476,25 +626,191 @@ class _$_Loading with DiagnosticableTreeMixin implements _Loading {
   }
 }
 
-abstract class _Loading implements ProfileState {
-  const factory _Loading() = _$_Loading;
+abstract class _LoadingState implements ProfileState {
+  const factory _LoadingState() = _$_LoadingState;
 }
 
 /// @nodoc
-abstract class _$$_InterestLoadedCopyWith<$Res> {
-  factory _$$_InterestLoadedCopyWith(
-          _$_InterestLoaded value, $Res Function(_$_InterestLoaded) then) =
-      __$$_InterestLoadedCopyWithImpl<$Res>;
+abstract class _$$_UserProfileUpdatedStateCopyWith<$Res> {
+  factory _$$_UserProfileUpdatedStateCopyWith(_$_UserProfileUpdatedState value,
+          $Res Function(_$_UserProfileUpdatedState) then) =
+      __$$_UserProfileUpdatedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Interest> interestList});
+  $Res call({AppUser appUser});
 }
 
 /// @nodoc
-class __$$_InterestLoadedCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_InterestLoaded>
-    implements _$$_InterestLoadedCopyWith<$Res> {
-  __$$_InterestLoadedCopyWithImpl(
-      _$_InterestLoaded _value, $Res Function(_$_InterestLoaded) _then)
+class __$$_UserProfileUpdatedStateCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$_UserProfileUpdatedState>
+    implements _$$_UserProfileUpdatedStateCopyWith<$Res> {
+  __$$_UserProfileUpdatedStateCopyWithImpl(_$_UserProfileUpdatedState _value,
+      $Res Function(_$_UserProfileUpdatedState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appUser = null,
+  }) {
+    return _then(_$_UserProfileUpdatedState(
+      null == appUser
+          ? _value.appUser
+          : appUser // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UserProfileUpdatedState
+    with DiagnosticableTreeMixin
+    implements _UserProfileUpdatedState {
+  const _$_UserProfileUpdatedState(this.appUser);
+
+  @override
+  final AppUser appUser;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ProfileState.userProfileUpdated(appUser: $appUser)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ProfileState.userProfileUpdated'))
+      ..add(DiagnosticsProperty('appUser', appUser));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UserProfileUpdatedState &&
+            (identical(other.appUser, appUser) || other.appUser == appUser));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, appUser);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UserProfileUpdatedStateCopyWith<_$_UserProfileUpdatedState>
+      get copyWith =>
+          __$$_UserProfileUpdatedStateCopyWithImpl<_$_UserProfileUpdatedState>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AppUser appUser) userProfileUpdated,
+    required TResult Function(List<InterestViewModel> interestList)
+        interestsLoaded,
+    required TResult Function(AppError error) error,
+  }) {
+    return userProfileUpdated(appUser);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AppUser appUser)? userProfileUpdated,
+    TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
+    TResult? Function(AppError error)? error,
+  }) {
+    return userProfileUpdated?.call(appUser);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AppUser appUser)? userProfileUpdated,
+    TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
+    TResult Function(AppError error)? error,
+    required TResult orElse(),
+  }) {
+    if (userProfileUpdated != null) {
+      return userProfileUpdated(appUser);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_UserProfileUpdatedState value)
+        userProfileUpdated,
+    required TResult Function(_InterestLoadedState value) interestsLoaded,
+    required TResult Function(_ErrorState value) error,
+  }) {
+    return userProfileUpdated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult? Function(_InterestLoadedState value)? interestsLoaded,
+    TResult? Function(_ErrorState value)? error,
+  }) {
+    return userProfileUpdated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult Function(_InterestLoadedState value)? interestsLoaded,
+    TResult Function(_ErrorState value)? error,
+    required TResult orElse(),
+  }) {
+    if (userProfileUpdated != null) {
+      return userProfileUpdated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserProfileUpdatedState implements ProfileState {
+  const factory _UserProfileUpdatedState(final AppUser appUser) =
+      _$_UserProfileUpdatedState;
+
+  AppUser get appUser;
+  @JsonKey(ignore: true)
+  _$$_UserProfileUpdatedStateCopyWith<_$_UserProfileUpdatedState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_InterestLoadedStateCopyWith<$Res> {
+  factory _$$_InterestLoadedStateCopyWith(_$_InterestLoadedState value,
+          $Res Function(_$_InterestLoadedState) then) =
+      __$$_InterestLoadedStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<InterestViewModel> interestList});
+}
+
+/// @nodoc
+class __$$_InterestLoadedStateCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$_InterestLoadedState>
+    implements _$$_InterestLoadedStateCopyWith<$Res> {
+  __$$_InterestLoadedStateCopyWithImpl(_$_InterestLoadedState _value,
+      $Res Function(_$_InterestLoadedState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -502,26 +818,26 @@ class __$$_InterestLoadedCopyWithImpl<$Res>
   $Res call({
     Object? interestList = null,
   }) {
-    return _then(_$_InterestLoaded(
+    return _then(_$_InterestLoadedState(
       null == interestList
           ? _value._interestList
           : interestList // ignore: cast_nullable_to_non_nullable
-              as List<Interest>,
+              as List<InterestViewModel>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_InterestLoaded
+class _$_InterestLoadedState
     with DiagnosticableTreeMixin
-    implements _InterestLoaded {
-  const _$_InterestLoaded(final List<Interest> interestList)
+    implements _InterestLoadedState {
+  const _$_InterestLoadedState(final List<InterestViewModel> interestList)
       : _interestList = interestList;
 
-  final List<Interest> _interestList;
+  final List<InterestViewModel> _interestList;
   @override
-  List<Interest> get interestList {
+  List<InterestViewModel> get interestList {
     if (_interestList is EqualUnmodifiableListView) return _interestList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_interestList);
@@ -529,14 +845,14 @@ class _$_InterestLoaded
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProfileState.interestsLoadedState(interestList: $interestList)';
+    return 'ProfileState.interestsLoaded(interestList: $interestList)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ProfileState.interestsLoadedState'))
+      ..add(DiagnosticsProperty('type', 'ProfileState.interestsLoaded'))
       ..add(DiagnosticsProperty('interestList', interestList));
   }
 
@@ -544,7 +860,7 @@ class _$_InterestLoaded
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InterestLoaded &&
+            other is _$_InterestLoadedState &&
             const DeepCollectionEquality()
                 .equals(other._interestList, _interestList));
   }
@@ -556,18 +872,21 @@ class _$_InterestLoaded
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InterestLoadedCopyWith<_$_InterestLoaded> get copyWith =>
-      __$$_InterestLoadedCopyWithImpl<_$_InterestLoaded>(this, _$identity);
+  _$$_InterestLoadedStateCopyWith<_$_InterestLoadedState> get copyWith =>
+      __$$_InterestLoadedStateCopyWithImpl<_$_InterestLoadedState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Interest> interestList) interestsLoadedState,
+    required TResult Function(AppUser appUser) userProfileUpdated,
+    required TResult Function(List<InterestViewModel> interestList)
+        interestsLoaded,
     required TResult Function(AppError error) error,
   }) {
-    return interestsLoadedState(interestList);
+    return interestsLoaded(interestList);
   }
 
   @override
@@ -575,10 +894,11 @@ class _$_InterestLoaded
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Interest> interestList)? interestsLoadedState,
+    TResult? Function(AppUser appUser)? userProfileUpdated,
+    TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) {
-    return interestsLoadedState?.call(interestList);
+    return interestsLoaded?.call(interestList);
   }
 
   @override
@@ -586,12 +906,13 @@ class _$_InterestLoaded
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Interest> interestList)? interestsLoadedState,
+    TResult Function(AppUser appUser)? userProfileUpdated,
+    TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
   }) {
-    if (interestsLoadedState != null) {
-      return interestsLoadedState(interestList);
+    if (interestsLoaded != null) {
+      return interestsLoaded(interestList);
     }
     return orElse();
   }
@@ -599,64 +920,70 @@ class _$_InterestLoaded
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_InterestLoaded value) interestsLoadedState,
-    required TResult Function(_Error value) error,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_UserProfileUpdatedState value)
+        userProfileUpdated,
+    required TResult Function(_InterestLoadedState value) interestsLoaded,
+    required TResult Function(_ErrorState value) error,
   }) {
-    return interestsLoadedState(this);
+    return interestsLoaded(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_InterestLoaded value)? interestsLoadedState,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult? Function(_InterestLoadedState value)? interestsLoaded,
+    TResult? Function(_ErrorState value)? error,
   }) {
-    return interestsLoadedState?.call(this);
+    return interestsLoaded?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_InterestLoaded value)? interestsLoadedState,
-    TResult Function(_Error value)? error,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult Function(_InterestLoadedState value)? interestsLoaded,
+    TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) {
-    if (interestsLoadedState != null) {
-      return interestsLoadedState(this);
+    if (interestsLoaded != null) {
+      return interestsLoaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _InterestLoaded implements ProfileState {
-  const factory _InterestLoaded(final List<Interest> interestList) =
-      _$_InterestLoaded;
+abstract class _InterestLoadedState implements ProfileState {
+  const factory _InterestLoadedState(
+      final List<InterestViewModel> interestList) = _$_InterestLoadedState;
 
-  List<Interest> get interestList;
+  List<InterestViewModel> get interestList;
   @JsonKey(ignore: true)
-  _$$_InterestLoadedCopyWith<_$_InterestLoaded> get copyWith =>
+  _$$_InterestLoadedStateCopyWith<_$_InterestLoadedState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$_ErrorStateCopyWith<$Res> {
+  factory _$$_ErrorStateCopyWith(
+          _$_ErrorState value, $Res Function(_$_ErrorState) then) =
+      __$$_ErrorStateCopyWithImpl<$Res>;
   @useResult
   $Res call({AppError error});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$_ErrorStateCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res, _$_ErrorState>
+    implements _$$_ErrorStateCopyWith<$Res> {
+  __$$_ErrorStateCopyWithImpl(
+      _$_ErrorState _value, $Res Function(_$_ErrorState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -664,7 +991,7 @@ class __$$_ErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_Error(
+    return _then(_$_ErrorState(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -675,8 +1002,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error with DiagnosticableTreeMixin implements _Error {
-  const _$_Error(this.error);
+class _$_ErrorState with DiagnosticableTreeMixin implements _ErrorState {
+  const _$_ErrorState(this.error);
 
   @override
   final AppError error;
@@ -698,7 +1025,7 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$_ErrorState &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -708,15 +1035,17 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
+      __$$_ErrorStateCopyWithImpl<_$_ErrorState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Interest> interestList) interestsLoadedState,
+    required TResult Function(AppUser appUser) userProfileUpdated,
+    required TResult Function(List<InterestViewModel> interestList)
+        interestsLoaded,
     required TResult Function(AppError error) error,
   }) {
     return error(this.error);
@@ -727,7 +1056,8 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Interest> interestList)? interestsLoadedState,
+    TResult? Function(AppUser appUser)? userProfileUpdated,
+    TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) {
     return error?.call(this.error);
@@ -738,7 +1068,8 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Interest> interestList)? interestsLoadedState,
+    TResult Function(AppUser appUser)? userProfileUpdated,
+    TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
   }) {
@@ -751,10 +1082,12 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_InterestLoaded value) interestsLoadedState,
-    required TResult Function(_Error value) error,
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_LoadingState value) loading,
+    required TResult Function(_UserProfileUpdatedState value)
+        userProfileUpdated,
+    required TResult Function(_InterestLoadedState value) interestsLoaded,
+    required TResult Function(_ErrorState value) error,
   }) {
     return error(this);
   }
@@ -762,10 +1095,11 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_InterestLoaded value)? interestsLoadedState,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_LoadingState value)? loading,
+    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult? Function(_InterestLoadedState value)? interestsLoaded,
+    TResult? Function(_ErrorState value)? error,
   }) {
     return error?.call(this);
   }
@@ -773,10 +1107,11 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_InterestLoaded value)? interestsLoadedState,
-    TResult Function(_Error value)? error,
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_LoadingState value)? loading,
+    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
+    TResult Function(_InterestLoadedState value)? interestsLoaded,
+    TResult Function(_ErrorState value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -786,11 +1121,11 @@ class _$_Error with DiagnosticableTreeMixin implements _Error {
   }
 }
 
-abstract class _Error implements ProfileState {
-  const factory _Error(final AppError error) = _$_Error;
+abstract class _ErrorState implements ProfileState {
+  const factory _ErrorState(final AppError error) = _$_ErrorState;
 
   AppError get error;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
       throw _privateConstructorUsedError;
 }

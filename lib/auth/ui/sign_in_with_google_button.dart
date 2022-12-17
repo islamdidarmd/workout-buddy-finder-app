@@ -20,9 +20,7 @@ class SignInWithGoogleButton extends StatelessWidget {
     );
 
     if (location != null) {
-      context
-          .read<AuthBloc>()
-          .add(AuthSignInWithGoogleEvent(location: location));
+      context.read<AuthBloc>().add(AuthEvent.signInWithGoogle(location));
     }
   }
 
@@ -30,16 +28,16 @@ class SignInWithGoogleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (_, state) {
-        if (state is AuthLoadingState) {
-          return CircularProgressIndicator();
-        } else if (state is AuthSignedInState) {
-          return const SizedBox();
-        }
-
-        return ElevatedButton.icon(
-          onPressed: () => _onContinue(context),
-          label: Text('Continue with Google'),
-          icon: Icon(FontAwesomeIcons.google),
+        return state.maybeWhen(
+          loading: () => const CircularProgressIndicator(),
+          signedIn: () => const SizedBox(),
+          orElse: () {
+            return ElevatedButton.icon(
+              onPressed: () => _onContinue(context),
+              label: Text('Continue with Google'),
+              icon: Icon(FontAwesomeIcons.google),
+            );
+          },
         );
       },
     );
