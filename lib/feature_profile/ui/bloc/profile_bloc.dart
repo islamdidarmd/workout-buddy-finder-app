@@ -5,9 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/profile/data/data.dart';
+import '../../data/data.dart';
 
-import '../../../auth/auth.dart';
+import '../../../feature_auth/auth.dart';
 import '../../../core/core.dart';
 import '../view_model/view_model.dart';
 

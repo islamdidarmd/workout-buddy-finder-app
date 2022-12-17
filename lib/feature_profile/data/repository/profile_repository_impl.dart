@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/core/error/app_error.dart';
-import 'package:workout_buddy_finder/profile/data/model/model.dart';
-import 'package:workout_buddy_finder/profile/data/repository/profile_repository.dart';
+import '../../../core/error/app_error.dart';
+import '../model/model.dart';
+import 'profile_repository.dart';
 
 @Injectable(as: ProfileRepository)
 class ProfileRepositoryImpl implements ProfileRepository {

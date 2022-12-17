@@ -1,14 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:either_dart/either.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/auth/domain/domain.dart';
-import 'package:workout_buddy_finder/core/core.dart';
+import '../../../feature_auth/domain/domain.dart';
+import '../../../core/core.dart';
 
 part 'auth_bloc.freezed.dart';
 
