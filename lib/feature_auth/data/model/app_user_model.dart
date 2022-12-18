@@ -1,6 +1,8 @@
 part of 'model.dart';
 
-@freezed
+@Freezed(
+  makeCollectionsUnmodifiable: false,
+)
 class AppUserModel with _$AppUserModel {
   const AppUserModel._();
 
@@ -13,10 +15,22 @@ class AppUserModel with _$AppUserModel {
     @Default('') String profilePicture,
     @Default(0.0) double lat,
     @Default(0.0) double long,
+    @Default([]) List<InterestModel> interestsList,
   }) = _AppUserModel;
 
   factory AppUserModel.fromJson(Map<String, dynamic> json) =>
       _$AppUserModelFromJson(json);
+
+  factory AppUserModel.fromEntity(AppUser appUser) => AppUserModel(
+        userId: appUser.userId,
+        registered: appUser.registered,
+        name: appUser.name,
+        email: appUser.email,
+        profilePicture: appUser.profilePicture,
+        lat: appUser.lat,
+        long: appUser.long,
+        interestsList: appUser.interestList,
+      );
 
   AppUser toEntity() => AppUser(
         userId: userId,
@@ -26,5 +40,6 @@ class AppUserModel with _$AppUserModel {
         registered: registered,
         lat: lat,
         long: long,
+        interestList: interestsList,
       );
 }

@@ -45,11 +45,6 @@ List<GoRoute> get _rootRoutes => [
         pageBuilder: (context, state) => NoTransitionPage(child: ProfilePage()),
       ),
       GoRoute(
-        path: rootRouteMap[RootRoute.profile_details]!,
-        pageBuilder: (context, state) =>
-            NoTransitionPage(child: ProfileDetailsPage()),
-      ),
-      GoRoute(
         path: rootRouteMap[RootRoute.profile_edit]!,
         pageBuilder: (context, state) =>
             NoTransitionPage(child: ProfileEditPage()),
