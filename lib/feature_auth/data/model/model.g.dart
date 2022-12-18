@@ -15,6 +15,10 @@ _$_AppUserModel _$$_AppUserModelFromJson(Map<String, dynamic> json) =>
       profilePicture: json['profilePicture'] as String? ?? '',
       lat: (json['lat'] as num?)?.toDouble() ?? 0.0,
       long: (json['long'] as num?)?.toDouble() ?? 0.0,
+      interestsList: (json['interestsList'] as List<dynamic>?)
+              ?.map((e) => InterestModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_AppUserModelToJson(_$_AppUserModel instance) =>
@@ -26,4 +30,5 @@ Map<String, dynamic> _$$_AppUserModelToJson(_$_AppUserModel instance) =>
       'profilePicture': instance.profilePicture,
       'lat': instance.lat,
       'long': instance.long,
+      'interestsList': instance.interestsList,
     };

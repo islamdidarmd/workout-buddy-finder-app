@@ -20,18 +20,28 @@ mixin _$ProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getUserProfile,
     required TResult Function() loadInterests,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        addInterest,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        removeInterest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUserProfile,
     TResult? Function()? loadInterests,
+    TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult? Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUserProfile,
     TResult Function()? loadInterests,
+    TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +49,24 @@ mixin _$ProfileEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_UserProfileEvent value) getUserProfile,
     required TResult Function(_InterestsEvent value) loadInterests,
+    required TResult Function(_AddInterestEvent value) addInterest,
+    required TResult Function(_RemoveInterestEvent value) removeInterest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UserProfileEvent value)? getUserProfile,
     TResult? Function(_InterestsEvent value)? loadInterests,
+    TResult? Function(_AddInterestEvent value)? addInterest,
+    TResult? Function(_RemoveInterestEvent value)? removeInterest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UserProfileEvent value)? getUserProfile,
     TResult Function(_InterestsEvent value)? loadInterests,
+    TResult Function(_AddInterestEvent value)? addInterest,
+    TResult Function(_RemoveInterestEvent value)? removeInterest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +138,10 @@ class _$_UserProfileEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getUserProfile,
     required TResult Function() loadInterests,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        addInterest,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        removeInterest,
   }) {
     return getUserProfile();
   }
@@ -131,6 +151,9 @@ class _$_UserProfileEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUserProfile,
     TResult? Function()? loadInterests,
+    TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult? Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
   }) {
     return getUserProfile?.call();
   }
@@ -140,6 +163,9 @@ class _$_UserProfileEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUserProfile,
     TResult Function()? loadInterests,
+    TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
     required TResult orElse(),
   }) {
     if (getUserProfile != null) {
@@ -153,6 +179,8 @@ class _$_UserProfileEvent
   TResult map<TResult extends Object?>({
     required TResult Function(_UserProfileEvent value) getUserProfile,
     required TResult Function(_InterestsEvent value) loadInterests,
+    required TResult Function(_AddInterestEvent value) addInterest,
+    required TResult Function(_RemoveInterestEvent value) removeInterest,
   }) {
     return getUserProfile(this);
   }
@@ -162,6 +190,8 @@ class _$_UserProfileEvent
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UserProfileEvent value)? getUserProfile,
     TResult? Function(_InterestsEvent value)? loadInterests,
+    TResult? Function(_AddInterestEvent value)? addInterest,
+    TResult? Function(_RemoveInterestEvent value)? removeInterest,
   }) {
     return getUserProfile?.call(this);
   }
@@ -171,6 +201,8 @@ class _$_UserProfileEvent
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UserProfileEvent value)? getUserProfile,
     TResult Function(_InterestsEvent value)? loadInterests,
+    TResult Function(_AddInterestEvent value)? addInterest,
+    TResult Function(_RemoveInterestEvent value)? removeInterest,
     required TResult orElse(),
   }) {
     if (getUserProfile != null) {
@@ -232,6 +264,10 @@ class _$_InterestsEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getUserProfile,
     required TResult Function() loadInterests,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        addInterest,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        removeInterest,
   }) {
     return loadInterests();
   }
@@ -241,6 +277,9 @@ class _$_InterestsEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUserProfile,
     TResult? Function()? loadInterests,
+    TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult? Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
   }) {
     return loadInterests?.call();
   }
@@ -250,6 +289,9 @@ class _$_InterestsEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUserProfile,
     TResult Function()? loadInterests,
+    TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
     required TResult orElse(),
   }) {
     if (loadInterests != null) {
@@ -263,6 +305,8 @@ class _$_InterestsEvent
   TResult map<TResult extends Object?>({
     required TResult Function(_UserProfileEvent value) getUserProfile,
     required TResult Function(_InterestsEvent value) loadInterests,
+    required TResult Function(_AddInterestEvent value) addInterest,
+    required TResult Function(_RemoveInterestEvent value) removeInterest,
   }) {
     return loadInterests(this);
   }
@@ -272,6 +316,8 @@ class _$_InterestsEvent
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UserProfileEvent value)? getUserProfile,
     TResult? Function(_InterestsEvent value)? loadInterests,
+    TResult? Function(_AddInterestEvent value)? addInterest,
+    TResult? Function(_RemoveInterestEvent value)? removeInterest,
   }) {
     return loadInterests?.call(this);
   }
@@ -281,6 +327,8 @@ class _$_InterestsEvent
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UserProfileEvent value)? getUserProfile,
     TResult Function(_InterestsEvent value)? loadInterests,
+    TResult Function(_AddInterestEvent value)? addInterest,
+    TResult Function(_RemoveInterestEvent value)? removeInterest,
     required TResult orElse(),
   }) {
     if (loadInterests != null) {
@@ -292,6 +340,371 @@ class _$_InterestsEvent
 
 abstract class _InterestsEvent implements ProfileEvent {
   const factory _InterestsEvent() = _$_InterestsEvent;
+}
+
+/// @nodoc
+abstract class _$$_AddInterestEventCopyWith<$Res> {
+  factory _$$_AddInterestEventCopyWith(
+          _$_AddInterestEvent value, $Res Function(_$_AddInterestEvent) then) =
+      __$$_AddInterestEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppUser appUser, InterestViewModel interest});
+
+  $InterestViewModelCopyWith<$Res> get interest;
+}
+
+/// @nodoc
+class __$$_AddInterestEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_AddInterestEvent>
+    implements _$$_AddInterestEventCopyWith<$Res> {
+  __$$_AddInterestEventCopyWithImpl(
+      _$_AddInterestEvent _value, $Res Function(_$_AddInterestEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appUser = null,
+    Object? interest = null,
+  }) {
+    return _then(_$_AddInterestEvent(
+      null == appUser
+          ? _value.appUser
+          : appUser // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+      null == interest
+          ? _value.interest
+          : interest // ignore: cast_nullable_to_non_nullable
+              as InterestViewModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InterestViewModelCopyWith<$Res> get interest {
+    return $InterestViewModelCopyWith<$Res>(_value.interest, (value) {
+      return _then(_value.copyWith(interest: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_AddInterestEvent
+    with DiagnosticableTreeMixin
+    implements _AddInterestEvent {
+  const _$_AddInterestEvent(this.appUser, this.interest);
+
+  @override
+  final AppUser appUser;
+  @override
+  final InterestViewModel interest;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ProfileEvent.addInterest(appUser: $appUser, interest: $interest)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ProfileEvent.addInterest'))
+      ..add(DiagnosticsProperty('appUser', appUser))
+      ..add(DiagnosticsProperty('interest', interest));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AddInterestEvent &&
+            (identical(other.appUser, appUser) || other.appUser == appUser) &&
+            (identical(other.interest, interest) ||
+                other.interest == interest));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, appUser, interest);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AddInterestEventCopyWith<_$_AddInterestEvent> get copyWith =>
+      __$$_AddInterestEventCopyWithImpl<_$_AddInterestEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getUserProfile,
+    required TResult Function() loadInterests,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        addInterest,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        removeInterest,
+  }) {
+    return addInterest(appUser, interest);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUserProfile,
+    TResult? Function()? loadInterests,
+    TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult? Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
+  }) {
+    return addInterest?.call(appUser, interest);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUserProfile,
+    TResult Function()? loadInterests,
+    TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
+    required TResult orElse(),
+  }) {
+    if (addInterest != null) {
+      return addInterest(appUser, interest);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserProfileEvent value) getUserProfile,
+    required TResult Function(_InterestsEvent value) loadInterests,
+    required TResult Function(_AddInterestEvent value) addInterest,
+    required TResult Function(_RemoveInterestEvent value) removeInterest,
+  }) {
+    return addInterest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UserProfileEvent value)? getUserProfile,
+    TResult? Function(_InterestsEvent value)? loadInterests,
+    TResult? Function(_AddInterestEvent value)? addInterest,
+    TResult? Function(_RemoveInterestEvent value)? removeInterest,
+  }) {
+    return addInterest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserProfileEvent value)? getUserProfile,
+    TResult Function(_InterestsEvent value)? loadInterests,
+    TResult Function(_AddInterestEvent value)? addInterest,
+    TResult Function(_RemoveInterestEvent value)? removeInterest,
+    required TResult orElse(),
+  }) {
+    if (addInterest != null) {
+      return addInterest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddInterestEvent implements ProfileEvent {
+  const factory _AddInterestEvent(
+          final AppUser appUser, final InterestViewModel interest) =
+      _$_AddInterestEvent;
+
+  AppUser get appUser;
+  InterestViewModel get interest;
+  @JsonKey(ignore: true)
+  _$$_AddInterestEventCopyWith<_$_AddInterestEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RemoveInterestEventCopyWith<$Res> {
+  factory _$$_RemoveInterestEventCopyWith(_$_RemoveInterestEvent value,
+          $Res Function(_$_RemoveInterestEvent) then) =
+      __$$_RemoveInterestEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppUser appUser, InterestViewModel interest});
+
+  $InterestViewModelCopyWith<$Res> get interest;
+}
+
+/// @nodoc
+class __$$_RemoveInterestEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res, _$_RemoveInterestEvent>
+    implements _$$_RemoveInterestEventCopyWith<$Res> {
+  __$$_RemoveInterestEventCopyWithImpl(_$_RemoveInterestEvent _value,
+      $Res Function(_$_RemoveInterestEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appUser = null,
+    Object? interest = null,
+  }) {
+    return _then(_$_RemoveInterestEvent(
+      null == appUser
+          ? _value.appUser
+          : appUser // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+      null == interest
+          ? _value.interest
+          : interest // ignore: cast_nullable_to_non_nullable
+              as InterestViewModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $InterestViewModelCopyWith<$Res> get interest {
+    return $InterestViewModelCopyWith<$Res>(_value.interest, (value) {
+      return _then(_value.copyWith(interest: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_RemoveInterestEvent
+    with DiagnosticableTreeMixin
+    implements _RemoveInterestEvent {
+  const _$_RemoveInterestEvent(this.appUser, this.interest);
+
+  @override
+  final AppUser appUser;
+  @override
+  final InterestViewModel interest;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ProfileEvent.removeInterest(appUser: $appUser, interest: $interest)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ProfileEvent.removeInterest'))
+      ..add(DiagnosticsProperty('appUser', appUser))
+      ..add(DiagnosticsProperty('interest', interest));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RemoveInterestEvent &&
+            (identical(other.appUser, appUser) || other.appUser == appUser) &&
+            (identical(other.interest, interest) ||
+                other.interest == interest));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, appUser, interest);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RemoveInterestEventCopyWith<_$_RemoveInterestEvent> get copyWith =>
+      __$$_RemoveInterestEventCopyWithImpl<_$_RemoveInterestEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getUserProfile,
+    required TResult Function() loadInterests,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        addInterest,
+    required TResult Function(AppUser appUser, InterestViewModel interest)
+        removeInterest,
+  }) {
+    return removeInterest(appUser, interest);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUserProfile,
+    TResult? Function()? loadInterests,
+    TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult? Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
+  }) {
+    return removeInterest?.call(appUser, interest);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUserProfile,
+    TResult Function()? loadInterests,
+    TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
+    TResult Function(AppUser appUser, InterestViewModel interest)?
+        removeInterest,
+    required TResult orElse(),
+  }) {
+    if (removeInterest != null) {
+      return removeInterest(appUser, interest);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserProfileEvent value) getUserProfile,
+    required TResult Function(_InterestsEvent value) loadInterests,
+    required TResult Function(_AddInterestEvent value) addInterest,
+    required TResult Function(_RemoveInterestEvent value) removeInterest,
+  }) {
+    return removeInterest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UserProfileEvent value)? getUserProfile,
+    TResult? Function(_InterestsEvent value)? loadInterests,
+    TResult? Function(_AddInterestEvent value)? addInterest,
+    TResult? Function(_RemoveInterestEvent value)? removeInterest,
+  }) {
+    return removeInterest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserProfileEvent value)? getUserProfile,
+    TResult Function(_InterestsEvent value)? loadInterests,
+    TResult Function(_AddInterestEvent value)? addInterest,
+    TResult Function(_RemoveInterestEvent value)? removeInterest,
+    required TResult orElse(),
+  }) {
+    if (removeInterest != null) {
+      return removeInterest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveInterestEvent implements ProfileEvent {
+  const factory _RemoveInterestEvent(
+          final AppUser appUser, final InterestViewModel interest) =
+      _$_RemoveInterestEvent;
+
+  AppUser get appUser;
+  InterestViewModel get interest;
+  @JsonKey(ignore: true)
+  _$$_RemoveInterestEventCopyWith<_$_RemoveInterestEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

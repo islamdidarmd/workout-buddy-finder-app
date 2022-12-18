@@ -1,3 +1,5 @@
+import 'package:workout_buddy_finder/feature_profile/data/data.dart';
+
 class AppUser {
   final String userId;
   final DateTime registered;
@@ -6,6 +8,7 @@ class AppUser {
   final String profilePicture;
   final double lat;
   final double long;
+  final List<InterestModel> interestList;
 
   bool get isEmpty => userId.isEmpty;
 
@@ -17,6 +20,7 @@ class AppUser {
     required this.profilePicture,
     required this.lat,
     required this.long,
+    required this.interestList,
   });
 
   factory AppUser.empty() => AppUser(
@@ -27,5 +31,6 @@ class AppUser {
         profilePicture: '',
         lat: 0.0,
         long: 0.0,
+        interestList: [],
       );
 }

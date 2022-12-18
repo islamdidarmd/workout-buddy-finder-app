@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import '../../feature_navigation/routes.dart';
-import '../../feature_auth/auth.dart';
-import '../../di/service_locator.dart';
-import 'bloc/profile_bloc.dart';
+import '../../../feature_navigation/routes.dart';
+import '../../../feature_auth/auth.dart';
+import '../../../di/service_locator.dart';
+import '../bloc/profile_bloc.dart';
 import 'info_section.dart';
 import 'interest_section.dart';
 
