@@ -17,4 +17,10 @@ class InterestViewModel with _$InterestViewModel {
         icon: interest.icon,
         name: interest.name,
       );
+
+  InterestModel toInterest() => InterestModel(
+        docId: docId,
+        icon: icon,
+        name: name,
+      );
 }

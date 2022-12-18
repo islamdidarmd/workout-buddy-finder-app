@@ -28,6 +28,7 @@ mixin _$AppUserModel {
   String get profilePicture => throw _privateConstructorUsedError;
   double get lat => throw _privateConstructorUsedError;
   double get long => throw _privateConstructorUsedError;
+  List<InterestModel> get interestsList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +50,8 @@ abstract class $AppUserModelCopyWith<$Res> {
       String email,
       String profilePicture,
       double lat,
-      double long});
+      double long,
+      List<InterestModel> interestsList});
 }
 
 /// @nodoc
@@ -72,6 +74,7 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
     Object? profilePicture = null,
     Object? lat = null,
     Object? long = null,
+    Object? interestsList = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -102,6 +105,10 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
           ? _value.long
           : long // ignore: cast_nullable_to_non_nullable
               as double,
+      interestsList: null == interestsList
+          ? _value.interestsList
+          : interestsList // ignore: cast_nullable_to_non_nullable
+              as List<InterestModel>,
     ) as $Val);
   }
 }
@@ -122,7 +129,8 @@ abstract class _$$_AppUserModelCopyWith<$Res>
       String email,
       String profilePicture,
       double lat,
-      double long});
+      double long,
+      List<InterestModel> interestsList});
 }
 
 /// @nodoc
@@ -143,6 +151,7 @@ class __$$_AppUserModelCopyWithImpl<$Res>
     Object? profilePicture = null,
     Object? lat = null,
     Object? long = null,
+    Object? interestsList = null,
   }) {
     return _then(_$_AppUserModel(
       userId: null == userId
@@ -173,6 +182,10 @@ class __$$_AppUserModelCopyWithImpl<$Res>
           ? _value.long
           : long // ignore: cast_nullable_to_non_nullable
               as double,
+      interestsList: null == interestsList
+          ? _value.interestsList
+          : interestsList // ignore: cast_nullable_to_non_nullable
+              as List<InterestModel>,
     ));
   }
 }
@@ -188,7 +201,8 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       this.email = '',
       this.profilePicture = '',
       this.lat = 0.0,
-      this.long = 0.0})
+      this.long = 0.0,
+      this.interestsList = const []})
       : super._();
 
   factory _$_AppUserModel.fromJson(Map<String, dynamic> json) =>
@@ -214,10 +228,13 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
   @override
   @JsonKey()
   final double long;
+  @override
+  @JsonKey()
+  final List<InterestModel> interestsList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUserModel(userId: $userId, registered: $registered, name: $name, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long)';
+    return 'AppUserModel(userId: $userId, registered: $registered, name: $name, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, interestsList: $interestsList)';
   }
 
   @override
@@ -231,7 +248,8 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('profilePicture', profilePicture))
       ..add(DiagnosticsProperty('lat', lat))
-      ..add(DiagnosticsProperty('long', long));
+      ..add(DiagnosticsProperty('long', long))
+      ..add(DiagnosticsProperty('interestsList', interestsList));
   }
 
   @override
@@ -247,13 +265,23 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
             (identical(other.profilePicture, profilePicture) ||
                 other.profilePicture == profilePicture) &&
             (identical(other.lat, lat) || other.lat == lat) &&
-            (identical(other.long, long) || other.long == long));
+            (identical(other.long, long) || other.long == long) &&
+            const DeepCollectionEquality()
+                .equals(other.interestsList, interestsList));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, userId, registered, name, email, profilePicture, lat, long);
+      runtimeType,
+      userId,
+      registered,
+      name,
+      email,
+      profilePicture,
+      lat,
+      long,
+      const DeepCollectionEquality().hash(interestsList));
 
   @JsonKey(ignore: true)
   @override
@@ -278,7 +306,8 @@ abstract class _AppUserModel extends AppUserModel {
       final String email,
       final String profilePicture,
       final double lat,
-      final double long}) = _$_AppUserModel;
+      final double long,
+      final List<InterestModel> interestsList}) = _$_AppUserModel;
   _AppUserModel._() : super._();
 
   factory _AppUserModel.fromJson(Map<String, dynamic> json) =
@@ -299,6 +328,8 @@ abstract class _AppUserModel extends AppUserModel {
   double get lat;
   @override
   double get long;
+  @override
+  List<InterestModel> get interestsList;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserModelCopyWith<_$_AppUserModel> get copyWith =>

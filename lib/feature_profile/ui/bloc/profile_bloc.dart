@@ -22,8 +22,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepository profileRepository;
   final AuthRepository authRepository;
 
-  StreamSubscription? _appUserStreamSubscription;
-
   ProfileBloc({
     required this.profileRepository,
     required this.authRepository,
@@ -43,14 +41,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             (error) => emit(ProfileState.error(error)),
           );
         },
+        addInterest: (appUser, interest) {
+          final data = profileRepository.addInterestList(appUser, interest.toInterest());
+        },
+        removeInterest: (appUser,interest) {
+          final data = profileRepository.removeInterestList(appUser, interest.toInterest());
+        },
       );
     });
-  }
-
-  @override
-  Future<void> close() async {
-    _appUserStreamSubscription?.cancel();
-    super.close();
   }
 
   Future<void> _subscribeToProfileUpdate(Emitter emit) {
