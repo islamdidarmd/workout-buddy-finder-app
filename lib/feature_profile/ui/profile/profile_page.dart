@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/core.dart';
-import '../../../feature_navigation/routes.dart';
+import '../../../navigation/routes.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/profile_bloc.dart';
 import 'info_section.dart';
@@ -12,7 +12,7 @@ import 'interest_section.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
-  Widget _buildBody(BuildContext context, AppUser appUser) {
+  Widget _buildBody(BuildContext context) {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -20,9 +20,9 @@ class ProfilePage extends StatelessWidget {
           children: [
             Column(
               children: [
-                InfoSection(user: appUser),
+                InfoSection(),
                 const SizedBox(height: 8),
-                InterestSection(appUser: appUser),
+                InterestSection(),
               ],
             ),
             Positioned(
@@ -42,19 +42,9 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ProfileBloc>.value(
-      value:sl()..add(ProfileEvent.getUserProfile()),
-      child: BlocBuilder<ProfileBloc, ProfileState>(
-        builder: (context, state) {
-          return state.maybeWhen(
-            loading: () => const CircularProgressIndicator(),
-            userProfileUpdated: (appUser) {
-              return _buildBody(context, appUser);
-            },
-            orElse: () => const SizedBox(),
-          );
-        },
-      ),
+    return BlocProvider<ProfileBloc>(
+      create: (_) => sl()..add(ProfileEvent.loadInterests(context.read())),
+      child: _buildBody(context),
     );
   }
 }

@@ -16,9 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ProfileEvent {
+  AppUser get appUser => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserProfile,
     required TResult Function(AppUser appUser) loadInterests,
     required TResult Function(AppUser appUser, InterestViewModel interest)
         addInterest,
@@ -28,7 +28,6 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserProfile,
     TResult? Function(AppUser appUser)? loadInterests,
     TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
     TResult? Function(AppUser appUser, InterestViewModel interest)?
@@ -37,7 +36,6 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserProfile,
     TResult Function(AppUser appUser)? loadInterests,
     TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
     TResult Function(AppUser appUser, InterestViewModel interest)?
@@ -47,7 +45,6 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserProfileEvent value) getUserProfile,
     required TResult Function(_InterestsEvent value) loadInterests,
     required TResult Function(_AddInterestEvent value) addInterest,
     required TResult Function(_RemoveInterestEvent value) removeInterest,
@@ -55,7 +52,6 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UserProfileEvent value)? getUserProfile,
     TResult? Function(_InterestsEvent value)? loadInterests,
     TResult? Function(_AddInterestEvent value)? addInterest,
     TResult? Function(_RemoveInterestEvent value)? removeInterest,
@@ -63,12 +59,15 @@ mixin _$ProfileEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserProfileEvent value)? getUserProfile,
     TResult Function(_InterestsEvent value)? loadInterests,
     TResult Function(_AddInterestEvent value)? addInterest,
     TResult Function(_RemoveInterestEvent value)? removeInterest,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ProfileEventCopyWith<ProfileEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -77,6 +76,10 @@ abstract class $ProfileEventCopyWith<$Res> {
   factory $ProfileEventCopyWith(
           ProfileEvent value, $Res Function(ProfileEvent) then) =
       _$ProfileEventCopyWithImpl<$Res, ProfileEvent>;
+  @useResult
+  $Res call({AppUser appUser});
+
+  $AppUserCopyWith<$Res> get appUser;
 }
 
 /// @nodoc
@@ -88,142 +91,40 @@ class _$ProfileEventCopyWithImpl<$Res, $Val extends ProfileEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appUser = null,
+  }) {
+    return _then(_value.copyWith(
+      appUser: null == appUser
+          ? _value.appUser
+          : appUser // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppUserCopyWith<$Res> get appUser {
+    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
+      return _then(_value.copyWith(appUser: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$_UserProfileEventCopyWith<$Res> {
-  factory _$$_UserProfileEventCopyWith(
-          _$_UserProfileEvent value, $Res Function(_$_UserProfileEvent) then) =
-      __$$_UserProfileEventCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_UserProfileEventCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res, _$_UserProfileEvent>
-    implements _$$_UserProfileEventCopyWith<$Res> {
-  __$$_UserProfileEventCopyWithImpl(
-      _$_UserProfileEvent _value, $Res Function(_$_UserProfileEvent) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_UserProfileEvent
-    with DiagnosticableTreeMixin
-    implements _UserProfileEvent {
-  const _$_UserProfileEvent();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProfileEvent.getUserProfile()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ProfileEvent.getUserProfile'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_UserProfileEvent);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getUserProfile,
-    required TResult Function(AppUser appUser) loadInterests,
-    required TResult Function(AppUser appUser, InterestViewModel interest)
-        addInterest,
-    required TResult Function(AppUser appUser, InterestViewModel interest)
-        removeInterest,
-  }) {
-    return getUserProfile();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserProfile,
-    TResult? Function(AppUser appUser)? loadInterests,
-    TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
-    TResult? Function(AppUser appUser, InterestViewModel interest)?
-        removeInterest,
-  }) {
-    return getUserProfile?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserProfile,
-    TResult Function(AppUser appUser)? loadInterests,
-    TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
-    TResult Function(AppUser appUser, InterestViewModel interest)?
-        removeInterest,
-    required TResult orElse(),
-  }) {
-    if (getUserProfile != null) {
-      return getUserProfile();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_UserProfileEvent value) getUserProfile,
-    required TResult Function(_InterestsEvent value) loadInterests,
-    required TResult Function(_AddInterestEvent value) addInterest,
-    required TResult Function(_RemoveInterestEvent value) removeInterest,
-  }) {
-    return getUserProfile(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UserProfileEvent value)? getUserProfile,
-    TResult? Function(_InterestsEvent value)? loadInterests,
-    TResult? Function(_AddInterestEvent value)? addInterest,
-    TResult? Function(_RemoveInterestEvent value)? removeInterest,
-  }) {
-    return getUserProfile?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserProfileEvent value)? getUserProfile,
-    TResult Function(_InterestsEvent value)? loadInterests,
-    TResult Function(_AddInterestEvent value)? addInterest,
-    TResult Function(_RemoveInterestEvent value)? removeInterest,
-    required TResult orElse(),
-  }) {
-    if (getUserProfile != null) {
-      return getUserProfile(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UserProfileEvent implements ProfileEvent {
-  const factory _UserProfileEvent() = _$_UserProfileEvent;
-}
-
-/// @nodoc
-abstract class _$$_InterestsEventCopyWith<$Res> {
+abstract class _$$_InterestsEventCopyWith<$Res>
+    implements $ProfileEventCopyWith<$Res> {
   factory _$$_InterestsEventCopyWith(
           _$_InterestsEvent value, $Res Function(_$_InterestsEvent) then) =
       __$$_InterestsEventCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({AppUser appUser});
 
+  @override
   $AppUserCopyWith<$Res> get appUser;
 }
 
@@ -246,14 +147,6 @@ class __$$_InterestsEventCopyWithImpl<$Res>
           : appUser // ignore: cast_nullable_to_non_nullable
               as AppUser,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppUserCopyWith<$Res> get appUser {
-    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
-      return _then(_value.copyWith(appUser: value));
-    });
   }
 }
 
@@ -300,7 +193,6 @@ class _$_InterestsEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserProfile,
     required TResult Function(AppUser appUser) loadInterests,
     required TResult Function(AppUser appUser, InterestViewModel interest)
         addInterest,
@@ -313,7 +205,6 @@ class _$_InterestsEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserProfile,
     TResult? Function(AppUser appUser)? loadInterests,
     TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
     TResult? Function(AppUser appUser, InterestViewModel interest)?
@@ -325,7 +216,6 @@ class _$_InterestsEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserProfile,
     TResult Function(AppUser appUser)? loadInterests,
     TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
     TResult Function(AppUser appUser, InterestViewModel interest)?
@@ -341,7 +231,6 @@ class _$_InterestsEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserProfileEvent value) getUserProfile,
     required TResult Function(_InterestsEvent value) loadInterests,
     required TResult Function(_AddInterestEvent value) addInterest,
     required TResult Function(_RemoveInterestEvent value) removeInterest,
@@ -352,7 +241,6 @@ class _$_InterestsEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UserProfileEvent value)? getUserProfile,
     TResult? Function(_InterestsEvent value)? loadInterests,
     TResult? Function(_AddInterestEvent value)? addInterest,
     TResult? Function(_RemoveInterestEvent value)? removeInterest,
@@ -363,7 +251,6 @@ class _$_InterestsEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserProfileEvent value)? getUserProfile,
     TResult Function(_InterestsEvent value)? loadInterests,
     TResult Function(_AddInterestEvent value)? addInterest,
     TResult Function(_RemoveInterestEvent value)? removeInterest,
@@ -379,20 +266,25 @@ class _$_InterestsEvent
 abstract class _InterestsEvent implements ProfileEvent {
   const factory _InterestsEvent(final AppUser appUser) = _$_InterestsEvent;
 
+  @override
   AppUser get appUser;
+  @override
   @JsonKey(ignore: true)
   _$$_InterestsEventCopyWith<_$_InterestsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AddInterestEventCopyWith<$Res> {
+abstract class _$$_AddInterestEventCopyWith<$Res>
+    implements $ProfileEventCopyWith<$Res> {
   factory _$$_AddInterestEventCopyWith(
           _$_AddInterestEvent value, $Res Function(_$_AddInterestEvent) then) =
       __$$_AddInterestEventCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({AppUser appUser, InterestViewModel interest});
 
+  @override
   $AppUserCopyWith<$Res> get appUser;
   $InterestViewModelCopyWith<$Res> get interest;
 }
@@ -421,14 +313,6 @@ class __$$_AddInterestEventCopyWithImpl<$Res>
           : interest // ignore: cast_nullable_to_non_nullable
               as InterestViewModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppUserCopyWith<$Res> get appUser {
-    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
-      return _then(_value.copyWith(appUser: value));
-    });
   }
 
   @override
@@ -488,7 +372,6 @@ class _$_AddInterestEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserProfile,
     required TResult Function(AppUser appUser) loadInterests,
     required TResult Function(AppUser appUser, InterestViewModel interest)
         addInterest,
@@ -501,7 +384,6 @@ class _$_AddInterestEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserProfile,
     TResult? Function(AppUser appUser)? loadInterests,
     TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
     TResult? Function(AppUser appUser, InterestViewModel interest)?
@@ -513,7 +395,6 @@ class _$_AddInterestEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserProfile,
     TResult Function(AppUser appUser)? loadInterests,
     TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
     TResult Function(AppUser appUser, InterestViewModel interest)?
@@ -529,7 +410,6 @@ class _$_AddInterestEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserProfileEvent value) getUserProfile,
     required TResult Function(_InterestsEvent value) loadInterests,
     required TResult Function(_AddInterestEvent value) addInterest,
     required TResult Function(_RemoveInterestEvent value) removeInterest,
@@ -540,7 +420,6 @@ class _$_AddInterestEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UserProfileEvent value)? getUserProfile,
     TResult? Function(_InterestsEvent value)? loadInterests,
     TResult? Function(_AddInterestEvent value)? addInterest,
     TResult? Function(_RemoveInterestEvent value)? removeInterest,
@@ -551,7 +430,6 @@ class _$_AddInterestEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserProfileEvent value)? getUserProfile,
     TResult Function(_InterestsEvent value)? loadInterests,
     TResult Function(_AddInterestEvent value)? addInterest,
     TResult Function(_RemoveInterestEvent value)? removeInterest,
@@ -569,21 +447,26 @@ abstract class _AddInterestEvent implements ProfileEvent {
           final AppUser appUser, final InterestViewModel interest) =
       _$_AddInterestEvent;
 
+  @override
   AppUser get appUser;
   InterestViewModel get interest;
+  @override
   @JsonKey(ignore: true)
   _$$_AddInterestEventCopyWith<_$_AddInterestEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_RemoveInterestEventCopyWith<$Res> {
+abstract class _$$_RemoveInterestEventCopyWith<$Res>
+    implements $ProfileEventCopyWith<$Res> {
   factory _$$_RemoveInterestEventCopyWith(_$_RemoveInterestEvent value,
           $Res Function(_$_RemoveInterestEvent) then) =
       __$$_RemoveInterestEventCopyWithImpl<$Res>;
+  @override
   @useResult
   $Res call({AppUser appUser, InterestViewModel interest});
 
+  @override
   $AppUserCopyWith<$Res> get appUser;
   $InterestViewModelCopyWith<$Res> get interest;
 }
@@ -612,14 +495,6 @@ class __$$_RemoveInterestEventCopyWithImpl<$Res>
           : interest // ignore: cast_nullable_to_non_nullable
               as InterestViewModel,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppUserCopyWith<$Res> get appUser {
-    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
-      return _then(_value.copyWith(appUser: value));
-    });
   }
 
   @override
@@ -680,7 +555,6 @@ class _$_RemoveInterestEvent
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getUserProfile,
     required TResult Function(AppUser appUser) loadInterests,
     required TResult Function(AppUser appUser, InterestViewModel interest)
         addInterest,
@@ -693,7 +567,6 @@ class _$_RemoveInterestEvent
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getUserProfile,
     TResult? Function(AppUser appUser)? loadInterests,
     TResult? Function(AppUser appUser, InterestViewModel interest)? addInterest,
     TResult? Function(AppUser appUser, InterestViewModel interest)?
@@ -705,7 +578,6 @@ class _$_RemoveInterestEvent
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getUserProfile,
     TResult Function(AppUser appUser)? loadInterests,
     TResult Function(AppUser appUser, InterestViewModel interest)? addInterest,
     TResult Function(AppUser appUser, InterestViewModel interest)?
@@ -721,7 +593,6 @@ class _$_RemoveInterestEvent
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UserProfileEvent value) getUserProfile,
     required TResult Function(_InterestsEvent value) loadInterests,
     required TResult Function(_AddInterestEvent value) addInterest,
     required TResult Function(_RemoveInterestEvent value) removeInterest,
@@ -732,7 +603,6 @@ class _$_RemoveInterestEvent
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_UserProfileEvent value)? getUserProfile,
     TResult? Function(_InterestsEvent value)? loadInterests,
     TResult? Function(_AddInterestEvent value)? addInterest,
     TResult? Function(_RemoveInterestEvent value)? removeInterest,
@@ -743,7 +613,6 @@ class _$_RemoveInterestEvent
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UserProfileEvent value)? getUserProfile,
     TResult Function(_InterestsEvent value)? loadInterests,
     TResult Function(_AddInterestEvent value)? addInterest,
     TResult Function(_RemoveInterestEvent value)? removeInterest,
@@ -761,8 +630,10 @@ abstract class _RemoveInterestEvent implements ProfileEvent {
           final AppUser appUser, final InterestViewModel interest) =
       _$_RemoveInterestEvent;
 
+  @override
   AppUser get appUser;
   InterestViewModel get interest;
+  @override
   @JsonKey(ignore: true)
   _$$_RemoveInterestEventCopyWith<_$_RemoveInterestEvent> get copyWith =>
       throw _privateConstructorUsedError;
@@ -774,7 +645,6 @@ mixin _$ProfileState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AppUser appUser) userProfileUpdated,
     required TResult Function(List<InterestViewModel> interestList)
         interestsLoaded,
     required TResult Function(AppError error) error,
@@ -784,7 +654,6 @@ mixin _$ProfileState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AppUser appUser)? userProfileUpdated,
     TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) =>
@@ -793,7 +662,6 @@ mixin _$ProfileState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AppUser appUser)? userProfileUpdated,
     TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
@@ -803,8 +671,6 @@ mixin _$ProfileState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_UserProfileUpdatedState value)
-        userProfileUpdated,
     required TResult Function(_InterestLoadedState value) interestsLoaded,
     required TResult Function(_ErrorState value) error,
   }) =>
@@ -813,7 +679,6 @@ mixin _$ProfileState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult? Function(_InterestLoadedState value)? interestsLoaded,
     TResult? Function(_ErrorState value)? error,
   }) =>
@@ -822,7 +687,6 @@ mixin _$ProfileState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult Function(_InterestLoadedState value)? interestsLoaded,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
@@ -894,7 +758,6 @@ class _$_InitialState with DiagnosticableTreeMixin implements _InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AppUser appUser) userProfileUpdated,
     required TResult Function(List<InterestViewModel> interestList)
         interestsLoaded,
     required TResult Function(AppError error) error,
@@ -907,7 +770,6 @@ class _$_InitialState with DiagnosticableTreeMixin implements _InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AppUser appUser)? userProfileUpdated,
     TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) {
@@ -919,7 +781,6 @@ class _$_InitialState with DiagnosticableTreeMixin implements _InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AppUser appUser)? userProfileUpdated,
     TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
@@ -935,8 +796,6 @@ class _$_InitialState with DiagnosticableTreeMixin implements _InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_UserProfileUpdatedState value)
-        userProfileUpdated,
     required TResult Function(_InterestLoadedState value) interestsLoaded,
     required TResult Function(_ErrorState value) error,
   }) {
@@ -948,7 +807,6 @@ class _$_InitialState with DiagnosticableTreeMixin implements _InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult? Function(_InterestLoadedState value)? interestsLoaded,
     TResult? Function(_ErrorState value)? error,
   }) {
@@ -960,7 +818,6 @@ class _$_InitialState with DiagnosticableTreeMixin implements _InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult Function(_InterestLoadedState value)? interestsLoaded,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
@@ -1022,7 +879,6 @@ class _$_LoadingState with DiagnosticableTreeMixin implements _LoadingState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AppUser appUser) userProfileUpdated,
     required TResult Function(List<InterestViewModel> interestList)
         interestsLoaded,
     required TResult Function(AppError error) error,
@@ -1035,7 +891,6 @@ class _$_LoadingState with DiagnosticableTreeMixin implements _LoadingState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AppUser appUser)? userProfileUpdated,
     TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) {
@@ -1047,7 +902,6 @@ class _$_LoadingState with DiagnosticableTreeMixin implements _LoadingState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AppUser appUser)? userProfileUpdated,
     TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
@@ -1063,8 +917,6 @@ class _$_LoadingState with DiagnosticableTreeMixin implements _LoadingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_UserProfileUpdatedState value)
-        userProfileUpdated,
     required TResult Function(_InterestLoadedState value) interestsLoaded,
     required TResult Function(_ErrorState value) error,
   }) {
@@ -1076,7 +928,6 @@ class _$_LoadingState with DiagnosticableTreeMixin implements _LoadingState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult? Function(_InterestLoadedState value)? interestsLoaded,
     TResult? Function(_ErrorState value)? error,
   }) {
@@ -1088,7 +939,6 @@ class _$_LoadingState with DiagnosticableTreeMixin implements _LoadingState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult Function(_InterestLoadedState value)? interestsLoaded,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
@@ -1102,182 +952,6 @@ class _$_LoadingState with DiagnosticableTreeMixin implements _LoadingState {
 
 abstract class _LoadingState implements ProfileState {
   const factory _LoadingState() = _$_LoadingState;
-}
-
-/// @nodoc
-abstract class _$$_UserProfileUpdatedStateCopyWith<$Res> {
-  factory _$$_UserProfileUpdatedStateCopyWith(_$_UserProfileUpdatedState value,
-          $Res Function(_$_UserProfileUpdatedState) then) =
-      __$$_UserProfileUpdatedStateCopyWithImpl<$Res>;
-  @useResult
-  $Res call({AppUser appUser});
-
-  $AppUserCopyWith<$Res> get appUser;
-}
-
-/// @nodoc
-class __$$_UserProfileUpdatedStateCopyWithImpl<$Res>
-    extends _$ProfileStateCopyWithImpl<$Res, _$_UserProfileUpdatedState>
-    implements _$$_UserProfileUpdatedStateCopyWith<$Res> {
-  __$$_UserProfileUpdatedStateCopyWithImpl(_$_UserProfileUpdatedState _value,
-      $Res Function(_$_UserProfileUpdatedState) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? appUser = null,
-  }) {
-    return _then(_$_UserProfileUpdatedState(
-      null == appUser
-          ? _value.appUser
-          : appUser // ignore: cast_nullable_to_non_nullable
-              as AppUser,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $AppUserCopyWith<$Res> get appUser {
-    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
-      return _then(_value.copyWith(appUser: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_UserProfileUpdatedState
-    with DiagnosticableTreeMixin
-    implements _UserProfileUpdatedState {
-  const _$_UserProfileUpdatedState(this.appUser);
-
-  @override
-  final AppUser appUser;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProfileState.userProfileUpdated(appUser: $appUser)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ProfileState.userProfileUpdated'))
-      ..add(DiagnosticsProperty('appUser', appUser));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UserProfileUpdatedState &&
-            (identical(other.appUser, appUser) || other.appUser == appUser));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, appUser);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_UserProfileUpdatedStateCopyWith<_$_UserProfileUpdatedState>
-      get copyWith =>
-          __$$_UserProfileUpdatedStateCopyWithImpl<_$_UserProfileUpdatedState>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(AppUser appUser) userProfileUpdated,
-    required TResult Function(List<InterestViewModel> interestList)
-        interestsLoaded,
-    required TResult Function(AppError error) error,
-  }) {
-    return userProfileUpdated(appUser);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(AppUser appUser)? userProfileUpdated,
-    TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
-    TResult? Function(AppError error)? error,
-  }) {
-    return userProfileUpdated?.call(appUser);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(AppUser appUser)? userProfileUpdated,
-    TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
-    TResult Function(AppError error)? error,
-    required TResult orElse(),
-  }) {
-    if (userProfileUpdated != null) {
-      return userProfileUpdated(appUser);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialState value) initial,
-    required TResult Function(_LoadingState value) loading,
-    required TResult Function(_UserProfileUpdatedState value)
-        userProfileUpdated,
-    required TResult Function(_InterestLoadedState value) interestsLoaded,
-    required TResult Function(_ErrorState value) error,
-  }) {
-    return userProfileUpdated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialState value)? initial,
-    TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
-    TResult? Function(_InterestLoadedState value)? interestsLoaded,
-    TResult? Function(_ErrorState value)? error,
-  }) {
-    return userProfileUpdated?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialState value)? initial,
-    TResult Function(_LoadingState value)? loading,
-    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
-    TResult Function(_InterestLoadedState value)? interestsLoaded,
-    TResult Function(_ErrorState value)? error,
-    required TResult orElse(),
-  }) {
-    if (userProfileUpdated != null) {
-      return userProfileUpdated(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UserProfileUpdatedState implements ProfileState {
-  const factory _UserProfileUpdatedState(final AppUser appUser) =
-      _$_UserProfileUpdatedState;
-
-  AppUser get appUser;
-  @JsonKey(ignore: true)
-  _$$_UserProfileUpdatedStateCopyWith<_$_UserProfileUpdatedState>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1365,7 +1039,6 @@ class _$_InterestLoadedState
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AppUser appUser) userProfileUpdated,
     required TResult Function(List<InterestViewModel> interestList)
         interestsLoaded,
     required TResult Function(AppError error) error,
@@ -1378,7 +1051,6 @@ class _$_InterestLoadedState
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AppUser appUser)? userProfileUpdated,
     TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) {
@@ -1390,7 +1062,6 @@ class _$_InterestLoadedState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AppUser appUser)? userProfileUpdated,
     TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
@@ -1406,8 +1077,6 @@ class _$_InterestLoadedState
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_UserProfileUpdatedState value)
-        userProfileUpdated,
     required TResult Function(_InterestLoadedState value) interestsLoaded,
     required TResult Function(_ErrorState value) error,
   }) {
@@ -1419,7 +1088,6 @@ class _$_InterestLoadedState
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult? Function(_InterestLoadedState value)? interestsLoaded,
     TResult? Function(_ErrorState value)? error,
   }) {
@@ -1431,7 +1099,6 @@ class _$_InterestLoadedState
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult Function(_InterestLoadedState value)? interestsLoaded,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
@@ -1527,7 +1194,6 @@ class _$_ErrorState with DiagnosticableTreeMixin implements _ErrorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AppUser appUser) userProfileUpdated,
     required TResult Function(List<InterestViewModel> interestList)
         interestsLoaded,
     required TResult Function(AppError error) error,
@@ -1540,7 +1206,6 @@ class _$_ErrorState with DiagnosticableTreeMixin implements _ErrorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AppUser appUser)? userProfileUpdated,
     TResult? Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult? Function(AppError error)? error,
   }) {
@@ -1552,7 +1217,6 @@ class _$_ErrorState with DiagnosticableTreeMixin implements _ErrorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AppUser appUser)? userProfileUpdated,
     TResult Function(List<InterestViewModel> interestList)? interestsLoaded,
     TResult Function(AppError error)? error,
     required TResult orElse(),
@@ -1568,8 +1232,6 @@ class _$_ErrorState with DiagnosticableTreeMixin implements _ErrorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialState value) initial,
     required TResult Function(_LoadingState value) loading,
-    required TResult Function(_UserProfileUpdatedState value)
-        userProfileUpdated,
     required TResult Function(_InterestLoadedState value) interestsLoaded,
     required TResult Function(_ErrorState value) error,
   }) {
@@ -1581,7 +1243,6 @@ class _$_ErrorState with DiagnosticableTreeMixin implements _ErrorState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_LoadingState value)? loading,
-    TResult? Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult? Function(_InterestLoadedState value)? interestsLoaded,
     TResult? Function(_ErrorState value)? error,
   }) {
@@ -1593,7 +1254,6 @@ class _$_ErrorState with DiagnosticableTreeMixin implements _ErrorState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialState value)? initial,
     TResult Function(_LoadingState value)? loading,
-    TResult Function(_UserProfileUpdatedState value)? userProfileUpdated,
     TResult Function(_InterestLoadedState value)? interestsLoaded,
     TResult Function(_ErrorState value)? error,
     required TResult orElse(),
