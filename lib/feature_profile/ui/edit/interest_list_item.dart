@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_buddy_finder/feature_auth/auth.dart';
 import 'package:workout_buddy_finder/feature_profile/ui/bloc/profile_bloc.dart';
 
+import '../../../core/core.dart';
+import '../../../feature_auth/domain/domain.dart';
 import '../view_model/view_model.dart';
 
 class InterestListItem extends StatelessWidget {

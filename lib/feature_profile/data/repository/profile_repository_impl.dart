@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:injectable/injectable.dart';
 import 'package:workout_buddy_finder/feature_auth/data/model/model.dart';
-import 'package:workout_buddy_finder/feature_auth/domain/entity/app_user.dart';
+import 'package:workout_buddy_finder/core/model/models.dart';
 import '../../../core/firestore_constants.dart';
 import '../../../core/error/app_error.dart';
 import '../model/model.dart';
@@ -11,12 +11,12 @@ import 'profile_repository.dart';
 @Injectable(as: ProfileRepository)
 class ProfileRepositoryImpl implements ProfileRepository {
   @override
-  Future<Either<List<InterestModel>, AppError>> getInterestList() async {
+  Future<Either<List<Interest>, AppError>> getInterestList() async {
     final collection =
         await FirebaseFirestore.instance.collection('interests').get();
     try {
       final interestList = collection.docs
-          .map((doc) => InterestModel.fromJson(doc.data()))
+          .map((doc) => InterestModel.fromJson(doc.data()).toEntity())
           .toList(growable: false);
 
       return Left(interestList);
@@ -32,8 +32,8 @@ class ProfileRepositoryImpl implements ProfileRepository {
   ) async {
     final usersDb = FirebaseFirestore.instance.collection(users);
     final userDoc = usersDb.doc(appUser.userId);
-    final appUserModel = AppUserModel.fromEntity(appUser)
-        .copyWith(interestsList: appUser.interestList);
+
+    final appUserModel = AppUserModel.fromEntity(appUser);
     final List<String> list = []
       ..addAll(appUserModel.interestsList)
       ..add(interestId);
@@ -57,8 +57,8 @@ class ProfileRepositoryImpl implements ProfileRepository {
   ) async {
     final usersDb = FirebaseFirestore.instance.collection(users);
     final userDoc = usersDb.doc(appUser.userId);
-    final appUserModel = AppUserModel.fromEntity(appUser)
-        .copyWith(interestsList: appUser.interestList);
+
+    final appUserModel = AppUserModel.fromEntity(appUser);
     final List<String> list = []
       ..addAll(appUserModel.interestsList)
       ..remove(interestId);

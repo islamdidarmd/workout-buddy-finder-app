@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../di/service_locator.dart';
 import '../env/env.dart';
-import '../feature_auth/auth.dart';
+import '../feature_auth/ui/ui.dart';
 import '../feature_navigation/router.dart';
 import '../theme/dark_theme.dart';
 import '../theme/light_theme.dart';

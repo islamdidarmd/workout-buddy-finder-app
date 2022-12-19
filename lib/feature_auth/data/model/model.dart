@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:workout_buddy_finder/core/firestore_constants.dart';
-import 'package:workout_buddy_finder/feature_profile/data/data.dart';
+import '../../../core/core.dart';
+import '../../../core/model/models.dart';
 import '../../../feature_auth/domain/domain.dart';
 
 part 'model.g.dart';

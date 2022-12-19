@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/src/either.dart';
+import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:workout_buddy_finder/feature_profile/data/model/model.dart';
+import '../../../core/core.dart';
 import '../../../core/firestore_constants.dart';
 import '../model/model.dart';
 import '../../../feature_auth/domain/domain.dart';
-import 'package:workout_buddy_finder/core/error/app_error.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -54,16 +56,35 @@ class AuthRepositoryImpl implements AuthRepository {
     final usersDb = FirebaseFirestore.instance.collection(users);
     final userDoc = usersDb.doc(firebaseUser?.uid).snapshots();
 
-    return userDoc.map(
-      (doc) {
+    return userDoc.asyncMap(
+      (doc) async {
         final data = doc.data();
         if (data == null) {
           return AppUser.empty();
         }
+        debugPrint("User profile update received");
+        final appUserModel = AppUserModel.fromJson(data);
 
-        return AppUserModel.fromJson(data).toEntity();
+        return AppUserModel.fromJson(data)
+            .toEntity(await _getUserInterestList(appUserModel));
       },
     );
+  }
+
+  Future<List<Interest>> _getUserInterestList(AppUserModel appUserModel) async {
+    final interestCollection = FirebaseFirestore.instance.collection(interests);
+    final interestList = <Interest>[];
+
+    for (String e in appUserModel.interestsList) {
+      final snapshot = await interestCollection.doc(e).get();
+      final data = snapshot.data();
+      if (data != null) {
+        final model = InterestModel.fromJson(data);
+        interestList.add(model.toEntity());
+      }
+    }
+
+    return interestList;
   }
 
   Future<AppUser> _createUserIfDoesNotExist(
@@ -76,7 +97,9 @@ class AuthRepositoryImpl implements AuthRepository {
     final data = userDoc.data();
 
     if (userDoc.exists && data != null) {
-      return AppUserModel.fromJson(data).toEntity();
+      final appUserModel = AppUserModel.fromJson(data);
+
+      return appUserModel.toEntity(await _getUserInterestList(appUserModel));
     } else {
       final appUserModel = AppUserModel(
         userId: firebaseUser.uid,
@@ -89,7 +112,7 @@ class AuthRepositoryImpl implements AuthRepository {
       );
       userDoc.reference.set(appUserModel.toJson());
 
-      return appUserModel.toEntity();
+      return appUserModel.toEntity([]);
     }
   }
 
