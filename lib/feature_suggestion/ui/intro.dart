@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:workout_buddy_finder/navigation/routes.dart';
 import '../../core/core.dart';
 
 class Intro extends StatelessWidget {
@@ -16,9 +18,12 @@ class Intro extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         const SizedBox(width: 8),
-        CircleAvatar(
-          radius: avatarSize / 2,
-          foregroundImage: Image.network(appUser.profilePicture).image,
+        InkWell(
+          onTap: () => context.go(rootRouteMap[RootRoute.profile]!),
+          child: CircleAvatar(
+            radius: avatarSize / 2,
+            foregroundImage: Image.network(appUser.profilePicture).image,
+          ),
         ),
       ],
     );
