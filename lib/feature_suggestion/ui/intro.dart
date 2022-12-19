@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../core/core.dart';
 
 class Intro extends StatelessWidget {
   final double avatarSize = 35;
+
   const Intro({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final appUser = context.read<AppUser>();
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          'Hello Didarul',
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-        ),
         const SizedBox(width: 8),
-        Icon(Icons.account_circle, size: avatarSize),
+        CircleAvatar(
+          radius: avatarSize / 2,
+          foregroundImage: Image.network(appUser.profilePicture).image,
+        ),
       ],
     );
   }
