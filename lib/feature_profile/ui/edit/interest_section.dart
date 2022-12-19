@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/core.dart';
-import '../../../feature_auth/domain/domain.dart';
 import 'interest_list_item.dart';
 
 import '../bloc/profile_bloc.dart';
 
 class InterestSection extends StatelessWidget {
-  const InterestSection({
-    Key? key,
-    required this.appUser,
-  }) : super(key: key);
-
-  final AppUser appUser;
+  const InterestSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +31,7 @@ class InterestSection extends StatelessWidget {
                   interestsLoaded: (interestList) {
                     return Wrap(
                       children: interestList
-                          .map((e) => InterestListItem(
-                                appUser: appUser,
-                                interestViewModel: e,
-                              ))
+                          .map((e) => InterestListItem(interestViewModel: e))
                           .toList(),
                     );
                   },

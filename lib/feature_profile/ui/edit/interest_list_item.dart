@@ -3,21 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_buddy_finder/feature_profile/ui/bloc/profile_bloc.dart';
 
 import '../../../core/core.dart';
-import '../../../feature_auth/domain/domain.dart';
 import '../view_model/view_model.dart';
 
 class InterestListItem extends StatelessWidget {
   const InterestListItem({
-    Key? key,
-    required this.appUser,
-    required this.interestViewModel,
+    Key? key, required this.interestViewModel,
   }) : super(key: key);
 
-  final AppUser appUser;
   final InterestViewModel interestViewModel;
 
   void _onChanged(BuildContext context, bool? isSelected) {
     final profileBloc = context.read<ProfileBloc>();
+    final appUser = context.read<AppUser>();
 
     if (isSelected == true) {
       profileBloc.add(ProfileEvent.addInterest(appUser, interestViewModel));

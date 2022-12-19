@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
-import '../../../core/core.dart';
 import '../../../navigation/routes.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/profile_bloc.dart';
@@ -43,7 +42,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProfileBloc>(
-      create: (_) => sl()..add(ProfileEvent.loadInterests(context.read())),
+      create: (_) => sl(),
       child: _buildBody(context),
     );
   }
