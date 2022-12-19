@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../core/core.dart';
-import '../../../feature_auth/domain/domain.dart';
 import 'location_text.dart';
 import 'profile_avatar.dart';
 
 class InfoSection extends StatelessWidget {
-  const InfoSection({
-    Key? key,
-    required this.user,
-  }) : super(key: key);
-
-  final AppUser user;
+  const InfoSection({Key? key}) : super(key: key);
   final double _padding = 16.0;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final appUser = context.read<AppUser>();
 
     return Container(
       height: 120,
@@ -27,7 +23,7 @@ class InfoSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ProfileAvatar(
-                user: user,
+                user: appUser,
                 size: 100,
               ),
               SizedBox(width: 8),
@@ -36,7 +32,7 @@ class InfoSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    user.name,
+                    appUser.name,
                     style: textTheme.titleMedium
                         ?.copyWith(fontWeight: FontWeight.bold),
                     maxLines: 1,
@@ -52,8 +48,8 @@ class InfoSection extends StatelessWidget {
                       ),
                       SizedBox(width: 2),
                       LocationText(
-                        lat: user.lat,
-                        long: user.long,
+                        lat: appUser.lat,
+                        long: appUser.long,
                       ),
                     ],
                   ),

@@ -19,18 +19,13 @@ part 'profile_event.dart';
 
 part 'profile_state.dart';
 
-@singleton
+@injectable
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepository profileRepository;
-  final AuthRepository authRepository;
 
-  ProfileBloc({
-    required this.profileRepository,
-    required this.authRepository,
-  }) : super(ProfileState.initial()) {
+  ProfileBloc({required this.profileRepository,}) : super(ProfileState.initial()) {
     on<ProfileEvent>((event, emit) async {
       final result = await event.when(
-        getUserProfile: () async => await _subscribeToProfileUpdate(emit),
         loadInterests: (AppUser appUser) async {
           emit(ProfileState.loading());
           final data = await profileRepository.getInterestList();
@@ -58,12 +53,5 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         },
       );
     });
-  }
-
-  Future<void> _subscribeToProfileUpdate(Emitter emit) {
-    return emit.forEach(
-      authRepository.getAppUserStream(),
-      onData: (appUser) => ProfileState.userProfileUpdated(appUser),
-    );
   }
 }

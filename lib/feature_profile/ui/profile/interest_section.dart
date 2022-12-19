@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:workout_buddy_finder/core/core.dart';
-import 'package:workout_buddy_finder/feature_profile/ui/bloc/profile_bloc.dart';
-
-import '../../../feature_auth/domain/domain.dart';
 
 class InterestSection extends StatelessWidget {
-  const InterestSection({
-    Key? key,
-    required this.appUser,
-  }) : super(key: key);
-  final AppUser appUser;
+  const InterestSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final appUser = context.read<AppUser>();
+
     return Container(
       width: double.infinity,
       child: Card(

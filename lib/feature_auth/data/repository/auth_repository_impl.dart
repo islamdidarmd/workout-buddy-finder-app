@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/feature_profile/data/model/model.dart';
+import '../../../feature_profile/data/model/model.dart';
 import '../../../core/core.dart';
 import '../../../core/firestore_constants.dart';
 import '../model/model.dart';
