@@ -20,6 +20,7 @@ class InterestSection extends StatelessWidget {
               mediumBoldTitle(context, 'Interests'),
               const SizedBox(height: 8),
               Wrap(
+                spacing: 4,
                 children: appUser.interestList.map((interest) {
                   return Chip(
                     avatar: CircleAvatar(
