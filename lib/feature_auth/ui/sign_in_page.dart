@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../feature_navigation/routes.dart';
+import '../../navigation/routes.dart';
 import 'bloc/auth_bloc.dart';
 import 'sign_in_with_google_button.dart';
 

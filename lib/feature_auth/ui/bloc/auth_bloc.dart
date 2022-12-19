@@ -21,6 +21,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   bool get isSignedIn => authRepository.isSignedIn;
 
+  Stream<AppUser> get appUserStream => authRepository.getAppUserStream();
+
   AuthBloc({required this.authRepository}) : super(AuthState.initial()) {
     on<AuthEvent>((event, emit) async {
       final result = await event.when(

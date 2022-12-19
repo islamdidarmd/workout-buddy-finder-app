@@ -43,9 +43,7 @@ _i1.GetIt $InitGetIt(
   gh.factory<_i7.ProfileRepository>(() => _i8.ProfileRepositoryImpl());
   gh.factory<_i9.AuthBloc>(
       () => _i9.AuthBloc(authRepository: gh<_i3.AuthRepository>()));
-  gh.singleton<_i10.ProfileBloc>(_i10.ProfileBloc(
-    profileRepository: gh<_i7.ProfileRepository>(),
-    authRepository: gh<_i3.AuthRepository>(),
-  ));
+  gh.factory<_i10.ProfileBloc>(
+      () => _i10.ProfileBloc(profileRepository: gh<_i7.ProfileRepository>()));
   return getIt;
 }
