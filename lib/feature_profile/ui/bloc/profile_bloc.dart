@@ -1,14 +1,16 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import '../../data/data.dart';
 
-import '../../../feature_auth/auth.dart';
 import '../../../core/core.dart';
+import '../../../feature_auth/domain/domain.dart';
+import '../../data/model/model.dart';
+import '../../data/repository/profile_repository.dart';
 import '../view_model/view_model.dart';
 
 part 'profile_bloc.freezed.dart';
@@ -17,7 +19,7 @@ part 'profile_event.dart';
 
 part 'profile_state.dart';
 
-@injectable
+@singleton
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepository profileRepository;
   final AuthRepository authRepository;
@@ -32,13 +34,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         loadInterests: (AppUser appUser) async {
           emit(ProfileState.loading());
           final data = await profileRepository.getInterestList();
+          final userInterestList = appUser.interestList;
+
           data.fold(
             (interestList) {
-              final userInterest = appUser.interestList;
               emit(
                 ProfileState.interestsLoaded(interestList
                     .map((e) => InterestViewModel.fromInterest(e)
-                        .copyWith(isSelected: userInterest.contains(e.docId)))
+                        .copyWith(isSelected: userInterestList.contains((e))))
                     .toList()),
               );
             },

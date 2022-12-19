@@ -119,11 +119,12 @@ class __$$_InterestModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_InterestModel with DiagnosticableTreeMixin implements _InterestModel {
+class _$_InterestModel extends _InterestModel with DiagnosticableTreeMixin {
   _$_InterestModel(
       {@JsonKey(name: 'doc_id') required this.docId,
       required this.icon,
-      required this.name});
+      required this.name})
+      : super._();
 
   factory _$_InterestModel.fromJson(Map<String, dynamic> json) =>
       _$$_InterestModelFromJson(json);
@@ -179,11 +180,12 @@ class _$_InterestModel with DiagnosticableTreeMixin implements _InterestModel {
   }
 }
 
-abstract class _InterestModel implements InterestModel {
+abstract class _InterestModel extends InterestModel {
   factory _InterestModel(
       {@JsonKey(name: 'doc_id') required final String docId,
       required final String icon,
       required final String name}) = _$_InterestModel;
+  _InterestModel._() : super._();
 
   factory _InterestModel.fromJson(Map<String, dynamic> json) =
       _$_InterestModel.fromJson;

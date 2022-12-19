@@ -4,8 +4,12 @@ import 'service_locator.config.dart';
 
 late GetIt sl;
 
-@InjectableInit()
+@InjectableInit(
+  asExtension: false,
+  initializerName: r'$InitGetIt',
+  preferRelativeImports: true,
+)
 void configureDependencies({required GetIt getIt}) {
   sl = getIt;
-  getIt.init();
+  final result = $InitGetIt(sl);
 }

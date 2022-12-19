@@ -11,15 +11,15 @@ class InterestViewModel with _$InterestViewModel {
     @Default(false) bool isSelected,
   }) = _InterestViewModel;
 
-  factory InterestViewModel.fromInterest(InterestModel interest) =>
+  factory InterestViewModel.fromInterest(Interest interest) =>
       InterestViewModel(
-        docId: interest.docId,
+        docId: interest.id,
         icon: interest.icon,
         name: interest.name,
       );
 
-  InterestModel toInterest() => InterestModel(
-        docId: docId,
+  Interest toInterest() => Interest(
+        id: docId,
         icon: icon,
         name: name,
       );
