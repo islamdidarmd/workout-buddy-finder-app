@@ -6,6 +6,6 @@ import '../model/model.dart';
 
 abstract class ProfileRepository {
   Future<Either<List<InterestModel>, AppError>> getInterestList();
-  Future<Either<void, AppError>> addInterestList(AppUser appUser, InterestModel interestModel);
-  Future<Either<void, AppError>> removeInterestList(AppUser appUser, InterestModel interestModel);
+  Future<Either<void, AppError>> addInterestList(AppUser appUser, String interestId);
+  Future<Either<void, AppError>> removeInterestList(AppUser appUser, String interestId);
 }
