@@ -8,8 +8,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../core/core.dart';
-import '../../../feature_auth/domain/domain.dart';
-import '../../data/model/model.dart';
 import '../../data/repository/profile_repository.dart';
 import '../view_model/view_model.dart';
 
@@ -23,35 +21,68 @@ part 'profile_state.dart';
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final ProfileRepository profileRepository;
 
-  ProfileBloc({required this.profileRepository,}) : super(ProfileState.initial()) {
+  ProfileBloc({
+    required this.profileRepository,
+  }) : super(ProfileState.initial()) {
     on<ProfileEvent>((event, emit) async {
       final result = await event.when(
-        loadInterests: (AppUser appUser) async {
-          emit(ProfileState.loading());
-          final data = await profileRepository.getInterestList();
-          final userInterestList = appUser.interestList;
-
-          data.fold(
-            (interestList) {
-              emit(
-                ProfileState.interestsLoaded(interestList
-                    .map((e) => InterestViewModel.fromInterest(e)
-                        .copyWith(isSelected: userInterestList.contains((e))))
-                    .toList()),
-              );
-            },
-            (error) => emit(ProfileState.error(error)),
-          );
-        },
-        addInterest: (appUser, interest) {
-          final data =
-              profileRepository.addInterestList(appUser, interest.docId);
-        },
-        removeInterest: (appUser, interest) {
-          final data =
-              profileRepository.removeInterestList(appUser, interest.docId);
-        },
+        loadInterests: (appUser) async => await _onLoadInterest(emit, appUser),
+        addInterest: (appUser, interest) async =>
+            await _onAddInterest(appUser, interest),
+        removeInterest: (appUser, interest) async =>
+            await _onRemoveInterest(appUser, interest),
       );
     });
+  }
+
+  Future<void> _onLoadInterest(Emitter emit, AppUser appUser) async {
+    emit(ProfileState.loading());
+    final data = await profileRepository.getInterestList();
+
+    data.fold(
+      (allInterest) {
+        final interestViewModels = _mapInterestModel(
+          allInterest,
+          appUser,
+        );
+        emit(ProfileState.interestsLoaded(interestViewModels));
+      },
+      (error) => emit(ProfileState.error(error)),
+    );
+  }
+
+  Future<void> _onAddInterest(
+    AppUser appUser,
+    InterestViewModel interest,
+  ) async {
+    final data =
+        await profileRepository.addInterestList(appUser, interest.docId);
+  }
+
+  Future<void> _onRemoveInterest(
+    AppUser appUser,
+    InterestViewModel interest,
+  ) async {
+    final data =
+        await profileRepository.removeInterestList(appUser, interest.docId);
+  }
+
+  List<InterestViewModel> _mapInterestModel(
+    List<Interest> allInterest,
+    AppUser appUser,
+  ) {
+    final userInterestList = appUser.interestList;
+
+    return allInterest.map((interest) {
+      var viewModel = InterestViewModel.fromInterest(interest);
+      if (userInterestList.firstWhereOrNull(
+            (userInterest) => userInterest.id == viewModel.docId,
+          ) !=
+          null) {
+        viewModel = viewModel.copyWith(isSelected: true);
+      }
+
+      return viewModel;
+    }).toList();
   }
 }
