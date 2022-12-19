@@ -16,7 +16,7 @@ _$_AppUserModel _$$_AppUserModelFromJson(Map<String, dynamic> json) =>
       lat: (json['lat'] as num?)?.toDouble() ?? 0.0,
       long: (json['long'] as num?)?.toDouble() ?? 0.0,
       interestsList: (json['interestsList'] as List<dynamic>?)
-              ?.map((e) => InterestModel.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => e as String)
               .toList() ??
           const [],
     );

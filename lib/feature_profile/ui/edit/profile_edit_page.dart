@@ -12,7 +12,7 @@ class ProfileEditPage extends StatelessWidget {
   void _onProfileBlocStateChange(BuildContext context, ProfileState state) {
     final result = state.maybeWhen(
       userProfileUpdated: (appUser) =>
-          context.read<ProfileBloc>()..add(ProfileEvent.loadInterests()),
+          context.read<ProfileBloc>()..add(ProfileEvent.loadInterests(appUser)),
       orElse: () {},
     );
   }

@@ -3,7 +3,7 @@ import 'package:either_dart/src/either.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import '../../../app/firestore_constants.dart';
+import '../../../core/firestore_constants.dart';
 import '../model/model.dart';
 import '../../../feature_auth/domain/domain.dart';
 import 'package:workout_buddy_finder/core/error/app_error.dart';
