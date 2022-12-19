@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/core.dart';
 import '../../../feature_navigation/routes.dart';
-import '../../../feature_auth/auth.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/profile_bloc.dart';
 import 'info_section.dart';
@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
               children: [
                 InfoSection(user: appUser),
                 const SizedBox(height: 8),
-                InterestSection(user: appUser)
+                InterestSection(appUser: appUser),
               ],
             ),
             Positioned(
@@ -42,13 +42,15 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ProfileBloc>(
-      create: (context) => sl()..add(ProfileEvent.getUserProfile()),
+    return BlocProvider<ProfileBloc>.value(
+      value:sl()..add(ProfileEvent.getUserProfile()),
       child: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
           return state.maybeWhen(
             loading: () => const CircularProgressIndicator(),
-            userProfileUpdated: (appUser) => _buildBody(context, appUser),
+            userProfileUpdated: (appUser) {
+              return _buildBody(context, appUser);
+            },
             orElse: () => const SizedBox(),
           );
         },

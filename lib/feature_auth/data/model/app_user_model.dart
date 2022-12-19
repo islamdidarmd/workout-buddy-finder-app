@@ -29,10 +29,10 @@ class AppUserModel with _$AppUserModel {
         profilePicture: appUser.profilePicture,
         lat: appUser.lat,
         long: appUser.long,
-        interestsList: appUser.interestList,
+        interestsList: appUser.interestList.map((e) => e.id).toList(),
       );
 
-  AppUser toEntity() => AppUser(
+  AppUser toEntity(List<Interest> interestList) => AppUser(
         userId: userId,
         name: name,
         email: email,
@@ -40,6 +40,6 @@ class AppUserModel with _$AppUserModel {
         registered: registered,
         lat: lat,
         long: long,
-        interestList: interestsList,
+        interestList: interestList,
       );
 }

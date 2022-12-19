@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../feature_auth/auth.dart';
+import '../../../core/core.dart';
+import '../../../feature_auth/domain/domain.dart';
 import 'location_text.dart';
 import 'profile_avatar.dart';
 

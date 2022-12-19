@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_buddy_finder/feature_auth/auth.dart';
 import '../../../core/core.dart';
+import '../../../feature_auth/domain/domain.dart';
 import 'interest_list_item.dart';
 
 import '../bloc/profile_bloc.dart';

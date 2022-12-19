@@ -223,6 +223,8 @@ abstract class _$$_InterestsEventCopyWith<$Res> {
       __$$_InterestsEventCopyWithImpl<$Res>;
   @useResult
   $Res call({AppUser appUser});
+
+  $AppUserCopyWith<$Res> get appUser;
 }
 
 /// @nodoc
@@ -244,6 +246,14 @@ class __$$_InterestsEventCopyWithImpl<$Res>
           : appUser // ignore: cast_nullable_to_non_nullable
               as AppUser,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppUserCopyWith<$Res> get appUser {
+    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
+      return _then(_value.copyWith(appUser: value));
+    });
   }
 }
 
@@ -383,6 +393,7 @@ abstract class _$$_AddInterestEventCopyWith<$Res> {
   @useResult
   $Res call({AppUser appUser, InterestViewModel interest});
 
+  $AppUserCopyWith<$Res> get appUser;
   $InterestViewModelCopyWith<$Res> get interest;
 }
 
@@ -410,6 +421,14 @@ class __$$_AddInterestEventCopyWithImpl<$Res>
           : interest // ignore: cast_nullable_to_non_nullable
               as InterestViewModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppUserCopyWith<$Res> get appUser {
+    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
+      return _then(_value.copyWith(appUser: value));
+    });
   }
 
   @override
@@ -565,6 +584,7 @@ abstract class _$$_RemoveInterestEventCopyWith<$Res> {
   @useResult
   $Res call({AppUser appUser, InterestViewModel interest});
 
+  $AppUserCopyWith<$Res> get appUser;
   $InterestViewModelCopyWith<$Res> get interest;
 }
 
@@ -592,6 +612,14 @@ class __$$_RemoveInterestEventCopyWithImpl<$Res>
           : interest // ignore: cast_nullable_to_non_nullable
               as InterestViewModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppUserCopyWith<$Res> get appUser {
+    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
+      return _then(_value.copyWith(appUser: value));
+    });
   }
 
   @override
@@ -1083,6 +1111,8 @@ abstract class _$$_UserProfileUpdatedStateCopyWith<$Res> {
       __$$_UserProfileUpdatedStateCopyWithImpl<$Res>;
   @useResult
   $Res call({AppUser appUser});
+
+  $AppUserCopyWith<$Res> get appUser;
 }
 
 /// @nodoc
@@ -1104,6 +1134,14 @@ class __$$_UserProfileUpdatedStateCopyWithImpl<$Res>
           : appUser // ignore: cast_nullable_to_non_nullable
               as AppUser,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AppUserCopyWith<$Res> get appUser {
+    return $AppUserCopyWith<$Res>(_value.appUser, (value) {
+      return _then(_value.copyWith(appUser: value));
+    });
   }
 }
 

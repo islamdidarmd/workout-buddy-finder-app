@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_buddy_finder/feature_auth/auth.dart';
+import '../../../core/core.dart';
 import 'interest_section.dart';
 
 import '../../../di/service_locator.dart';
@@ -27,8 +27,8 @@ class ProfileEditPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext _) {
-    return BlocProvider<ProfileBloc>(
-      create: (_) => sl()..add(ProfileEvent.getUserProfile()),
+    return BlocProvider<ProfileBloc>.value(
+      value: sl()..add(ProfileEvent.getUserProfile()),
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(12.0),

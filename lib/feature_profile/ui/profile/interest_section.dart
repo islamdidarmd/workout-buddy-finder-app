@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../feature_auth/auth.dart';
+import 'package:workout_buddy_finder/core/core.dart';
+import 'package:workout_buddy_finder/feature_profile/ui/bloc/profile_bloc.dart';
+
+import '../../../feature_auth/domain/domain.dart';
 
 class InterestSection extends StatelessWidget {
   const InterestSection({
     Key? key,
-    required this.user,
+    required this.appUser,
   }) : super(key: key);
-  final AppUser user;
+  final AppUser appUser;
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Container(
       width: double.infinity,
       child: Card(
@@ -21,19 +23,18 @@ class InterestSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Interests',
-                style: textTheme.titleMedium
-                    ?.copyWith(fontWeight: FontWeight.bold),
-              ),
+              mediumBoldTitle(context, 'Interests'),
               const SizedBox(height: 8),
               Wrap(
-                children: [
-                  Chip(
-                    avatar: Icon(FontAwesomeIcons.personSwimming),
-                    label: Text('Swimming'),
-                  ),
-                ],
+                children: appUser.interestList.map((interest) {
+                  return Chip(
+                    avatar: CircleAvatar(
+                      foregroundImage: Image.network(interest.icon).image,
+                      radius: 12,
+                    ),
+                    label: Text(interest.name),
+                  );
+                }).toList(),
               ),
             ],
           ),
