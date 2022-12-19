@@ -28,7 +28,7 @@ mixin _$AppUserModel {
   String get profilePicture => throw _privateConstructorUsedError;
   double get lat => throw _privateConstructorUsedError;
   double get long => throw _privateConstructorUsedError;
-  List<InterestModel> get interestsList => throw _privateConstructorUsedError;
+  List<String> get interestsList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +51,7 @@ abstract class $AppUserModelCopyWith<$Res> {
       String profilePicture,
       double lat,
       double long,
-      List<InterestModel> interestsList});
+      List<String> interestsList});
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
       interestsList: null == interestsList
           ? _value.interestsList
           : interestsList // ignore: cast_nullable_to_non_nullable
-              as List<InterestModel>,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -130,7 +130,7 @@ abstract class _$$_AppUserModelCopyWith<$Res>
       String profilePicture,
       double lat,
       double long,
-      List<InterestModel> interestsList});
+      List<String> interestsList});
 }
 
 /// @nodoc
@@ -185,7 +185,7 @@ class __$$_AppUserModelCopyWithImpl<$Res>
       interestsList: null == interestsList
           ? _value.interestsList
           : interestsList // ignore: cast_nullable_to_non_nullable
-              as List<InterestModel>,
+              as List<String>,
     ));
   }
 }
@@ -230,7 +230,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
   final double long;
   @override
   @JsonKey()
-  final List<InterestModel> interestsList;
+  final List<String> interestsList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -307,7 +307,7 @@ abstract class _AppUserModel extends AppUserModel {
       final String profilePicture,
       final double lat,
       final double long,
-      final List<InterestModel> interestsList}) = _$_AppUserModel;
+      final List<String> interestsList}) = _$_AppUserModel;
   _AppUserModel._() : super._();
 
   factory _AppUserModel.fromJson(Map<String, dynamic> json) =
@@ -329,7 +329,7 @@ abstract class _AppUserModel extends AppUserModel {
   @override
   double get long;
   @override
-  List<InterestModel> get interestsList;
+  List<String> get interestsList;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserModelCopyWith<_$_AppUserModel> get copyWith =>

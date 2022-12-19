@@ -8,7 +8,7 @@ class AppUser {
   final String profilePicture;
   final double lat;
   final double long;
-  final List<InterestModel> interestList;
+  final List<String> interestList;
 
   bool get isEmpty => userId.isEmpty;
 

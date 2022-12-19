@@ -15,7 +15,7 @@ class AppUserModel with _$AppUserModel {
     @Default('') String profilePicture,
     @Default(0.0) double lat,
     @Default(0.0) double long,
-    @Default([]) List<InterestModel> interestsList,
+    @Default([]) List<String> interestsList,
   }) = _AppUserModel;
 
   factory AppUserModel.fromJson(Map<String, dynamic> json) =>

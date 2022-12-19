@@ -29,23 +29,29 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<ProfileEvent>((event, emit) async {
       final result = await event.when(
         getUserProfile: () async => await _subscribeToProfileUpdate(emit),
-        loadInterests: () async {
+        loadInterests: (AppUser appUser) async {
           emit(ProfileState.loading());
           final data = await profileRepository.getInterestList();
           data.fold(
-            (interestList) => emit(
-              ProfileState.interestsLoaded(interestList
-                  .map((e) => InterestViewModel.fromInterest(e))
-                  .toList()),
-            ),
+            (interestList) {
+              final userInterest = appUser.interestList;
+              emit(
+                ProfileState.interestsLoaded(interestList
+                    .map((e) => InterestViewModel.fromInterest(e)
+                        .copyWith(isSelected: userInterest.contains(e.docId)))
+                    .toList()),
+              );
+            },
             (error) => emit(ProfileState.error(error)),
           );
         },
         addInterest: (appUser, interest) {
-          final data = profileRepository.addInterestList(appUser, interest.toInterest());
+          final data =
+              profileRepository.addInterestList(appUser, interest.docId);
         },
-        removeInterest: (appUser,interest) {
-          final data = profileRepository.removeInterestList(appUser, interest.toInterest());
+        removeInterest: (appUser, interest) {
+          final data =
+              profileRepository.removeInterestList(appUser, interest.docId);
         },
       );
     });

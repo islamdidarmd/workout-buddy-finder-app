@@ -3,7 +3,7 @@ import 'package:either_dart/src/either.dart';
 import 'package:injectable/injectable.dart';
 import 'package:workout_buddy_finder/feature_auth/data/model/model.dart';
 import 'package:workout_buddy_finder/feature_auth/domain/entity/app_user.dart';
-import '../../../app/firestore_constants.dart';
+import '../../../core/firestore_constants.dart';
 import '../../../core/error/app_error.dart';
 import '../model/model.dart';
 import 'profile_repository.dart';
@@ -28,18 +28,18 @@ class ProfileRepositoryImpl implements ProfileRepository {
   @override
   Future<Either<void, AppError>> addInterestList(
     AppUser appUser,
-    InterestModel interestModel,
+      String interestId,
   ) async {
     final usersDb = FirebaseFirestore.instance.collection(users);
     final userDoc = usersDb.doc(appUser.userId);
     final appUserModel = AppUserModel.fromEntity(appUser)
         .copyWith(interestsList: appUser.interestList);
-    final List<InterestModel> list = []
+    final List<String> list = []
       ..addAll(appUserModel.interestsList)
-      ..add(interestModel);
+      ..add(interestId);
 
     final updateData = {
-      'interest': list.map((e) => e.toJson()).toList(),
+      userInterestList: list,
     };
     try {
       await userDoc.update(updateData);
@@ -53,18 +53,18 @@ class ProfileRepositoryImpl implements ProfileRepository {
   @override
   Future<Either<void, AppError>> removeInterestList(
     AppUser appUser,
-    InterestModel interestModel,
+      String interestId,
   ) async {
     final usersDb = FirebaseFirestore.instance.collection(users);
     final userDoc = usersDb.doc(appUser.userId);
     final appUserModel = AppUserModel.fromEntity(appUser)
         .copyWith(interestsList: appUser.interestList);
-    final List<InterestModel> list = []
+    final List<String> list = []
       ..addAll(appUserModel.interestsList)
-      ..removeWhere((e) => e.docId == interestModel.docId);
+      ..remove(interestId);
 
     final updateData = {
-      'interest': list.map((e) => e.toJson()).toList(),
+      userInterestList: list,
     };
     try {
       await userDoc.update(updateData);
