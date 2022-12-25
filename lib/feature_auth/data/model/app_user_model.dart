@@ -15,6 +15,7 @@ class AppUserModel with _$AppUserModel {
     @Default('') String profilePicture,
     @Default(0.0) double lat,
     @Default(0.0) double long,
+    @Default("") String geoHash,
     @Default([]) List<String> interestsList,
   }) = _AppUserModel;
 
@@ -29,6 +30,7 @@ class AppUserModel with _$AppUserModel {
         profilePicture: appUser.profilePicture,
         lat: appUser.lat,
         long: appUser.long,
+        geoHash: appUser.geoHash,
         interestsList: appUser.interestList.map((e) => e.id).toList(),
       );
 
@@ -40,6 +42,7 @@ class AppUserModel with _$AppUserModel {
         registered: registered,
         lat: lat,
         long: long,
+        geoHash: geoHash,
         interestList: interestList,
       );
 }

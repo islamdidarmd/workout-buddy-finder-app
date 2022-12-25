@@ -183,6 +183,7 @@ mixin _$AppUser {
   String get profilePicture => throw _privateConstructorUsedError;
   double get lat => throw _privateConstructorUsedError;
   double get long => throw _privateConstructorUsedError;
+  String get geoHash => throw _privateConstructorUsedError;
   List<Interest> get interestList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -202,6 +203,7 @@ abstract class $AppUserCopyWith<$Res> {
       String profilePicture,
       double lat,
       double long,
+      String geoHash,
       List<Interest> interestList});
 }
 
@@ -225,6 +227,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? profilePicture = null,
     Object? lat = null,
     Object? long = null,
+    Object? geoHash = null,
     Object? interestList = null,
   }) {
     return _then(_value.copyWith(
@@ -256,6 +259,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.long
           : long // ignore: cast_nullable_to_non_nullable
               as double,
+      geoHash: null == geoHash
+          ? _value.geoHash
+          : geoHash // ignore: cast_nullable_to_non_nullable
+              as String,
       interestList: null == interestList
           ? _value.interestList
           : interestList // ignore: cast_nullable_to_non_nullable
@@ -279,6 +286,7 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       String profilePicture,
       double lat,
       double long,
+      String geoHash,
       List<Interest> interestList});
 }
 
@@ -299,6 +307,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? profilePicture = null,
     Object? lat = null,
     Object? long = null,
+    Object? geoHash = null,
     Object? interestList = null,
   }) {
     return _then(_$_AppUser(
@@ -330,6 +339,10 @@ class __$$_AppUserCopyWithImpl<$Res>
           ? _value.long
           : long // ignore: cast_nullable_to_non_nullable
               as double,
+      geoHash: null == geoHash
+          ? _value.geoHash
+          : geoHash // ignore: cast_nullable_to_non_nullable
+              as String,
       interestList: null == interestList
           ? _value._interestList
           : interestList // ignore: cast_nullable_to_non_nullable
@@ -349,6 +362,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       required this.profilePicture,
       required this.lat,
       required this.long,
+      required this.geoHash,
       required final List<Interest> interestList})
       : _interestList = interestList,
         super._();
@@ -367,6 +381,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   final double lat;
   @override
   final double long;
+  @override
+  final String geoHash;
   final List<Interest> _interestList;
   @override
   List<Interest> get interestList {
@@ -377,7 +393,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUser(userId: $userId, registered: $registered, name: $name, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, interestList: $interestList)';
+    return 'AppUser(userId: $userId, registered: $registered, name: $name, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
   }
 
   @override
@@ -392,6 +408,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('profilePicture', profilePicture))
       ..add(DiagnosticsProperty('lat', lat))
       ..add(DiagnosticsProperty('long', long))
+      ..add(DiagnosticsProperty('geoHash', geoHash))
       ..add(DiagnosticsProperty('interestList', interestList));
   }
 
@@ -409,6 +426,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
                 other.profilePicture == profilePicture) &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.long, long) || other.long == long) &&
+            (identical(other.geoHash, geoHash) || other.geoHash == geoHash) &&
             const DeepCollectionEquality()
                 .equals(other._interestList, _interestList));
   }
@@ -423,6 +441,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       profilePicture,
       lat,
       long,
+      geoHash,
       const DeepCollectionEquality().hash(_interestList));
 
   @JsonKey(ignore: true)
@@ -441,6 +460,7 @@ abstract class _AppUser extends AppUser {
       required final String profilePicture,
       required final double lat,
       required final double long,
+      required final String geoHash,
       required final List<Interest> interestList}) = _$_AppUser;
   _AppUser._() : super._();
 
@@ -458,6 +478,8 @@ abstract class _AppUser extends AppUser {
   double get lat;
   @override
   double get long;
+  @override
+  String get geoHash;
   @override
   List<Interest> get interestList;
   @override

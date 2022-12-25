@@ -28,6 +28,7 @@ mixin _$AppUserModel {
   String get profilePicture => throw _privateConstructorUsedError;
   double get lat => throw _privateConstructorUsedError;
   double get long => throw _privateConstructorUsedError;
+  String get geoHash => throw _privateConstructorUsedError;
   List<String> get interestsList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ abstract class $AppUserModelCopyWith<$Res> {
       String profilePicture,
       double lat,
       double long,
+      String geoHash,
       List<String> interestsList});
 }
 
@@ -74,6 +76,7 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
     Object? profilePicture = null,
     Object? lat = null,
     Object? long = null,
+    Object? geoHash = null,
     Object? interestsList = null,
   }) {
     return _then(_value.copyWith(
@@ -105,6 +108,10 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
           ? _value.long
           : long // ignore: cast_nullable_to_non_nullable
               as double,
+      geoHash: null == geoHash
+          ? _value.geoHash
+          : geoHash // ignore: cast_nullable_to_non_nullable
+              as String,
       interestsList: null == interestsList
           ? _value.interestsList
           : interestsList // ignore: cast_nullable_to_non_nullable
@@ -130,6 +137,7 @@ abstract class _$$_AppUserModelCopyWith<$Res>
       String profilePicture,
       double lat,
       double long,
+      String geoHash,
       List<String> interestsList});
 }
 
@@ -151,6 +159,7 @@ class __$$_AppUserModelCopyWithImpl<$Res>
     Object? profilePicture = null,
     Object? lat = null,
     Object? long = null,
+    Object? geoHash = null,
     Object? interestsList = null,
   }) {
     return _then(_$_AppUserModel(
@@ -182,6 +191,10 @@ class __$$_AppUserModelCopyWithImpl<$Res>
           ? _value.long
           : long // ignore: cast_nullable_to_non_nullable
               as double,
+      geoHash: null == geoHash
+          ? _value.geoHash
+          : geoHash // ignore: cast_nullable_to_non_nullable
+              as String,
       interestsList: null == interestsList
           ? _value.interestsList
           : interestsList // ignore: cast_nullable_to_non_nullable
@@ -202,6 +215,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       this.profilePicture = '',
       this.lat = 0.0,
       this.long = 0.0,
+      this.geoHash = "",
       this.interestsList = const []})
       : super._();
 
@@ -230,11 +244,14 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
   final double long;
   @override
   @JsonKey()
+  final String geoHash;
+  @override
+  @JsonKey()
   final List<String> interestsList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUserModel(userId: $userId, registered: $registered, name: $name, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, interestsList: $interestsList)';
+    return 'AppUserModel(userId: $userId, registered: $registered, name: $name, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestsList: $interestsList)';
   }
 
   @override
@@ -249,6 +266,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('profilePicture', profilePicture))
       ..add(DiagnosticsProperty('lat', lat))
       ..add(DiagnosticsProperty('long', long))
+      ..add(DiagnosticsProperty('geoHash', geoHash))
       ..add(DiagnosticsProperty('interestsList', interestsList));
   }
 
@@ -266,6 +284,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
                 other.profilePicture == profilePicture) &&
             (identical(other.lat, lat) || other.lat == lat) &&
             (identical(other.long, long) || other.long == long) &&
+            (identical(other.geoHash, geoHash) || other.geoHash == geoHash) &&
             const DeepCollectionEquality()
                 .equals(other.interestsList, interestsList));
   }
@@ -281,6 +300,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       profilePicture,
       lat,
       long,
+      geoHash,
       const DeepCollectionEquality().hash(interestsList));
 
   @JsonKey(ignore: true)
@@ -307,6 +327,7 @@ abstract class _AppUserModel extends AppUserModel {
       final String profilePicture,
       final double lat,
       final double long,
+      final String geoHash,
       final List<String> interestsList}) = _$_AppUserModel;
   _AppUserModel._() : super._();
 
@@ -328,6 +349,8 @@ abstract class _AppUserModel extends AppUserModel {
   double get lat;
   @override
   double get long;
+  @override
+  String get geoHash;
   @override
   List<String> get interestsList;
   @override

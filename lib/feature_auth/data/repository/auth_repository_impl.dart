@@ -10,6 +10,7 @@ import '../../../core/firestore_constants.dart';
 import '../model/model.dart';
 import '../../../feature_auth/domain/domain.dart';
 
+import 'package:dart_geohash/dart_geohash.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 @Injectable(as: AuthRepository)
@@ -101,6 +102,8 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return appUserModel.toEntity(await _getUserInterestList(appUserModel));
     } else {
+      final geoHash =
+          GeoHash.fromDecimalDegrees(location.latitude, location.longitude);
       final appUserModel = AppUserModel(
         userId: firebaseUser.uid,
         name: firebaseUser.displayName ?? '',
@@ -109,6 +112,7 @@ class AuthRepositoryImpl implements AuthRepository {
         registered: firebaseUser.metadata.creationTime!.toUtc(),
         lat: location.latitude,
         long: location.longitude,
+        geoHash: geoHash.geohash,
       );
       userDoc.reference.set(appUserModel.toJson());
 

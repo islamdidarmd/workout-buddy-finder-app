@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:workout_buddy_finder/navigation/routes.dart';
+import '../../navigation/routes.dart';
 import '../../core/core.dart';
 
 class Intro extends StatelessWidget {
