@@ -12,6 +12,7 @@ class AppUser with _$AppUser {
     required String profilePicture,
     required double lat,
     required double long,
+    required String geoHash,
     required List<Interest> interestList,
   }) = _AppUser;
 
@@ -23,6 +24,7 @@ class AppUser with _$AppUser {
         profilePicture: '',
         lat: 0.0,
         long: 0.0,
+        geoHash: '',
         interestList: [],
       );
 }
