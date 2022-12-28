@@ -17,8 +17,8 @@ class SuggestionsPage extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-                child: SuggestionCard(),
+                    const EdgeInsets.all(16.0),
+                child: const SuggestionCard(),
               ),
             ),
           ],

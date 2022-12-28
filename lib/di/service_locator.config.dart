@@ -11,7 +11,7 @@ import 'package:workout_buddy_finder/feature_auth/data/repository/auth_repositor
     as _i4;
 import 'package:workout_buddy_finder/feature_auth/domain/domain.dart' as _i3;
 import 'package:workout_buddy_finder/feature_auth/ui/bloc/auth_bloc.dart'
-    as _i9;
+    as _i11;
 import 'package:workout_buddy_finder/feature_location/domain/usecase/get_address_from_lat_long_use_case.dart'
     as _i5;
 import 'package:workout_buddy_finder/feature_location/ui/bloc/location_retriever_bloc.dart'
@@ -21,7 +21,13 @@ import 'package:workout_buddy_finder/feature_profile/data/repository/profile_rep
 import 'package:workout_buddy_finder/feature_profile/data/repository/profile_repository_impl.dart'
     as _i8;
 import 'package:workout_buddy_finder/feature_profile/ui/bloc/profile_bloc.dart'
+    as _i12;
+import 'package:workout_buddy_finder/feature_suggestion/data/repository/suggestions_repository_impl.dart'
     as _i10;
+import 'package:workout_buddy_finder/feature_suggestion/domain/domain.dart'
+    as _i9;
+import 'package:workout_buddy_finder/feature_suggestion/ui/bloc/suggestions_bloc.dart'
+    as _i13;
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -41,9 +47,12 @@ _i1.GetIt $InitGetIt(
       () => _i5.GetAddressFromLatLongUseCase());
   gh.factory<_i6.LocationRetrieverBloc>(() => _i6.LocationRetrieverBloc());
   gh.factory<_i7.ProfileRepository>(() => _i8.ProfileRepositoryImpl());
-  gh.factory<_i9.AuthBloc>(
-      () => _i9.AuthBloc(authRepository: gh<_i3.AuthRepository>()));
-  gh.factory<_i10.ProfileBloc>(
-      () => _i10.ProfileBloc(profileRepository: gh<_i7.ProfileRepository>()));
+  gh.factory<_i9.SuggestionsRepository>(() => _i10.SuggestionsRepositoryImpl());
+  gh.factory<_i11.AuthBloc>(
+      () => _i11.AuthBloc(authRepository: gh<_i3.AuthRepository>()));
+  gh.factory<_i12.ProfileBloc>(
+      () => _i12.ProfileBloc(profileRepository: gh<_i7.ProfileRepository>()));
+  gh.factory<_i13.SuggestionsBloc>(
+      () => _i13.SuggestionsBloc(gh<_i9.SuggestionsRepository>()));
   return getIt;
 }
