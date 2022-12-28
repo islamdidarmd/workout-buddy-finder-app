@@ -17,7 +17,6 @@ part 'auth_state.dart';
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
-  StreamSubscription<UserAuthState>? _authStateSubscription;
 
   bool get isSignedIn => authRepository.isSignedIn;
 
@@ -32,28 +31,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
-  @override
-  Future<void> close() {
-    _authStateSubscription?.cancel();
+  Future<void> _listenAuthState(Emitter emit) async {
+    await emit.forEach(
+      authRepository.getAuthStateStream(),
+      onData: (userAuthState) {
+        if (userAuthState == UserAuthState.signedIn) {
+          return AuthState.signedIn();
+        } else if (userAuthState == UserAuthState.signedOut) {
+          return AuthState.signedOut();
+        }
 
-    return super.close();
-  }
-
-  Future<void> _listenAuthState(Emitter emit) {
-    _authStateSubscription?.cancel();
-    _authStateSubscription = authRepository
-        .getAuthStateStream()
-        .listen((UserAuthState userAuthState) {
-      if (userAuthState == UserAuthState.signedIn) {
-        emit(AuthState.signedIn());
-      } else if (userAuthState == UserAuthState.signedOut) {
-        emit(AuthState.signedOut());
-      } else {
-        emit(AuthState.loading());
-      }
-    });
-
-    return Future.value();
+        return AuthState.loading();
+      },
+    );
   }
 
   Future<void> _signInWithGoogle(Position location, Emitter _) async {
