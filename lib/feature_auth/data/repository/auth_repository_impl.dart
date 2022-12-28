@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:workout_buddy_finder/feature_location/location.dart';
 import '../../../feature_profile/data/model/model.dart';
 import '../../../core/core.dart';
 import '../../../core/firestore_constants.dart';
@@ -28,6 +29,7 @@ class AuthRepositoryImpl implements AuthRepository {
         result = Left({});
       } else {
         final appUser = _createUserIfDoesNotExist(firebaseUser, location);
+        result = Left(appUser);
       }
     } on FirebaseAuthMultiFactorException catch (error) {
       result = Right(AppError(message: error.code));
@@ -35,7 +37,7 @@ class AuthRepositoryImpl implements AuthRepository {
       result = Right(UnknownError());
     }
 
-    return result!;
+    return result;
   }
 
   @override
@@ -102,8 +104,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return appUserModel.toEntity(await _getUserInterestList(appUserModel));
     } else {
-      final geoHash =
-          GeoHash.fromDecimalDegrees(location.latitude, location.longitude);
+      final geoHash = getGeoHash(
+        latitude: location.latitude,
+        longitude: location.longitude,
+      );
       final appUserModel = AppUserModel(
         userId: firebaseUser.uid,
         name: firebaseUser.displayName ?? '',
@@ -112,7 +116,7 @@ class AuthRepositoryImpl implements AuthRepository {
         registered: firebaseUser.metadata.creationTime!.toUtc(),
         lat: location.latitude,
         long: location.longitude,
-        geoHash: geoHash.geohash,
+        geoHash: geoHash,
       );
       userDoc.reference.set(appUserModel.toJson());
 
