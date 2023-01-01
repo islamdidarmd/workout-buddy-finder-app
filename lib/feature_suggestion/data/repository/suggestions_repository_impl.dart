@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dart_geohash/dart_geohash.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:injectable/injectable.dart';
 
@@ -23,5 +22,57 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     } catch (e) {
       return Right(UnknownError());
     }
+  }
+
+  @override
+  Future<Either<void, AppError>> likeUser(
+    AppUser appUser,
+    String likedUserId,
+  ) async {
+    final collection = FirebaseFirestore.instance.collection(liked_users);
+    final docRef = collection.doc(appUser.userId);
+
+    try {
+      final doc = await docRef.get();
+      if (doc.exists) {
+        await docRef.update({
+          appUser.userId: FieldValue.arrayUnion([likedUserId]),
+        });
+      } else {
+        await docRef.set({
+          appUser.userId: [likedUserId],
+        });
+      }
+    } catch (e) {
+      return Right(UnknownError());
+    }
+
+    return Left(null);
+  }
+
+  @override
+  Future<Either<void, AppError>> dislikeUser(
+    AppUser appUser,
+    String dislikedUserId,
+  ) async {
+    final collection = FirebaseFirestore.instance.collection(disliked_users);
+    final docRef = collection.doc(appUser.userId);
+
+    try {
+      final doc = await docRef.get();
+      if (doc.exists) {
+        await docRef.update({
+          appUser.userId: FieldValue.arrayUnion([dislikedUserId]),
+        });
+      } else {
+        await docRef.set({
+          appUser.userId: [dislikedUserId],
+        });
+      }
+    } catch (e) {
+      return Right(UnknownError());
+    }
+
+    return Left(null);
   }
 }

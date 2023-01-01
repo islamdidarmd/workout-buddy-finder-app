@@ -21,6 +21,7 @@ Suggestion _$SuggestionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Suggestion {
   String get name => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   String get profilePicture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $SuggestionCopyWith<$Res> {
           Suggestion value, $Res Function(Suggestion) then) =
       _$SuggestionCopyWithImpl<$Res, Suggestion>;
   @useResult
-  $Res call({String name, String profilePicture});
+  $Res call({String name, String userId, String profilePicture});
 }
 
 /// @nodoc
@@ -52,12 +53,17 @@ class _$SuggestionCopyWithImpl<$Res, $Val extends Suggestion>
   @override
   $Res call({
     Object? name = null,
+    Object? userId = null,
     Object? profilePicture = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
       profilePicture: null == profilePicture
           ? _value.profilePicture
@@ -75,7 +81,7 @@ abstract class _$$_SuggestionCopyWith<$Res>
       __$$_SuggestionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String profilePicture});
+  $Res call({String name, String userId, String profilePicture});
 }
 
 /// @nodoc
@@ -90,12 +96,17 @@ class __$$_SuggestionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? userId = null,
     Object? profilePicture = null,
   }) {
     return _then(_$_Suggestion(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
       profilePicture: null == profilePicture
           ? _value.profilePicture
@@ -108,7 +119,9 @@ class __$$_SuggestionCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Suggestion extends _Suggestion with DiagnosticableTreeMixin {
-  _$_Suggestion({required this.name, required this.profilePicture}) : super._();
+  _$_Suggestion(
+      {required this.name, required this.userId, required this.profilePicture})
+      : super._();
 
   factory _$_Suggestion.fromJson(Map<String, dynamic> json) =>
       _$$_SuggestionFromJson(json);
@@ -116,11 +129,13 @@ class _$_Suggestion extends _Suggestion with DiagnosticableTreeMixin {
   @override
   final String name;
   @override
+  final String userId;
+  @override
   final String profilePicture;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Suggestion(name: $name, profilePicture: $profilePicture)';
+    return 'Suggestion(name: $name, userId: $userId, profilePicture: $profilePicture)';
   }
 
   @override
@@ -129,6 +144,7 @@ class _$_Suggestion extends _Suggestion with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'Suggestion'))
       ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('profilePicture', profilePicture));
   }
 
@@ -138,13 +154,14 @@ class _$_Suggestion extends _Suggestion with DiagnosticableTreeMixin {
         (other.runtimeType == runtimeType &&
             other is _$_Suggestion &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.profilePicture, profilePicture) ||
                 other.profilePicture == profilePicture));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, profilePicture);
+  int get hashCode => Object.hash(runtimeType, name, userId, profilePicture);
 
   @JsonKey(ignore: true)
   @override
@@ -163,6 +180,7 @@ class _$_Suggestion extends _Suggestion with DiagnosticableTreeMixin {
 abstract class _Suggestion extends Suggestion {
   factory _Suggestion(
       {required final String name,
+      required final String userId,
       required final String profilePicture}) = _$_Suggestion;
   _Suggestion._() : super._();
 
@@ -171,6 +189,8 @@ abstract class _Suggestion extends Suggestion {
 
   @override
   String get name;
+  @override
+  String get userId;
   @override
   String get profilePicture;
   @override

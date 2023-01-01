@@ -5,4 +5,11 @@ import '../entity/entities.dart';
 
 abstract class SuggestionsRepository {
   Future<Either<List<Suggestion>, AppError>> getSuggestions(AppUser appUser);
+
+  Future<Either<void, AppError>> likeUser(AppUser appUser, String likedUserId);
+
+  Future<Either<void, AppError>> dislikeUser(
+    AppUser appUser,
+    String dislikedUserId,
+  );
 }

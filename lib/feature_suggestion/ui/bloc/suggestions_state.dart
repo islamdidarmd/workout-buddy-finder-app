@@ -8,6 +8,12 @@ class SuggestionsState with _$SuggestionsState {
 
   factory SuggestionsState.error(AppError appError) = _SuggestionsErrorState;
 
+  factory SuggestionsState.interactionSuccess(String userId) =
+      _InteractionSuccessState;
+
+  factory SuggestionsState.interactionError(AppError appError) =
+      _InteractionErrorState;
+
   factory SuggestionsState.suggestionsFetched(List<Suggestion> suggestions) =
       _SuggestionsFetchedState;
 }

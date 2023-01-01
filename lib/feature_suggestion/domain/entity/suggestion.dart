@@ -6,6 +6,7 @@ class Suggestion with _$Suggestion {
 
   factory Suggestion({
     required String name,
+    required String userId,
     required String profilePicture,
   }) = _Suggestion;
 

@@ -20,32 +20,44 @@ mixin _$SuggestionsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AppUser appUser) loadSuggestions,
+    required TResult Function(AppUser appUser, String userId) likeUser,
+    required TResult Function(AppUser appUser, String userId) dislikeUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AppUser appUser)? loadSuggestions,
+    TResult? Function(AppUser appUser, String userId)? likeUser,
+    TResult? Function(AppUser appUser, String userId)? dislikeUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AppUser appUser)? loadSuggestions,
+    TResult Function(AppUser appUser, String userId)? likeUser,
+    TResult Function(AppUser appUser, String userId)? dislikeUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadSuggestionsEvent value) loadSuggestions,
+    required TResult Function(_LikeUserEvent value) likeUser,
+    required TResult Function(_DislikeUserEvent value) dislikeUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult? Function(_LikeUserEvent value)? likeUser,
+    TResult? Function(_DislikeUserEvent value)? dislikeUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult Function(_LikeUserEvent value)? likeUser,
+    TResult Function(_DislikeUserEvent value)? dislikeUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -179,6 +191,8 @@ class _$_LoadSuggestionsEvent
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AppUser appUser) loadSuggestions,
+    required TResult Function(AppUser appUser, String userId) likeUser,
+    required TResult Function(AppUser appUser, String userId) dislikeUser,
   }) {
     return loadSuggestions(appUser);
   }
@@ -187,6 +201,8 @@ class _$_LoadSuggestionsEvent
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AppUser appUser)? loadSuggestions,
+    TResult? Function(AppUser appUser, String userId)? likeUser,
+    TResult? Function(AppUser appUser, String userId)? dislikeUser,
   }) {
     return loadSuggestions?.call(appUser);
   }
@@ -195,6 +211,8 @@ class _$_LoadSuggestionsEvent
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AppUser appUser)? loadSuggestions,
+    TResult Function(AppUser appUser, String userId)? likeUser,
+    TResult Function(AppUser appUser, String userId)? dislikeUser,
     required TResult orElse(),
   }) {
     if (loadSuggestions != null) {
@@ -207,6 +225,8 @@ class _$_LoadSuggestionsEvent
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadSuggestionsEvent value) loadSuggestions,
+    required TResult Function(_LikeUserEvent value) likeUser,
+    required TResult Function(_DislikeUserEvent value) dislikeUser,
   }) {
     return loadSuggestions(this);
   }
@@ -215,6 +235,8 @@ class _$_LoadSuggestionsEvent
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult? Function(_LikeUserEvent value)? likeUser,
+    TResult? Function(_DislikeUserEvent value)? dislikeUser,
   }) {
     return loadSuggestions?.call(this);
   }
@@ -223,6 +245,8 @@ class _$_LoadSuggestionsEvent
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult Function(_LikeUserEvent value)? likeUser,
+    TResult Function(_DislikeUserEvent value)? dislikeUser,
     required TResult orElse(),
   }) {
     if (loadSuggestions != null) {
@@ -245,12 +269,346 @@ abstract class _LoadSuggestionsEvent implements SuggestionsEvent {
 }
 
 /// @nodoc
+abstract class _$$_LikeUserEventCopyWith<$Res>
+    implements $SuggestionsEventCopyWith<$Res> {
+  factory _$$_LikeUserEventCopyWith(
+          _$_LikeUserEvent value, $Res Function(_$_LikeUserEvent) then) =
+      __$$_LikeUserEventCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({AppUser appUser, String userId});
+
+  @override
+  $AppUserCopyWith<$Res> get appUser;
+}
+
+/// @nodoc
+class __$$_LikeUserEventCopyWithImpl<$Res>
+    extends _$SuggestionsEventCopyWithImpl<$Res, _$_LikeUserEvent>
+    implements _$$_LikeUserEventCopyWith<$Res> {
+  __$$_LikeUserEventCopyWithImpl(
+      _$_LikeUserEvent _value, $Res Function(_$_LikeUserEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appUser = null,
+    Object? userId = null,
+  }) {
+    return _then(_$_LikeUserEvent(
+      null == appUser
+          ? _value.appUser
+          : appUser // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LikeUserEvent with DiagnosticableTreeMixin implements _LikeUserEvent {
+  _$_LikeUserEvent(this.appUser, this.userId);
+
+  @override
+  final AppUser appUser;
+  @override
+  final String userId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SuggestionsEvent.likeUser(appUser: $appUser, userId: $userId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SuggestionsEvent.likeUser'))
+      ..add(DiagnosticsProperty('appUser', appUser))
+      ..add(DiagnosticsProperty('userId', userId));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LikeUserEvent &&
+            (identical(other.appUser, appUser) || other.appUser == appUser) &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, appUser, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LikeUserEventCopyWith<_$_LikeUserEvent> get copyWith =>
+      __$$_LikeUserEventCopyWithImpl<_$_LikeUserEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AppUser appUser) loadSuggestions,
+    required TResult Function(AppUser appUser, String userId) likeUser,
+    required TResult Function(AppUser appUser, String userId) dislikeUser,
+  }) {
+    return likeUser(appUser, userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AppUser appUser)? loadSuggestions,
+    TResult? Function(AppUser appUser, String userId)? likeUser,
+    TResult? Function(AppUser appUser, String userId)? dislikeUser,
+  }) {
+    return likeUser?.call(appUser, userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AppUser appUser)? loadSuggestions,
+    TResult Function(AppUser appUser, String userId)? likeUser,
+    TResult Function(AppUser appUser, String userId)? dislikeUser,
+    required TResult orElse(),
+  }) {
+    if (likeUser != null) {
+      return likeUser(appUser, userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadSuggestionsEvent value) loadSuggestions,
+    required TResult Function(_LikeUserEvent value) likeUser,
+    required TResult Function(_DislikeUserEvent value) dislikeUser,
+  }) {
+    return likeUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult? Function(_LikeUserEvent value)? likeUser,
+    TResult? Function(_DislikeUserEvent value)? dislikeUser,
+  }) {
+    return likeUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult Function(_LikeUserEvent value)? likeUser,
+    TResult Function(_DislikeUserEvent value)? dislikeUser,
+    required TResult orElse(),
+  }) {
+    if (likeUser != null) {
+      return likeUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LikeUserEvent implements SuggestionsEvent {
+  factory _LikeUserEvent(final AppUser appUser, final String userId) =
+      _$_LikeUserEvent;
+
+  @override
+  AppUser get appUser;
+  String get userId;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LikeUserEventCopyWith<_$_LikeUserEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DislikeUserEventCopyWith<$Res>
+    implements $SuggestionsEventCopyWith<$Res> {
+  factory _$$_DislikeUserEventCopyWith(
+          _$_DislikeUserEvent value, $Res Function(_$_DislikeUserEvent) then) =
+      __$$_DislikeUserEventCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({AppUser appUser, String userId});
+
+  @override
+  $AppUserCopyWith<$Res> get appUser;
+}
+
+/// @nodoc
+class __$$_DislikeUserEventCopyWithImpl<$Res>
+    extends _$SuggestionsEventCopyWithImpl<$Res, _$_DislikeUserEvent>
+    implements _$$_DislikeUserEventCopyWith<$Res> {
+  __$$_DislikeUserEventCopyWithImpl(
+      _$_DislikeUserEvent _value, $Res Function(_$_DislikeUserEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appUser = null,
+    Object? userId = null,
+  }) {
+    return _then(_$_DislikeUserEvent(
+      null == appUser
+          ? _value.appUser
+          : appUser // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DislikeUserEvent
+    with DiagnosticableTreeMixin
+    implements _DislikeUserEvent {
+  _$_DislikeUserEvent(this.appUser, this.userId);
+
+  @override
+  final AppUser appUser;
+  @override
+  final String userId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SuggestionsEvent.dislikeUser(appUser: $appUser, userId: $userId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SuggestionsEvent.dislikeUser'))
+      ..add(DiagnosticsProperty('appUser', appUser))
+      ..add(DiagnosticsProperty('userId', userId));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DislikeUserEvent &&
+            (identical(other.appUser, appUser) || other.appUser == appUser) &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, appUser, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DislikeUserEventCopyWith<_$_DislikeUserEvent> get copyWith =>
+      __$$_DislikeUserEventCopyWithImpl<_$_DislikeUserEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AppUser appUser) loadSuggestions,
+    required TResult Function(AppUser appUser, String userId) likeUser,
+    required TResult Function(AppUser appUser, String userId) dislikeUser,
+  }) {
+    return dislikeUser(appUser, userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AppUser appUser)? loadSuggestions,
+    TResult? Function(AppUser appUser, String userId)? likeUser,
+    TResult? Function(AppUser appUser, String userId)? dislikeUser,
+  }) {
+    return dislikeUser?.call(appUser, userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AppUser appUser)? loadSuggestions,
+    TResult Function(AppUser appUser, String userId)? likeUser,
+    TResult Function(AppUser appUser, String userId)? dislikeUser,
+    required TResult orElse(),
+  }) {
+    if (dislikeUser != null) {
+      return dislikeUser(appUser, userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadSuggestionsEvent value) loadSuggestions,
+    required TResult Function(_LikeUserEvent value) likeUser,
+    required TResult Function(_DislikeUserEvent value) dislikeUser,
+  }) {
+    return dislikeUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult? Function(_LikeUserEvent value)? likeUser,
+    TResult? Function(_DislikeUserEvent value)? dislikeUser,
+  }) {
+    return dislikeUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult Function(_LikeUserEvent value)? likeUser,
+    TResult Function(_DislikeUserEvent value)? dislikeUser,
+    required TResult orElse(),
+  }) {
+    if (dislikeUser != null) {
+      return dislikeUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DislikeUserEvent implements SuggestionsEvent {
+  factory _DislikeUserEvent(final AppUser appUser, final String userId) =
+      _$_DislikeUserEvent;
+
+  @override
+  AppUser get appUser;
+  String get userId;
+  @override
+  @JsonKey(ignore: true)
+  _$$_DislikeUserEventCopyWith<_$_DislikeUserEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$SuggestionsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AppError appError) error,
+    required TResult Function(String userId) interactionSuccess,
+    required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
   }) =>
       throw _privateConstructorUsedError;
@@ -259,6 +617,8 @@ mixin _$SuggestionsState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AppError appError)? error,
+    TResult? Function(String userId)? interactionSuccess,
+    TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
   }) =>
       throw _privateConstructorUsedError;
@@ -267,6 +627,8 @@ mixin _$SuggestionsState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AppError appError)? error,
+    TResult Function(String userId)? interactionSuccess,
+    TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
     required TResult orElse(),
   }) =>
@@ -276,6 +638,9 @@ mixin _$SuggestionsState {
     required TResult Function(_SuggestionsInitialState value) initial,
     required TResult Function(_SuggestionsLoadingState value) loading,
     required TResult Function(_SuggestionsErrorState value) error,
+    required TResult Function(_InteractionSuccessState value)
+        interactionSuccess,
+    required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
   }) =>
@@ -285,6 +650,8 @@ mixin _$SuggestionsState {
     TResult? Function(_SuggestionsInitialState value)? initial,
     TResult? Function(_SuggestionsLoadingState value)? loading,
     TResult? Function(_SuggestionsErrorState value)? error,
+    TResult? Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
   }) =>
       throw _privateConstructorUsedError;
@@ -293,6 +660,8 @@ mixin _$SuggestionsState {
     TResult Function(_SuggestionsInitialState value)? initial,
     TResult Function(_SuggestionsLoadingState value)? loading,
     TResult Function(_SuggestionsErrorState value)? error,
+    TResult Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
     required TResult orElse(),
   }) =>
@@ -367,6 +736,8 @@ class _$_SuggestionsInitialState
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AppError appError) error,
+    required TResult Function(String userId) interactionSuccess,
+    required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
   }) {
     return initial();
@@ -378,6 +749,8 @@ class _$_SuggestionsInitialState
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AppError appError)? error,
+    TResult? Function(String userId)? interactionSuccess,
+    TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
   }) {
     return initial?.call();
@@ -389,6 +762,8 @@ class _$_SuggestionsInitialState
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AppError appError)? error,
+    TResult Function(String userId)? interactionSuccess,
+    TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
     required TResult orElse(),
   }) {
@@ -404,6 +779,9 @@ class _$_SuggestionsInitialState
     required TResult Function(_SuggestionsInitialState value) initial,
     required TResult Function(_SuggestionsLoadingState value) loading,
     required TResult Function(_SuggestionsErrorState value) error,
+    required TResult Function(_InteractionSuccessState value)
+        interactionSuccess,
+    required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
   }) {
@@ -416,6 +794,8 @@ class _$_SuggestionsInitialState
     TResult? Function(_SuggestionsInitialState value)? initial,
     TResult? Function(_SuggestionsLoadingState value)? loading,
     TResult? Function(_SuggestionsErrorState value)? error,
+    TResult? Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
   }) {
     return initial?.call(this);
@@ -427,6 +807,8 @@ class _$_SuggestionsInitialState
     TResult Function(_SuggestionsInitialState value)? initial,
     TResult Function(_SuggestionsLoadingState value)? loading,
     TResult Function(_SuggestionsErrorState value)? error,
+    TResult Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
     required TResult orElse(),
   }) {
@@ -491,6 +873,8 @@ class _$_SuggestionsLoadingState
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AppError appError) error,
+    required TResult Function(String userId) interactionSuccess,
+    required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
   }) {
     return loading();
@@ -502,6 +886,8 @@ class _$_SuggestionsLoadingState
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AppError appError)? error,
+    TResult? Function(String userId)? interactionSuccess,
+    TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
   }) {
     return loading?.call();
@@ -513,6 +899,8 @@ class _$_SuggestionsLoadingState
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AppError appError)? error,
+    TResult Function(String userId)? interactionSuccess,
+    TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
     required TResult orElse(),
   }) {
@@ -528,6 +916,9 @@ class _$_SuggestionsLoadingState
     required TResult Function(_SuggestionsInitialState value) initial,
     required TResult Function(_SuggestionsLoadingState value) loading,
     required TResult Function(_SuggestionsErrorState value) error,
+    required TResult Function(_InteractionSuccessState value)
+        interactionSuccess,
+    required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
   }) {
@@ -540,6 +931,8 @@ class _$_SuggestionsLoadingState
     TResult? Function(_SuggestionsInitialState value)? initial,
     TResult? Function(_SuggestionsLoadingState value)? loading,
     TResult? Function(_SuggestionsErrorState value)? error,
+    TResult? Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
   }) {
     return loading?.call(this);
@@ -551,6 +944,8 @@ class _$_SuggestionsLoadingState
     TResult Function(_SuggestionsInitialState value)? initial,
     TResult Function(_SuggestionsLoadingState value)? loading,
     TResult Function(_SuggestionsErrorState value)? error,
+    TResult Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
     required TResult orElse(),
   }) {
@@ -644,6 +1039,8 @@ class _$_SuggestionsErrorState
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AppError appError) error,
+    required TResult Function(String userId) interactionSuccess,
+    required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
   }) {
     return error(appError);
@@ -655,6 +1052,8 @@ class _$_SuggestionsErrorState
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AppError appError)? error,
+    TResult? Function(String userId)? interactionSuccess,
+    TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
   }) {
     return error?.call(appError);
@@ -666,6 +1065,8 @@ class _$_SuggestionsErrorState
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AppError appError)? error,
+    TResult Function(String userId)? interactionSuccess,
+    TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
     required TResult orElse(),
   }) {
@@ -681,6 +1082,9 @@ class _$_SuggestionsErrorState
     required TResult Function(_SuggestionsInitialState value) initial,
     required TResult Function(_SuggestionsLoadingState value) loading,
     required TResult Function(_SuggestionsErrorState value) error,
+    required TResult Function(_InteractionSuccessState value)
+        interactionSuccess,
+    required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
   }) {
@@ -693,6 +1097,8 @@ class _$_SuggestionsErrorState
     TResult? Function(_SuggestionsInitialState value)? initial,
     TResult? Function(_SuggestionsLoadingState value)? loading,
     TResult? Function(_SuggestionsErrorState value)? error,
+    TResult? Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
   }) {
     return error?.call(this);
@@ -704,6 +1110,8 @@ class _$_SuggestionsErrorState
     TResult Function(_SuggestionsInitialState value)? initial,
     TResult Function(_SuggestionsLoadingState value)? loading,
     TResult Function(_SuggestionsErrorState value)? error,
+    TResult Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
     required TResult orElse(),
   }) {
@@ -721,6 +1129,350 @@ abstract class _SuggestionsErrorState implements SuggestionsState {
   AppError get appError;
   @JsonKey(ignore: true)
   _$$_SuggestionsErrorStateCopyWith<_$_SuggestionsErrorState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_InteractionSuccessStateCopyWith<$Res> {
+  factory _$$_InteractionSuccessStateCopyWith(_$_InteractionSuccessState value,
+          $Res Function(_$_InteractionSuccessState) then) =
+      __$$_InteractionSuccessStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userId});
+}
+
+/// @nodoc
+class __$$_InteractionSuccessStateCopyWithImpl<$Res>
+    extends _$SuggestionsStateCopyWithImpl<$Res, _$_InteractionSuccessState>
+    implements _$$_InteractionSuccessStateCopyWith<$Res> {
+  __$$_InteractionSuccessStateCopyWithImpl(_$_InteractionSuccessState _value,
+      $Res Function(_$_InteractionSuccessState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+  }) {
+    return _then(_$_InteractionSuccessState(
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_InteractionSuccessState
+    with DiagnosticableTreeMixin
+    implements _InteractionSuccessState {
+  _$_InteractionSuccessState(this.userId);
+
+  @override
+  final String userId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SuggestionsState.interactionSuccess(userId: $userId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SuggestionsState.interactionSuccess'))
+      ..add(DiagnosticsProperty('userId', userId));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InteractionSuccessState &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InteractionSuccessStateCopyWith<_$_InteractionSuccessState>
+      get copyWith =>
+          __$$_InteractionSuccessStateCopyWithImpl<_$_InteractionSuccessState>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AppError appError) error,
+    required TResult Function(String userId) interactionSuccess,
+    required TResult Function(AppError appError) interactionError,
+    required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+  }) {
+    return interactionSuccess(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AppError appError)? error,
+    TResult? Function(String userId)? interactionSuccess,
+    TResult? Function(AppError appError)? interactionError,
+    TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+  }) {
+    return interactionSuccess?.call(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AppError appError)? error,
+    TResult Function(String userId)? interactionSuccess,
+    TResult Function(AppError appError)? interactionError,
+    TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    required TResult orElse(),
+  }) {
+    if (interactionSuccess != null) {
+      return interactionSuccess(userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SuggestionsInitialState value) initial,
+    required TResult Function(_SuggestionsLoadingState value) loading,
+    required TResult Function(_SuggestionsErrorState value) error,
+    required TResult Function(_InteractionSuccessState value)
+        interactionSuccess,
+    required TResult Function(_InteractionErrorState value) interactionError,
+    required TResult Function(_SuggestionsFetchedState value)
+        suggestionsFetched,
+  }) {
+    return interactionSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SuggestionsInitialState value)? initial,
+    TResult? Function(_SuggestionsLoadingState value)? loading,
+    TResult? Function(_SuggestionsErrorState value)? error,
+    TResult? Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult? Function(_InteractionErrorState value)? interactionError,
+    TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+  }) {
+    return interactionSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SuggestionsInitialState value)? initial,
+    TResult Function(_SuggestionsLoadingState value)? loading,
+    TResult Function(_SuggestionsErrorState value)? error,
+    TResult Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult Function(_InteractionErrorState value)? interactionError,
+    TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    required TResult orElse(),
+  }) {
+    if (interactionSuccess != null) {
+      return interactionSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InteractionSuccessState implements SuggestionsState {
+  factory _InteractionSuccessState(final String userId) =
+      _$_InteractionSuccessState;
+
+  String get userId;
+  @JsonKey(ignore: true)
+  _$$_InteractionSuccessStateCopyWith<_$_InteractionSuccessState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_InteractionErrorStateCopyWith<$Res> {
+  factory _$$_InteractionErrorStateCopyWith(_$_InteractionErrorState value,
+          $Res Function(_$_InteractionErrorState) then) =
+      __$$_InteractionErrorStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AppError appError});
+}
+
+/// @nodoc
+class __$$_InteractionErrorStateCopyWithImpl<$Res>
+    extends _$SuggestionsStateCopyWithImpl<$Res, _$_InteractionErrorState>
+    implements _$$_InteractionErrorStateCopyWith<$Res> {
+  __$$_InteractionErrorStateCopyWithImpl(_$_InteractionErrorState _value,
+      $Res Function(_$_InteractionErrorState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appError = null,
+  }) {
+    return _then(_$_InteractionErrorState(
+      null == appError
+          ? _value.appError
+          : appError // ignore: cast_nullable_to_non_nullable
+              as AppError,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_InteractionErrorState
+    with DiagnosticableTreeMixin
+    implements _InteractionErrorState {
+  _$_InteractionErrorState(this.appError);
+
+  @override
+  final AppError appError;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SuggestionsState.interactionError(appError: $appError)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SuggestionsState.interactionError'))
+      ..add(DiagnosticsProperty('appError', appError));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_InteractionErrorState &&
+            (identical(other.appError, appError) ||
+                other.appError == appError));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, appError);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InteractionErrorStateCopyWith<_$_InteractionErrorState> get copyWith =>
+      __$$_InteractionErrorStateCopyWithImpl<_$_InteractionErrorState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AppError appError) error,
+    required TResult Function(String userId) interactionSuccess,
+    required TResult Function(AppError appError) interactionError,
+    required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+  }) {
+    return interactionError(appError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AppError appError)? error,
+    TResult? Function(String userId)? interactionSuccess,
+    TResult? Function(AppError appError)? interactionError,
+    TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+  }) {
+    return interactionError?.call(appError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AppError appError)? error,
+    TResult Function(String userId)? interactionSuccess,
+    TResult Function(AppError appError)? interactionError,
+    TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    required TResult orElse(),
+  }) {
+    if (interactionError != null) {
+      return interactionError(appError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SuggestionsInitialState value) initial,
+    required TResult Function(_SuggestionsLoadingState value) loading,
+    required TResult Function(_SuggestionsErrorState value) error,
+    required TResult Function(_InteractionSuccessState value)
+        interactionSuccess,
+    required TResult Function(_InteractionErrorState value) interactionError,
+    required TResult Function(_SuggestionsFetchedState value)
+        suggestionsFetched,
+  }) {
+    return interactionError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SuggestionsInitialState value)? initial,
+    TResult? Function(_SuggestionsLoadingState value)? loading,
+    TResult? Function(_SuggestionsErrorState value)? error,
+    TResult? Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult? Function(_InteractionErrorState value)? interactionError,
+    TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+  }) {
+    return interactionError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SuggestionsInitialState value)? initial,
+    TResult Function(_SuggestionsLoadingState value)? loading,
+    TResult Function(_SuggestionsErrorState value)? error,
+    TResult Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult Function(_InteractionErrorState value)? interactionError,
+    TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    required TResult orElse(),
+  }) {
+    if (interactionError != null) {
+      return interactionError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InteractionErrorState implements SuggestionsState {
+  factory _InteractionErrorState(final AppError appError) =
+      _$_InteractionErrorState;
+
+  AppError get appError;
+  @JsonKey(ignore: true)
+  _$$_InteractionErrorStateCopyWith<_$_InteractionErrorState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -811,6 +1563,8 @@ class _$_SuggestionsFetchedState
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AppError appError) error,
+    required TResult Function(String userId) interactionSuccess,
+    required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
   }) {
     return suggestionsFetched(suggestions);
@@ -822,6 +1576,8 @@ class _$_SuggestionsFetchedState
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AppError appError)? error,
+    TResult? Function(String userId)? interactionSuccess,
+    TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
   }) {
     return suggestionsFetched?.call(suggestions);
@@ -833,6 +1589,8 @@ class _$_SuggestionsFetchedState
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AppError appError)? error,
+    TResult Function(String userId)? interactionSuccess,
+    TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
     required TResult orElse(),
   }) {
@@ -848,6 +1606,9 @@ class _$_SuggestionsFetchedState
     required TResult Function(_SuggestionsInitialState value) initial,
     required TResult Function(_SuggestionsLoadingState value) loading,
     required TResult Function(_SuggestionsErrorState value) error,
+    required TResult Function(_InteractionSuccessState value)
+        interactionSuccess,
+    required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
   }) {
@@ -860,6 +1621,8 @@ class _$_SuggestionsFetchedState
     TResult? Function(_SuggestionsInitialState value)? initial,
     TResult? Function(_SuggestionsLoadingState value)? loading,
     TResult? Function(_SuggestionsErrorState value)? error,
+    TResult? Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
   }) {
     return suggestionsFetched?.call(this);
@@ -871,6 +1634,8 @@ class _$_SuggestionsFetchedState
     TResult Function(_SuggestionsInitialState value)? initial,
     TResult Function(_SuggestionsLoadingState value)? loading,
     TResult Function(_SuggestionsErrorState value)? error,
+    TResult Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
     required TResult orElse(),
   }) {
