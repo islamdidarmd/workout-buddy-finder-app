@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/feature_auth/data/model/model.dart';
 import 'package:workout_buddy_finder/core/model/models.dart';
 import '../../../core/firestore_constants.dart';
 import '../../../core/error/app_error.dart';
@@ -28,21 +27,15 @@ class ProfileRepositoryImpl implements ProfileRepository {
   @override
   Future<Either<void, AppError>> addInterestList(
     AppUser appUser,
-      String interestId,
+    String interestId,
   ) async {
     final usersDb = FirebaseFirestore.instance.collection(users);
     final userDoc = usersDb.doc(appUser.userId);
 
-    final appUserModel = AppUserModel.fromEntity(appUser);
-    final List<String> list = []
-      ..addAll(appUserModel.interestsList)
-      ..add(interestId);
-
-    final updateData = {
-      userInterestList: list,
-    };
     try {
-      await userDoc.update(updateData);
+      await userDoc.update({
+        userInterestList: FieldValue.arrayUnion([interestId]),
+      });
 
       return Left(null);
     } catch (e) {
@@ -53,21 +46,15 @@ class ProfileRepositoryImpl implements ProfileRepository {
   @override
   Future<Either<void, AppError>> removeInterestList(
     AppUser appUser,
-      String interestId,
+    String interestId,
   ) async {
     final usersDb = FirebaseFirestore.instance.collection(users);
     final userDoc = usersDb.doc(appUser.userId);
 
-    final appUserModel = AppUserModel.fromEntity(appUser);
-    final List<String> list = []
-      ..addAll(appUserModel.interestsList)
-      ..remove(interestId);
-
-    final updateData = {
-      userInterestList: list,
-    };
     try {
-      await userDoc.update(updateData);
+      await userDoc.update({
+        userInterestList: FieldValue.arrayRemove([interestId]),
+      });
 
       return Left(null);
     } catch (e) {
