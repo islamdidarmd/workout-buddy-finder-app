@@ -20,18 +20,21 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Position location) signInWithGoogle,
+    required TResult Function() signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Position location)? signInWithGoogle,
+    TResult? Function()? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Position location)? signInWithGoogle,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_SignInWithGoogleEvent value) signInWithGoogle,
+    required TResult Function(_SignOutEvent value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_SignInWithGoogleEvent value)? signInWithGoogle,
+    TResult? Function(_SignOutEvent value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_SignInWithGoogleEvent value)? signInWithGoogle,
+    TResult Function(_SignOutEvent value)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +125,7 @@ class _$_InitialEvent with DiagnosticableTreeMixin implements _InitialEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Position location) signInWithGoogle,
+    required TResult Function() signOut,
   }) {
     return initial();
   }
@@ -128,6 +135,7 @@ class _$_InitialEvent with DiagnosticableTreeMixin implements _InitialEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Position location)? signInWithGoogle,
+    TResult? Function()? signOut,
   }) {
     return initial?.call();
   }
@@ -137,6 +145,7 @@ class _$_InitialEvent with DiagnosticableTreeMixin implements _InitialEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Position location)? signInWithGoogle,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -150,6 +159,7 @@ class _$_InitialEvent with DiagnosticableTreeMixin implements _InitialEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_SignInWithGoogleEvent value) signInWithGoogle,
+    required TResult Function(_SignOutEvent value) signOut,
   }) {
     return initial(this);
   }
@@ -159,6 +169,7 @@ class _$_InitialEvent with DiagnosticableTreeMixin implements _InitialEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_SignInWithGoogleEvent value)? signInWithGoogle,
+    TResult? Function(_SignOutEvent value)? signOut,
   }) {
     return initial?.call(this);
   }
@@ -168,6 +179,7 @@ class _$_InitialEvent with DiagnosticableTreeMixin implements _InitialEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_SignInWithGoogleEvent value)? signInWithGoogle,
+    TResult Function(_SignOutEvent value)? signOut,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -259,6 +271,7 @@ class _$_SignInWithGoogleEvent
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(Position location) signInWithGoogle,
+    required TResult Function() signOut,
   }) {
     return signInWithGoogle(location);
   }
@@ -268,6 +281,7 @@ class _$_SignInWithGoogleEvent
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(Position location)? signInWithGoogle,
+    TResult? Function()? signOut,
   }) {
     return signInWithGoogle?.call(location);
   }
@@ -277,6 +291,7 @@ class _$_SignInWithGoogleEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(Position location)? signInWithGoogle,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -290,6 +305,7 @@ class _$_SignInWithGoogleEvent
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_SignInWithGoogleEvent value) signInWithGoogle,
+    required TResult Function(_SignOutEvent value) signOut,
   }) {
     return signInWithGoogle(this);
   }
@@ -299,6 +315,7 @@ class _$_SignInWithGoogleEvent
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_SignInWithGoogleEvent value)? signInWithGoogle,
+    TResult? Function(_SignOutEvent value)? signOut,
   }) {
     return signInWithGoogle?.call(this);
   }
@@ -308,6 +325,7 @@ class _$_SignInWithGoogleEvent
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_SignInWithGoogleEvent value)? signInWithGoogle,
+    TResult Function(_SignOutEvent value)? signOut,
     required TResult orElse(),
   }) {
     if (signInWithGoogle != null) {
@@ -325,6 +343,120 @@ abstract class _SignInWithGoogleEvent implements AuthEvent {
   @JsonKey(ignore: true)
   _$$_SignInWithGoogleEventCopyWith<_$_SignInWithGoogleEvent> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SignOutEventCopyWith<$Res> {
+  factory _$$_SignOutEventCopyWith(
+          _$_SignOutEvent value, $Res Function(_$_SignOutEvent) then) =
+      __$$_SignOutEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SignOutEventCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_SignOutEvent>
+    implements _$$_SignOutEventCopyWith<$Res> {
+  __$$_SignOutEventCopyWithImpl(
+      _$_SignOutEvent _value, $Res Function(_$_SignOutEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SignOutEvent with DiagnosticableTreeMixin implements _SignOutEvent {
+  const _$_SignOutEvent();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthEvent.signOut()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthEvent.signOut'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SignOutEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(Position location) signInWithGoogle,
+    required TResult Function() signOut,
+  }) {
+    return signOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(Position location)? signInWithGoogle,
+    TResult? Function()? signOut,
+  }) {
+    return signOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(Position location)? signInWithGoogle,
+    TResult Function()? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_SignInWithGoogleEvent value) signInWithGoogle,
+    required TResult Function(_SignOutEvent value) signOut,
+  }) {
+    return signOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_SignInWithGoogleEvent value)? signInWithGoogle,
+    TResult? Function(_SignOutEvent value)? signOut,
+  }) {
+    return signOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_SignInWithGoogleEvent value)? signInWithGoogle,
+    TResult Function(_SignOutEvent value)? signOut,
+    required TResult orElse(),
+  }) {
+    if (signOut != null) {
+      return signOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SignOutEvent implements AuthEvent {
+  const factory _SignOutEvent() = _$_SignOutEvent;
 }
 
 /// @nodoc

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import '../../../feature_auth/ui/ui.dart';
 import '../../../navigation/routes.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/profile_bloc.dart';
@@ -27,16 +28,32 @@ class ProfilePage extends StatelessWidget {
             Positioned(
               right: 0,
               bottom: 0,
-              child: FloatingActionButton(
-                onPressed: () =>
-                    context.push(rootRouteMap[RootRoute.profile_edit]!),
-                child: Icon(FontAwesomeIcons.penToSquare),
+              child: Column(
+                children: [
+                  FloatingActionButton(
+                    onPressed: () =>
+                        context.push(rootRouteMap[RootRoute.profile_edit]!),
+                    heroTag: 'edit',
+                    child: Icon(FontAwesomeIcons.penToSquare),
+                  ),
+                  const SizedBox(height: 16),
+                  FloatingActionButton(
+                    onPressed: () => _onLogout(context),
+                    heroTag: 'logout',
+                    child: Icon(FontAwesomeIcons.arrowRightFromBracket),
+                  ),
+                ],
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _onLogout(BuildContext context) {
+    final result = context.read<AuthBloc>().add(AuthEvent.signOut());
+    context.go(fullScreenRouteMap[FullScreenRoute.login]!);
   }
 
   @override

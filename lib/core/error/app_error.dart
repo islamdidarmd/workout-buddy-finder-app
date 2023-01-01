@@ -10,6 +10,10 @@ class UserNotLoggedInError extends AppError {
   const UserNotLoggedInError() : super(message: "User not logged in Error");
 }
 
+class LogoutFailedError extends AppError {
+  const LogoutFailedError() : super(message: "Failed to logout");
+}
+
 class DataNotFoundError extends AppError {
   const DataNotFoundError() : super(message: "Requested Data not found");
 }

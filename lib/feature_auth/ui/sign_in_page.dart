@@ -13,12 +13,6 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<AuthBloc>()..add(AuthEvent.initial());
-  }
-
   String get _logo => 'assets/icon/app_logo.png';
 
   Widget _slogan(BuildContext context) => Text(

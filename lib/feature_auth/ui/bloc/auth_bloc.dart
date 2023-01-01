@@ -27,6 +27,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final result = await event.when(
         initial: () => _listenAuthState(emit),
         signInWithGoogle: (location) => _signInWithGoogle(location, emit),
+        signOut: () async {
+          final result = await authRepository.signOut();
+        },
       );
     });
   }
