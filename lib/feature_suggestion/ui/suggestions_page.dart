@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'intro.dart';
-import 'suggestion_card.dart';
+import 'suggestion_card_container.dart';
 
 class SuggestionsPage extends StatelessWidget {
   const SuggestionsPage({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class SuggestionsPage extends StatelessWidget {
               child: Padding(
                 padding:
                     const EdgeInsets.all(16.0),
-                child: const SuggestionCard(),
+                child: SuggestionCardContainer(),
               ),
             ),
           ],
