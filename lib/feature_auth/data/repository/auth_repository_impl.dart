@@ -41,6 +41,17 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<Either<void, AppError>> signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+    } catch (e) {
+      return Right(LogoutFailedError());
+    }
+
+    return Left(null);
+  }
+
+  @override
   Stream<UserAuthState> getAuthStateStream() {
     return FirebaseAuth.instance.authStateChanges().map(
       (firebaseUser) {

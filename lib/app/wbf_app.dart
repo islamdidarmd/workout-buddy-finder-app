@@ -56,27 +56,41 @@ class WBFApp extends StatelessWidget {
     );
   }
 
+  Widget buildAppBody(AuthBloc authBloc) {
+    return StreamBuilder<AppUser>(
+      stream: authBloc.appUserStream,
+      builder: (_, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return _buildLoadingState();
+        } else if (snapshot.connectionState == ConnectionState.active &&
+            snapshot.hasData) {
+          return _buildApp(snapshot.requireData);
+        }
+
+        return _buildEmptyState();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AuthBloc>(
-      create: (_) => sl(),
-      child: Builder(
-        builder: (context) {
-          final authBloc = context.read<AuthBloc>();
-
-          return StreamBuilder<AppUser>(
-            stream: authBloc.appUserStream,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return _buildLoadingState();
-              } else if (snapshot.connectionState == ConnectionState.active &&
-                  snapshot.hasData) {
-                return _buildApp(snapshot.requireData);
-              }
-
-              return _buildEmptyState();
-            },
+      create: (_) => sl()..add(AuthEvent.initial()),
+      child: BlocBuilder<AuthBloc, AuthState>(
+        buildWhen: (_, current) {
+          return current.maybeWhen(
+            signedIn: () => true,
+            signedOut: () => true,
+            orElse: () => false,
           );
+        },
+        builder: (context, state) {
+          return state.maybeWhen(
+            signedIn: () => buildAppBody(context.read()),
+            signedOut: () => buildAppBody(context.read()),
+            orElse: () => _buildLoadingState(),
+          );
+          final authBloc = context.read<AuthBloc>();
         },
       ),
     );
