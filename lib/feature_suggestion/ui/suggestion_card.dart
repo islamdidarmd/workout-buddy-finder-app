@@ -1,11 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swipable_stack/swipable_stack.dart';
+import 'empty_suggestion.dart';
 
-import '../../di/service_locator.dart';
 import '../domain/domain.dart';
-import 'bloc/suggestions_bloc.dart';
 import 'suggestions_card_item.dart';
 import 'suggsetion_action.dart';
 
@@ -22,8 +20,9 @@ class SuggestionCard extends StatelessWidget {
   final _verticalSwipeThreshold = 0.8;
 
   void _onSwipeCompleted(index, direction) {
+    final itemIndex = index % _suggestions.length;
     if (kDebugMode) {
-      print('$index, $direction');
+      print('$itemIndex, $direction');
     }
   }
 
@@ -38,6 +37,10 @@ class SuggestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (_suggestions.isEmpty) {
+      return EmptySuggestion();
+    }
+
     return Stack(
       children: [
         Positioned.fill(
