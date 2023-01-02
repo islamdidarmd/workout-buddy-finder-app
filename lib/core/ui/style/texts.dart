@@ -3,12 +3,25 @@
 
 import 'package:flutter/material.dart';
 
+Text lightBody(context, String text, {Color? color}) => Text(
+      text,
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: color),
+    );
+
 Text mediumBody(context, String text) => Text(
       text,
       style: Theme.of(context)
           .textTheme
           .bodyMedium
           ?.copyWith(fontWeight: FontWeight.bold),
+    );
+
+Text mediumTitle(context, String text, {Color? color}) => Text(
+      text,
+      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: color,
+          ),
     );
 
 Text mediumBoldTitle(context, String text) => Text(
@@ -18,6 +31,7 @@ Text mediumBoldTitle(context, String text) => Text(
           .titleMedium
           ?.copyWith(fontWeight: FontWeight.bold),
     );
+
 Text largeBoldTitle(context, String text) => Text(
       text,
       style: Theme.of(context)
