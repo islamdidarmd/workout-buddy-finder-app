@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swipable_stack/swipable_stack.dart';
+import 'package:swipable_stack/src/model/swipe_properties.dart';
 import 'package:workout_buddy_finder/core/core.dart';
+import 'card_overlay.dart';
 import 'bloc/suggestions_bloc.dart';
 import 'empty_suggestion.dart';
 
@@ -11,7 +13,7 @@ import '../domain/domain.dart';
 import 'suggestions_card_item.dart';
 import 'suggestion_action.dart';
 
-class SuggestionCard extends StatefulWidget {
+class SuggestionCard extends StatelessWidget {
   SuggestionCard({
     Key? key,
     required List<Suggestion> suggestion,
@@ -19,14 +21,7 @@ class SuggestionCard extends StatefulWidget {
         super(key: key);
 
   final List<Suggestion> _suggestions;
-
-  @override
-  State<SuggestionCard> createState() => _SuggestionCardState();
-}
-
-class _SuggestionCardState extends State<SuggestionCard> {
   final SwipableStackController _controller = SwipableStackController();
-  final List<Suggestion> suggestions = [];
 
   final _horizontalSwipeThreshold = 0.8;
 
@@ -34,46 +29,50 @@ class _SuggestionCardState extends State<SuggestionCard> {
 
   final _defaultItemCount = 3;
 
-  @override
-  void initState() {
-    super.initState();
-    suggestions.addAll(widget._suggestions);
-  }
-
   void _onSwipeCompleted(
     BuildContext context,
     int index,
     SwipeDirection direction,
   ) {
-    final itemIndex = index % suggestions.length;
+    final itemIndex = index % _suggestions.length;
     if (direction == SwipeDirection.left) {
       context.read<SuggestionsBloc>().add(SuggestionsEvent.dislikeUser(
             context.read<AppUser>(),
-            suggestions[itemIndex].userId,
+            _suggestions[itemIndex].userId,
           ));
     } else if (direction == SwipeDirection.right) {
       context.read<SuggestionsBloc>().add(SuggestionsEvent.likeUser(
             context.read<AppUser>(),
-            suggestions[itemIndex].userId,
+            _suggestions[itemIndex].userId,
           ));
     }
   }
 
-  Widget _buildSuggestionContent(_, properties) {
-    final itemIndex = properties.index % suggestions.length;
+  Widget _buildSuggestionContent(
+    BuildContext _,
+    ItemSwipeProperties properties,
+  ) {
+    final itemIndex = properties.index % _suggestions.length;
 
-    return Stack(children: [
-      SuggestionsCardItem(suggestion: suggestions[itemIndex]),
-      // More custom overlay possible than with overlayBuilder.
-    ]);
+    return SuggestionsCardItem(suggestion: _suggestions[itemIndex]);
   }
 
-  void _listenToSuggestionBlocState(BuildContext _, SuggestionsState state) {
+  Widget _buildOverlay(BuildContext _, OverlaySwipeProperties properties) {
+    final itemIndex = properties.index % _suggestions.length;
+
+    return CardOverlay(
+      direction: properties.direction!,
+      swipeProgress: properties.swipeProgress,
+    );
+  }
+
+  void _listenToSuggestionBlocState(
+      BuildContext context, SuggestionsState state) {
     state.maybeWhen(
-      interactionSuccess: (userId) {
-        setState(() {
-          suggestions.removeWhere((e) => e.userId == userId);
-        });
+      interactionError: (userId) {
+        final snackbarState = ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed ')),
+        );
       },
       orElse: () {},
     );
@@ -81,7 +80,7 @@ class _SuggestionCardState extends State<SuggestionCard> {
 
   @override
   Widget build(BuildContext context) {
-    if (suggestions.isEmpty) {
+    if (_suggestions.isEmpty) {
       return EmptySuggestion();
     }
 
@@ -91,7 +90,7 @@ class _SuggestionCardState extends State<SuggestionCard> {
         children: [
           Positioned.fill(
             child: SwipableStack(
-              itemCount: min(_defaultItemCount, suggestions.length),
+              itemCount: min(_defaultItemCount, _suggestions.length),
               controller: _controller,
               detectableSwipeDirections: const {
                 SwipeDirection.left,
@@ -103,6 +102,8 @@ class _SuggestionCardState extends State<SuggestionCard> {
               horizontalSwipeThreshold: _horizontalSwipeThreshold,
               verticalSwipeThreshold: _verticalSwipeThreshold,
               builder: _buildSuggestionContent,
+              overlayBuilder: _buildOverlay,
+              swipeAnchor: SwipeAnchor.bottom,
             ),
           ),
           Positioned(
