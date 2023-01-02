@@ -13,6 +13,7 @@ class BottomNav extends StatelessWidget {
       labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
       selectedIndex: _getIndexForLocation(GoRouter.of(context).location),
       destinations: _bottomNavItems,
+      height: 65,
       onDestinationSelected: (index) => context.go(_getLocationForIndex(index)),
     );
   }
@@ -24,18 +25,18 @@ class BottomNav extends StatelessWidget {
           label: 'Suggestions',
         ),
         BottomNavItem(
+          initialLocation: rootRouteMap[RootRoute.chat]!,
+          icon: Icon(FontAwesomeIcons.envelope),
+          label: 'Messaging',
+        ),
+        BottomNavItem(
           initialLocation: rootRouteMap[RootRoute.profile]!,
           icon: Icon(FontAwesomeIcons.user),
           label: 'Profile',
         ),
         BottomNavItem(
-          initialLocation: rootRouteMap[RootRoute.chat]!,
-          icon: Icon(FontAwesomeIcons.envelope),
-          label: 'Chat',
-        ),
-        BottomNavItem(
           initialLocation: rootRouteMap[RootRoute.settings]!,
-          icon: Icon(FontAwesomeIcons.sliders),
+          icon: Icon(FontAwesomeIcons.gear),
           label: 'Settings',
         ),
       ];
