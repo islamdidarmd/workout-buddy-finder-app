@@ -18,10 +18,12 @@ class SuggestionAction extends StatelessWidget {
       children: [
         FloatingActionButton.large(
           child: Icon(FontAwesomeIcons.xmark),
+          shape: CircleBorder(),
           onPressed: onDislike,
         ),
         FloatingActionButton.large(
           child: Icon(FontAwesomeIcons.solidHeart),
+          shape: CircleBorder(),
           onPressed: onLike,
         ),
       ],
