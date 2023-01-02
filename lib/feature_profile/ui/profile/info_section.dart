@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../core/core.dart';
 import 'location_text.dart';
-import 'profile_avatar.dart';
+import '../widgets/profile_avatar.dart';
 
 class InfoSection extends StatelessWidget {
   const InfoSection({Key? key}) : super(key: key);
