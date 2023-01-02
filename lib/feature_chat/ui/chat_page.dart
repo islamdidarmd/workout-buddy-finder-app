@@ -6,9 +6,10 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        AppBar(
-          title: Text('Coming soon...'),
+        Center(
+          child: Text('Coming soon...'),
         )
       ],
     );
