@@ -8,6 +8,8 @@ class Suggestion with _$Suggestion {
     required String name,
     required String userId,
     required String profilePicture,
+    required double lat,
+    required double long,
   }) = _Suggestion;
 
   factory Suggestion.fromJson(Map<String, dynamic> json) =>
