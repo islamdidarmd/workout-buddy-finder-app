@@ -23,6 +23,8 @@ mixin _$Suggestion {
   String get name => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
   String get profilePicture => throw _privateConstructorUsedError;
+  double get lat => throw _privateConstructorUsedError;
+  double get long => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +38,12 @@ abstract class $SuggestionCopyWith<$Res> {
           Suggestion value, $Res Function(Suggestion) then) =
       _$SuggestionCopyWithImpl<$Res, Suggestion>;
   @useResult
-  $Res call({String name, String userId, String profilePicture});
+  $Res call(
+      {String name,
+      String userId,
+      String profilePicture,
+      double lat,
+      double long});
 }
 
 /// @nodoc
@@ -55,6 +62,8 @@ class _$SuggestionCopyWithImpl<$Res, $Val extends Suggestion>
     Object? name = null,
     Object? userId = null,
     Object? profilePicture = null,
+    Object? lat = null,
+    Object? long = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -69,6 +78,14 @@ class _$SuggestionCopyWithImpl<$Res, $Val extends Suggestion>
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
               as String,
+      lat: null == lat
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      long: null == long
+          ? _value.long
+          : long // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -81,7 +98,12 @@ abstract class _$$_SuggestionCopyWith<$Res>
       __$$_SuggestionCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String userId, String profilePicture});
+  $Res call(
+      {String name,
+      String userId,
+      String profilePicture,
+      double lat,
+      double long});
 }
 
 /// @nodoc
@@ -98,6 +120,8 @@ class __$$_SuggestionCopyWithImpl<$Res>
     Object? name = null,
     Object? userId = null,
     Object? profilePicture = null,
+    Object? lat = null,
+    Object? long = null,
   }) {
     return _then(_$_Suggestion(
       name: null == name
@@ -112,6 +136,14 @@ class __$$_SuggestionCopyWithImpl<$Res>
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
               as String,
+      lat: null == lat
+          ? _value.lat
+          : lat // ignore: cast_nullable_to_non_nullable
+              as double,
+      long: null == long
+          ? _value.long
+          : long // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -120,7 +152,11 @@ class __$$_SuggestionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Suggestion extends _Suggestion with DiagnosticableTreeMixin {
   _$_Suggestion(
-      {required this.name, required this.userId, required this.profilePicture})
+      {required this.name,
+      required this.userId,
+      required this.profilePicture,
+      required this.lat,
+      required this.long})
       : super._();
 
   factory _$_Suggestion.fromJson(Map<String, dynamic> json) =>
@@ -132,10 +168,14 @@ class _$_Suggestion extends _Suggestion with DiagnosticableTreeMixin {
   final String userId;
   @override
   final String profilePicture;
+  @override
+  final double lat;
+  @override
+  final double long;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Suggestion(name: $name, userId: $userId, profilePicture: $profilePicture)';
+    return 'Suggestion(name: $name, userId: $userId, profilePicture: $profilePicture, lat: $lat, long: $long)';
   }
 
   @override
@@ -145,7 +185,9 @@ class _$_Suggestion extends _Suggestion with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', 'Suggestion'))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('userId', userId))
-      ..add(DiagnosticsProperty('profilePicture', profilePicture));
+      ..add(DiagnosticsProperty('profilePicture', profilePicture))
+      ..add(DiagnosticsProperty('lat', lat))
+      ..add(DiagnosticsProperty('long', long));
   }
 
   @override
@@ -156,12 +198,15 @@ class _$_Suggestion extends _Suggestion with DiagnosticableTreeMixin {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.profilePicture, profilePicture) ||
-                other.profilePicture == profilePicture));
+                other.profilePicture == profilePicture) &&
+            (identical(other.lat, lat) || other.lat == lat) &&
+            (identical(other.long, long) || other.long == long));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, userId, profilePicture);
+  int get hashCode =>
+      Object.hash(runtimeType, name, userId, profilePicture, lat, long);
 
   @JsonKey(ignore: true)
   @override
@@ -181,7 +226,9 @@ abstract class _Suggestion extends Suggestion {
   factory _Suggestion(
       {required final String name,
       required final String userId,
-      required final String profilePicture}) = _$_Suggestion;
+      required final String profilePicture,
+      required final double lat,
+      required final double long}) = _$_Suggestion;
   _Suggestion._() : super._();
 
   factory _Suggestion.fromJson(Map<String, dynamic> json) =
@@ -193,6 +240,10 @@ abstract class _Suggestion extends Suggestion {
   String get userId;
   @override
   String get profilePicture;
+  @override
+  double get lat;
+  @override
+  double get long;
   @override
   @JsonKey(ignore: true)
   _$$_SuggestionCopyWith<_$_Suggestion> get copyWith =>

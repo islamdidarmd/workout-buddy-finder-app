@@ -89,7 +89,11 @@ class SuggestionCard extends StatelessWidget {
       child: Stack(
         children: [
           EmptySuggestion(),
-          Positioned.fill(
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 24,
             child: SwipableStack(
               itemCount: min(_defaultItemCount, _suggestions.length),
               controller: _controller,

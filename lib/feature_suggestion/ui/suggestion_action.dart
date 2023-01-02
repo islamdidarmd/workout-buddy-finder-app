@@ -14,14 +14,15 @@ class SuggestionAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        FloatingActionButton.large(
+        FloatingActionButton(
           child: Icon(FontAwesomeIcons.xmark),
           shape: CircleBorder(),
           onPressed: onDislike,
         ),
-        FloatingActionButton.large(
+        const SizedBox(width: 48),
+        FloatingActionButton(
           child: Icon(FontAwesomeIcons.solidHeart),
           shape: CircleBorder(),
           onPressed: onLike,
