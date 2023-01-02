@@ -58,20 +58,20 @@ class SuggestionCard extends StatelessWidget {
   }
 
   Widget _buildOverlay(BuildContext _, OverlaySwipeProperties properties) {
-    final itemIndex = properties.index % _suggestions.length;
-
     return CardOverlay(
-      direction: properties.direction!,
+      direction: properties.direction,
       swipeProgress: properties.swipeProgress,
     );
   }
 
   void _listenToSuggestionBlocState(
-      BuildContext context, SuggestionsState state) {
+    BuildContext context,
+    SuggestionsState state,
+  ) {
     state.maybeWhen(
       interactionError: (userId) {
         final snackbarState = ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed ')),
+          SnackBar(content: Text('Failed')),
         );
       },
       orElse: () {},
@@ -88,6 +88,7 @@ class SuggestionCard extends StatelessWidget {
       listener: _listenToSuggestionBlocState,
       child: Stack(
         children: [
+          EmptySuggestion(),
           Positioned.fill(
             child: SwipableStack(
               itemCount: min(_defaultItemCount, _suggestions.length),
