@@ -27,20 +27,20 @@ class ProfilePage extends StatelessWidget {
             ),
             Positioned(
               right: 0,
-              bottom: 0,
+              bottom: 16,
               child: Column(
                 children: [
+                  FloatingActionButton(
+                    onPressed: () => _onLogout(context),
+                    heroTag: 'logout',
+                    child: Icon(FontAwesomeIcons.arrowRightFromBracket),
+                  ),
+                  const SizedBox(height: 16),
                   FloatingActionButton(
                     onPressed: () =>
                         context.push(rootRouteMap[RootRoute.profile_edit]!),
                     heroTag: 'edit',
                     child: Icon(FontAwesomeIcons.penToSquare),
-                  ),
-                  const SizedBox(height: 16),
-                  FloatingActionButton(
-                    onPressed: () => _onLogout(context),
-                    heroTag: 'logout',
-                    child: Icon(FontAwesomeIcons.arrowRightFromBracket),
                   ),
                 ],
               ),
