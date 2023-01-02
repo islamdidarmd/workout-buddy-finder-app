@@ -22,7 +22,7 @@ class BottomNav extends StatelessWidget {
         BottomNavItem(
           initialLocation: rootRouteMap[RootRoute.suggestion]!,
           icon: Icon(FontAwesomeIcons.compass),
-          label: 'Suggestions',
+          label: 'Discover',
         ),
         BottomNavItem(
           initialLocation: rootRouteMap[RootRoute.chat]!,
@@ -32,7 +32,7 @@ class BottomNav extends StatelessWidget {
         BottomNavItem(
           initialLocation: rootRouteMap[RootRoute.profile]!,
           icon: Icon(FontAwesomeIcons.user),
-          label: 'Profile',
+          label: 'My Profile',
         ),
         BottomNavItem(
           initialLocation: rootRouteMap[RootRoute.settings]!,
