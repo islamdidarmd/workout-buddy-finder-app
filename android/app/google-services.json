@@ -50,6 +50,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "246633292825-f551ggoa3b6fnji5ug7cmmse6ieks6fn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.islamdidarmd.workout_buddy_finder.dev",
+            "certificate_hash": "572e58dc12ff6bb3d90f3f0ee63357e1583ea117"
+          }
+        },
+        {
           "client_id": "246633292825-5hqh9spmitq47ebtkt5sjceeshbr5lci.apps.googleusercontent.com",
           "client_type": 3
         }
