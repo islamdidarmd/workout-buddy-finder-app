@@ -101,11 +101,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     final path = '$profile_pictures';
     final fileName = appUser.userId;
-    final data = await uploaderRepository.uploadImage(
+    final data = await uploaderRepository.replaceImage(
       path: path,
+      url: appUser.profilePicture,
       image: image,
       fileName: fileName,
     );
+
     await data.fold<FutureOr<void>>(
       (imageUrl) async {
         final uploadData =

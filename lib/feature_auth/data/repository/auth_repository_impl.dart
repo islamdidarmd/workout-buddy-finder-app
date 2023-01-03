@@ -1,23 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/src/either.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/feature_location/location.dart';
+import 'package:workout_buddy_finder/feature_upload/domain/domain.dart';
+import '../../../core/firebase_storage_constants.dart';
+import '../../../feature_location/location.dart';
 import '../../../feature_profile/data/model/model.dart';
 import '../../../core/core.dart';
-import '../../../core/firestore_constants.dart';
 import '../model/model.dart';
 import '../../../feature_auth/domain/domain.dart';
 
-import 'package:dart_geohash/dart_geohash.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
+  final UploaderRepository uploaderRepository;
+
   @override
   bool get isSignedIn => FirebaseAuth.instance.currentUser != null;
+
+  const AuthRepositoryImpl({
+    required this.uploaderRepository,
+  });
 
   @override
   Future<Either<void, AppError>> loginWithGoogle(Position location) async {
@@ -119,12 +127,23 @@ class AuthRepositoryImpl implements AuthRepository {
         latitude: location.latitude,
         longitude: location.longitude,
       );
+      final imageBytes = await rootBundle.load('assets/icon/app_logo.png');
+      final imagePath = '$profile_pictures';
+      final fileName = firebaseUser.uid;
+
+      final image = (await uploaderRepository.uploadImageFromBytes(
+        path: imagePath,
+        bytes: imageBytes.buffer.asUint8List(),
+        fileName: fileName,
+      ))
+          .fold((url) => url, (right) => '');
+
       final appUserModel = AppUserModel(
         userId: firebaseUser.uid,
         name: firebaseUser.displayName ?? '',
         email: firebaseUser.email ?? '',
-        profilePicture: firebaseUser.photoURL ?? '',
-        registered: firebaseUser.metadata.creationTime!.toUtc(),
+        profilePicture: image,
+        registered: DateTime.now().toUtc(),
         lat: location.latitude,
         long: location.longitude,
         geoHash: geoHash,
