@@ -30,6 +30,7 @@ dependencies:
   go_router: 6.0.0
   google_fonts: 3.0.1
   google_sign_in: 5.4.2
+  http: 0.13.5
   image_picker: 0.8.6          # Used to select images from the User's device image library or take a new photo using the camera
   image_cropper: 3.0.1
   injectable: 2.0.1
