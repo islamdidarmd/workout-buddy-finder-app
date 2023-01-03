@@ -61,4 +61,23 @@ class ProfileRepositoryImpl implements ProfileRepository {
       return Right(UnknownError());
     }
   }
+
+  @override
+  Future<Either<void, AppError>> updateProfilePicture(
+    AppUser appUser,
+    String newUrl,
+  ) async {
+    final usersDb = FirebaseFirestore.instance.collection(users);
+    final userDoc = usersDb.doc(appUser.userId);
+
+    try {
+      await userDoc.update({
+        'profilePicture': newUrl,
+      });
+
+      return Left(null);
+    } catch (e) {
+      return Right(UnknownError());
+    }
+  }
 }
