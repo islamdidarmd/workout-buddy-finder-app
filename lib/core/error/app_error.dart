@@ -25,3 +25,7 @@ class InvalidDataError extends AppError {
 class UnknownError extends AppError {
   const UnknownError() : super(message: "Unknown Error");
 }
+
+class FileUploadError extends AppError {
+  const FileUploadError() : super(message: "File Uploading Error");
+}
