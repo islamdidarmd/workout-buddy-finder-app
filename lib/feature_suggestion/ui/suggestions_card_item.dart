@@ -55,9 +55,9 @@ class SuggestionsCardItem extends StatelessWidget {
             children: [
               mediumTitle(context, suggestion.name, color: Colors.white),
               Chip(
-                avatar: Icon(FontAwesomeIcons.locationDot),
+                avatar: Icon(FontAwesomeIcons.locationDot, size: 16),
                 label: lightBody(context, getDistance(context)),
-              )
+              ),
             ],
           ),
         ),
@@ -74,6 +74,7 @@ class SuggestionsCardItem extends StatelessWidget {
           suggestion.long,
         ) /
         1000;
-    return '${distance.toStringAsFixed(2)} Km';
+
+    return '${distance.floor()} Km';
   }
 }

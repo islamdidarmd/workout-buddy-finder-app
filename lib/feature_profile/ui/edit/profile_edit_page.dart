@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_buddy_finder/core/core.dart';
-import 'package:workout_buddy_finder/feature_profile/ui/edit/profile_picture_update_section.dart';
-import 'package:workout_buddy_finder/feature_profile/ui/widgets/profile_avatar.dart';
+import 'profile_picture_update_section.dart';
 import 'interest_section.dart';
 
 import '../../../di/service_locator.dart';
