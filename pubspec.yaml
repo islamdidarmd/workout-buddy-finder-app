@@ -17,11 +17,12 @@ dependencies:
   dio: 4.0.6
   either_dart: 0.3.0
   equatable: 2.0.5
-  firebase_auth: 4.2.0
-  firebase_core: 2.4.0
+  firebase_auth: 4.2.4
+  firebase_core: 2.4.1
+  firebase_storage: 11.0.10
   flutter_bloc: 8.1.1
   flutter_hooks: 0.18.5+1
-  font_awesome_flutter: 10.2.1
+  font_awesome_flutter: 10.3.0
   freezed_annotation: 2.2.0
   get_it: 7.2.0
   geocoding: 2.0.5
