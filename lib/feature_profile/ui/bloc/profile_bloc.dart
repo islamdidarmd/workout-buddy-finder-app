@@ -107,18 +107,17 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       image: image,
       fileName: fileName,
     );
-    await data.fold(
+    await data.fold<FutureOr<void>>(
       (imageUrl) async {
         final uploadData =
             await profileRepository.updateProfilePicture(appUser, imageUrl);
-        uploadData.fold(
+
+        return uploadData.fold(
           (result) => emit(ProfileState.profilePictureUploadingSuccess()),
           (error) => emit(ProfileState.profilePictureUploadingError(error)),
         );
       },
-      (error) {
-        emit(ProfileState.profilePictureUploadingError(error));
-      },
+      (error) => emit(ProfileState.profilePictureUploadingError(error)),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sn_progress_dialog/sn_progress_dialog.dart';
 
 import '../widgets/image_source_sheet.dart';
@@ -23,34 +24,44 @@ class ProfilePictureUpdateSection extends StatelessWidget {
       builder: (context) => BlocProvider<ProfileBloc>.value(
         value: profileBloc,
         child: ImageSourceSheet(
-          onImageSelected: (image) => _onImageSelected(context, profileBloc, image),
+          onImageSelected: (image) =>
+              _onImageSelected(context, profileBloc, image),
         ),
       ),
     );
   }
 
-  FutureOr<void> _onImageSelected(BuildContext context, ProfileBloc bloc, File image) {
+  FutureOr<void> _onImageSelected(
+      BuildContext context, ProfileBloc bloc, File image) {
     bloc.add(ProfileEvent.uploadProfilePicture(context.read(), image));
   }
 
   void _onProfileBlocStateChange(BuildContext context, ProfileState state) {
-    final dialog = ProgressDialog(context: context);
     final result = state.maybeWhen(
       profilePictureUploading: () {
-        final result = dialog.show(
-          max: 0,
-          msg: 'Uploading Profile Picture. Don\'t leave the page',
-          barrierDismissible: false,
-          progressType: ProgressType.normal,
-        );
+        final result = ScaffoldMessenger.of(context)
+          ..clearSnackBars()
+          ..showSnackBar(
+            SnackBar(
+              content: Text('Uploading Profile Picture. Don\'t leave the page'),
+            ),
+          );
       },
       profilePictureUploadingError: (error) {
-        dialog.close();
+        final state = ScaffoldMessenger.of(context)..clearSnackBars();
+
         final result = ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(error.message)));
+          ..clearSnackBars()
+          ..showSnackBar(SnackBar(
+            content: Text(
+              'Uploading Profile Picture. Don\'t leave the page',
+            ),
+            duration: Duration(days: 365),
+          ));
       },
       profilePictureUploadingSuccess: () {
-        dialog.close();
+        ScaffoldMessenger.of(context).clearSnackBars();
+        Navigator.of(context).pop();
       },
       orElse: () => {},
     );
