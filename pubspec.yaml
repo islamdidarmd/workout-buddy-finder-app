@@ -47,8 +47,17 @@ dev_dependencies:
   injectable_generator: 2.0.1
   dart_code_metrics: 5.0.1
   json_serializable: 6.5.4
+  flutter_launcher_icons: 0.11.0
 
 flutter:
   uses-material-design: true
   assets:
     - assets/icon/app_logo.png
+
+flutter_icons:
+  android: 'launcher_icon'
+  ios: true
+  image_path: 'assets/icon/app_logo.png'
+  min_sdk_android: 21
+  adaptive_icon_background: '#ffffff'
+  adaptive_icon_foreground: 'assets/icon/app_logo.png'
