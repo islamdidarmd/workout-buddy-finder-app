@@ -10,13 +10,19 @@ import 'package:workout_buddy_finder/feature_upload/domain/domain.dart';
 @Injectable(as: UploaderRepository)
 class UploaderRepositoryImpl implements UploaderRepository {
   @override
-  Future<Either<String, AppError>> replaceImage({
-    required AppUser appUser,
-    required File image,
+  Future<Either<void, AppError>> replaceImage({
     required String url,
-  }) {
-    // TODO: implement replaceImage
-    throw UnimplementedError();
+    required String path,
+    required File image,
+  }) async {
+    try {
+      final fileRef = FirebaseStorage.instance.refFromURL(url);
+      final uploaderTask = await fileRef.putFile(image);
+
+      return Left(null);
+    } catch (e) {
+      return Right(FileUploadError());
+    }
   }
 
   @override
