@@ -100,8 +100,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(ProfileState.profilePictureUploading());
 
     final path = '$profile_pictures';
-    final fileName =
-        '${appUser.userId}_${DateTime.now().millisecondsSinceEpoch}';
+    final fileName = appUser.userId;
     final data = await uploaderRepository.uploadImage(
       path: path,
       image: image,
