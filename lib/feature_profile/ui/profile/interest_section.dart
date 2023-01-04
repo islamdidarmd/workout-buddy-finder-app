@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_buddy_finder/core/core.dart';
@@ -24,7 +25,7 @@ class InterestSection extends StatelessWidget {
                 children: appUser.interestList.map((interest) {
                   return Chip(
                     avatar: CircleAvatar(
-                      foregroundImage: Image.network(interest.icon).image,
+                      foregroundImage: CachedNetworkImageProvider(interest.icon),
                       radius: 12,
                     ),
                     label: Text(interest.name),
