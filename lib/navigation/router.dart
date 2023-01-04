@@ -10,28 +10,26 @@ import '../feature_settings/settings.dart';
 import '../core/core.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _authNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: rootRouteMap[RootRoute.suggestion],
   errorBuilder: (context, state) => ErrorIndicator(),
-  redirect: (context, _) {
-    final authBloc = context.read<AuthBloc>();
-    if (authBloc.isSignedIn) {
-      return null;
-    }
-
-    return fullScreenRouteMap[FullScreenRoute.login];
-  },
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) => ScaffoldWithBottomNav(child: child),
       routes: _rootRoutes,
     ),
-    ..._authRoutes,
   ],
+);
+
+final authRouter = GoRouter(
+    navigatorKey: _authNavigatorKey,
+    initialLocation: fullScreenRouteMap[FullScreenRoute.login],
+    routes: _authRoutes,
 );
 
 List<GoRoute> get _rootRoutes => [

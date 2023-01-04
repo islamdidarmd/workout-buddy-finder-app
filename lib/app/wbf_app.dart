@@ -43,7 +43,27 @@ class WBFApp extends StatelessWidget {
     );
   }
 
-  Widget _buildApp(AppUser appUser) {
+  Widget _buildAuthApp() {
+    return MaterialApp.router(
+      title: appName,
+      themeMode: ThemeMode.system,
+      theme: theme,
+      darkTheme: darkTheme,
+      routerConfig: authRouter,
+    );
+  }
+
+  Widget _buildSignedInApp(AppUser appUser) {
+    if (appUser.isEmpty) {
+      return MaterialApp.router(
+        title: appName,
+        themeMode: ThemeMode.system,
+        theme: theme,
+        darkTheme: darkTheme,
+        routerConfig: authRouter,
+      );
+    }
+
     return RepositoryProvider<AppUser>.value(
       value: appUser,
       child: MaterialApp.router(
@@ -64,7 +84,12 @@ class WBFApp extends StatelessWidget {
           return _buildLoadingState();
         } else if (snapshot.connectionState == ConnectionState.active &&
             snapshot.hasData) {
-          return _buildApp(snapshot.requireData);
+          final appUser = snapshot.requireData;
+          if (appUser.isEmpty) {
+            return _buildAuthApp();
+          }
+
+          return _buildSignedInApp(snapshot.requireData);
         }
 
         return _buildEmptyState();

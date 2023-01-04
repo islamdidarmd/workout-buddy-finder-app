@@ -2,6 +2,8 @@ part of 'models.dart';
 
 @freezed
 class AppUser with _$AppUser {
+  bool get isEmpty => userId.isEmpty;
+
   const AppUser._();
 
   factory AppUser({
