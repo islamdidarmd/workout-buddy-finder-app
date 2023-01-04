@@ -23,6 +23,7 @@ class WBFApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: theme,
       darkTheme: darkTheme,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
@@ -37,6 +38,7 @@ class WBFApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: theme,
       darkTheme: darkTheme,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: const SizedBox(),
       ),
@@ -50,6 +52,7 @@ class WBFApp extends StatelessWidget {
       theme: theme,
       darkTheme: darkTheme,
       routerConfig: authRouter,
+      debugShowCheckedModeBanner: false,
     );
   }
 
@@ -61,6 +64,7 @@ class WBFApp extends StatelessWidget {
         theme: theme,
         darkTheme: darkTheme,
         routerConfig: authRouter,
+        debugShowCheckedModeBanner: false,
       );
     }
 
@@ -72,6 +76,7 @@ class WBFApp extends StatelessWidget {
         theme: theme,
         darkTheme: darkTheme,
         routerConfig: router,
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
