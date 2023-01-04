@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,7 @@ class Intro extends StatelessWidget {
           onTap: () => context.go(rootRouteMap[RootRoute.profile]!),
           child: CircleAvatar(
             radius: avatarSize / 2,
-            foregroundImage: Image.network(appUser.profilePicture).image,
+            foregroundImage: CachedNetworkImageProvider(appUser.profilePicture),
           ),
         ),
       ],
