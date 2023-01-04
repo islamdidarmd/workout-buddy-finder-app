@@ -22,6 +22,7 @@ Text mediumTitle(context, String text, {Color? color}) => Text(
             fontWeight: FontWeight.bold,
             color: color,
           ),
+      overflow: TextOverflow.clip,
     );
 
 Text mediumBoldTitle(context, String text) => Text(

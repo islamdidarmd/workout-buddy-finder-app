@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -25,8 +26,9 @@ class SuggestionsCardItem extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(radius),
+            color: Colors.white,
             image: DecorationImage(
-              image: NetworkImage(suggestion.profilePicture),
+              image: CachedNetworkImageProvider(suggestion.profilePicture),
               fit: BoxFit.cover,
             ),
           ),
