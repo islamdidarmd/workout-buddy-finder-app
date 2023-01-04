@@ -52,8 +52,7 @@ class ProfilePage extends StatelessWidget {
   }
 
   void _onLogout(BuildContext context) {
-    final result = context.read<AuthBloc>().add(AuthEvent.signOut());
-    context.go(fullScreenRouteMap[FullScreenRoute.login]!);
+    context.read<AuthBloc>().add(AuthEvent.signOut());
   }
 
   @override
