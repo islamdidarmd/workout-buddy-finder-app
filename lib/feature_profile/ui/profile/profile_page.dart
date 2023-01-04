@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:workout_buddy_finder/feature_profile/ui/profile/others_section.dart';
 import '../../../feature_auth/ui/ui.dart';
 import '../../../navigation/routes.dart';
 import '../../../di/service_locator.dart';
@@ -20,39 +21,27 @@ class ProfilePage extends StatelessWidget {
           children: [
             Column(
               children: [
-                InfoSection(),
+                const InfoSection(),
                 const SizedBox(height: 8),
-                InterestSection(),
+                const InterestSection(),
+                const SizedBox(height: 8),
+                const OthersSection(),
               ],
             ),
             Positioned(
               right: 0,
               bottom: 16,
-              child: Column(
-                children: [
-                  FloatingActionButton(
-                    onPressed: () => _onLogout(context),
-                    heroTag: 'logout',
-                    child: Icon(FontAwesomeIcons.arrowRightFromBracket),
-                  ),
-                  const SizedBox(height: 16),
-                  FloatingActionButton(
-                    onPressed: () =>
-                        context.push(rootRouteMap[RootRoute.profile_edit]!),
-                    heroTag: 'edit',
-                    child: Icon(FontAwesomeIcons.penToSquare),
-                  ),
-                ],
+              child: FloatingActionButton(
+                onPressed: () =>
+                    context.push(rootRouteMap[RootRoute.profile_edit]!),
+                heroTag: 'edit',
+                child: const Icon(FontAwesomeIcons.penToSquare),
               ),
             ),
           ],
         ),
       ),
     );
-  }
-
-  void _onLogout(BuildContext context) {
-    context.read<AuthBloc>().add(AuthEvent.signOut());
   }
 
   @override
