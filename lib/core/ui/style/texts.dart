@@ -19,7 +19,6 @@ Text mediumBody(context, String text) => Text(
 Text mediumTitle(context, String text, {Color? color}) => Text(
       text,
       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            fontWeight: FontWeight.bold,
             color: color,
           ),
       overflow: TextOverflow.clip,
