@@ -29,7 +29,7 @@ class ImageSourceSheet extends StatelessWidget {
     if (croppedImage != null) {
       onImageSelected(File(croppedImage.path));
     } else {
-      // Image was not cropped. Return original file.
+      // Image was not cropped. Returning original file.
       onImageSelected(image);
     }
   }
