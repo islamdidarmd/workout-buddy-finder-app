@@ -35,9 +35,7 @@ class ImageSourceSheet extends StatelessWidget {
   }
 
   Future<void> _onTapGallery(BuildContext context) async {
-    final pickedFile = await picker.pickImage(
-      source: ImageSource.gallery,
-    );
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       _cropImage(context, File(pickedFile.path));
