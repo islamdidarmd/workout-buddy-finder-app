@@ -42,8 +42,8 @@ class _SignInPageState extends State<SignInPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset(_logo),
-              const SizedBox(height: 20),
+              Image.asset(_logo, height: 120, width: 120,),
+              const SizedBox(height: 60),
               _slogan(context),
               const SizedBox(height: 8),
               _subSlogan(context),
