@@ -18,7 +18,7 @@ class Intro extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        mediumTitle(context, 'Hi, ${appUser.name}'),
+        mediumBoldTitle(context, 'Hi, ${appUser.name}'),
         const SizedBox(width: 8),
         InkWell(
           onTap: () => context.go(rootRouteMap[RootRoute.profile]!),
