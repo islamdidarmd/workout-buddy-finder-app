@@ -14,6 +14,7 @@ class SuggestionsPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Intro(),
+            const SizedBox(height: 8),
             Expanded(child: SuggestionCardContainer()),
           ],
         ),
