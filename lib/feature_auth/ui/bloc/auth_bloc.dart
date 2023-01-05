@@ -49,7 +49,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  Future<void> _signInWithGoogle(Position location, Emitter _) async {
+  Future<void> _signInWithGoogle(Position location, Emitter emit) async {
     final result = await authRepository.loginWithGoogle(location);
+    result.fold((success) => null, (error) => emit(AuthState.signInFailure(error)));
   }
 }

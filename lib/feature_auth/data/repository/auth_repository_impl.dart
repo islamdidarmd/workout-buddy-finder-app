@@ -41,8 +41,8 @@ class AuthRepositoryImpl implements AuthRepository {
       }
     } on FirebaseAuthMultiFactorException catch (error) {
       result = Right(AppError(message: error.code));
-    } catch (_) {
-      result = Right(UnknownError());
+    } catch (e) {
+      result = Right(AppError(message: e.toString()));
     }
 
     return result;
