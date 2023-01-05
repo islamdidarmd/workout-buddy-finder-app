@@ -23,7 +23,7 @@ class ProfilePage extends StatelessWidget {
               children: [
                 const InfoSection(),
                 const SizedBox(height: 8),
-                const InterestSection(),
+                InterestSection(),
                 const SizedBox(height: 8),
                 const OthersSection(),
               ],
