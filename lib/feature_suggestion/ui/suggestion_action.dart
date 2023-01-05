@@ -23,7 +23,7 @@ class SuggestionAction extends StatelessWidget {
         ),
         const SizedBox(width: 48),
         FloatingActionButton(
-          child: Icon(FontAwesomeIcons.solidHeart),
+          child: Icon(FontAwesomeIcons.solidHandshake),
           shape: CircleBorder(),
           onPressed: onLike,
         ),
