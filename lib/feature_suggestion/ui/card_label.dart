@@ -17,7 +17,7 @@ class CardLabel extends StatelessWidget {
   factory CardLabel.right() {
     return const CardLabel._(
       color: SwipeDirectionColor.right,
-      label: 'LIKE',
+      label: 'CONNECT',
       angle: -_labelAngle,
       alignment: Alignment.topLeft,
     );
@@ -26,7 +26,7 @@ class CardLabel extends StatelessWidget {
   factory CardLabel.left() {
     return const CardLabel._(
       color: SwipeDirectionColor.left,
-      label: 'DISLIKE',
+      label: 'SKIP',
       angle: _labelAngle,
       alignment: Alignment.topRight,
     );
