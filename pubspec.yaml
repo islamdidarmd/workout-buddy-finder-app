@@ -13,6 +13,7 @@ dependencies:
   cached_network_image: 3.2.3
   collection: 1.16.0
   cloud_firestore: 4.2.0
+  cupertino_icons: 1.0.5
   dart_geohash: 2.0.2
   dio: 4.0.6
   either_dart: 0.3.0
