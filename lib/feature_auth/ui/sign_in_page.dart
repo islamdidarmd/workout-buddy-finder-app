@@ -22,6 +22,7 @@ class _SignInPageState extends State<SignInPage> {
             .textTheme
             .titleLarge
             ?.copyWith(fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center,
       );
 
   Widget _subSlogan(BuildContext context) => Text(
@@ -29,27 +30,41 @@ class _SignInPageState extends State<SignInPage> {
         style: Theme.of(context).textTheme.caption?.copyWith(fontSize: 16),
       );
 
+  void _onAuthBlocStateChange(BuildContext context, AuthState state) {
+    state.maybeWhen(
+      signInFailure: (error) {
+        final scaffoldController = ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(error.message)),
+        );
+      },
+      orElse: () {},
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(_logo, height: 120, width: 120,),
-              const SizedBox(height: 60),
-              _slogan(context),
-              const SizedBox(height: 8),
-              _subSlogan(context),
-              const SizedBox(height: 60),
-              SignInWithGoogleButton(),
-            ],
+        child: BlocListener<AuthBloc, AuthState>(
+          listener: _onAuthBlocStateChange,
+          child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(_logo, height: 120, width: 120),
+                const SizedBox(height: 20),
+                _slogan(context),
+                const SizedBox(height: 8),
+                _subSlogan(context),
+                const SizedBox(height: 60),
+                SignInWithGoogleButton(),
+              ],
+            ),
           ),
         ),
       ),
