@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swipable_stack/swipable_stack.dart';
@@ -26,8 +24,6 @@ class SuggestionCard extends StatelessWidget {
   final _horizontalSwipeThreshold = 0.8;
 
   final _verticalSwipeThreshold = 0.8;
-
-  final _defaultItemCount = 3;
 
   void _onSwipeCompleted(
     BuildContext context,
@@ -95,7 +91,7 @@ class SuggestionCard extends StatelessWidget {
             right: 0,
             bottom: 24,
             child: SwipableStack(
-              itemCount: min(_defaultItemCount, _suggestions.length),
+              itemCount: _suggestions.length,
               controller: _controller,
               detectableSwipeDirections: const {
                 SwipeDirection.left,
