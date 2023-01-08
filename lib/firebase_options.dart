@@ -26,10 +26,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -58,5 +55,16 @@ class DefaultFirebaseOptions {
     messagingSenderId: '246633292825',
     projectId: 'workout-buddy-finder',
     storageBucket: 'workout-buddy-finder.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyA7YslBLSlrmz9OB0qLernep35FdBaMuRg',
+    appId: '1:246633292825:ios:5c2789e1c3446df5253688',
+    messagingSenderId: '246633292825',
+    projectId: 'workout-buddy-finder',
+    storageBucket: 'workout-buddy-finder.appspot.com',
+    androidClientId: '246633292825-f551ggoa3b6fnji5ug7cmmse6ieks6fn.apps.googleusercontent.com',
+    iosClientId: '246633292825-op360rk740c0q86lf857u8plinfb50hu.apps.googleusercontent.com',
+    iosBundleId: 'com.islamdidarmd.workout-buddy-finder',
   );
 }
