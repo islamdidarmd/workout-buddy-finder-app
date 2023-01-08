@@ -37,10 +37,10 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
           padding: const EdgeInsets.all(12.0),
           child: Column(
             children: [
-              AppBar(title: Text('Edit Profile')),
-              ProfilePictureUpdateSection(),
+              AppBar(title: const Text('Edit Profile')),
+              const ProfilePictureUpdateSection(),
               const SizedBox(height: 16),
-              InterestSection(),
+              const InterestSection(),
             ],
           ),
         ),

@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 
 import 'env.dart';
 
-void main() async {
+void main() {
   final env = DevelopmentEnv();
   env.init(slInstance: GetIt.instance);
   env.startApplication();

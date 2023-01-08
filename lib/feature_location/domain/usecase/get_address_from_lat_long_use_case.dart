@@ -6,15 +6,21 @@ import 'package:workout_buddy_finder/core/core.dart';
 @injectable
 class GetAddressFromLatLongUseCase {
   Future<Either<String, AppError>> call(double lat, double long) async {
-    List<Placemark> placeMarkList = await placemarkFromCoordinates(lat, long);
-    if (placeMarkList.isEmpty) {
-      return Right(DataNotFoundError());
-    }
-    final buffer = StringBuffer()
-      ..write(placeMarkList.first.locality)
-      ..write(", ")
-      ..write(placeMarkList.first.country);
+    try {
+      List<Placemark> placeMarkList = await placemarkFromCoordinates(lat, long);
+      if (placeMarkList.isEmpty) {
+        return Right(DataNotFoundError());
+      }
+      final buffer = StringBuffer()
+        ..write(placeMarkList.first.locality)
+        ..write(", ")
+        ..write(
+          placeMarkList.first.country,
+        );
 
-    return Left(buffer.toString());
+      return Left(buffer.toString());
+    } catch (e) {
+      return Right(UnknownError());
+    }
   }
 }
