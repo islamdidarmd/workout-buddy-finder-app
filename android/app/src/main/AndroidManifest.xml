@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.islamdidarmd.workout_buddy_finder">
 
     <!-- Provide required visibility configuration for API level 30 and above -->
     <queries>
