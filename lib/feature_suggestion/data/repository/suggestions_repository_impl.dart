@@ -30,7 +30,9 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     String likedUserId,
   ) async {
     final collection = FirebaseFirestore.instance.collection(col_liked_users);
+    final messagesCollection = FirebaseFirestore.instance.collection(col_messages);
     final docRef = collection.doc(appUser.userId);
+    final likedDocRef = collection.doc(likedUserId);
 
     try {
       final doc = await docRef.get();
@@ -42,6 +44,18 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
         await docRef.set({
           appUser.userId: [likedUserId],
         });
+      }
+      final likedDoc = await likedDocRef.get();
+      final likedData = likedDoc.data();
+      if(likedData != null) {
+        final Iterable<String> likedUsersLikeList =
+            (likedData[likedUserId] as List<dynamic>).map((e) => e.toString());
+        if(likedUsersLikeList.contains(appUser.userId)) {
+         final docRef = await messagesCollection.add({
+           "user1": appUser.userId,
+           "user2": likedUserId,
+          });
+        }
       }
     } catch (e) {
       return Right(UnknownError());
