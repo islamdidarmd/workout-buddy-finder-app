@@ -29,7 +29,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
     AppUser appUser,
     String interestId,
   ) async {
-    final usersDb = FirebaseFirestore.instance.collection(users);
+    final usersDb = FirebaseFirestore.instance.collection(col_users);
     final userDoc = usersDb.doc(appUser.userId);
 
     try {
@@ -48,7 +48,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
     AppUser appUser,
     String interestId,
   ) async {
-    final usersDb = FirebaseFirestore.instance.collection(users);
+    final usersDb = FirebaseFirestore.instance.collection(col_users);
     final userDoc = usersDb.doc(appUser.userId);
 
     try {
@@ -67,7 +67,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
     AppUser appUser,
     String newUrl,
   ) async {
-    final usersDb = FirebaseFirestore.instance.collection(users);
+    final usersDb = FirebaseFirestore.instance.collection(col_users);
     final userDoc = usersDb.doc(appUser.userId);
 
     try {

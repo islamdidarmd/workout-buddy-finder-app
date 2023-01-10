@@ -75,7 +75,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Stream<AppUser> getAppUserStream() {
     final firebaseUser = FirebaseAuth.instance.currentUser;
-    final usersDb = FirebaseFirestore.instance.collection(users);
+    final usersDb = FirebaseFirestore.instance.collection(col_users);
     final userDoc = usersDb.doc(firebaseUser?.uid).snapshots();
 
     return userDoc.asyncMap(
@@ -94,7 +94,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   Future<List<Interest>> _getUserInterestList(AppUserModel appUserModel) async {
-    final interestCollection = FirebaseFirestore.instance.collection(interests);
+    final interestCollection = FirebaseFirestore.instance.collection(col_interests);
     final interestList = <Interest>[];
 
     for (String e in appUserModel.interestsList) {
@@ -113,7 +113,7 @@ class AuthRepositoryImpl implements AuthRepository {
     User firebaseUser,
     Position location,
   ) async {
-    final usersDb = FirebaseFirestore.instance.collection(users);
+    final usersDb = FirebaseFirestore.instance.collection(col_users);
     final DocumentSnapshot<Map<String, dynamic>> userDoc =
         await usersDb.doc(firebaseUser.uid).get();
     final data = userDoc.data();
