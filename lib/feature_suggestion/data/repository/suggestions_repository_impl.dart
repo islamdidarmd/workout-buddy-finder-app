@@ -11,7 +11,7 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
   Future<Either<List<Suggestion>, AppError>> getSuggestions(
     AppUser appUser,
   ) async {
-    final usersCollection = FirebaseFirestore.instance.collection(users);
+    final usersCollection = FirebaseFirestore.instance.collection(col_users);
     final query = usersCollection.limit(10);
 
     try {
@@ -29,7 +29,7 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     AppUser appUser,
     String likedUserId,
   ) async {
-    final collection = FirebaseFirestore.instance.collection(liked_users);
+    final collection = FirebaseFirestore.instance.collection(col_liked_users);
     final docRef = collection.doc(appUser.userId);
 
     try {
@@ -55,7 +55,7 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     AppUser appUser,
     String dislikedUserId,
   ) async {
-    final collection = FirebaseFirestore.instance.collection(disliked_users);
+    final collection = FirebaseFirestore.instance.collection(col_disliked_users);
     final docRef = collection.doc(appUser.userId);
 
     try {
