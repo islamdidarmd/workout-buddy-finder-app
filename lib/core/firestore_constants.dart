@@ -7,3 +7,4 @@ const String col_messages = "messages";
 
 // User collection fields.
 const String userInterestList = "interestsList";
+const String participants = "participants";

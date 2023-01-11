@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../feature_auth/ui/ui.dart';
 import 'routes.dart';
-import '../feature_chat/chat.dart';
+import '../feature_messaging/messaging.dart';
 import '../feature_suggestion/suggestion.dart';
 import '../feature_profile/profile.dart';
 import '../feature_settings/settings.dart';
@@ -49,7 +48,7 @@ List<GoRoute> get _rootRoutes => [
       ),
       GoRoute(
         path: rootRouteMap[RootRoute.chat]!,
-        pageBuilder: (context, state) => NoTransitionPage(child: ChatPage()),
+        pageBuilder: (context, state) => NoTransitionPage(child: MessagingPage()),
       ),
       GoRoute(
         path: rootRouteMap[RootRoute.settings]!,
