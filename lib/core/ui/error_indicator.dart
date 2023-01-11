@@ -5,9 +5,11 @@ class ErrorIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox.expand(
-      child: Center(
-        child: Text('Something went wrong'),
+    return Scaffold(
+      body: const SizedBox.expand(
+        child: Center(
+          child: Text('Something went wrong'),
+        ),
       ),
     );
   }

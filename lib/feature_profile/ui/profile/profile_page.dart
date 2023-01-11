@@ -33,7 +33,7 @@ class ProfilePage extends StatelessWidget {
               bottom: 16,
               child: FloatingActionButton(
                 onPressed: () =>
-                    context.push(rootRouteMap[RootRoute.profile_edit]!),
+                    context.go('${rootRouteMap[RootRoute.profile]!}/edit'),
                 heroTag: 'edit',
                 child: const Icon(FontAwesomeIcons.penToSquare),
               ),
