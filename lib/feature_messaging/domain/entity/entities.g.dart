@@ -15,3 +15,16 @@ _$_Chat _$$_ChatFromJson(Map<String, dynamic> json) => _$_Chat(
 Map<String, dynamic> _$$_ChatToJson(_$_Chat instance) => <String, dynamic>{
       'participants': instance.participants,
     };
+
+_$_ChatUser _$$_ChatUserFromJson(Map<String, dynamic> json) => _$_ChatUser(
+      userId: json['userId'] as String,
+      name: json['name'] as String,
+      profilePicture: json['profilePicture'] as String,
+    );
+
+Map<String, dynamic> _$$_ChatUserToJson(_$_ChatUser instance) =>
+    <String, dynamic>{
+      'userId': instance.userId,
+      'name': instance.name,
+      'profilePicture': instance.profilePicture,
+    };

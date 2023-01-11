@@ -17,8 +17,8 @@ class MessageListItem extends HookWidget {
   final AppUser appUser;
   final double _height = 60.0;
 
-  Future<List<AppUser>> get _participants async {
-    final participants = <AppUser>[];
+  Future<List<ChatUser>> get _participants async {
+    final participants = <ChatUser>[];
     final loggedInUser = appUser;
 
     for (String userId in chat.participants) {
@@ -31,7 +31,7 @@ class MessageListItem extends HookWidget {
           .doc(userId)
           .withConverter(
             fromFirestore: (snapshot, _) =>
-                AppUserModel.fromJson(snapshot.data()!).toEntity([]),
+                ChatUser.fromJson(snapshot.data()!),
             toFirestore: (_, __) => {},
           );
       final appUser = await profileQuery.get();
