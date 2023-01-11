@@ -13,7 +13,7 @@ class MessageListItem extends HookWidget {
     required this.appUser,
   }) : super(key: key);
 
-  final Chat chat;
+  final ChatRoom chat;
   final AppUser appUser;
   final double _height = 60.0;
 

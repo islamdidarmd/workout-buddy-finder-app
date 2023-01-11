@@ -20,7 +20,7 @@ class MessageList extends StatelessWidget {
         .collection(col_messages)
         .where(participants, arrayContains: appUser.userId)
         .withConverter(
-          fromFirestore: (snapshot, _) => Chat.fromJson(snapshot.data()!),
+          fromFirestore: (snapshot, _) => ChatRoom.fromJson(snapshot.data()!),
           toFirestore: (_, __) => {},
         );
 
