@@ -23,10 +23,11 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
         if (data == null) continue;
 
         final model = Suggestion.fromJson(data);
-        if (model.userId != appUser.userId && !await _isLikedBy(
-          userId: model.userId,
-          testLikedByUserId: appUser.userId,
-        )) {
+        if (model.userId != appUser.userId &&
+            !await _isLikedBy(
+              userId: model.userId,
+              testLikedByUserId: appUser.userId,
+            )) {
           suggestions.add(model);
         }
       }
@@ -59,10 +60,11 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
         });
       }
       if (await _isLikedBy(
-          userId: appUser.userId, testLikedByUserId: likedUserId)) {
+        userId: appUser.userId,
+        testLikedByUserId: likedUserId,
+      )) {
         final docRef = await messagesCollection.add({
-          "user1": appUser.userId,
-          "user2": likedUserId,
+          participants: [appUser.userId, likedUserId],
         });
       }
     } catch (e) {
