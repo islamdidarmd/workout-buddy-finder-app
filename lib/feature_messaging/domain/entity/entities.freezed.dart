@@ -158,3 +158,183 @@ abstract class _Chat extends Chat {
   @JsonKey(ignore: true)
   _$$_ChatCopyWith<_$_Chat> get copyWith => throw _privateConstructorUsedError;
 }
+
+ChatUser _$ChatUserFromJson(Map<String, dynamic> json) {
+  return _ChatUser.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ChatUser {
+  String get userId => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get profilePicture => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ChatUserCopyWith<ChatUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChatUserCopyWith<$Res> {
+  factory $ChatUserCopyWith(ChatUser value, $Res Function(ChatUser) then) =
+      _$ChatUserCopyWithImpl<$Res, ChatUser>;
+  @useResult
+  $Res call({String userId, String name, String profilePicture});
+}
+
+/// @nodoc
+class _$ChatUserCopyWithImpl<$Res, $Val extends ChatUser>
+    implements $ChatUserCopyWith<$Res> {
+  _$ChatUserCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+    Object? name = null,
+    Object? profilePicture = null,
+  }) {
+    return _then(_value.copyWith(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      profilePicture: null == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ChatUserCopyWith<$Res> implements $ChatUserCopyWith<$Res> {
+  factory _$$_ChatUserCopyWith(
+          _$_ChatUser value, $Res Function(_$_ChatUser) then) =
+      __$$_ChatUserCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String userId, String name, String profilePicture});
+}
+
+/// @nodoc
+class __$$_ChatUserCopyWithImpl<$Res>
+    extends _$ChatUserCopyWithImpl<$Res, _$_ChatUser>
+    implements _$$_ChatUserCopyWith<$Res> {
+  __$$_ChatUserCopyWithImpl(
+      _$_ChatUser _value, $Res Function(_$_ChatUser) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+    Object? name = null,
+    Object? profilePicture = null,
+  }) {
+    return _then(_$_ChatUser(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      profilePicture: null == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ChatUser with DiagnosticableTreeMixin implements _ChatUser {
+  const _$_ChatUser(
+      {required this.userId, required this.name, required this.profilePicture});
+
+  factory _$_ChatUser.fromJson(Map<String, dynamic> json) =>
+      _$$_ChatUserFromJson(json);
+
+  @override
+  final String userId;
+  @override
+  final String name;
+  @override
+  final String profilePicture;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ChatUser(userId: $userId, name: $name, profilePicture: $profilePicture)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ChatUser'))
+      ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('profilePicture', profilePicture));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ChatUser &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.profilePicture, profilePicture) ||
+                other.profilePicture == profilePicture));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, userId, name, profilePicture);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ChatUserCopyWith<_$_ChatUser> get copyWith =>
+      __$$_ChatUserCopyWithImpl<_$_ChatUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ChatUserToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ChatUser implements ChatUser {
+  const factory _ChatUser(
+      {required final String userId,
+      required final String name,
+      required final String profilePicture}) = _$_ChatUser;
+
+  factory _ChatUser.fromJson(Map<String, dynamic> json) = _$_ChatUser.fromJson;
+
+  @override
+  String get userId;
+  @override
+  String get name;
+  @override
+  String get profilePicture;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ChatUserCopyWith<_$_ChatUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
