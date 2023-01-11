@@ -17,20 +17,21 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
 
     try {
       final data = await query.get();
-      final List<Suggestion?> suggestions =
-          await Future.forEach(data.docs, (doc) async {
-        final model = Suggestion.fromJson(doc.data());
-        if (await _isLikedBy(
+      final List<Suggestion> suggestions = [];
+      for (QueryDocumentSnapshot<Map<String, dynamic>?> doc in data.docs) {
+        final data = doc.data();
+        if (data == null) continue;
+
+        final model = Suggestion.fromJson(data);
+        if (model.userId != appUser.userId && !await _isLikedBy(
           userId: model.userId,
-          testUserId: appUser.userId,
+          testLikedByUserId: appUser.userId,
         )) {
-          return null;
+          suggestions.add(model);
         }
+      }
 
-        return model;
-      });
-
-      return Left(suggestions.whereNotNull().toList());
+      return Left(suggestions);
     } catch (e) {
       return Right(UnknownError());
     }
@@ -57,7 +58,8 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
           appUser.userId: [likedUserId],
         });
       }
-      if (await _isLikedBy(userId: appUser.userId, testUserId: likedUserId)) {
+      if (await _isLikedBy(
+          userId: appUser.userId, testLikedByUserId: likedUserId)) {
         final docRef = await messagesCollection.add({
           "user1": appUser.userId,
           "user2": likedUserId,
@@ -99,17 +101,17 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
 
   Future<bool> _isLikedBy({
     required String userId,
-    required String testUserId,
+    required String testLikedByUserId,
   }) async {
     final collection = FirebaseFirestore.instance.collection(col_liked_users);
-    final docRef = collection.doc(testUserId);
+    final docRef = collection.doc(testLikedByUserId);
 
     try {
       final doc = await docRef.get();
       final likedData = doc.data();
       if (likedData != null) {
         final Iterable<String> likedUsersLikeList =
-            (likedData[testUserId] as List<dynamic>?)
+            (likedData[testLikedByUserId] as List<dynamic>?)
                     ?.map((e) => e.toString()) ??
                 [];
         if (likedUsersLikeList.contains(userId)) {
