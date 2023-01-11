@@ -45,9 +45,7 @@ class MessageListItem extends HookWidget {
   Widget build(BuildContext context) {
     final participantsFuture = useMemoized(() => _participants);
     final participantsSnapshot = useFuture(participantsFuture);
-    if (participantsSnapshot.connectionState == ConnectionState.waiting) {
-      return LinearProgressIndicator();
-    } else if (participantsSnapshot.hasData) {
+    if (participantsSnapshot.hasData) {
       final participant = participantsSnapshot.requireData.first;
 
       return Card(
