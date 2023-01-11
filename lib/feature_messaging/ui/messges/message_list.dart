@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
-import '../../core/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'message_list_item.dart';
+import '../../../core/core.dart';
 
-import '../domain/domain.dart';
+import '../../domain/domain.dart';
 
 class MessageList extends StatelessWidget {
   const MessageList({
@@ -16,14 +18,21 @@ class MessageList extends StatelessWidget {
   Widget build(BuildContext context) {
     final _messagesQuery = FirebaseFirestore.instance
         .collection(col_messages)
-        .where(participants, arrayContains: appUser.userId);
+        .where(participants, arrayContains: appUser.userId)
+        .withConverter(
+          fromFirestore: (snapshot, _) => Chat.fromJson(snapshot.data()!),
+          toFirestore: (_, __) => {},
+        );
 
     return FirestoreListView(
       query: _messagesQuery,
       itemBuilder: (context, doc) {
-        final chat = Chat.fromJson(doc.data());
+        final chat = doc.data();
 
-        return Text(chat.participants.first);
+        return MessageListItem(
+          chat: chat,
+          appUser: context.read(),
+        );
       },
     );
   }
