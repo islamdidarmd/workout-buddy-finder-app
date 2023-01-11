@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:injectable/injectable.dart';
 
@@ -16,9 +17,20 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
 
     try {
       final data = await query.get();
-      final suggestions = data.docs.map((e) => Suggestion.fromJson(e.data()));
+      final List<Suggestion?> suggestions =
+          await Future.forEach(data.docs, (doc) async {
+        final model = Suggestion.fromJson(doc.data());
+        if (await _isLikedBy(
+          userId: model.userId,
+          testUserId: appUser.userId,
+        )) {
+          return null;
+        }
 
-      return Left(suggestions.toList());
+        return model;
+      });
+
+      return Left(suggestions.whereNotNull().toList());
     } catch (e) {
       return Right(UnknownError());
     }
@@ -30,9 +42,9 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     String likedUserId,
   ) async {
     final collection = FirebaseFirestore.instance.collection(col_liked_users);
-    final messagesCollection = FirebaseFirestore.instance.collection(col_messages);
+    final messagesCollection =
+        FirebaseFirestore.instance.collection(col_messages);
     final docRef = collection.doc(appUser.userId);
-    final likedDocRef = collection.doc(likedUserId);
 
     try {
       final doc = await docRef.get();
@@ -45,17 +57,11 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
           appUser.userId: [likedUserId],
         });
       }
-      final likedDoc = await likedDocRef.get();
-      final likedData = likedDoc.data();
-      if(likedData != null) {
-        final Iterable<String> likedUsersLikeList =
-            (likedData[likedUserId] as List<dynamic>).map((e) => e.toString());
-        if(likedUsersLikeList.contains(appUser.userId)) {
-         final docRef = await messagesCollection.add({
-           "user1": appUser.userId,
-           "user2": likedUserId,
-          });
-        }
+      if (await _isLikedBy(userId: appUser.userId, testUserId: likedUserId)) {
+        final docRef = await messagesCollection.add({
+          "user1": appUser.userId,
+          "user2": likedUserId,
+        });
       }
     } catch (e) {
       return Right(UnknownError());
@@ -69,7 +75,8 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     AppUser appUser,
     String dislikedUserId,
   ) async {
-    final collection = FirebaseFirestore.instance.collection(col_disliked_users);
+    final collection =
+        FirebaseFirestore.instance.collection(col_disliked_users);
     final docRef = collection.doc(appUser.userId);
 
     try {
@@ -88,5 +95,29 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     }
 
     return Left(null);
+  }
+
+  Future<bool> _isLikedBy({
+    required String userId,
+    required String testUserId,
+  }) async {
+    final collection = FirebaseFirestore.instance.collection(col_liked_users);
+    final docRef = collection.doc(testUserId);
+
+    try {
+      final doc = await docRef.get();
+      final likedData = doc.data();
+      if (likedData != null) {
+        final Iterable<String> likedUsersLikeList =
+            (likedData[testUserId] as List<dynamic>?)
+                    ?.map((e) => e.toString()) ??
+                [];
+        if (likedUsersLikeList.contains(userId)) {
+          return true;
+        }
+      }
+    } catch (e) {}
+
+    return false;
   }
 }
