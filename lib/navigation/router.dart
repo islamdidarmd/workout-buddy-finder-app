@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:workout_buddy_finder/feature_messaging/ui/chat_room/chat_room_page.dart';
 import '../feature_auth/ui/ui.dart';
 import 'routes.dart';
 import '../feature_messaging/messaging.dart';
@@ -26,9 +27,9 @@ final router = GoRouter(
 );
 
 final authRouter = GoRouter(
-    navigatorKey: _authNavigatorKey,
-    initialLocation: fullScreenRouteMap[FullScreenRoute.login],
-    routes: _authRoutes,
+  navigatorKey: _authNavigatorKey,
+  initialLocation: fullScreenRouteMap[FullScreenRoute.login],
+  routes: _authRoutes,
 );
 
 List<GoRoute> get _rootRoutes => [
@@ -40,15 +41,24 @@ List<GoRoute> get _rootRoutes => [
       GoRoute(
         path: rootRouteMap[RootRoute.profile]!,
         pageBuilder: (context, state) => NoTransitionPage(child: ProfilePage()),
-      ),
-      GoRoute(
-        path: rootRouteMap[RootRoute.profile_edit]!,
-        pageBuilder: (context, state) =>
-            NoTransitionPage(child: ProfileEditPage()),
+        routes: [
+          GoRoute(
+            path: rootRouteMap[RootRoute.profile_edit]!,
+            pageBuilder: (context, state) =>
+                NoTransitionPage(child: ProfileEditPage()),
+          ),
+        ],
       ),
       GoRoute(
         path: rootRouteMap[RootRoute.chat]!,
-        pageBuilder: (context, state) => NoTransitionPage(child: MessagingPage()),
+        pageBuilder: (context, state) =>
+            NoTransitionPage(child: MessagingPage()),
+      ),
+      GoRoute(
+        path: rootRouteMap[RootRoute.chat_room]!,
+        pageBuilder: (context, state) => NoTransitionPage(
+          child: ChatRoomPage(chatRoomId: state.path!),
+        ),
       ),
       GoRoute(
         path: rootRouteMap[RootRoute.settings]!,

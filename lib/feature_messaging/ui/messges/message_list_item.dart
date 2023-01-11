@@ -11,10 +11,12 @@ class MessageListItem extends HookWidget {
     Key? key,
     required this.chat,
     required this.appUser,
+    required this.onTap,
   }) : super(key: key);
 
   final ChatRoom chat;
   final AppUser appUser;
+  final Function(String chatRoomId) onTap;
   final double _height = 60.0;
 
   Future<List<ChatUser>> get _participants async {
@@ -30,8 +32,7 @@ class MessageListItem extends HookWidget {
           .collection(col_users)
           .doc(userId)
           .withConverter(
-            fromFirestore: (snapshot, _) =>
-                ChatUser.fromJson(snapshot.data()!),
+            fromFirestore: (snapshot, _) => ChatUser.fromJson(snapshot.data()!),
             toFirestore: (_, __) => {},
           );
       final appUser = await profileQuery.get();
@@ -48,21 +49,25 @@ class MessageListItem extends HookWidget {
     if (participantsSnapshot.hasData) {
       final participant = participantsSnapshot.requireData.first;
 
-      return Card(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-          child: SizedBox(
-            height: _height,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircleAvatar(
-                  foregroundImage:
-                      CachedNetworkImageProvider(participant.profilePicture),
-                ),
-                const SizedBox(width: 16),
-                mediumBody(context, participant.name),
-              ],
+      return InkWell(
+        onTap: () => onTap(chat.chatRoomId),
+        child: Card(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+            child: SizedBox(
+              height: _height,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircleAvatar(
+                    foregroundImage:
+                        CachedNetworkImageProvider(participant.profilePicture),
+                  ),
+                  const SizedBox(width: 16),
+                  mediumBody(context, participant.name),
+                ],
+              ),
             ),
           ),
         ),
