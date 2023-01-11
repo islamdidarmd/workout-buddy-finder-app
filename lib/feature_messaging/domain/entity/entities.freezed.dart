@@ -14,31 +14,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Chat _$ChatFromJson(Map<String, dynamic> json) {
-  return _Chat.fromJson(json);
+ChatRoom _$ChatRoomFromJson(Map<String, dynamic> json) {
+  return _ChatRoom.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Chat {
+mixin _$ChatRoom {
+  String get chatRoomId => throw _privateConstructorUsedError;
   List<String> get participants => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ChatCopyWith<Chat> get copyWith => throw _privateConstructorUsedError;
+  $ChatRoomCopyWith<ChatRoom> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ChatCopyWith<$Res> {
-  factory $ChatCopyWith(Chat value, $Res Function(Chat) then) =
-      _$ChatCopyWithImpl<$Res, Chat>;
+abstract class $ChatRoomCopyWith<$Res> {
+  factory $ChatRoomCopyWith(ChatRoom value, $Res Function(ChatRoom) then) =
+      _$ChatRoomCopyWithImpl<$Res, ChatRoom>;
   @useResult
-  $Res call({List<String> participants});
+  $Res call({String chatRoomId, List<String> participants});
 }
 
 /// @nodoc
-class _$ChatCopyWithImpl<$Res, $Val extends Chat>
-    implements $ChatCopyWith<$Res> {
-  _$ChatCopyWithImpl(this._value, this._then);
+class _$ChatRoomCopyWithImpl<$Res, $Val extends ChatRoom>
+    implements $ChatRoomCopyWith<$Res> {
+  _$ChatRoomCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -48,9 +50,14 @@ class _$ChatCopyWithImpl<$Res, $Val extends Chat>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? chatRoomId = null,
     Object? participants = null,
   }) {
     return _then(_value.copyWith(
+      chatRoomId: null == chatRoomId
+          ? _value.chatRoomId
+          : chatRoomId // ignore: cast_nullable_to_non_nullable
+              as String,
       participants: null == participants
           ? _value.participants
           : participants // ignore: cast_nullable_to_non_nullable
@@ -60,26 +67,34 @@ class _$ChatCopyWithImpl<$Res, $Val extends Chat>
 }
 
 /// @nodoc
-abstract class _$$_ChatCopyWith<$Res> implements $ChatCopyWith<$Res> {
-  factory _$$_ChatCopyWith(_$_Chat value, $Res Function(_$_Chat) then) =
-      __$$_ChatCopyWithImpl<$Res>;
+abstract class _$$_ChatRoomCopyWith<$Res> implements $ChatRoomCopyWith<$Res> {
+  factory _$$_ChatRoomCopyWith(
+          _$_ChatRoom value, $Res Function(_$_ChatRoom) then) =
+      __$$_ChatRoomCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<String> participants});
+  $Res call({String chatRoomId, List<String> participants});
 }
 
 /// @nodoc
-class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
-    implements _$$_ChatCopyWith<$Res> {
-  __$$_ChatCopyWithImpl(_$_Chat _value, $Res Function(_$_Chat) _then)
+class __$$_ChatRoomCopyWithImpl<$Res>
+    extends _$ChatRoomCopyWithImpl<$Res, _$_ChatRoom>
+    implements _$$_ChatRoomCopyWith<$Res> {
+  __$$_ChatRoomCopyWithImpl(
+      _$_ChatRoom _value, $Res Function(_$_ChatRoom) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? chatRoomId = null,
     Object? participants = null,
   }) {
-    return _then(_$_Chat(
+    return _then(_$_ChatRoom(
+      chatRoomId: null == chatRoomId
+          ? _value.chatRoomId
+          : chatRoomId // ignore: cast_nullable_to_non_nullable
+              as String,
       participants: null == participants
           ? _value._participants
           : participants // ignore: cast_nullable_to_non_nullable
@@ -90,13 +105,17 @@ class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Chat extends _Chat with DiagnosticableTreeMixin {
-  _$_Chat({required final List<String> participants})
+class _$_ChatRoom extends _ChatRoom with DiagnosticableTreeMixin {
+  _$_ChatRoom(
+      {required this.chatRoomId, required final List<String> participants})
       : _participants = participants,
         super._();
 
-  factory _$_Chat.fromJson(Map<String, dynamic> json) => _$$_ChatFromJson(json);
+  factory _$_ChatRoom.fromJson(Map<String, dynamic> json) =>
+      _$$_ChatRoomFromJson(json);
 
+  @override
+  final String chatRoomId;
   final List<String> _participants;
   @override
   List<String> get participants {
@@ -107,14 +126,15 @@ class _$_Chat extends _Chat with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Chat(participants: $participants)';
+    return 'ChatRoom(chatRoomId: $chatRoomId, participants: $participants)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Chat'))
+      ..add(DiagnosticsProperty('type', 'ChatRoom'))
+      ..add(DiagnosticsProperty('chatRoomId', chatRoomId))
       ..add(DiagnosticsProperty('participants', participants));
   }
 
@@ -122,41 +142,48 @@ class _$_Chat extends _Chat with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Chat &&
+            other is _$_ChatRoom &&
+            (identical(other.chatRoomId, chatRoomId) ||
+                other.chatRoomId == chatRoomId) &&
             const DeepCollectionEquality()
                 .equals(other._participants, _participants));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_participants));
+  int get hashCode => Object.hash(runtimeType, chatRoomId,
+      const DeepCollectionEquality().hash(_participants));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatCopyWith<_$_Chat> get copyWith =>
-      __$$_ChatCopyWithImpl<_$_Chat>(this, _$identity);
+  _$$_ChatRoomCopyWith<_$_ChatRoom> get copyWith =>
+      __$$_ChatRoomCopyWithImpl<_$_ChatRoom>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChatToJson(
+    return _$$_ChatRoomToJson(
       this,
     );
   }
 }
 
-abstract class _Chat extends Chat {
-  factory _Chat({required final List<String> participants}) = _$_Chat;
-  _Chat._() : super._();
+abstract class _ChatRoom extends ChatRoom {
+  factory _ChatRoom(
+      {required final String chatRoomId,
+      required final List<String> participants}) = _$_ChatRoom;
+  _ChatRoom._() : super._();
 
-  factory _Chat.fromJson(Map<String, dynamic> json) = _$_Chat.fromJson;
+  factory _ChatRoom.fromJson(Map<String, dynamic> json) = _$_ChatRoom.fromJson;
 
+  @override
+  String get chatRoomId;
   @override
   List<String> get participants;
   @override
   @JsonKey(ignore: true)
-  _$$_ChatCopyWith<_$_Chat> get copyWith => throw _privateConstructorUsedError;
+  _$$_ChatRoomCopyWith<_$_ChatRoom> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 ChatUser _$ChatUserFromJson(Map<String, dynamic> json) {

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:injectable/injectable.dart';
+import 'package:workout_buddy_finder/feature_messaging/domain/domain.dart';
 
 import '../../../core/core.dart';
 import '../../domain/domain.dart';
@@ -44,8 +45,6 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     String likedUserId,
   ) async {
     final collection = FirebaseFirestore.instance.collection(col_liked_users);
-    final messagesCollection =
-        FirebaseFirestore.instance.collection(col_messages);
     final docRef = collection.doc(appUser.userId);
 
     try {
@@ -63,9 +62,19 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
         userId: appUser.userId,
         testLikedByUserId: likedUserId,
       )) {
-        final docRef = await messagesCollection.add({
-          participants: [appUser.userId, likedUserId],
-        });
+        final docRef = FirebaseFirestore.instance
+            .collection(col_messages)
+            .doc()
+            .withConverter(
+              fromFirestore: (snapshot, _) => ChatRoom.fromJson(snapshot.data()!),
+              toFirestore: (value, _) => value.toJson(),
+            );
+        await docRef.set(
+          ChatRoom(
+            chatRoomId: docRef.id,
+            participants: [appUser.userId, likedUserId],
+          ),
+        );
       }
     } catch (e) {
       return Right(UnknownError());
