@@ -6,13 +6,16 @@ part of 'entities.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Chat _$$_ChatFromJson(Map<String, dynamic> json) => _$_Chat(
+_$_ChatRoom _$$_ChatRoomFromJson(Map<String, dynamic> json) => _$_ChatRoom(
+      chatRoomId: json['chatRoomId'] as String,
       participants: (json['participants'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
     );
 
-Map<String, dynamic> _$$_ChatToJson(_$_Chat instance) => <String, dynamic>{
+Map<String, dynamic> _$$_ChatRoomToJson(_$_ChatRoom instance) =>
+    <String, dynamic>{
+      'chatRoomId': instance.chatRoomId,
       'participants': instance.participants,
     };
 
