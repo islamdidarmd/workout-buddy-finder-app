@@ -1,14 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import '../../navigation/routes.dart';
 import '../../core/core.dart';
 
 class Intro extends StatelessWidget {
   final double avatarSize = 35;
 
-  const Intro({Key? key}) : super(key: key);
+  const Intro({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
+
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class Intro extends StatelessWidget {
         mediumBoldTitle(context, 'Hi, ${appUser.name}'),
         const SizedBox(width: 8),
         InkWell(
-          onTap: () => context.go(rootRouteMap[RootRoute.profile]!),
+          onTap: onTap,
           child: CircleAvatar(
             radius: avatarSize / 2,
             foregroundImage: CachedNetworkImageProvider(appUser.profilePicture),
