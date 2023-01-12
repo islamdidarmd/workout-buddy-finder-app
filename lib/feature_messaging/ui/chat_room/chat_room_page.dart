@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'top_bar.dart';
 import 'chat_room_messages_list.dart';
 import '../../../core/core.dart';
 import '../../domain/entity/entities.dart';
@@ -48,20 +49,19 @@ class ChatRoomPage extends HookWidget {
     return BaseFeatureLayout(
       child: Column(
         children: [
-          AppBar(title: Text(chatRoomId)),
+          TopBar(chatRoomId: chatRoomId),
           Expanded(child: ChatRoomMessagesList(chatRoomId: chatRoomId)),
           SizedBox(
             height: 80,
             child: Row(
               children: [
-                Expanded(
-                  child: TextField(
-                    controller: textController,
-                  ),
-                ),
+                Expanded(child: TextField(controller: textController)),
                 IconButton(
                   onPressed: () => _onSendMessage(loggedInUser, textController),
-                  icon: Icon(FontAwesomeIcons.paperPlane),
+                  icon: Icon(
+                    FontAwesomeIcons.paperPlane,
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ),
               ],
             ),
