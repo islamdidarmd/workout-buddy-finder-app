@@ -15,9 +15,8 @@ class ImageSourceSheet extends StatelessWidget {
   Future<void> _cropImage(BuildContext context, File image) async {
     final croppedImage = await ImageCropper().cropImage(
       sourcePath: image.path,
-      aspectRatioPresets: [CropAspectRatioPreset.square],
-      maxWidth: 400,
-      maxHeight: 400,
+      aspectRatioPresets: [CropAspectRatioPreset.ratio5x3],
+      aspectRatio: CropAspectRatio(ratioX: 3, ratioY: 5),
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: "Crop Image",
