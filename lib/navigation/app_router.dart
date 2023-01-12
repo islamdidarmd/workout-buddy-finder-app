@@ -77,7 +77,7 @@ List<GoRoute> get _appRoutes => [
           GoRoute(
             path: ChatRoomRoute().route,
             pageBuilder: (context, state) => NoTransitionPage(
-              child: ChatRoomPage(chatRoomId: state.path!),
+              child: ChatRoomPage(chatRoomId: state.params['chatRoomId']!),
             ),
           ),
         ],

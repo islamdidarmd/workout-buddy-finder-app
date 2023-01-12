@@ -31,3 +31,19 @@ Map<String, dynamic> _$$_ChatUserToJson(_$_ChatUser instance) =>
       'name': instance.name,
       'profilePicture': instance.profilePicture,
     };
+
+_$_ChatMessage _$$_ChatMessageFromJson(Map<String, dynamic> json) =>
+    _$_ChatMessage(
+      chatMessageId: json['chatMessageId'] as String,
+      sender: json['sender'] as String,
+      content: json['content'] as String,
+      timestamp: dateTimeFromJson(json['timestamp'] as int),
+    );
+
+Map<String, dynamic> _$$_ChatMessageToJson(_$_ChatMessage instance) =>
+    <String, dynamic>{
+      'chatMessageId': instance.chatMessageId,
+      'sender': instance.sender,
+      'content': instance.content,
+      'timestamp': dateTimeToJson(instance.timestamp),
+    };
