@@ -19,7 +19,7 @@ class ChatRoomMessagesList extends StatelessWidget {
         .collection(col_messages)
         .doc(chatRoomId)
         .collection(col_chat_room_messages)
-        .orderBy(timestamp)
+        .orderBy(timestamp, descending: true)
         .withConverter(
           fromFirestore: (snapshot, _) =>
               ChatMessage.fromJson(snapshot.data()!),
