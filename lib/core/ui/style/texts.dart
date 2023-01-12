@@ -8,6 +8,11 @@ Text lightBody(context, String text, {Color? color}) => Text(
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: color),
     );
 
+Text caption(context, String text, {Color? color}) => Text(
+      text,
+      style: Theme.of(context).textTheme.caption?.copyWith(color: color),
+    );
+
 Text mediumBody(context, String text) => Text(
       text,
       style: Theme.of(context)
