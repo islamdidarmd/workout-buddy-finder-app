@@ -365,3 +365,224 @@ abstract class _ChatUser implements ChatUser {
   _$$_ChatUserCopyWith<_$_ChatUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) {
+  return _ChatMessage.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ChatMessage {
+  String get chatMessageId => throw _privateConstructorUsedError;
+  String get sender => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  DateTime get timestamp => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ChatMessageCopyWith<ChatMessage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChatMessageCopyWith<$Res> {
+  factory $ChatMessageCopyWith(
+          ChatMessage value, $Res Function(ChatMessage) then) =
+      _$ChatMessageCopyWithImpl<$Res, ChatMessage>;
+  @useResult
+  $Res call(
+      {String chatMessageId,
+      String sender,
+      String content,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime timestamp});
+}
+
+/// @nodoc
+class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
+    implements $ChatMessageCopyWith<$Res> {
+  _$ChatMessageCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatMessageId = null,
+    Object? sender = null,
+    Object? content = null,
+    Object? timestamp = null,
+  }) {
+    return _then(_value.copyWith(
+      chatMessageId: null == chatMessageId
+          ? _value.chatMessageId
+          : chatMessageId // ignore: cast_nullable_to_non_nullable
+              as String,
+      sender: null == sender
+          ? _value.sender
+          : sender // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_ChatMessageCopyWith<$Res>
+    implements $ChatMessageCopyWith<$Res> {
+  factory _$$_ChatMessageCopyWith(
+          _$_ChatMessage value, $Res Function(_$_ChatMessage) then) =
+      __$$_ChatMessageCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String chatMessageId,
+      String sender,
+      String content,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime timestamp});
+}
+
+/// @nodoc
+class __$$_ChatMessageCopyWithImpl<$Res>
+    extends _$ChatMessageCopyWithImpl<$Res, _$_ChatMessage>
+    implements _$$_ChatMessageCopyWith<$Res> {
+  __$$_ChatMessageCopyWithImpl(
+      _$_ChatMessage _value, $Res Function(_$_ChatMessage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatMessageId = null,
+    Object? sender = null,
+    Object? content = null,
+    Object? timestamp = null,
+  }) {
+    return _then(_$_ChatMessage(
+      chatMessageId: null == chatMessageId
+          ? _value.chatMessageId
+          : chatMessageId // ignore: cast_nullable_to_non_nullable
+              as String,
+      sender: null == sender
+          ? _value.sender
+          : sender // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ChatMessage with DiagnosticableTreeMixin implements _ChatMessage {
+  const _$_ChatMessage(
+      {required this.chatMessageId,
+      required this.sender,
+      required this.content,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          required this.timestamp});
+
+  factory _$_ChatMessage.fromJson(Map<String, dynamic> json) =>
+      _$$_ChatMessageFromJson(json);
+
+  @override
+  final String chatMessageId;
+  @override
+  final String sender;
+  @override
+  final String content;
+  @override
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  final DateTime timestamp;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ChatMessage(chatMessageId: $chatMessageId, sender: $sender, content: $content, timestamp: $timestamp)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ChatMessage'))
+      ..add(DiagnosticsProperty('chatMessageId', chatMessageId))
+      ..add(DiagnosticsProperty('sender', sender))
+      ..add(DiagnosticsProperty('content', content))
+      ..add(DiagnosticsProperty('timestamp', timestamp));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ChatMessage &&
+            (identical(other.chatMessageId, chatMessageId) ||
+                other.chatMessageId == chatMessageId) &&
+            (identical(other.sender, sender) || other.sender == sender) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, chatMessageId, sender, content, timestamp);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ChatMessageCopyWith<_$_ChatMessage> get copyWith =>
+      __$$_ChatMessageCopyWithImpl<_$_ChatMessage>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ChatMessageToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ChatMessage implements ChatMessage {
+  const factory _ChatMessage(
+      {required final String chatMessageId,
+      required final String sender,
+      required final String content,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          required final DateTime timestamp}) = _$_ChatMessage;
+
+  factory _ChatMessage.fromJson(Map<String, dynamic> json) =
+      _$_ChatMessage.fromJson;
+
+  @override
+  String get chatMessageId;
+  @override
+  String get sender;
+  @override
+  String get content;
+  @override
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  DateTime get timestamp;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ChatMessageCopyWith<_$_ChatMessage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
