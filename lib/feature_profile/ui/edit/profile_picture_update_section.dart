@@ -32,7 +32,10 @@ class ProfilePictureUpdateSection extends StatelessWidget {
   }
 
   FutureOr<void> _onImageSelected(
-      BuildContext context, ProfileBloc bloc, File image) {
+    BuildContext context,
+    ProfileBloc bloc,
+    File image,
+  ) {
     bloc.add(ProfileEvent.uploadProfilePicture(context.read(), image));
   }
 
