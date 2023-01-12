@@ -1,28 +1,17 @@
-import 'dart:core';
+import 'package:workout_buddy_finder/navigation/app_route.dart';
 
-final initialRoute = rootRouteMap[RootRoute.suggestion];
+class EditProfileRoute extends ChildRoute {
+  const EditProfileRoute() : super(route: 'edit-profile');
 
-enum RootRoute {
-  suggestion,
-  profile,
-  profile_edit,
-  chat,
-  chat_room,
-  settings,
+  String generateNavRoute({required String root}) {
+    return '$root/edit-profile';
+  }
 }
 
-enum FullScreenRoute { login, signup }
+class ChatRoomRoute extends ChildRoute {
+  const ChatRoomRoute() : super(route: 'chat-room/:chatRoomId');
 
-const Map<RootRoute, String> rootRouteMap = const {
-  RootRoute.suggestion: "/suggestion",
-  RootRoute.profile: "/profile",
-  RootRoute.profile_edit: "edit",
-  RootRoute.chat: "/chat",
-  RootRoute.chat_room: "/chat/room/:chatRoomId",
-  RootRoute.settings: "/settings",
-};
-
-const Map<FullScreenRoute, String> fullScreenRouteMap = const {
-  FullScreenRoute.login: '/login',
-  FullScreenRoute.signup: '/sign-up',
-};
+  String generateNavRoute({required String root, required String chatRoomId}) {
+    return '$root/chat-room/$chatRoomId';
+  }
+}

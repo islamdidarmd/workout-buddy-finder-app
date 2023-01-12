@@ -7,13 +7,31 @@ class ScaffoldWithBottomNav extends StatelessWidget {
   const ScaffoldWithBottomNav({
     Key? key,
     required this.child,
+    required this.currentRoute,
+    required this.onOpenSuggestion,
+    required this.onOpenMessaging,
+    required this.onOpenProfile,
+    required this.onOpenSettings,
   }) : super(key: key);
+
+  final String currentRoute;
+
+  final void Function() onOpenSuggestion;
+  final void Function() onOpenMessaging;
+  final void Function() onOpenProfile;
+  final void Function() onOpenSettings;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: child,
-      bottomNavigationBar: BottomNav(),
+      bottomNavigationBar: BottomNav(
+        currentRoute: currentRoute,
+        onOpenSuggestion: onOpenSuggestion,
+        onOpenMessaging: onOpenMessaging,
+        onOpenProfile: onOpenProfile,
+        onOpenSettings: onOpenSettings,
+      ),
     );
   }
 }
