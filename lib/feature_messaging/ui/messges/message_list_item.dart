@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:workout_buddy_finder/core/core.dart';
-import 'package:workout_buddy_finder/feature_auth/data/model/model.dart';
+import '../../../di/service_locator.dart';
 import '../../domain/domain.dart';
+import '../shared/user_avatar.dart';
 
 class MessageListItem extends HookWidget {
   const MessageListItem({
@@ -19,35 +19,17 @@ class MessageListItem extends HookWidget {
   final Function(String chatRoomId) onTap;
   final double _height = 60.0;
 
-  Future<List<ChatUser>> get _participants async {
-    final participants = <ChatUser>[];
-    final loggedInUser = appUser;
-
-    for (String userId in chat.participants) {
-      if (userId == loggedInUser.userId) {
-        continue;
-      }
-
-      final profileQuery = FirebaseFirestore.instance
-          .collection(col_users)
-          .doc(userId)
-          .withConverter(
-            fromFirestore: (snapshot, _) => ChatUser.fromJson(snapshot.data()!),
-            toFirestore: (_, __) => {},
-          );
-      final appUser = await profileQuery.get();
-      participants.add(appUser.data()!);
-    }
-
-    return participants;
-  }
-
   @override
   Widget build(BuildContext context) {
-    final participantsFuture = useMemoized(() => _participants);
+    final participantsFuture = useMemoized(
+      () => sl<MessagingRepository>().getParticipants(roomId: chat.chatRoomId),
+    );
     final participantsSnapshot = useFuture(participantsFuture);
     if (participantsSnapshot.hasData) {
-      final participant = participantsSnapshot.requireData.first;
+      final List<ChatUser> participants = participantsSnapshot.requireData
+        ..removeWhere((e) => e.userId == appUser.userId);
+
+      final participant = participants.first;
 
       return InkWell(
         onTap: () => onTap(chat.chatRoomId),
@@ -60,10 +42,7 @@ class MessageListItem extends HookWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  CircleAvatar(
-                    foregroundImage:
-                        CachedNetworkImageProvider(participant.profilePicture),
-                  ),
+                  UserAvatar(profilePicture: participant.profilePicture),
                   const SizedBox(width: 16),
                   mediumBody(context, participant.name),
                 ],
