@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:workout_buddy_finder/feature_messaging/domain/domain.dart';
 import '../../../di/service_locator.dart';
+import 'message_input.dart';
 import 'top_bar.dart';
 import 'chat_room_messages_list.dart';
 import '../../../core/core.dart';
@@ -46,7 +47,7 @@ class ChatRoomPage extends HookWidget {
             height: 80,
             child: Row(
               children: [
-                Expanded(child: TextField(controller: textController)),
+                Expanded(child: MessageInput(controller: textController)),
                 IconButton(
                   onPressed: () => _onSendMessage(loggedInUser, textController),
                   icon: Icon(
