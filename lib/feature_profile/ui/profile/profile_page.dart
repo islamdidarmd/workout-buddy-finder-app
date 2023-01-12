@@ -11,9 +11,14 @@ import 'info_section.dart';
 import 'interest_section.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({
+    Key? key,
+    required this.onEditProfile,
+  }) : super(key: key);
 
-  Widget _buildBody(BuildContext context) {
+  final Function() onEditProfile;
+
+  Widget _buildBody(BuildContext _) {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -32,8 +37,7 @@ class ProfilePage extends StatelessWidget {
               right: 0,
               bottom: 16,
               child: FloatingActionButton(
-                onPressed: () =>
-                    context.go('${rootRouteMap[RootRoute.profile]!}/edit'),
+                onPressed: onEditProfile,
                 heroTag: 'edit',
                 child: const Icon(FontAwesomeIcons.penToSquare),
               ),

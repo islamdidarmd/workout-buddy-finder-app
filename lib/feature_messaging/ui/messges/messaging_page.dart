@@ -6,7 +6,9 @@ import 'package:workout_buddy_finder/feature_messaging/ui/messges/message_list.d
 import '../../domain/domain.dart';
 
 class MessagingPage extends StatefulWidget {
-  const MessagingPage({Key? key}) : super(key: key);
+  const MessagingPage({Key? key, required this.onOpenChatRoom})
+      : super(key: key);
+  final Function(String chatRoomId) onOpenChatRoom;
 
   @override
   State<MessagingPage> createState() => _MessagingPageState();
@@ -22,7 +24,12 @@ class _MessagingPageState extends State<MessagingPage> {
         children: [
           AppBar(title: Text('Messages')),
           const SizedBox(height: 12),
-          Expanded(child: MessageList(appUser: appUser, )),
+          Expanded(
+            child: MessageList(
+              appUser: appUser,
+              onOpenChatRoom: widget.onOpenChatRoom,
+            ),
+          ),
         ],
       ),
     );
