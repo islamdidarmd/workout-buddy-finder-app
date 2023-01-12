@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:workout_buddy_finder/feature_messaging/domain/domain.dart';
+import '../../../di/service_locator.dart';
 import 'top_bar.dart';
 import 'chat_room_messages_list.dart';
 import '../../../core/core.dart';
@@ -20,25 +22,14 @@ class ChatRoomPage extends HookWidget {
     AppUser loggedInUser,
     TextEditingController controller,
   ) async {
-    final _messagesQuery = FirebaseFirestore.instance
-        .collection(col_messages)
-        .doc(chatRoomId)
-        .collection(col_chat_room_messages)
-        .withConverter(
-          fromFirestore: (snapshot, _) =>
-              ChatMessage.fromJson(snapshot.data()!),
-          toFirestore: (value, _) => value.toJson(),
-        );
-
-    final doc = _messagesQuery.doc();
-    final chatMessage = ChatMessage(
-      chatMessageId: doc.id,
-      sender: loggedInUser.userId,
-      content: controller.text,
-      timestamp: DateTime.now(),
-    );
+    final repository = sl<MessagingRepository>();
+    final text = controller.text;
     controller.clear();
-    final result = await _messagesQuery.add(chatMessage);
+    await repository.sendMessage(
+      loggedInUser: loggedInUser,
+      chatRoomId: chatRoomId,
+      message: text,
+    );
   }
 
   @override
