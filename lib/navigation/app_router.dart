@@ -45,11 +45,8 @@ List<GoRoute> get _appRoutes => [
         routes: [
           GoRoute(
             path: VisitUserRoute().route,
-            pageBuilder: (context, state) {
-              return NoTransitionPage(
-                child: VisitUserPage(userId: state.params['userId']!),
-              );
-            },
+            builder: (context, state) =>
+                VisitUserPage(userId: state.params['userId']!),
           ),
         ],
       ),
@@ -66,8 +63,7 @@ List<GoRoute> get _appRoutes => [
         routes: [
           GoRoute(
             path: EditProfileRoute().route,
-            pageBuilder: (context, _) =>
-                NoTransitionPage(child: ProfileEditPage()),
+            builder: (context, _) => ProfileEditPage(),
           ),
         ],
       ),
@@ -86,28 +82,23 @@ List<GoRoute> get _appRoutes => [
         routes: [
           GoRoute(
             path: ChatRoomRoute().route,
-            pageBuilder: (context, state) => NoTransitionPage(
-              child: ChatRoomPage(
-                chatRoomId: state.params['chatRoomId']!,
-                onVisitProfile: (userId) => context.go(
-                  VisitUserRoute().generateNavRoute(
-                    root: '${ChatRoomRoute().generateNavRoute(
-                      root: TopLevelRoute.messaging().route,
-                      chatRoomId: state.params['chatRoomId']!,
-                    )}',
-                    userId: userId,
-                  ),
+            builder: (context, state) => ChatRoomPage(
+              chatRoomId: state.params['chatRoomId']!,
+              onVisitProfile: (userId) => context.go(
+                VisitUserRoute().generateNavRoute(
+                  root: '${ChatRoomRoute().generateNavRoute(
+                    root: TopLevelRoute.messaging().route,
+                    chatRoomId: state.params['chatRoomId']!,
+                  )}',
+                  userId: userId,
                 ),
               ),
             ),
             routes: [
               GoRoute(
                 path: VisitUserRoute().route,
-                pageBuilder: (_, state) {
-                  return NoTransitionPage(
-                    child: VisitUserPage(userId: state.params['userId']!),
-                  );
-                },
+                builder: (_, state) =>
+                    VisitUserPage(userId: state.params['userId']!),
               ),
             ],
           ),
