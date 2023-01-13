@@ -6,7 +6,12 @@ import 'package:workout_buddy_finder/core/core.dart';
 import '../../../feature_auth/ui/ui.dart';
 
 class OthersSection extends StatelessWidget {
-  const OthersSection({Key? key}) : super(key: key);
+  const OthersSection({
+    Key? key,
+    required this.appUser,
+  }) : super(key: key);
+
+  final AppUser appUser;
 
   void _onLogout(BuildContext context) {
     context.read<AuthBloc>().add(AuthEvent.signOut());

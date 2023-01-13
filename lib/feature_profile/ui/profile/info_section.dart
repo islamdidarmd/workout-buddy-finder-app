@@ -6,13 +6,17 @@ import 'location_text.dart';
 import '../widgets/profile_avatar.dart';
 
 class InfoSection extends StatelessWidget {
-  const InfoSection({Key? key}) : super(key: key);
+  const InfoSection({
+    Key? key,
+    required this.appUser,
+  }) : super(key: key);
+
   final double _padding = 16.0;
+  final AppUser appUser;
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final appUser = context.read<AppUser>();
 
     return Container(
       height: 120,
