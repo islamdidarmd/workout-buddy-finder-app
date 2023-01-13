@@ -25,6 +25,8 @@ class SuggestionsBloc extends Bloc<SuggestionsEvent, SuggestionsState> {
         loadSuggestions: (appUser) => _loadSuggestions(appUser, emit),
         likeUser: (appUser, userId) => _onLikeUser(appUser, userId, emit),
         dislikeUser: (appUser, userId) => _onDislikeUser(appUser, userId, emit),
+        checkIfHasMatch: (appUser, userId) =>
+            _onCheckMatch(appUser, userId, emit),
       );
     });
   }
@@ -56,5 +58,19 @@ class SuggestionsBloc extends Bloc<SuggestionsEvent, SuggestionsState> {
       (success) => emit(SuggestionsState.interactionSuccess(userId)),
       (error) => emit(SuggestionsState.interactionError(error)),
     );
+  }
+
+  Future<void> _onCheckMatch(
+    AppUser appUser,
+    String userId,
+    Emitter emit,
+  ) async {
+    final hasMatch = await suggestionsRepository.hasMatchWithUser(
+      appUser,
+      userId,
+    );
+    if (hasMatch) {
+      emit(SuggestionsState.matchFound(userId));
+    }
   }
 }

@@ -7,9 +7,11 @@ class SuggestionsPage extends StatelessWidget {
   const SuggestionsPage({
     Key? key,
     required this.onShowProfile,
+    required this.onOpenMessaging,
   }) : super(key: key);
 
   final Function() onShowProfile;
+  final void Function() onOpenMessaging;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,11 @@ class SuggestionsPage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 8),
-                Expanded(child: SuggestionCardContainer()),
+                Expanded(
+                  child: SuggestionCardContainer(
+                    onOpenMessaging: onOpenMessaging,
+                  ),
+                ),
               ],
             ),
           ),

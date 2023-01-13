@@ -22,6 +22,7 @@ mixin _$SuggestionsEvent {
     required TResult Function(AppUser appUser) loadSuggestions,
     required TResult Function(AppUser appUser, String userId) likeUser,
     required TResult Function(AppUser appUser, String userId) dislikeUser,
+    required TResult Function(AppUser appUser, String userId) checkIfHasMatch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +30,7 @@ mixin _$SuggestionsEvent {
     TResult? Function(AppUser appUser)? loadSuggestions,
     TResult? Function(AppUser appUser, String userId)? likeUser,
     TResult? Function(AppUser appUser, String userId)? dislikeUser,
+    TResult? Function(AppUser appUser, String userId)? checkIfHasMatch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$SuggestionsEvent {
     TResult Function(AppUser appUser)? loadSuggestions,
     TResult Function(AppUser appUser, String userId)? likeUser,
     TResult Function(AppUser appUser, String userId)? dislikeUser,
+    TResult Function(AppUser appUser, String userId)? checkIfHasMatch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$SuggestionsEvent {
     required TResult Function(_LoadSuggestionsEvent value) loadSuggestions,
     required TResult Function(_LikeUserEvent value) likeUser,
     required TResult Function(_DislikeUserEvent value) dislikeUser,
+    required TResult Function(_CheckIfHasMatchEvent value) checkIfHasMatch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$SuggestionsEvent {
     TResult? Function(_LoadSuggestionsEvent value)? loadSuggestions,
     TResult? Function(_LikeUserEvent value)? likeUser,
     TResult? Function(_DislikeUserEvent value)? dislikeUser,
+    TResult? Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$SuggestionsEvent {
     TResult Function(_LoadSuggestionsEvent value)? loadSuggestions,
     TResult Function(_LikeUserEvent value)? likeUser,
     TResult Function(_DislikeUserEvent value)? dislikeUser,
+    TResult Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -193,6 +199,7 @@ class _$_LoadSuggestionsEvent
     required TResult Function(AppUser appUser) loadSuggestions,
     required TResult Function(AppUser appUser, String userId) likeUser,
     required TResult Function(AppUser appUser, String userId) dislikeUser,
+    required TResult Function(AppUser appUser, String userId) checkIfHasMatch,
   }) {
     return loadSuggestions(appUser);
   }
@@ -203,6 +210,7 @@ class _$_LoadSuggestionsEvent
     TResult? Function(AppUser appUser)? loadSuggestions,
     TResult? Function(AppUser appUser, String userId)? likeUser,
     TResult? Function(AppUser appUser, String userId)? dislikeUser,
+    TResult? Function(AppUser appUser, String userId)? checkIfHasMatch,
   }) {
     return loadSuggestions?.call(appUser);
   }
@@ -213,6 +221,7 @@ class _$_LoadSuggestionsEvent
     TResult Function(AppUser appUser)? loadSuggestions,
     TResult Function(AppUser appUser, String userId)? likeUser,
     TResult Function(AppUser appUser, String userId)? dislikeUser,
+    TResult Function(AppUser appUser, String userId)? checkIfHasMatch,
     required TResult orElse(),
   }) {
     if (loadSuggestions != null) {
@@ -227,6 +236,7 @@ class _$_LoadSuggestionsEvent
     required TResult Function(_LoadSuggestionsEvent value) loadSuggestions,
     required TResult Function(_LikeUserEvent value) likeUser,
     required TResult Function(_DislikeUserEvent value) dislikeUser,
+    required TResult Function(_CheckIfHasMatchEvent value) checkIfHasMatch,
   }) {
     return loadSuggestions(this);
   }
@@ -237,6 +247,7 @@ class _$_LoadSuggestionsEvent
     TResult? Function(_LoadSuggestionsEvent value)? loadSuggestions,
     TResult? Function(_LikeUserEvent value)? likeUser,
     TResult? Function(_DislikeUserEvent value)? dislikeUser,
+    TResult? Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
   }) {
     return loadSuggestions?.call(this);
   }
@@ -247,6 +258,7 @@ class _$_LoadSuggestionsEvent
     TResult Function(_LoadSuggestionsEvent value)? loadSuggestions,
     TResult Function(_LikeUserEvent value)? likeUser,
     TResult Function(_DislikeUserEvent value)? dislikeUser,
+    TResult Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
     required TResult orElse(),
   }) {
     if (loadSuggestions != null) {
@@ -357,6 +369,7 @@ class _$_LikeUserEvent with DiagnosticableTreeMixin implements _LikeUserEvent {
     required TResult Function(AppUser appUser) loadSuggestions,
     required TResult Function(AppUser appUser, String userId) likeUser,
     required TResult Function(AppUser appUser, String userId) dislikeUser,
+    required TResult Function(AppUser appUser, String userId) checkIfHasMatch,
   }) {
     return likeUser(appUser, userId);
   }
@@ -367,6 +380,7 @@ class _$_LikeUserEvent with DiagnosticableTreeMixin implements _LikeUserEvent {
     TResult? Function(AppUser appUser)? loadSuggestions,
     TResult? Function(AppUser appUser, String userId)? likeUser,
     TResult? Function(AppUser appUser, String userId)? dislikeUser,
+    TResult? Function(AppUser appUser, String userId)? checkIfHasMatch,
   }) {
     return likeUser?.call(appUser, userId);
   }
@@ -377,6 +391,7 @@ class _$_LikeUserEvent with DiagnosticableTreeMixin implements _LikeUserEvent {
     TResult Function(AppUser appUser)? loadSuggestions,
     TResult Function(AppUser appUser, String userId)? likeUser,
     TResult Function(AppUser appUser, String userId)? dislikeUser,
+    TResult Function(AppUser appUser, String userId)? checkIfHasMatch,
     required TResult orElse(),
   }) {
     if (likeUser != null) {
@@ -391,6 +406,7 @@ class _$_LikeUserEvent with DiagnosticableTreeMixin implements _LikeUserEvent {
     required TResult Function(_LoadSuggestionsEvent value) loadSuggestions,
     required TResult Function(_LikeUserEvent value) likeUser,
     required TResult Function(_DislikeUserEvent value) dislikeUser,
+    required TResult Function(_CheckIfHasMatchEvent value) checkIfHasMatch,
   }) {
     return likeUser(this);
   }
@@ -401,6 +417,7 @@ class _$_LikeUserEvent with DiagnosticableTreeMixin implements _LikeUserEvent {
     TResult? Function(_LoadSuggestionsEvent value)? loadSuggestions,
     TResult? Function(_LikeUserEvent value)? likeUser,
     TResult? Function(_DislikeUserEvent value)? dislikeUser,
+    TResult? Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
   }) {
     return likeUser?.call(this);
   }
@@ -411,6 +428,7 @@ class _$_LikeUserEvent with DiagnosticableTreeMixin implements _LikeUserEvent {
     TResult Function(_LoadSuggestionsEvent value)? loadSuggestions,
     TResult Function(_LikeUserEvent value)? likeUser,
     TResult Function(_DislikeUserEvent value)? dislikeUser,
+    TResult Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
     required TResult orElse(),
   }) {
     if (likeUser != null) {
@@ -524,6 +542,7 @@ class _$_DislikeUserEvent
     required TResult Function(AppUser appUser) loadSuggestions,
     required TResult Function(AppUser appUser, String userId) likeUser,
     required TResult Function(AppUser appUser, String userId) dislikeUser,
+    required TResult Function(AppUser appUser, String userId) checkIfHasMatch,
   }) {
     return dislikeUser(appUser, userId);
   }
@@ -534,6 +553,7 @@ class _$_DislikeUserEvent
     TResult? Function(AppUser appUser)? loadSuggestions,
     TResult? Function(AppUser appUser, String userId)? likeUser,
     TResult? Function(AppUser appUser, String userId)? dislikeUser,
+    TResult? Function(AppUser appUser, String userId)? checkIfHasMatch,
   }) {
     return dislikeUser?.call(appUser, userId);
   }
@@ -544,6 +564,7 @@ class _$_DislikeUserEvent
     TResult Function(AppUser appUser)? loadSuggestions,
     TResult Function(AppUser appUser, String userId)? likeUser,
     TResult Function(AppUser appUser, String userId)? dislikeUser,
+    TResult Function(AppUser appUser, String userId)? checkIfHasMatch,
     required TResult orElse(),
   }) {
     if (dislikeUser != null) {
@@ -558,6 +579,7 @@ class _$_DislikeUserEvent
     required TResult Function(_LoadSuggestionsEvent value) loadSuggestions,
     required TResult Function(_LikeUserEvent value) likeUser,
     required TResult Function(_DislikeUserEvent value) dislikeUser,
+    required TResult Function(_CheckIfHasMatchEvent value) checkIfHasMatch,
   }) {
     return dislikeUser(this);
   }
@@ -568,6 +590,7 @@ class _$_DislikeUserEvent
     TResult? Function(_LoadSuggestionsEvent value)? loadSuggestions,
     TResult? Function(_LikeUserEvent value)? likeUser,
     TResult? Function(_DislikeUserEvent value)? dislikeUser,
+    TResult? Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
   }) {
     return dislikeUser?.call(this);
   }
@@ -578,6 +601,7 @@ class _$_DislikeUserEvent
     TResult Function(_LoadSuggestionsEvent value)? loadSuggestions,
     TResult Function(_LikeUserEvent value)? likeUser,
     TResult Function(_DislikeUserEvent value)? dislikeUser,
+    TResult Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
     required TResult orElse(),
   }) {
     if (dislikeUser != null) {
@@ -601,6 +625,180 @@ abstract class _DislikeUserEvent implements SuggestionsEvent {
 }
 
 /// @nodoc
+abstract class _$$_CheckIfHasMatchEventCopyWith<$Res>
+    implements $SuggestionsEventCopyWith<$Res> {
+  factory _$$_CheckIfHasMatchEventCopyWith(_$_CheckIfHasMatchEvent value,
+          $Res Function(_$_CheckIfHasMatchEvent) then) =
+      __$$_CheckIfHasMatchEventCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({AppUser appUser, String userId});
+
+  @override
+  $AppUserCopyWith<$Res> get appUser;
+}
+
+/// @nodoc
+class __$$_CheckIfHasMatchEventCopyWithImpl<$Res>
+    extends _$SuggestionsEventCopyWithImpl<$Res, _$_CheckIfHasMatchEvent>
+    implements _$$_CheckIfHasMatchEventCopyWith<$Res> {
+  __$$_CheckIfHasMatchEventCopyWithImpl(_$_CheckIfHasMatchEvent _value,
+      $Res Function(_$_CheckIfHasMatchEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? appUser = null,
+    Object? userId = null,
+  }) {
+    return _then(_$_CheckIfHasMatchEvent(
+      null == appUser
+          ? _value.appUser
+          : appUser // ignore: cast_nullable_to_non_nullable
+              as AppUser,
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CheckIfHasMatchEvent
+    with DiagnosticableTreeMixin
+    implements _CheckIfHasMatchEvent {
+  _$_CheckIfHasMatchEvent(this.appUser, this.userId);
+
+  @override
+  final AppUser appUser;
+  @override
+  final String userId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SuggestionsEvent.checkIfHasMatch(appUser: $appUser, userId: $userId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SuggestionsEvent.checkIfHasMatch'))
+      ..add(DiagnosticsProperty('appUser', appUser))
+      ..add(DiagnosticsProperty('userId', userId));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CheckIfHasMatchEvent &&
+            (identical(other.appUser, appUser) || other.appUser == appUser) &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, appUser, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CheckIfHasMatchEventCopyWith<_$_CheckIfHasMatchEvent> get copyWith =>
+      __$$_CheckIfHasMatchEventCopyWithImpl<_$_CheckIfHasMatchEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(AppUser appUser) loadSuggestions,
+    required TResult Function(AppUser appUser, String userId) likeUser,
+    required TResult Function(AppUser appUser, String userId) dislikeUser,
+    required TResult Function(AppUser appUser, String userId) checkIfHasMatch,
+  }) {
+    return checkIfHasMatch(appUser, userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(AppUser appUser)? loadSuggestions,
+    TResult? Function(AppUser appUser, String userId)? likeUser,
+    TResult? Function(AppUser appUser, String userId)? dislikeUser,
+    TResult? Function(AppUser appUser, String userId)? checkIfHasMatch,
+  }) {
+    return checkIfHasMatch?.call(appUser, userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(AppUser appUser)? loadSuggestions,
+    TResult Function(AppUser appUser, String userId)? likeUser,
+    TResult Function(AppUser appUser, String userId)? dislikeUser,
+    TResult Function(AppUser appUser, String userId)? checkIfHasMatch,
+    required TResult orElse(),
+  }) {
+    if (checkIfHasMatch != null) {
+      return checkIfHasMatch(appUser, userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadSuggestionsEvent value) loadSuggestions,
+    required TResult Function(_LikeUserEvent value) likeUser,
+    required TResult Function(_DislikeUserEvent value) dislikeUser,
+    required TResult Function(_CheckIfHasMatchEvent value) checkIfHasMatch,
+  }) {
+    return checkIfHasMatch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult? Function(_LikeUserEvent value)? likeUser,
+    TResult? Function(_DislikeUserEvent value)? dislikeUser,
+    TResult? Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
+  }) {
+    return checkIfHasMatch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadSuggestionsEvent value)? loadSuggestions,
+    TResult Function(_LikeUserEvent value)? likeUser,
+    TResult Function(_DislikeUserEvent value)? dislikeUser,
+    TResult Function(_CheckIfHasMatchEvent value)? checkIfHasMatch,
+    required TResult orElse(),
+  }) {
+    if (checkIfHasMatch != null) {
+      return checkIfHasMatch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckIfHasMatchEvent implements SuggestionsEvent {
+  factory _CheckIfHasMatchEvent(final AppUser appUser, final String userId) =
+      _$_CheckIfHasMatchEvent;
+
+  @override
+  AppUser get appUser;
+  String get userId;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CheckIfHasMatchEventCopyWith<_$_CheckIfHasMatchEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$SuggestionsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -610,6 +808,7 @@ mixin _$SuggestionsState {
     required TResult Function(String userId) interactionSuccess,
     required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+    required TResult Function(String userId) matchFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -620,6 +819,7 @@ mixin _$SuggestionsState {
     TResult? Function(String userId)? interactionSuccess,
     TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult? Function(String userId)? matchFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -630,6 +830,7 @@ mixin _$SuggestionsState {
     TResult Function(String userId)? interactionSuccess,
     TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult Function(String userId)? matchFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -643,6 +844,7 @@ mixin _$SuggestionsState {
     required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
+    required TResult Function(_MatchFoundState value) matchFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -653,6 +855,7 @@ mixin _$SuggestionsState {
     TResult? Function(_InteractionSuccessState value)? interactionSuccess,
     TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult? Function(_MatchFoundState value)? matchFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -663,6 +866,7 @@ mixin _$SuggestionsState {
     TResult Function(_InteractionSuccessState value)? interactionSuccess,
     TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult Function(_MatchFoundState value)? matchFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -739,6 +943,7 @@ class _$_SuggestionsInitialState
     required TResult Function(String userId) interactionSuccess,
     required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+    required TResult Function(String userId) matchFound,
   }) {
     return initial();
   }
@@ -752,6 +957,7 @@ class _$_SuggestionsInitialState
     TResult? Function(String userId)? interactionSuccess,
     TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult? Function(String userId)? matchFound,
   }) {
     return initial?.call();
   }
@@ -765,6 +971,7 @@ class _$_SuggestionsInitialState
     TResult Function(String userId)? interactionSuccess,
     TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult Function(String userId)? matchFound,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -784,6 +991,7 @@ class _$_SuggestionsInitialState
     required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
+    required TResult Function(_MatchFoundState value) matchFound,
   }) {
     return initial(this);
   }
@@ -797,6 +1005,7 @@ class _$_SuggestionsInitialState
     TResult? Function(_InteractionSuccessState value)? interactionSuccess,
     TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult? Function(_MatchFoundState value)? matchFound,
   }) {
     return initial?.call(this);
   }
@@ -810,6 +1019,7 @@ class _$_SuggestionsInitialState
     TResult Function(_InteractionSuccessState value)? interactionSuccess,
     TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult Function(_MatchFoundState value)? matchFound,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -876,6 +1086,7 @@ class _$_SuggestionsLoadingState
     required TResult Function(String userId) interactionSuccess,
     required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+    required TResult Function(String userId) matchFound,
   }) {
     return loading();
   }
@@ -889,6 +1100,7 @@ class _$_SuggestionsLoadingState
     TResult? Function(String userId)? interactionSuccess,
     TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult? Function(String userId)? matchFound,
   }) {
     return loading?.call();
   }
@@ -902,6 +1114,7 @@ class _$_SuggestionsLoadingState
     TResult Function(String userId)? interactionSuccess,
     TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult Function(String userId)? matchFound,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -921,6 +1134,7 @@ class _$_SuggestionsLoadingState
     required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
+    required TResult Function(_MatchFoundState value) matchFound,
   }) {
     return loading(this);
   }
@@ -934,6 +1148,7 @@ class _$_SuggestionsLoadingState
     TResult? Function(_InteractionSuccessState value)? interactionSuccess,
     TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult? Function(_MatchFoundState value)? matchFound,
   }) {
     return loading?.call(this);
   }
@@ -947,6 +1162,7 @@ class _$_SuggestionsLoadingState
     TResult Function(_InteractionSuccessState value)? interactionSuccess,
     TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult Function(_MatchFoundState value)? matchFound,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1042,6 +1258,7 @@ class _$_SuggestionsErrorState
     required TResult Function(String userId) interactionSuccess,
     required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+    required TResult Function(String userId) matchFound,
   }) {
     return error(appError);
   }
@@ -1055,6 +1272,7 @@ class _$_SuggestionsErrorState
     TResult? Function(String userId)? interactionSuccess,
     TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult? Function(String userId)? matchFound,
   }) {
     return error?.call(appError);
   }
@@ -1068,6 +1286,7 @@ class _$_SuggestionsErrorState
     TResult Function(String userId)? interactionSuccess,
     TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult Function(String userId)? matchFound,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1087,6 +1306,7 @@ class _$_SuggestionsErrorState
     required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
+    required TResult Function(_MatchFoundState value) matchFound,
   }) {
     return error(this);
   }
@@ -1100,6 +1320,7 @@ class _$_SuggestionsErrorState
     TResult? Function(_InteractionSuccessState value)? interactionSuccess,
     TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult? Function(_MatchFoundState value)? matchFound,
   }) {
     return error?.call(this);
   }
@@ -1113,6 +1334,7 @@ class _$_SuggestionsErrorState
     TResult Function(_InteractionSuccessState value)? interactionSuccess,
     TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult Function(_MatchFoundState value)? matchFound,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1214,6 +1436,7 @@ class _$_InteractionSuccessState
     required TResult Function(String userId) interactionSuccess,
     required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+    required TResult Function(String userId) matchFound,
   }) {
     return interactionSuccess(userId);
   }
@@ -1227,6 +1450,7 @@ class _$_InteractionSuccessState
     TResult? Function(String userId)? interactionSuccess,
     TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult? Function(String userId)? matchFound,
   }) {
     return interactionSuccess?.call(userId);
   }
@@ -1240,6 +1464,7 @@ class _$_InteractionSuccessState
     TResult Function(String userId)? interactionSuccess,
     TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult Function(String userId)? matchFound,
     required TResult orElse(),
   }) {
     if (interactionSuccess != null) {
@@ -1259,6 +1484,7 @@ class _$_InteractionSuccessState
     required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
+    required TResult Function(_MatchFoundState value) matchFound,
   }) {
     return interactionSuccess(this);
   }
@@ -1272,6 +1498,7 @@ class _$_InteractionSuccessState
     TResult? Function(_InteractionSuccessState value)? interactionSuccess,
     TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult? Function(_MatchFoundState value)? matchFound,
   }) {
     return interactionSuccess?.call(this);
   }
@@ -1285,6 +1512,7 @@ class _$_InteractionSuccessState
     TResult Function(_InteractionSuccessState value)? interactionSuccess,
     TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult Function(_MatchFoundState value)? matchFound,
     required TResult orElse(),
   }) {
     if (interactionSuccess != null) {
@@ -1386,6 +1614,7 @@ class _$_InteractionErrorState
     required TResult Function(String userId) interactionSuccess,
     required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+    required TResult Function(String userId) matchFound,
   }) {
     return interactionError(appError);
   }
@@ -1399,6 +1628,7 @@ class _$_InteractionErrorState
     TResult? Function(String userId)? interactionSuccess,
     TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult? Function(String userId)? matchFound,
   }) {
     return interactionError?.call(appError);
   }
@@ -1412,6 +1642,7 @@ class _$_InteractionErrorState
     TResult Function(String userId)? interactionSuccess,
     TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult Function(String userId)? matchFound,
     required TResult orElse(),
   }) {
     if (interactionError != null) {
@@ -1431,6 +1662,7 @@ class _$_InteractionErrorState
     required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
+    required TResult Function(_MatchFoundState value) matchFound,
   }) {
     return interactionError(this);
   }
@@ -1444,6 +1676,7 @@ class _$_InteractionErrorState
     TResult? Function(_InteractionSuccessState value)? interactionSuccess,
     TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult? Function(_MatchFoundState value)? matchFound,
   }) {
     return interactionError?.call(this);
   }
@@ -1457,6 +1690,7 @@ class _$_InteractionErrorState
     TResult Function(_InteractionSuccessState value)? interactionSuccess,
     TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult Function(_MatchFoundState value)? matchFound,
     required TResult orElse(),
   }) {
     if (interactionError != null) {
@@ -1566,6 +1800,7 @@ class _$_SuggestionsFetchedState
     required TResult Function(String userId) interactionSuccess,
     required TResult Function(AppError appError) interactionError,
     required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+    required TResult Function(String userId) matchFound,
   }) {
     return suggestionsFetched(suggestions);
   }
@@ -1579,6 +1814,7 @@ class _$_SuggestionsFetchedState
     TResult? Function(String userId)? interactionSuccess,
     TResult? Function(AppError appError)? interactionError,
     TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult? Function(String userId)? matchFound,
   }) {
     return suggestionsFetched?.call(suggestions);
   }
@@ -1592,6 +1828,7 @@ class _$_SuggestionsFetchedState
     TResult Function(String userId)? interactionSuccess,
     TResult Function(AppError appError)? interactionError,
     TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult Function(String userId)? matchFound,
     required TResult orElse(),
   }) {
     if (suggestionsFetched != null) {
@@ -1611,6 +1848,7 @@ class _$_SuggestionsFetchedState
     required TResult Function(_InteractionErrorState value) interactionError,
     required TResult Function(_SuggestionsFetchedState value)
         suggestionsFetched,
+    required TResult Function(_MatchFoundState value) matchFound,
   }) {
     return suggestionsFetched(this);
   }
@@ -1624,6 +1862,7 @@ class _$_SuggestionsFetchedState
     TResult? Function(_InteractionSuccessState value)? interactionSuccess,
     TResult? Function(_InteractionErrorState value)? interactionError,
     TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult? Function(_MatchFoundState value)? matchFound,
   }) {
     return suggestionsFetched?.call(this);
   }
@@ -1637,6 +1876,7 @@ class _$_SuggestionsFetchedState
     TResult Function(_InteractionSuccessState value)? interactionSuccess,
     TResult Function(_InteractionErrorState value)? interactionError,
     TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult Function(_MatchFoundState value)? matchFound,
     required TResult orElse(),
   }) {
     if (suggestionsFetched != null) {
@@ -1654,4 +1894,179 @@ abstract class _SuggestionsFetchedState implements SuggestionsState {
   @JsonKey(ignore: true)
   _$$_SuggestionsFetchedStateCopyWith<_$_SuggestionsFetchedState>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_MatchFoundStateCopyWith<$Res> {
+  factory _$$_MatchFoundStateCopyWith(
+          _$_MatchFoundState value, $Res Function(_$_MatchFoundState) then) =
+      __$$_MatchFoundStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String userId});
+}
+
+/// @nodoc
+class __$$_MatchFoundStateCopyWithImpl<$Res>
+    extends _$SuggestionsStateCopyWithImpl<$Res, _$_MatchFoundState>
+    implements _$$_MatchFoundStateCopyWith<$Res> {
+  __$$_MatchFoundStateCopyWithImpl(
+      _$_MatchFoundState _value, $Res Function(_$_MatchFoundState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+  }) {
+    return _then(_$_MatchFoundState(
+      null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_MatchFoundState
+    with DiagnosticableTreeMixin
+    implements _MatchFoundState {
+  _$_MatchFoundState(this.userId);
+
+  @override
+  final String userId;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SuggestionsState.matchFound(userId: $userId)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SuggestionsState.matchFound'))
+      ..add(DiagnosticsProperty('userId', userId));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_MatchFoundState &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MatchFoundStateCopyWith<_$_MatchFoundState> get copyWith =>
+      __$$_MatchFoundStateCopyWithImpl<_$_MatchFoundState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(AppError appError) error,
+    required TResult Function(String userId) interactionSuccess,
+    required TResult Function(AppError appError) interactionError,
+    required TResult Function(List<Suggestion> suggestions) suggestionsFetched,
+    required TResult Function(String userId) matchFound,
+  }) {
+    return matchFound(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(AppError appError)? error,
+    TResult? Function(String userId)? interactionSuccess,
+    TResult? Function(AppError appError)? interactionError,
+    TResult? Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult? Function(String userId)? matchFound,
+  }) {
+    return matchFound?.call(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(AppError appError)? error,
+    TResult Function(String userId)? interactionSuccess,
+    TResult Function(AppError appError)? interactionError,
+    TResult Function(List<Suggestion> suggestions)? suggestionsFetched,
+    TResult Function(String userId)? matchFound,
+    required TResult orElse(),
+  }) {
+    if (matchFound != null) {
+      return matchFound(userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SuggestionsInitialState value) initial,
+    required TResult Function(_SuggestionsLoadingState value) loading,
+    required TResult Function(_SuggestionsErrorState value) error,
+    required TResult Function(_InteractionSuccessState value)
+        interactionSuccess,
+    required TResult Function(_InteractionErrorState value) interactionError,
+    required TResult Function(_SuggestionsFetchedState value)
+        suggestionsFetched,
+    required TResult Function(_MatchFoundState value) matchFound,
+  }) {
+    return matchFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SuggestionsInitialState value)? initial,
+    TResult? Function(_SuggestionsLoadingState value)? loading,
+    TResult? Function(_SuggestionsErrorState value)? error,
+    TResult? Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult? Function(_InteractionErrorState value)? interactionError,
+    TResult? Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult? Function(_MatchFoundState value)? matchFound,
+  }) {
+    return matchFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SuggestionsInitialState value)? initial,
+    TResult Function(_SuggestionsLoadingState value)? loading,
+    TResult Function(_SuggestionsErrorState value)? error,
+    TResult Function(_InteractionSuccessState value)? interactionSuccess,
+    TResult Function(_InteractionErrorState value)? interactionError,
+    TResult Function(_SuggestionsFetchedState value)? suggestionsFetched,
+    TResult Function(_MatchFoundState value)? matchFound,
+    required TResult orElse(),
+  }) {
+    if (matchFound != null) {
+      return matchFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _MatchFoundState implements SuggestionsState {
+  factory _MatchFoundState(final String userId) = _$_MatchFoundState;
+
+  String get userId;
+  @JsonKey(ignore: true)
+  _$$_MatchFoundStateCopyWith<_$_MatchFoundState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
