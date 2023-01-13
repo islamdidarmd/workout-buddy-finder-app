@@ -15,9 +15,11 @@ class ChatRoomPage extends HookWidget {
   const ChatRoomPage({
     Key? key,
     required this.chatRoomId,
+    required this.onVisitProfile,
   }) : super(key: key);
 
   final String chatRoomId;
+  final void Function(String userId) onVisitProfile;
 
   Future<void> _onSendMessage(
     AppUser loggedInUser,
@@ -41,7 +43,7 @@ class ChatRoomPage extends HookWidget {
     return BaseFeatureLayout(
       child: Column(
         children: [
-          TopBar(chatRoomId: chatRoomId),
+          TopBar(chatRoomId: chatRoomId, onVisitProfile: onVisitProfile),
           Expanded(child: ChatRoomMessagesList(chatRoomId: chatRoomId)),
           SizedBox(
             height: 80,

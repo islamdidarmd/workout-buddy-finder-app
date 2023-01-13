@@ -12,9 +12,11 @@ class TopBar extends HookWidget {
   const TopBar({
     Key? key,
     required this.chatRoomId,
+    required this.onVisitProfile,
   }) : super(key: key);
 
   final String chatRoomId;
+  final void Function(String userId) onVisitProfile;
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +33,15 @@ class TopBar extends HookWidget {
         ..removeWhere((e) => e.userId == loggedInUser.userId);
 
       return AppBar(
-        title: Row(
-          children: [
-            UserAvatar(profilePicture: participant.first.profilePicture),
-            const SizedBox(width: 12),
-            mediumBody(context, participant.first.name),
-          ],
+        title: InkWell(
+          onTap: () => onVisitProfile(participant.first.userId),
+          child: Row(
+            children: [
+              UserAvatar(profilePicture: participant.first.profilePicture),
+              const SizedBox(width: 12),
+              mediumBody(context, participant.first.name),
+            ],
+          ),
         ),
       );
     }
