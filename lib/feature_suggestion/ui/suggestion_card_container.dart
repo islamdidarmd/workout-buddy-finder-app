@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swipable_stack/swipable_stack.dart';
+import '../../core/ui/ui.dart';
 import 'suggestion_card.dart';
 
 import '../../di/service_locator.dart';

@@ -25,11 +25,7 @@ class WBFApp extends StatelessWidget {
       theme: theme,
       darkTheme: darkTheme,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      ),
+      home: Scaffold(body: SafeArea(child: AppLoadingIndicator())),
     );
   }
 
