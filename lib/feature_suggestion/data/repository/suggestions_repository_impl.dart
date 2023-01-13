@@ -66,7 +66,8 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
             .collection(col_messages)
             .doc()
             .withConverter(
-              fromFirestore: (snapshot, _) => ChatRoom.fromJson(snapshot.data()!),
+              fromFirestore: (snapshot, _) =>
+                  ChatRoom.fromJson(snapshot.data()!),
               toFirestore: (value, _) => value.toJson(),
             );
         await docRef.set(
@@ -108,6 +109,14 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     }
 
     return Left(null);
+  }
+
+  @override
+  Future<bool> hasMatchWithUser(AppUser appUser, String testUserId) async {
+    return await _isLikedBy(
+      userId: appUser.userId,
+      testLikedByUserId: testUserId,
+    );
   }
 
   Future<bool> _isLikedBy({

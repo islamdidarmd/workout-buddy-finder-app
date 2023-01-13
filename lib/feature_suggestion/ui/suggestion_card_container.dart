@@ -8,7 +8,12 @@ import '../../di/service_locator.dart';
 import 'bloc/suggestions_bloc.dart';
 
 class SuggestionCardContainer extends StatelessWidget {
-  const SuggestionCardContainer({Key? key}) : super(key: key);
+  const SuggestionCardContainer({
+    Key? key,
+    required this.onOpenMessaging,
+  }) : super(key: key);
+
+  final void Function() onOpenMessaging;
 
   bool _suggestionBlocBuildWhen(SuggestionsState _, SuggestionsState current) {
     return current.maybeWhen(
@@ -33,7 +38,10 @@ class SuggestionCardContainer extends StatelessWidget {
               child: const FittedBox(child: const CircularProgressIndicator()),
             ),
             suggestionsFetched: (suggestions) {
-              return SuggestionCard(suggestion: suggestions);
+              return SuggestionCard(
+                suggestion: suggestions,
+                onOpenMessaging: onOpenMessaging,
+              );
             },
             orElse: () => const SizedBox(),
           );

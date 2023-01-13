@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 import 'package:swipable_stack/src/model/swipe_properties.dart';
 import 'package:workout_buddy_finder/core/core.dart';
+import 'package:workout_buddy_finder/feature_suggestion/ui/match_found_dialog.dart';
 import 'card_overlay.dart';
 import 'bloc/suggestions_bloc.dart';
 import 'empty_suggestion.dart';
@@ -15,11 +16,14 @@ class SuggestionCard extends StatelessWidget {
   SuggestionCard({
     Key? key,
     required List<Suggestion> suggestion,
+    required this.onOpenMessaging,
   })  : _suggestions = suggestion,
         super(key: key);
 
   final List<Suggestion> _suggestions;
   final SwipableStackController _controller = SwipableStackController();
+
+  final void Function() onOpenMessaging;
 
   final _horizontalSwipeThreshold = 0.8;
 
@@ -38,6 +42,10 @@ class SuggestionCard extends StatelessWidget {
           ));
     } else if (direction == SwipeDirection.right) {
       context.read<SuggestionsBloc>().add(SuggestionsEvent.likeUser(
+            context.read<AppUser>(),
+            _suggestions[itemIndex].userId,
+          ));
+      context.read<SuggestionsBloc>().add(SuggestionsEvent.checkIfHasMatch(
             context.read<AppUser>(),
             _suggestions[itemIndex].userId,
           ));
@@ -68,6 +76,13 @@ class SuggestionCard extends StatelessWidget {
       interactionError: (userId) {
         final snackbarState = ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed')),
+        );
+      },
+      matchFound: (userId) {
+        final result = showDialog(
+          context: context,
+          builder: (context) =>
+              MatchFoundDialog(onOpenMessaging: onOpenMessaging),
         );
       },
       orElse: () {},
