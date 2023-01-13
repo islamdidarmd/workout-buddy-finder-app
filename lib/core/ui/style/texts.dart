@@ -13,12 +13,18 @@ Text caption(context, String text, {Color? color}) => Text(
       style: Theme.of(context).textTheme.caption?.copyWith(color: color),
     );
 
-Text mediumBody(context, String text) => Text(
+Text mediumBody(
+  context,
+  String text, {
+  TextAlign textAlign = TextAlign.start,
+}) =>
+    Text(
       text,
       style: Theme.of(context)
           .textTheme
           .bodyMedium
           ?.copyWith(fontWeight: FontWeight.bold),
+      textAlign: textAlign,
     );
 
 Text mediumTitle(context, String text, {Color? color}) => Text(
