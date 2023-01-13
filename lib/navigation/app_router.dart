@@ -39,6 +39,7 @@ List<GoRoute> get _appRoutes => [
           return NoTransitionPage(
             child: SuggestionsPage(
               onShowProfile: () => context.go(TopLevelRoute.profile().route),
+              onOpenMessaging: () => context.go(TopLevelRoute.messaging().route),
             ),
           );
         },

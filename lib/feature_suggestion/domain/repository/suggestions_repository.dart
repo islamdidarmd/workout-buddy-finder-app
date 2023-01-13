@@ -8,6 +8,8 @@ abstract class SuggestionsRepository {
 
   Future<Either<void, AppError>> likeUser(AppUser appUser, String likedUserId);
 
+  Future<bool> hasMatchWithUser(AppUser appUser, String testUserId);
+
   Future<Either<void, AppError>> dislikeUser(
     AppUser appUser,
     String dislikedUserId,

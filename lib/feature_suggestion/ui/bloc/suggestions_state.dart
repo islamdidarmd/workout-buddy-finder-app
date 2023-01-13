@@ -16,4 +16,7 @@ class SuggestionsState with _$SuggestionsState {
 
   factory SuggestionsState.suggestionsFetched(List<Suggestion> suggestions) =
       _SuggestionsFetchedState;
+
+  factory SuggestionsState.matchFound(String userId) =
+      _MatchFoundState;
 }
