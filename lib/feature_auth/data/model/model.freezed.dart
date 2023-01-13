@@ -196,7 +196,7 @@ class __$$_AppUserModelCopyWithImpl<$Res>
           : geoHash // ignore: cast_nullable_to_non_nullable
               as String,
       interestsList: null == interestsList
-          ? _value.interestsList
+          ? _value._interestsList
           : interestsList // ignore: cast_nullable_to_non_nullable
               as List<String>,
     ));
@@ -216,8 +216,9 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       this.lat = 0.0,
       this.long = 0.0,
       this.geoHash = "",
-      this.interestsList = const []})
-      : super._();
+      final List<String> interestsList = const []})
+      : _interestsList = interestsList,
+        super._();
 
   factory _$_AppUserModel.fromJson(Map<String, dynamic> json) =>
       _$$_AppUserModelFromJson(json);
@@ -245,9 +246,14 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
   @override
   @JsonKey()
   final String geoHash;
+  final List<String> _interestsList;
   @override
   @JsonKey()
-  final List<String> interestsList;
+  List<String> get interestsList {
+    if (_interestsList is EqualUnmodifiableListView) return _interestsList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_interestsList);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -286,7 +292,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
             (identical(other.long, long) || other.long == long) &&
             (identical(other.geoHash, geoHash) || other.geoHash == geoHash) &&
             const DeepCollectionEquality()
-                .equals(other.interestsList, interestsList));
+                .equals(other._interestsList, _interestsList));
   }
 
   @JsonKey(ignore: true)
@@ -301,7 +307,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       lat,
       long,
       geoHash,
-      const DeepCollectionEquality().hash(interestsList));
+      const DeepCollectionEquality().hash(_interestsList));
 
   @JsonKey(ignore: true)
   @override

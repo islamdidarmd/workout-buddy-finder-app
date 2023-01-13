@@ -1,8 +1,6 @@
 part of 'model.dart';
 
-@Freezed(
-  makeCollectionsUnmodifiable: false,
-)
+@freezed
 class AppUserModel with _$AppUserModel {
   const AppUserModel._();
 
