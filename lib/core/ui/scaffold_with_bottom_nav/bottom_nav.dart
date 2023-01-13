@@ -75,7 +75,6 @@ class BottomNav extends StatelessWidget {
           label: 'Settings',
         ),
       ],
-      height: 65,
       onDestinationSelected: _onDestinationSelected,
     );
   }
