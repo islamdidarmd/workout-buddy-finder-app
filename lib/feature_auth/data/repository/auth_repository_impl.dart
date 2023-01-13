@@ -1,12 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/src/either.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/feature_upload/domain/domain.dart';
+import '../../../feature_upload/domain/domain.dart';
 import '../../../core/firebase_storage_constants.dart';
 import '../../../feature_location/location.dart';
 import '../../../feature_profile/data/model/model.dart';
@@ -23,9 +22,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   bool get isSignedIn => FirebaseAuth.instance.currentUser != null;
 
-  const AuthRepositoryImpl({
-    required this.uploaderRepository,
-  });
+  const AuthRepositoryImpl({required this.uploaderRepository});
 
   @override
   Future<Either<void, AppError>> loginWithGoogle(Position location) async {
@@ -76,25 +73,35 @@ class AuthRepositoryImpl implements AuthRepository {
   Stream<AppUser> getAppUserStream() {
     final firebaseUser = FirebaseAuth.instance.currentUser;
     final usersDb = FirebaseFirestore.instance.collection(col_users);
-    final userDoc = usersDb.doc(firebaseUser?.uid).snapshots();
+    final userDoc = usersDb
+        .doc(firebaseUser?.uid)
+        .withConverter(
+          fromFirestore: (snapshot, _) {
+            final json = snapshot.data();
+            if (json == null) return null;
+
+            return AppUserModel.fromJson(json);
+          },
+          toFirestore: (value, _) => {},
+        )
+        .snapshots();
 
     return userDoc.asyncMap(
       (doc) async {
-        final data = doc.data();
-        if (data == null) {
+        final appUserModel = doc.data();
+        if (appUserModel == null) {
           return AppUser.empty();
         }
         debugPrint("User profile update received");
-        final appUserModel = AppUserModel.fromJson(data);
 
-        return AppUserModel.fromJson(data)
-            .toEntity(await _getUserInterestList(appUserModel));
+        return appUserModel.toEntity(await _getUserInterestList(appUserModel));
       },
     );
   }
 
   Future<List<Interest>> _getUserInterestList(AppUserModel appUserModel) async {
-    final interestCollection = FirebaseFirestore.instance.collection(col_interests);
+    final interestCollection =
+        FirebaseFirestore.instance.collection(col_interests);
     final interestList = <Interest>[];
 
     for (String e in appUserModel.interestsList) {
