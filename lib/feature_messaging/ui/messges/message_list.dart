@@ -34,6 +34,7 @@ class MessageList extends StatelessWidget {
         final chat = doc.data();
 
         return MessageListItem(
+          key: ValueKey(chat.chatRoomId),
           chat: chat,
           appUser: context.read(),
           onTap: onOpenChatRoom,
