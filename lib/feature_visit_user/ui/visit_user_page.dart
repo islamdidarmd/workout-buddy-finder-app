@@ -3,8 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../domain/domain.dart';
 import '../../core/core.dart';
 import '../../di/service_locator.dart';
-import 'info_section.dart';
-import 'interest_section.dart';
 
 class VisitUserPage extends HookWidget {
   const VisitUserPage({

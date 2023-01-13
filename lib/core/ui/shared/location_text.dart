@@ -2,7 +2,7 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 import '../../../feature_location/domain/domain.dart';
 
-import '../../../core/error/app_error.dart';
+import '../../error/app_error.dart';
 import '../../../di/service_locator.dart';
 
 class LocationText extends StatefulWidget {

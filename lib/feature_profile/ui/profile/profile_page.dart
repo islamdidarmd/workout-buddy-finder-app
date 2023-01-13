@@ -6,8 +6,8 @@ import 'edit_profile_button.dart';
 import 'others_section.dart';
 import '../../../di/service_locator.dart';
 import '../bloc/profile_bloc.dart';
-import 'info_section.dart';
-import 'interest_section.dart';
+import '../../../core/ui/shared/info_section.dart';
+import '../../../core/ui/shared/interest_section.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
