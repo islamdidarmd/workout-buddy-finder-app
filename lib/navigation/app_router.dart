@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../feature_messaging/ui/chat_room/chat_room_page.dart';
+import '../feature_visit_user/ui/visit_user_page.dart';
 import 'navigation.dart';
-import '../feature_auth/ui/ui.dart';
 import '../feature_messaging/messaging.dart';
 import '../feature_suggestion/suggestion.dart';
 import '../feature_profile/profile.dart';
@@ -15,7 +15,7 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
 final router = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: TopLevelRoute.suggestion().route,
-  errorBuilder: (context, state) => ErrorIndicator(),
+  errorBuilder: (_, state) => ErrorIndicator(error: state.error?.toString()),
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
@@ -42,6 +42,16 @@ List<GoRoute> get _appRoutes => [
             ),
           );
         },
+        routes: [
+          GoRoute(
+            path: VisitUserRoute().route,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                child: VisitUserPage(userId: state.params['userId']!),
+              );
+            },
+          ),
+        ],
       ),
       GoRoute(
         path: TopLevelRoute.profile().route,
@@ -77,8 +87,29 @@ List<GoRoute> get _appRoutes => [
           GoRoute(
             path: ChatRoomRoute().route,
             pageBuilder: (context, state) => NoTransitionPage(
-              child: ChatRoomPage(chatRoomId: state.params['chatRoomId']!),
+              child: ChatRoomPage(
+                chatRoomId: state.params['chatRoomId']!,
+                onVisitProfile: (userId) => context.go(
+                  VisitUserRoute().generateNavRoute(
+                    root: '${ChatRoomRoute().generateNavRoute(
+                      root: TopLevelRoute.messaging().route,
+                      chatRoomId: state.params['chatRoomId']!,
+                    )}',
+                    userId: userId,
+                  ),
+                ),
+              ),
             ),
+            routes: [
+              GoRoute(
+                path: VisitUserRoute().route,
+                pageBuilder: (_, state) {
+                  return NoTransitionPage(
+                    child: VisitUserPage(userId: state.params['userId']!),
+                  );
+                },
+              ),
+            ],
           ),
         ],
       ),

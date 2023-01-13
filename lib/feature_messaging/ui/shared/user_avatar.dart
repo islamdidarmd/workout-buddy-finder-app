@@ -10,6 +10,10 @@ class UserAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if(profilePicture.isEmpty) {
+      return const SizedBox();
+    }
+
     return CircleAvatar(
       foregroundImage: CachedNetworkImageProvider(profilePicture),
     );
