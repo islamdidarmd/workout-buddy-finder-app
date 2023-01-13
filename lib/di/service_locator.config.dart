@@ -8,10 +8,10 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:workout_buddy_finder/feature_auth/data/repository/auth_repository_impl.dart'
-    as _i16;
-import 'package:workout_buddy_finder/feature_auth/domain/domain.dart' as _i15;
+    as _i18;
+import 'package:workout_buddy_finder/feature_auth/domain/domain.dart' as _i17;
 import 'package:workout_buddy_finder/feature_auth/ui/bloc/auth_bloc.dart'
-    as _i20;
+    as _i22;
 import 'package:workout_buddy_finder/feature_location/domain/usecase/get_address_from_lat_long_use_case.dart'
     as _i3;
 import 'package:workout_buddy_finder/feature_location/ui/bloc/location_retriever_bloc.dart'
@@ -25,22 +25,26 @@ import 'package:workout_buddy_finder/feature_profile/data/repository/profile_rep
 import 'package:workout_buddy_finder/feature_profile/data/repository/profile_repository_impl.dart'
     as _i8;
 import 'package:workout_buddy_finder/feature_profile/ui/bloc/profile_bloc.dart'
-    as _i17;
+    as _i19;
 import 'package:workout_buddy_finder/feature_settings/data/repository/settings_repository_impl.dart'
     as _i10;
 import 'package:workout_buddy_finder/feature_settings/domain/domain.dart'
     as _i9;
 import 'package:workout_buddy_finder/feature_settings/ui/bloc/settings_bloc.dart'
-    as _i18;
+    as _i20;
 import 'package:workout_buddy_finder/feature_suggestion/data/repository/suggestions_repository_impl.dart'
     as _i12;
 import 'package:workout_buddy_finder/feature_suggestion/domain/domain.dart'
     as _i11;
 import 'package:workout_buddy_finder/feature_suggestion/ui/bloc/suggestions_bloc.dart'
-    as _i19;
+    as _i21;
 import 'package:workout_buddy_finder/feature_upload/data/repository/uploader_repository_impl.dart'
     as _i14;
 import 'package:workout_buddy_finder/feature_upload/domain/domain.dart' as _i13;
+import 'package:workout_buddy_finder/feature_visit_user/data/repository/visit_user_repository_impl.dart'
+    as _i16;
+import 'package:workout_buddy_finder/feature_visit_user/domain/domain.dart'
+    as _i15;
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -64,17 +68,18 @@ _i1.GetIt $InitGetIt(
   gh.factory<_i11.SuggestionsRepository>(
       () => _i12.SuggestionsRepositoryImpl());
   gh.factory<_i13.UploaderRepository>(() => _i14.UploaderRepositoryImpl());
-  gh.factory<_i15.AuthRepository>(() => _i16.AuthRepositoryImpl(
+  gh.factory<_i15.VisitUserRepository>(() => _i16.VisitUserRepositoryImpl());
+  gh.factory<_i17.AuthRepository>(() => _i18.AuthRepositoryImpl(
       uploaderRepository: gh<_i13.UploaderRepository>()));
-  gh.factory<_i17.ProfileBloc>(() => _i17.ProfileBloc(
+  gh.factory<_i19.ProfileBloc>(() => _i19.ProfileBloc(
         profileRepository: gh<_i7.ProfileRepository>(),
         uploaderRepository: gh<_i13.UploaderRepository>(),
       ));
-  gh.factory<_i18.SettingsBloc>(
-      () => _i18.SettingsBloc(gh<_i9.SettingsRepository>()));
-  gh.factory<_i19.SuggestionsBloc>(
-      () => _i19.SuggestionsBloc(gh<_i11.SuggestionsRepository>()));
-  gh.factory<_i20.AuthBloc>(
-      () => _i20.AuthBloc(authRepository: gh<_i15.AuthRepository>()));
+  gh.factory<_i20.SettingsBloc>(
+      () => _i20.SettingsBloc(gh<_i9.SettingsRepository>()));
+  gh.factory<_i21.SuggestionsBloc>(
+      () => _i21.SuggestionsBloc(gh<_i11.SuggestionsRepository>()));
+  gh.factory<_i22.AuthBloc>(
+      () => _i22.AuthBloc(authRepository: gh<_i17.AuthRepository>()));
   return getIt;
 }
