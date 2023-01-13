@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_buddy_finder/core/core.dart';
+import '../../../core/size_constant.dart';
 import 'profile_picture_update_section.dart';
 import 'interest_section.dart';
 
