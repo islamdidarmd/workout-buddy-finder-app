@@ -19,19 +19,19 @@ class _MessagingPageState extends State<MessagingPage> {
   Widget build(BuildContext context) {
     final appUser = context.read<AppUser>();
 
-    return BaseFeatureLayout(
-      child: Column(
-        children: [
-          AppBar(title: Text('Messages')),
-          const SizedBox(height: 12),
-          Expanded(
+    return Column(
+      children: [
+        AppBar(title: Text('Messages')),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
             child: MessageList(
               appUser: appUser,
               onOpenChatRoom: widget.onOpenChatRoom,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

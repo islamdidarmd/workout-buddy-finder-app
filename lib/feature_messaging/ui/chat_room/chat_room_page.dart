@@ -40,25 +40,31 @@ class ChatRoomPage extends HookWidget {
     final loggedInUser = context.read<AppUser>();
     final textController = useTextEditingController();
 
-    return BaseFeatureLayout(
-      child: Column(
-        children: [
-          TopBar(chatRoomId: chatRoomId, onVisitProfile: onVisitProfile),
-          Expanded(child: ChatRoomMessagesList(chatRoomId: chatRoomId)),
-          SizedBox(
-            height: 80,
-            child: Row(
-              children: [
-                Expanded(child: MessageInput(controller: textController)),
-                IconButton(
-                  onPressed: () => _onSendMessage(loggedInUser, textController),
-                  icon: Icon(FontAwesomeIcons.paperPlane),
-                ),
-              ],
-            ),
+    return Column(
+      children: [
+        TopBar(chatRoomId: chatRoomId, onVisitProfile: onVisitProfile),
+        Expanded(
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
+            child: ChatRoomMessagesList(chatRoomId: chatRoomId),
           ),
-        ],
-      ),
+        ),
+        Container(
+          height: 80,
+          padding:
+              const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
+          child: Row(
+            children: [
+              Expanded(child: MessageInput(controller: textController)),
+              IconButton(
+                onPressed: () => _onSendMessage(loggedInUser, textController),
+                icon: Icon(FontAwesomeIcons.paperPlane),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

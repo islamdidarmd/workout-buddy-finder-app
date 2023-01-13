@@ -30,18 +30,21 @@ class VisitUserPage extends HookWidget {
 
     final AppUser? user = userSnapShot.data;
 
-    return BaseFeatureLayout(
-      child: Column(
-        children: [
-          if (userSnapShot.connectionState == ConnectionState.waiting) ...{
-            AppBar(),
-            LinearProgressIndicator(),
-          } else if (userSnapShot.hasData && user != null) ...{
-            AppBar(title: Text(user!.name)),
-            ..._getUserAttributeSection(user!)
-          },
-        ],
-      ),
+    return Column(
+      children: [
+        if (userSnapShot.connectionState == ConnectionState.waiting) ...{
+          AppBar(),
+          LinearProgressIndicator(),
+        } else if (userSnapShot.hasData && user != null) ...{
+          AppBar(title: Text(user!.name)),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
+            child: Column(
+              children: _getUserAttributeSection(user!),
+            ),
+          ),
+        },
+      ],
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:workout_buddy_finder/core/core.dart';
 import 'profile_picture_update_section.dart';
 import 'interest_section.dart';
 
@@ -32,18 +33,21 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
   Widget build(BuildContext context) {
     return BlocProvider<ProfileBloc>.value(
       value: profileBloc,
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            children: [
-              AppBar(title: const Text('Edit Profile')),
-              const ProfilePictureUpdateSection(),
-              const SizedBox(height: 16),
-              const InterestSection(),
-            ],
+      child: Column(
+        children: [
+          AppBar(title: const Text('Edit Profile')),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
+            child: Column(
+              children: [
+                const ProfilePictureUpdateSection(),
+                const SizedBox(height: 16),
+                const InterestSection(),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
