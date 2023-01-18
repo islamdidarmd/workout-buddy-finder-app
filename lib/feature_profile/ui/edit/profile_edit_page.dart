@@ -39,17 +39,22 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
       child: Column(
         children: [
           AppBar(title: const Text('Edit Profile')),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
-            child: Column(
-              children: [
-                const ProfilePictureUpdateSection(),
-                const SizedBox(height: 16),
-                BasicInfoSection(appUser: loggedInUser),
-                const SizedBox(height: 16),
-                const EditInterestSection(),
-              ],
+          Expanded(
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const ProfilePictureUpdateSection(),
+                    const SizedBox(height: 16),
+                    BasicInfoSection(appUser: loggedInUser),
+                    const SizedBox(height: 16),
+                    const EditInterestSection(),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
