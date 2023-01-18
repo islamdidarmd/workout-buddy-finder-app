@@ -6,11 +6,12 @@ class AppUser with _$AppUser {
 
   const AppUser._();
 
-  factory AppUser({
+  const factory AppUser({
     required String userId,
     required DateTime registered,
     required String name,
     required String gender,
+    required String availability,
     required String email,
     required String profilePicture,
     required double lat,
@@ -24,6 +25,7 @@ class AppUser with _$AppUser {
         registered: DateTime.now(),
         name: '',
         gender: '',
+        availability: '',
         email: '',
         profilePicture: '',
         lat: 0.0,

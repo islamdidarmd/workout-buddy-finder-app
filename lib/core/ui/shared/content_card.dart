@@ -18,7 +18,7 @@ class ContentCard extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+        padding: const EdgeInsets.all(16.0),
         child: child,
       ),
     );
