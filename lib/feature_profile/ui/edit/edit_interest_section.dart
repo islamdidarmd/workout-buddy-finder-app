@@ -5,8 +5,8 @@ import 'interest_list_item.dart';
 
 import '../bloc/profile_bloc.dart';
 
-class InterestSection extends StatelessWidget {
-  const InterestSection({Key? key}) : super(key: key);
+class EditInterestSection extends StatelessWidget {
+  const EditInterestSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

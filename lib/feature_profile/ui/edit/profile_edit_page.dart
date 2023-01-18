@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../core/size_constant.dart';
+import 'package:workout_buddy_finder/core/core.dart';
+import 'basic_info_section.dart';
 import 'profile_picture_update_section.dart';
-import 'interest_section.dart';
+import 'edit_interest_section.dart';
 
 import '../../../di/service_locator.dart';
 import '../bloc/profile_bloc.dart';
@@ -31,6 +32,8 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
 
   @override
   Widget build(BuildContext context) {
+    final loggedInUser = context.read<AppUser>();
+
     return BlocProvider<ProfileBloc>.value(
       value: profileBloc,
       child: Column(
@@ -43,7 +46,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
               children: [
                 const ProfilePictureUpdateSection(),
                 const SizedBox(height: 16),
-                const InterestSection(),
+                BasicInfoSection(appUser: loggedInUser),
+                const SizedBox(height: 16),
+                const EditInterestSection(),
               ],
             ),
           ),

@@ -15,7 +15,7 @@ class VisitUserPage extends HookWidget {
   List<Widget> _getUserAttributeSection(AppUser appUser) => [
         InfoSection(appUser: appUser),
         const SizedBox(height: 8),
-        InterestSection(appUser: appUser),
+        UserInterestSection(appUser: appUser),
         const SizedBox(height: 8),
       ];
 
