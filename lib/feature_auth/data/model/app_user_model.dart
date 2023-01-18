@@ -9,6 +9,7 @@ class AppUserModel with _$AppUserModel {
     @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
         required DateTime registered,
     @Default('') String name,
+    @Default('male') String gender,
     @Default('') String email,
     @Default('') String profilePicture,
     @Default(0.0) double lat,
@@ -24,6 +25,7 @@ class AppUserModel with _$AppUserModel {
         userId: appUser.userId,
         registered: appUser.registered,
         name: appUser.name,
+        gender: appUser.gender,
         email: appUser.email,
         profilePicture: appUser.profilePicture,
         lat: appUser.lat,
@@ -35,6 +37,7 @@ class AppUserModel with _$AppUserModel {
   AppUser toEntity(List<Interest> interestList) => AppUser(
         userId: userId,
         name: name,
+        gender: gender,
         email: email,
         profilePicture: profilePicture,
         registered: registered,

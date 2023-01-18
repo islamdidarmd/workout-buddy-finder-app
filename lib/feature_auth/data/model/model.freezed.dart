@@ -24,6 +24,7 @@ mixin _$AppUserModel {
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get registered => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get gender => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get profilePicture => throw _privateConstructorUsedError;
   double get lat => throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $AppUserModelCopyWith<$Res> {
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime registered,
       String name,
+      String gender,
       String email,
       String profilePicture,
       double lat,
@@ -72,6 +74,7 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
     Object? userId = null,
     Object? registered = null,
     Object? name = null,
+    Object? gender = null,
     Object? email = null,
     Object? profilePicture = null,
     Object? lat = null,
@@ -91,6 +94,10 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -133,6 +140,7 @@ abstract class _$$_AppUserModelCopyWith<$Res>
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime registered,
       String name,
+      String gender,
       String email,
       String profilePicture,
       double lat,
@@ -155,6 +163,7 @@ class __$$_AppUserModelCopyWithImpl<$Res>
     Object? userId = null,
     Object? registered = null,
     Object? name = null,
+    Object? gender = null,
     Object? email = null,
     Object? profilePicture = null,
     Object? lat = null,
@@ -174,6 +183,10 @@ class __$$_AppUserModelCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -211,6 +224,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required this.registered,
       this.name = '',
+      this.gender = 'male',
       this.email = '',
       this.profilePicture = '',
       this.lat = 0.0,
@@ -231,6 +245,9 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
   @override
   @JsonKey()
   final String name;
+  @override
+  @JsonKey()
+  final String gender;
   @override
   @JsonKey()
   final String email;
@@ -257,7 +274,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUserModel(userId: $userId, registered: $registered, name: $name, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestsList: $interestsList)';
+    return 'AppUserModel(userId: $userId, registered: $registered, name: $name, gender: $gender, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestsList: $interestsList)';
   }
 
   @override
@@ -268,6 +285,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('registered', registered))
       ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('gender', gender))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('profilePicture', profilePicture))
       ..add(DiagnosticsProperty('lat', lat))
@@ -285,6 +303,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
             (identical(other.registered, registered) ||
                 other.registered == registered) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.profilePicture, profilePicture) ||
                 other.profilePicture == profilePicture) &&
@@ -302,6 +321,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       userId,
       registered,
       name,
+      gender,
       email,
       profilePicture,
       lat,
@@ -329,6 +349,7 @@ abstract class _AppUserModel extends AppUserModel {
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required final DateTime registered,
       final String name,
+      final String gender,
       final String email,
       final String profilePicture,
       final double lat,
@@ -347,6 +368,8 @@ abstract class _AppUserModel extends AppUserModel {
   DateTime get registered;
   @override
   String get name;
+  @override
+  String get gender;
   @override
   String get email;
   @override
