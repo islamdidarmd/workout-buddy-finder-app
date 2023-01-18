@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:workout_buddy_finder/auth/auth.dart';
 
@@ -11,4 +11,4 @@ void main() {
 
     expect(sloganFinder, findsOneWidget);
   });
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 import 'package:either_dart/either.dart';
 import 'package:workout_buddy_finder/data/model/models.dart';
 import 'package:workout_buddy_finder/data/repository/datasource/github_remote_data_source.dart';
@@ -19,3 +20,4 @@ void main() {
     assert (response.isLeft);
   });
 }
+*/

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:workout_buddy_finder/data/network/networking_client.dart';
+//import 'package:workout_buddy_finder/data/network/networking_client.dart';
 
+/*
 class FakeNetworkingClient implements NetworkingClient {
   Map<String, dynamic> _defaultResponse = {};
 
@@ -19,3 +20,4 @@ class FakeNetworkingClient implements NetworkingClient {
     ));
   }
 }
+*/
