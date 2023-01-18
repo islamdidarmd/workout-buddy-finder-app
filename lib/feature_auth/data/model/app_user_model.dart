@@ -11,7 +11,7 @@ class AppUserModel with _$AppUserModel {
     @Default('') String name,
     @Default('male') String gender,
     @Default('daily1hr') String availability,
-    @Default(2) int nearbyDistance,
+    @Default(10) int nearbyDistance,
     @Default('') String email,
     @Default('') String profilePicture,
     @Default(0.0) double lat,
