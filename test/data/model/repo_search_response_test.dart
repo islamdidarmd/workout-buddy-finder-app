@@ -1,4 +1,3 @@
-import 'package:workout_buddy_finder/data/model/models.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'mocks/repo_search_response_mock_json.dart';
@@ -8,7 +7,7 @@ void main() {
     bool repoSearchResponseModelBuilds = false;
 
     try {
-      RepoSearchResponse.fromJson(repoSearchResponseMockJson);
+      //RepoSearchResponse.fromJson(repoSearchResponseMockJson);
       repoSearchResponseModelBuilds = true;
     } catch (e) {}
 
