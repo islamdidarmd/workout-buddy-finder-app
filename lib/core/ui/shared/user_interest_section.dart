@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core.dart';
 
-class InterestSection extends StatelessWidget {
-  const InterestSection({
+class UserInterestSection extends StatelessWidget {
+  const UserInterestSection({
     Key? key,
     required this.appUser,
   }) : super(key: key);
