@@ -1,18 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../core/core.dart';
+import 'package:workout_buddy_finder/core/core.dart';
+
 import '../../../feature_auth/data/model/model.dart';
 
-class NameEditView extends HookWidget {
-  const NameEditView({
+class GenderEditView extends StatelessWidget {
+  const GenderEditView({
     Key? key,
     required this.appUser,
   }) : super(key: key);
+
   final AppUser appUser;
 
-  Future<void> _onSubmit(String text) async {
+  Future<void> _updateGender(String? gender) async {
+    if (gender == null) {
+      return;
+    }
+
     final _updateQuery = FirebaseFirestore.instance
         .collection(col_users)
         .doc(appUser.userId)
@@ -22,25 +26,33 @@ class NameEditView extends HookWidget {
         );
 
     await _updateQuery.set(appUser.copyWith(
-      name: text,
+      gender: gender,
     ));
   }
 
   @override
   Widget build(BuildContext context) {
-    final controller = useTextEditingController(text: appUser.name);
-
-    return TextField(
-      controller: controller,
-      onSubmitted: _onSubmit,
+    return DropdownButtonFormField(
+      value: appUser.gender,
       decoration: InputDecoration(
-        labelText: 'Display Name',
         border: OutlineInputBorder(),
-        suffix: InkWell(
-          onTap: () => _onSubmit(controller.text),
-          child: Icon(FontAwesomeIcons.check),
-        ),
+        labelText: 'Gender',
       ),
+      items: [
+        DropdownMenuItem(
+          child: Text('Male'),
+          value: 'male',
+        ),
+        DropdownMenuItem(
+          child: Text('Female'),
+          value: 'female',
+        ),
+        DropdownMenuItem(
+          child: Text('Other'),
+          value: 'other',
+        ),
+      ],
+      onChanged: _updateGender,
     );
   }
 }

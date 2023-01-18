@@ -179,6 +179,7 @@ mixin _$AppUser {
   String get userId => throw _privateConstructorUsedError;
   DateTime get registered => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get gender => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get profilePicture => throw _privateConstructorUsedError;
   double get lat => throw _privateConstructorUsedError;
@@ -199,6 +200,7 @@ abstract class $AppUserCopyWith<$Res> {
       {String userId,
       DateTime registered,
       String name,
+      String gender,
       String email,
       String profilePicture,
       double lat,
@@ -223,6 +225,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? userId = null,
     Object? registered = null,
     Object? name = null,
+    Object? gender = null,
     Object? email = null,
     Object? profilePicture = null,
     Object? lat = null,
@@ -242,6 +245,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -282,6 +289,7 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       {String userId,
       DateTime registered,
       String name,
+      String gender,
       String email,
       String profilePicture,
       double lat,
@@ -303,6 +311,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? userId = null,
     Object? registered = null,
     Object? name = null,
+    Object? gender = null,
     Object? email = null,
     Object? profilePicture = null,
     Object? lat = null,
@@ -322,6 +331,10 @@ class __$$_AppUserCopyWithImpl<$Res>
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -358,6 +371,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       {required this.userId,
       required this.registered,
       required this.name,
+      required this.gender,
       required this.email,
       required this.profilePicture,
       required this.lat,
@@ -373,6 +387,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   final DateTime registered;
   @override
   final String name;
+  @override
+  final String gender;
   @override
   final String email;
   @override
@@ -393,7 +409,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUser(userId: $userId, registered: $registered, name: $name, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
+    return 'AppUser(userId: $userId, registered: $registered, name: $name, gender: $gender, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
   }
 
   @override
@@ -404,6 +420,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('registered', registered))
       ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('gender', gender))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('profilePicture', profilePicture))
       ..add(DiagnosticsProperty('lat', lat))
@@ -421,6 +438,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
             (identical(other.registered, registered) ||
                 other.registered == registered) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.profilePicture, profilePicture) ||
                 other.profilePicture == profilePicture) &&
@@ -437,6 +455,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       userId,
       registered,
       name,
+      gender,
       email,
       profilePicture,
       lat,
@@ -456,6 +475,7 @@ abstract class _AppUser extends AppUser {
       {required final String userId,
       required final DateTime registered,
       required final String name,
+      required final String gender,
       required final String email,
       required final String profilePicture,
       required final double lat,
@@ -470,6 +490,8 @@ abstract class _AppUser extends AppUser {
   DateTime get registered;
   @override
   String get name;
+  @override
+  String get gender;
   @override
   String get email;
   @override
