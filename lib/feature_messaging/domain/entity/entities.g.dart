@@ -37,7 +37,7 @@ _$_ChatMessage _$$_ChatMessageFromJson(Map<String, dynamic> json) =>
       chatMessageId: json['chatMessageId'] as String,
       sender: json['sender'] as String,
       content: json['content'] as String,
-      timestamp: dateTimeFromJson(json['timestamp'] as int),
+      timestamp: dateTimeFromJson(json['timestamp'] as int?),
     );
 
 Map<String, dynamic> _$$_ChatMessageToJson(_$_ChatMessage instance) =>
