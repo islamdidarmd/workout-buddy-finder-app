@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:workout_buddy_finder/core/core.dart';
 
 class NearbyDistanceSlider extends StatefulWidget {
   const NearbyDistanceSlider({
@@ -46,16 +45,6 @@ class _NearbyDistanceSliderState extends State<NearbyDistanceSlider> {
             });
           },
           onChangeEnd: widget.onDistanceSelected,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              lightBody(context, '${widget.min.toInt()}'),
-              lightBody(context, '${widget.max.toInt()}'),
-            ],
-          ),
         ),
       ],
     );
