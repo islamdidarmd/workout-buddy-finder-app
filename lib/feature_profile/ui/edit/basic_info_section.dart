@@ -3,6 +3,7 @@ import 'package:workout_buddy_finder/core/core.dart';
 import 'package:workout_buddy_finder/feature_profile/ui/edit/gender_edit_view.dart';
 import 'package:workout_buddy_finder/feature_profile/ui/edit/name_edit_view.dart';
 
+import 'age_edit_view.dart';
 import 'location_update_view.dart';
 
 class BasicInfoSection extends StatelessWidget {
@@ -24,6 +25,8 @@ class BasicInfoSection extends StatelessWidget {
           NameEditView(appUser: appUser),
           const VerticalSpacing(spacing: 16),
           GenderEditView(appUser: appUser),
+          const VerticalSpacing(spacing: 16),
+          AgeEditView(appUser: appUser),
           const VerticalSpacing(spacing: 16),
           LocationUpdateView(appUser: appUser),
         ],

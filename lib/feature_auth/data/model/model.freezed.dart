@@ -25,6 +25,8 @@ mixin _$AppUserModel {
   DateTime get registered => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  DateTime? get birthdate => throw _privateConstructorUsedError;
   String get availability => throw _privateConstructorUsedError;
   int get nearbyDistance => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -52,6 +54,8 @@ abstract class $AppUserModelCopyWith<$Res> {
           DateTime registered,
       String name,
       String gender,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime? birthdate,
       String availability,
       int nearbyDistance,
       String email,
@@ -79,6 +83,7 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
     Object? registered = null,
     Object? name = null,
     Object? gender = null,
+    Object? birthdate = freezed,
     Object? availability = null,
     Object? nearbyDistance = null,
     Object? email = null,
@@ -105,6 +110,10 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
+      birthdate: freezed == birthdate
+          ? _value.birthdate
+          : birthdate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       availability: null == availability
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
@@ -155,6 +164,8 @@ abstract class _$$_AppUserModelCopyWith<$Res>
           DateTime registered,
       String name,
       String gender,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime? birthdate,
       String availability,
       int nearbyDistance,
       String email,
@@ -180,6 +191,7 @@ class __$$_AppUserModelCopyWithImpl<$Res>
     Object? registered = null,
     Object? name = null,
     Object? gender = null,
+    Object? birthdate = freezed,
     Object? availability = null,
     Object? nearbyDistance = null,
     Object? email = null,
@@ -206,6 +218,10 @@ class __$$_AppUserModelCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
+      birthdate: freezed == birthdate
+          ? _value.birthdate
+          : birthdate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       availability: null == availability
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
@@ -251,8 +267,10 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
           required this.registered,
       this.name = '',
       this.gender = 'male',
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          this.birthdate,
       this.availability = 'daily1hr',
-      this.nearbyDistance = 2,
+      this.nearbyDistance = 10,
       this.email = '',
       this.profilePicture = '',
       this.lat = 0.0,
@@ -276,6 +294,9 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
   @override
   @JsonKey()
   final String gender;
+  @override
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  final DateTime? birthdate;
   @override
   @JsonKey()
   final String availability;
@@ -308,7 +329,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUserModel(userId: $userId, registered: $registered, name: $name, gender: $gender, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestsList: $interestsList)';
+    return 'AppUserModel(userId: $userId, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestsList: $interestsList)';
   }
 
   @override
@@ -320,6 +341,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('registered', registered))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('gender', gender))
+      ..add(DiagnosticsProperty('birthdate', birthdate))
       ..add(DiagnosticsProperty('availability', availability))
       ..add(DiagnosticsProperty('nearbyDistance', nearbyDistance))
       ..add(DiagnosticsProperty('email', email))
@@ -340,6 +362,8 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
                 other.registered == registered) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.birthdate, birthdate) ||
+                other.birthdate == birthdate) &&
             (identical(other.availability, availability) ||
                 other.availability == availability) &&
             (identical(other.nearbyDistance, nearbyDistance) ||
@@ -362,6 +386,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
       registered,
       name,
       gender,
+      birthdate,
       availability,
       nearbyDistance,
       email,
@@ -392,6 +417,8 @@ abstract class _AppUserModel extends AppUserModel {
           required final DateTime registered,
       final String name,
       final String gender,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          final DateTime? birthdate,
       final String availability,
       final int nearbyDistance,
       final String email,
@@ -414,6 +441,9 @@ abstract class _AppUserModel extends AppUserModel {
   String get name;
   @override
   String get gender;
+  @override
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  DateTime? get birthdate;
   @override
   String get availability;
   @override

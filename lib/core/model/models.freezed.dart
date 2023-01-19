@@ -180,6 +180,7 @@ mixin _$AppUser {
   DateTime get registered => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
+  DateTime get birthdate => throw _privateConstructorUsedError;
   String get availability => throw _privateConstructorUsedError;
   int get nearbyDistance => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -203,6 +204,7 @@ abstract class $AppUserCopyWith<$Res> {
       DateTime registered,
       String name,
       String gender,
+      DateTime birthdate,
       String availability,
       int nearbyDistance,
       String email,
@@ -230,6 +232,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? registered = null,
     Object? name = null,
     Object? gender = null,
+    Object? birthdate = null,
     Object? availability = null,
     Object? nearbyDistance = null,
     Object? email = null,
@@ -256,6 +259,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
+      birthdate: null == birthdate
+          ? _value.birthdate
+          : birthdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       availability: null == availability
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
@@ -304,6 +311,7 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       DateTime registered,
       String name,
       String gender,
+      DateTime birthdate,
       String availability,
       int nearbyDistance,
       String email,
@@ -328,6 +336,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? registered = null,
     Object? name = null,
     Object? gender = null,
+    Object? birthdate = null,
     Object? availability = null,
     Object? nearbyDistance = null,
     Object? email = null,
@@ -354,6 +363,10 @@ class __$$_AppUserCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String,
+      birthdate: null == birthdate
+          ? _value.birthdate
+          : birthdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       availability: null == availability
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
@@ -398,6 +411,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       required this.registered,
       required this.name,
       required this.gender,
+      required this.birthdate,
       required this.availability,
       required this.nearbyDistance,
       required this.email,
@@ -417,6 +431,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   final String name;
   @override
   final String gender;
+  @override
+  final DateTime birthdate;
   @override
   final String availability;
   @override
@@ -441,7 +457,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUser(userId: $userId, registered: $registered, name: $name, gender: $gender, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
+    return 'AppUser(userId: $userId, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
   }
 
   @override
@@ -453,6 +469,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('registered', registered))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('gender', gender))
+      ..add(DiagnosticsProperty('birthdate', birthdate))
       ..add(DiagnosticsProperty('availability', availability))
       ..add(DiagnosticsProperty('nearbyDistance', nearbyDistance))
       ..add(DiagnosticsProperty('email', email))
@@ -473,6 +490,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
                 other.registered == registered) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.birthdate, birthdate) ||
+                other.birthdate == birthdate) &&
             (identical(other.availability, availability) ||
                 other.availability == availability) &&
             (identical(other.nearbyDistance, nearbyDistance) ||
@@ -494,6 +513,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       registered,
       name,
       gender,
+      birthdate,
       availability,
       nearbyDistance,
       email,
@@ -516,6 +536,7 @@ abstract class _AppUser extends AppUser {
       required final DateTime registered,
       required final String name,
       required final String gender,
+      required final DateTime birthdate,
       required final String availability,
       required final int nearbyDistance,
       required final String email,
@@ -534,6 +555,8 @@ abstract class _AppUser extends AppUser {
   String get name;
   @override
   String get gender;
+  @override
+  DateTime get birthdate;
   @override
   String get availability;
   @override
