@@ -1,5 +1,6 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
+import 'package:workout_buddy_finder/core/core.dart';
 import '../../../feature_location/domain/domain.dart';
 
 import '../../error/app_error.dart';
@@ -46,7 +47,7 @@ class _LocationTextState extends State<LocationText> {
             final address =
                 snapshot.requireData.fold((address) => address, (right) => "");
 
-            return Text(address, style: textTheme.caption);
+            return mediumBody(context, address);
           }
 
           return const SizedBox();
