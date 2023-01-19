@@ -4,14 +4,21 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../core.dart';
 import '../../../feature_profile/ui/widgets/profile_avatar.dart';
 
-class InfoSection extends StatelessWidget {
-  const InfoSection({
+class UserInfoSection extends StatelessWidget {
+  const UserInfoSection({
     Key? key,
     required this.appUser,
   }) : super(key: key);
 
   final double _padding = 16.0;
   final AppUser appUser;
+
+  int _calculateAgeFromBirthDay(DateTime birthday) {
+    final diff = DateTime.now().difference(birthday).inDays;
+    final age = diff / 365;
+
+    return age.toInt();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +42,12 @@ class InfoSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   mediumTitle(context, appUser.name),
-                  const SizedBox(height: 4),
+                  const VerticalSpacing(spacing: 4),
+                  mediumBody(
+                    context,
+                    '${_calculateAgeFromBirthDay(appUser.birthdate)}, ${appUser.gender}',
+                  ),
+                  const VerticalSpacing(spacing: 4),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [

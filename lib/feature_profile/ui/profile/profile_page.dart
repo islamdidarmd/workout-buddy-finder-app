@@ -27,7 +27,7 @@ class ProfilePage extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  InfoSection(appUser: appUser),
+                  UserInfoSection(appUser: appUser),
                   const SizedBox(height: 8),
                   UserInterestSection(appUser: appUser),
                   const SizedBox(height: 8),
