@@ -25,44 +25,46 @@ class UserInfoSection extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Container(
-      height: 120,
       child: Card(
         child: Padding(
           padding: EdgeInsets.all(_padding),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               ProfileAvatar(
                 user: appUser,
                 size: 100,
               ),
               SizedBox(width: 8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  mediumTitle(context, appUser.name),
-                  const VerticalSpacing(spacing: 4),
-                  mediumBody(
-                    context,
-                    '${_calculateAgeFromBirthDay(appUser.birthdate)}, ${appUser.gender}',
-                  ),
-                  const VerticalSpacing(spacing: 4),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        FontAwesomeIcons.locationCrosshairs,
-                        size: 12,
-                      ),
-                      SizedBox(width: 2),
-                      LocationText(
-                        lat: appUser.lat,
-                        long: appUser.long,
-                      ),
-                    ],
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    mediumTitle(context, appUser.name),
+                    const VerticalSpacing(spacing: 4),
+                    mediumBody(
+                      context,
+                      '${_calculateAgeFromBirthDay(appUser.birthdate)}, ${appUser.gender}',
+                    ),
+                    const VerticalSpacing(spacing: 4),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(
+                          FontAwesomeIcons.locationCrosshairs,
+                          size: 12,
+                        ),
+                        SizedBox(width: 2),
+                        LocationText(
+                          lat: appUser.lat,
+                          long: appUser.long,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
