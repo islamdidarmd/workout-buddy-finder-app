@@ -33,7 +33,7 @@ class NearbyDistanceEditView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        caption(context, 'Suggest me people inside'),
+        caption(context, 'Suggest me people inside (1Km - 10Km)'),
         Row(
           children: [
             mediumBody(context, '${appUser.nearbyDistance.toString()} Km'),
