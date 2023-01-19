@@ -47,7 +47,7 @@ class AgeEditView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         caption(context, 'Birthday'),
-        const HorizontalSpacing(spacing: 16),
+        const HorizontalSpacing(),
         Row(
           children: [
             Expanded(

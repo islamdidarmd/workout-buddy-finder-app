@@ -47,7 +47,7 @@ class LocationUpdateView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         caption(context, 'Location'),
-        const HorizontalSpacing(spacing: 16),
+        const HorizontalSpacing(),
         Row(
           children: [
             Expanded(child: LocationText(lat: appUser.lat, long: appUser.long)),
