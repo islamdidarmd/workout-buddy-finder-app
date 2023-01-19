@@ -17,6 +17,7 @@ class SuggestionCard extends StatelessWidget {
     Key? key,
     required List<Suggestion> suggestion,
     required this.onOpenMessaging,
+    required this.onOpenProfile,
   })  : _suggestions = suggestion,
         super(key: key);
 
@@ -24,6 +25,7 @@ class SuggestionCard extends StatelessWidget {
   final SwipableStackController _controller = SwipableStackController();
 
   final void Function() onOpenMessaging;
+  final void Function(String userId) onOpenProfile;
 
   final _horizontalSwipeThreshold = 0.8;
 
@@ -58,7 +60,10 @@ class SuggestionCard extends StatelessWidget {
   ) {
     final itemIndex = properties.index % _suggestions.length;
 
-    return SuggestionsCardItem(suggestion: _suggestions[itemIndex]);
+    return SuggestionsCardItem(
+      suggestion: _suggestions[itemIndex],
+      onOpenProfile: onOpenProfile,
+    );
   }
 
   Widget _buildOverlay(BuildContext _, OverlaySwipeProperties properties) {
