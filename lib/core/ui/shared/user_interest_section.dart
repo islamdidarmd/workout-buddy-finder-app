@@ -13,8 +13,6 @@ class UserInterestSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appUser = context.read<AppUser>();
-
     return Container(
       width: double.infinity,
       child: Card(
