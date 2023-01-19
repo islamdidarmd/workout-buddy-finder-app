@@ -23,8 +23,10 @@ class SuggestionsPage extends StatelessWidget {
         AppBar(title: Intro(onTap: onShowProfile)),
         Expanded(
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
+            padding: const EdgeInsets.symmetric(
+              horizontal: page_horizontal_spacing,
+              vertical: page_vertical_spacing,
+            ),
             child: Column(
               children: [
                 const SizedBox(height: 8),
