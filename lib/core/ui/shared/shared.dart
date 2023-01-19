@@ -5,3 +5,4 @@ export 'user_interest_section.dart';
 export 'location_text.dart';
 export 'content_card.dart';
 export 'vertical_spacing.dart';
+export 'horizontal_spacing.dart';
