@@ -13,57 +13,63 @@ class SuggestionsCardItem extends StatelessWidget {
   const SuggestionsCardItem({
     Key? key,
     required this.suggestion,
+    required this.onOpenProfile,
   }) : super(key: key);
+
+  final void Function(String userId) onOpenProfile;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final radius = size.width * 0.08;
 
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(radius),
-            color: Colors.white,
-            image: DecorationImage(
-              image: CachedNetworkImageProvider(suggestion.profilePicture),
-              fit: BoxFit.cover,
-            ),
-          ),
-          foregroundDecoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(radius),
-            gradient: LinearGradient(
-              begin: Alignment.bottomCenter,
-              end: Alignment.topCenter,
-              colors: [
-                Theme.of(context).shadowColor,
-                Colors.transparent,
-              ],
-              stops: [
-                0.0,
-                0.5,
-              ],
-            ),
-          ),
-        ),
-        Positioned(
-          left: 16,
-          bottom: 65,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              mediumTitle(context, suggestion.name, color: Colors.white),
-              Chip(
-                avatar: Icon(FontAwesomeIcons.locationDot, size: 16),
-                label: lightBody(context, getDistance(context)),
+    return InkWell(
+      onTap: () => onOpenProfile(suggestion.userId),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(radius),
+              color: Colors.white,
+              image: DecorationImage(
+                image: CachedNetworkImageProvider(suggestion.profilePicture),
+                fit: BoxFit.cover,
               ),
-            ],
+            ),
+            foregroundDecoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(radius),
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [
+                  Theme.of(context).shadowColor,
+                  Colors.transparent,
+                ],
+                stops: [
+                  0.0,
+                  0.5,
+                ],
+              ),
+            ),
           ),
-        ),
-      ],
+          Positioned(
+            left: 16,
+            bottom: 65,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                mediumTitle(context, suggestion.name, color: Colors.white),
+                Chip(
+                  avatar: Icon(FontAwesomeIcons.locationDot, size: 16),
+                  label: lightBody(context, getDistance(context)),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

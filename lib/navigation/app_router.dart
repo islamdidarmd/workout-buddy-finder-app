@@ -39,7 +39,14 @@ List<GoRoute> get _appRoutes => [
           return NoTransitionPage(
             child: SuggestionsPage(
               onShowProfile: () => context.go(TopLevelRoute.profile().route),
-              onOpenMessaging: () => context.go(TopLevelRoute.messaging().route),
+              onOpenMessaging: () =>
+                  context.go(TopLevelRoute.messaging().route),
+              onOpenProfile: (userId) => context.go(
+                '${VisitUserRoute().generateNavRoute(
+                  root: TopLevelRoute.suggestion().route,
+                  userId: userId,
+                )}',
+              ),
             ),
           );
         },
@@ -56,8 +63,10 @@ List<GoRoute> get _appRoutes => [
         pageBuilder: (context, _) {
           return NoTransitionPage(
             child: ProfilePage(
-              onEditProfile: () => context.go(EditProfileRoute()
-                  .generateNavRoute(root: TopLevelRoute.profile().route)),
+              onEditProfile: () => context.go(
+                EditProfileRoute()
+                    .generateNavRoute(root: TopLevelRoute.profile().route),
+              ),
             ),
           );
         },

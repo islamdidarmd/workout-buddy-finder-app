@@ -11,9 +11,11 @@ class SuggestionCardContainer extends StatelessWidget {
   const SuggestionCardContainer({
     Key? key,
     required this.onOpenMessaging,
+    required this.onOpenProfile,
   }) : super(key: key);
 
   final void Function() onOpenMessaging;
+  final void Function(String userId) onOpenProfile;
 
   bool _suggestionBlocBuildWhen(SuggestionsState _, SuggestionsState current) {
     return current.maybeWhen(
@@ -41,6 +43,7 @@ class SuggestionCardContainer extends StatelessWidget {
               return SuggestionCard(
                 suggestion: suggestions,
                 onOpenMessaging: onOpenMessaging,
+                onOpenProfile: onOpenProfile,
               );
             },
             orElse: () => const SizedBox(),
