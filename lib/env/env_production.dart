@@ -5,7 +5,7 @@ import 'env.dart';
 
 void main() async {
   final env = ProductionEnv();
-  env.init(slInstance: GetIt.instance);
+  await env.init(slInstance: GetIt.instance);
   env.startApplication();
 }
 

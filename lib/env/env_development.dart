@@ -3,9 +3,9 @@ import 'package:get_it/get_it.dart';
 
 import 'env.dart';
 
-void main() {
+void main() async {
   final env = DevelopmentEnv();
-  env.init(slInstance: GetIt.instance);
+  await env.init(slInstance: GetIt.instance);
   env.startApplication();
 }
 

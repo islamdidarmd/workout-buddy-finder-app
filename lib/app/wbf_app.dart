@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:workout_buddy_finder/core/core.dart';
+import 'package:workout_buddy_finder/theme/theme_manager.dart';
 import '../di/service_locator.dart';
 import '../env/env.dart';
 import '../feature_auth/ui/ui.dart';
@@ -9,7 +11,7 @@ import '../navigation/auth_router.dart';
 import '../theme/dark_theme.dart';
 import '../theme/light_theme.dart';
 
-class WBFApp extends StatelessWidget {
+class WBFApp extends HookWidget {
   final String appName;
   final EnvType envType;
 
@@ -21,7 +23,7 @@ class WBFApp extends StatelessWidget {
   Widget _buildLoadingState() {
     return MaterialApp(
       title: appName,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeManager.instance.themeMode,
       theme: theme,
       darkTheme: darkTheme,
       debugShowCheckedModeBanner: false,
@@ -32,7 +34,7 @@ class WBFApp extends StatelessWidget {
   Widget _buildEmptyState() {
     return MaterialApp(
       title: appName,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeManager.instance.themeMode,
       theme: theme,
       darkTheme: darkTheme,
       debugShowCheckedModeBanner: false,
@@ -45,7 +47,7 @@ class WBFApp extends StatelessWidget {
   Widget _buildAuthApp() {
     return MaterialApp.router(
       title: appName,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeManager.instance.themeMode,
       theme: theme,
       darkTheme: darkTheme,
       routerConfig: authRouter,
@@ -57,7 +59,7 @@ class WBFApp extends StatelessWidget {
     if (appUser.isEmpty) {
       return MaterialApp.router(
         title: appName,
-        themeMode: ThemeMode.system,
+        themeMode: ThemeManager.instance.themeMode,
         theme: theme,
         darkTheme: darkTheme,
         routerConfig: authRouter,
@@ -69,7 +71,7 @@ class WBFApp extends StatelessWidget {
       value: appUser,
       child: MaterialApp.router(
         title: appName,
-        themeMode: ThemeMode.system,
+        themeMode: ThemeManager.instance.themeMode,
         theme: theme,
         darkTheme: darkTheme,
         routerConfig: router,
@@ -101,6 +103,8 @@ class WBFApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeManager = useListenable(ThemeManager.instance);
+
     return BlocProvider<AuthBloc>(
       create: (_) => sl()..add(AuthEvent.initial()),
       child: BlocBuilder<AuthBloc, AuthState>(

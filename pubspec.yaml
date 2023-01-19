@@ -38,6 +38,7 @@ dependencies:
   injectable: 2.0.1
   intl: 0.17.0
   json_annotation: 4.7.0
+  shared_preferences: 2.0.16
   sn_progress_dialog: 1.0.9
   swipable_stack: 2.0.0
   timeago: 3.3.0
