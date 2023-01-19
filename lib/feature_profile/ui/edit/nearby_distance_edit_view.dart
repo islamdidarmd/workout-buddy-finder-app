@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:workout_buddy_finder/core/core.dart';
+import 'package:workout_buddy_finder/feature_profile/ui/edit/nearby_distance_slider.dart';
 
 import '../../../feature_auth/data/model/model.dart';
 
@@ -28,8 +29,6 @@ class NearbyDistanceEditView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double sliderSelectedValue = appUser.nearbyDistance.toDouble();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -39,25 +38,11 @@ class NearbyDistanceEditView extends StatelessWidget {
           children: [
             mediumBody(context, '${appUser.nearbyDistance.toString()} Km'),
             Expanded(
-              child: StatefulBuilder(
-                builder: (
-                  BuildContext context,
-                  void Function(void Function()) setState,
-                ) {
-                  return Slider(
-                    label: '$sliderSelectedValue Km',
-                    value: sliderSelectedValue,
-                    divisions: 9,
-                    min: 1,
-                    max: 10,
-                    onChanged: (value) {
-                      setState(() {
-                        sliderSelectedValue = value;
-                      });
-                    },
-                    onChangeEnd: _updateNearbyDistance,
-                  );
-                },
+              child: NearbyDistanceSlider(
+                min: 1,
+                max: 10,
+                initial: appUser.nearbyDistance.toDouble(),
+                onDistanceSelected: _updateNearbyDistance,
               ),
             ),
           ],
