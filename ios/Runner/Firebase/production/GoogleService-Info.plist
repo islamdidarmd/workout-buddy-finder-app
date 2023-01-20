@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>246633292825-vq1t2ae00rmm46md44o0rdpsgjku3nvg.apps.googleusercontent.com</string>
+	<string>246633292825-op360rk740c0q86lf857u8plinfb50hu.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.246633292825-vq1t2ae00rmm46md44o0rdpsgjku3nvg</string>
+	<string>com.googleusercontent.apps.246633292825-op360rk740c0q86lf857u8plinfb50hu</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>246633292825-f551ggoa3b6fnji5ug7cmmse6ieks6fn.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.islamdidarmd.workout-buddy-finder.dev</string>
+	<string>com.islamdidarmd.workout-buddy-finder</string>
 	<key>PROJECT_ID</key>
 	<string>workout-buddy-finder</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:246633292825:ios:165a75a5bb883c9d253688</string>
+	<string>1:246633292825:ios:5c2789e1c3446df5253688</string>
 </dict>
 </plist>
