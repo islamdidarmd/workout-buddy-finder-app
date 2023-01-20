@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:workout_buddy_finder/firebase_options.dart';
-import 'package:workout_buddy_finder/theme/theme_manager.dart';
+import '../theme/theme_manager.dart';
 import 'constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../app/wbf_app.dart';
@@ -20,9 +19,7 @@ class Env {
   }
 
   Future<void> startApplication() async {
-    final firebaseApp = await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    final firebaseApp = await Firebase.initializeApp();
     runApp(WBFApp(envType: envType, appName: appName));
   }
 }
