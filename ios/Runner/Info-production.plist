@@ -2,8 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) wants to access photo library to update profile picture</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) wants to access location services to show nearby users</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) wants to access location services to show nearby users</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Wants to access location services to show nearby users</string>
+	<string>$(PRODUCT_NAME) wants to access location services to show nearby users</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
