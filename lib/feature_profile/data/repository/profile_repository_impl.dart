@@ -34,7 +34,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
 
     try {
       await userDoc.update({
-        userInterestList: FieldValue.arrayUnion([interestId]),
+        field_interest_list: FieldValue.arrayUnion([interestId]),
       });
 
       return Left(null);
@@ -53,7 +53,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
 
     try {
       await userDoc.update({
-        userInterestList: FieldValue.arrayRemove([interestId]),
+        field_interest_list: FieldValue.arrayRemove([interestId]),
       });
 
       return Left(null);

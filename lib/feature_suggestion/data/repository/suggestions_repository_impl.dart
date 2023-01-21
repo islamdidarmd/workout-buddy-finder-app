@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:either_dart/src/either.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/feature_messaging/domain/domain.dart';
+import '../../../feature_messaging/domain/domain.dart';
 
 import '../../../core/core.dart';
 import '../../domain/domain.dart';
@@ -13,23 +13,45 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
   Future<Either<List<Suggestion>, AppError>> getSuggestions(
     AppUser appUser,
   ) async {
-    final usersCollection = FirebaseFirestore.instance.collection(col_users);
-    final query = usersCollection.limit(10);
+    final suggestionQuery = FirebaseFirestore.instance
+        .collection(col_users)
+        .where(field_gender, isEqualTo: appUser.gender)
+        .where(field_availability, isEqualTo: appUser.availability)
+        .where(
+          field_interest_list,
+          arrayContainsAny: appUser.interestList.map((e) => e.id).toList(),
+        )
+        .withConverter(
+          fromFirestore: (snapshot, _) => Suggestion.fromJson(snapshot.data()!),
+          toFirestore: (value, options) => value.toJson(),
+        )
+        .limit(10);
 
     try {
-      final data = await query.get();
+      final snapshotList = await suggestionQuery.get();
       final List<Suggestion> suggestions = [];
-      for (QueryDocumentSnapshot<Map<String, dynamic>?> doc in data.docs) {
-        final data = doc.data();
-        if (data == null) continue;
 
-        final model = Suggestion.fromJson(data);
-        if (model.userId != appUser.userId &&
+      for (QueryDocumentSnapshot<Suggestion> doc in snapshotList.docs) {
+        final suggestion = doc.data();
+        final distance = Geolocator.distanceBetween(
+              suggestion.lat,
+              suggestion.long,
+              appUser.lat,
+              appUser.long,
+            ) /
+            1000; // Converting to KM.
+
+        if (suggestion.userId != appUser.userId &&
+            distance <= appUser.nearbyDistance &&
             !await _isLikedBy(
-              userId: model.userId,
+              userId: suggestion.userId,
+              testLikedByUserId: appUser.userId,
+            ) &&
+            !await _isDisLikedBy(
+              userId: suggestion.userId,
               testLikedByUserId: appUser.userId,
             )) {
-          suggestions.add(model);
+          suggestions.add(suggestion);
         }
       }
 
@@ -124,6 +146,31 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
     required String testLikedByUserId,
   }) async {
     final collection = FirebaseFirestore.instance.collection(col_liked_users);
+    final docRef = collection.doc(testLikedByUserId);
+
+    try {
+      final doc = await docRef.get();
+      final likedData = doc.data();
+      if (likedData != null) {
+        final Iterable<String> likedUsersLikeList =
+            (likedData[testLikedByUserId] as List<dynamic>?)
+                    ?.map((e) => e.toString()) ??
+                [];
+        if (likedUsersLikeList.contains(userId)) {
+          return true;
+        }
+      }
+    } catch (e) {}
+
+    return false;
+  }
+
+  Future<bool> _isDisLikedBy({
+    required String userId,
+    required String testLikedByUserId,
+  }) async {
+    final collection =
+        FirebaseFirestore.instance.collection(col_disliked_users);
     final docRef = collection.doc(testLikedByUserId);
 
     try {
