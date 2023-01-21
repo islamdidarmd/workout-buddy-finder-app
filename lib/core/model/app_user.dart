@@ -27,7 +27,7 @@ class AppUser with _$AppUser {
         registered: DateTime.now(),
         name: '',
         gender: '',
-    birthdate: DateTime.now(),
+        birthdate: DateTime.now(),
         availability: '',
         nearbyDistance: 0,
         email: '',

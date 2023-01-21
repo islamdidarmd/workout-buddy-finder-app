@@ -51,6 +51,20 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<!-- Google Sign-in Section -->
+        <key>CFBundleURLTypes</key>
+        <array>
+        	<dict>
+        		<key>CFBundleTypeRole</key>
+        		<string>Editor</string>
+        		<key>CFBundleURLSchemes</key>
+        		<array>
+        			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+        			<string>com.googleusercontent.apps.246633292825-vq1t2ae00rmm46md44o0rdpsgjku3nvg</string>
+        		</array>
+        	</dict>
+        </array>
+        <!-- End of the Google Sign-in Section -->
 	<key>NSBonjourServices</key>
     	<array>
     	    <string>_dartobservatory._tcp</string>
