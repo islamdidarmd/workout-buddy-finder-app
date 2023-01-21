@@ -7,7 +7,9 @@ const String col_messages = "messages";
 const String col_chat_room_messages = "chat_messages";
 
 // User collection fields.
-const String userInterestList = "interestsList";
+const String field_interest_list = "interestsList";
+const String field_gender = "gender";
+const String field_availability = "availability";
 
 // Messages Collection.
 const String participants = "participants";

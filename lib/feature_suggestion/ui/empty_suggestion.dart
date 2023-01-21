@@ -9,8 +9,7 @@ class EmptySuggestion extends StatelessWidget {
     return Center(
       child: mediumBody(
         context,
-        'You reached to the end of the new suggestions. Please wait'
-        ' for new users to register',
+        'You reached to the end of the new suggestions. Please come back later.',
         textAlign: TextAlign.center,
       ),
     );
