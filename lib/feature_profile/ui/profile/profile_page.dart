@@ -34,7 +34,7 @@ class ProfilePage extends StatelessWidget {
                   const SizedBox(height: 8),
                   UserInterestSection(appUser: appUser),
                   const SizedBox(height: 8),
-                  ActivityTrackerSection(appUser: appUser),
+                  Expanded(child: ActivityTrackerSection(appUser: appUser)),
                   const SizedBox(height: 8),
                   OthersSection(appUser: appUser),
                 ],
