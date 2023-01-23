@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:activity_recognition_flutter/activity_recognition_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:health/health.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:workout_buddy_finder/core/core.dart';
 
@@ -18,10 +19,8 @@ class ActivityTrackerSection extends StatefulWidget {
 }
 
 class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
-  StreamSubscription<ActivityEvent>? activityStreamSubscription;
-  ActivityRecognition activityRecognition = ActivityRecognition();
-
-  String activityName = '';
+  HealthFactory _health = HealthFactory();
+  final _healthData = <HealthDataPoint>[];
 
   @override
   void initState() {
@@ -30,32 +29,32 @@ class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
   }
 
   Future<void> _init() async {
-    if (Platform.isAndroid) {
-      if (await Permission.activityRecognition.request().isGranted) {
-        _startTracking();
-      }
-    } else {
-      // on iOS, no permission is required
-      _startTracking();
-    }
-  }
+    // define the types to get
+    var types = [
+      HealthDataType.ACTIVE_ENERGY_BURNED,
+    ];
 
-  void _startTracking() {
-    activityStreamSubscription = activityRecognition
-        .activityStream(runForegroundService: true)
-        .listen((activityEvent) {
+    // Requesting access to the data types before reading them.
+    bool requested = await _health.requestAuthorization(types);
+    var now = DateTime.now();
+    // Fetch health data from the last 24 hours.
+    try {
+      List<HealthDataPoint> healthData = await _health.getHealthDataFromTypes(
+        now.subtract(Duration(days: 1)),
+        now,
+        types,
+      );
       setState(() {
-        activityName =
-            '${activityEvent.typeString} with ${activityEvent.confidence}% confidence';
+        _healthData.clear();
+        _healthData.addAll(healthData);
       });
-    }, onError: (error) {
-      debugPrint(error.toString());
-    });
+    } on PlatformException catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   @override
   void dispose() {
-    activityStreamSubscription?.cancel();
     super.dispose();
   }
 
@@ -68,7 +67,27 @@ class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
         children: [
           mediumBoldTitle(context, 'Activity Tracker'),
           const VerticalSpacing(),
-          mediumBody(context, activityName),
+          Expanded(
+            child: SizedBox(
+              height: 300,
+              child: ListView.separated(
+                itemBuilder: (_, index) {
+                  final dataPoint = _healthData[index];
+
+                  return Card(
+                    child: ListTile(
+                      title: Text(
+                          '${dataPoint.typeString} (${dataPoint.value}/${dataPoint.unitString})'),
+                      subtitle: Text(
+                          '${dataPoint.dateFrom.toLocal().toString()} - ${dataPoint.dateTo.toLocal().toString()}'),
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) => const Divider(),
+                itemCount: _healthData.length,
+              ),
+            ),
+          ),
         ],
       ),
     );

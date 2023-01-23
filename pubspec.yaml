@@ -10,7 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  activity_recognition_flutter: 4.2.0
   cached_network_image: 3.2.3
   collection: 1.16.0
   cloud_firestore: 4.3.1
@@ -33,6 +32,7 @@ dependencies:
   go_router: 6.0.0
   google_fonts: 3.0.1
   google_sign_in: 5.4.2
+  health: 4.4.0
   http: 0.13.5
   image_picker: 0.8.6
   image_cropper: 3.0.1
