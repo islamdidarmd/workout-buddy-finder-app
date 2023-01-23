@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  activity_recognition_flutter: 4.2.0
   cached_network_image: 3.2.3
   collection: 1.16.0
   cloud_firestore: 4.3.1
@@ -38,6 +39,7 @@ dependencies:
   injectable: 2.0.1
   intl: 0.17.0
   json_annotation: 4.7.0
+  permission_handler: 10.2.0
   shared_preferences: 2.0.16
   sn_progress_dialog: 1.0.9
   swipable_stack: 2.0.0
