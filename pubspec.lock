@@ -15,13 +15,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.12"
-  activity_recognition_flutter:
-    dependency: "direct main"
-    description:
-      name: activity_recognition_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.2.0"
   analyzer:
     dependency: transitive
     description:
@@ -274,6 +267,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.4"
+  device_info_plus:
+    dependency: transitive
+    description:
+      name: device_info_plus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.0.0"
+  device_info_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: device_info_plus_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.0.0"
   dio:
     dependency: "direct main"
     description:
@@ -616,6 +623,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
+  health:
+    dependency: "direct main"
+    description:
+      name: health
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.4.0"
   html:
     dependency: transitive
     description:
