@@ -6,6 +6,8 @@ class ChatRoom with _$ChatRoom {
 
   factory ChatRoom({
     required String chatRoomId,
+    @JsonKey(name: 'last_message')
+    required String lastMessage,
     required List<String> participants,
   }) = _ChatRoom;
 
