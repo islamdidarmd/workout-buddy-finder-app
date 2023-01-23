@@ -95,6 +95,7 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
         await docRef.set(
           ChatRoom(
             chatRoomId: docRef.id,
+            lastMessage: '',
             participants: [appUser.userId, likedUserId],
           ),
         );

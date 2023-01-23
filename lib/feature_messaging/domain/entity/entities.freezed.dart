@@ -21,6 +21,8 @@ ChatRoom _$ChatRoomFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ChatRoom {
   String get chatRoomId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_message')
+  String get lastMessage => throw _privateConstructorUsedError;
   List<String> get participants => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +36,10 @@ abstract class $ChatRoomCopyWith<$Res> {
   factory $ChatRoomCopyWith(ChatRoom value, $Res Function(ChatRoom) then) =
       _$ChatRoomCopyWithImpl<$Res, ChatRoom>;
   @useResult
-  $Res call({String chatRoomId, List<String> participants});
+  $Res call(
+      {String chatRoomId,
+      @JsonKey(name: 'last_message') String lastMessage,
+      List<String> participants});
 }
 
 /// @nodoc
@@ -51,12 +56,17 @@ class _$ChatRoomCopyWithImpl<$Res, $Val extends ChatRoom>
   @override
   $Res call({
     Object? chatRoomId = null,
+    Object? lastMessage = null,
     Object? participants = null,
   }) {
     return _then(_value.copyWith(
       chatRoomId: null == chatRoomId
           ? _value.chatRoomId
           : chatRoomId // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastMessage: null == lastMessage
+          ? _value.lastMessage
+          : lastMessage // ignore: cast_nullable_to_non_nullable
               as String,
       participants: null == participants
           ? _value.participants
@@ -73,7 +83,10 @@ abstract class _$$_ChatRoomCopyWith<$Res> implements $ChatRoomCopyWith<$Res> {
       __$$_ChatRoomCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String chatRoomId, List<String> participants});
+  $Res call(
+      {String chatRoomId,
+      @JsonKey(name: 'last_message') String lastMessage,
+      List<String> participants});
 }
 
 /// @nodoc
@@ -88,12 +101,17 @@ class __$$_ChatRoomCopyWithImpl<$Res>
   @override
   $Res call({
     Object? chatRoomId = null,
+    Object? lastMessage = null,
     Object? participants = null,
   }) {
     return _then(_$_ChatRoom(
       chatRoomId: null == chatRoomId
           ? _value.chatRoomId
           : chatRoomId // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastMessage: null == lastMessage
+          ? _value.lastMessage
+          : lastMessage // ignore: cast_nullable_to_non_nullable
               as String,
       participants: null == participants
           ? _value._participants
@@ -107,7 +125,9 @@ class __$$_ChatRoomCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ChatRoom extends _ChatRoom with DiagnosticableTreeMixin {
   _$_ChatRoom(
-      {required this.chatRoomId, required final List<String> participants})
+      {required this.chatRoomId,
+      @JsonKey(name: 'last_message') required this.lastMessage,
+      required final List<String> participants})
       : _participants = participants,
         super._();
 
@@ -116,6 +136,9 @@ class _$_ChatRoom extends _ChatRoom with DiagnosticableTreeMixin {
 
   @override
   final String chatRoomId;
+  @override
+  @JsonKey(name: 'last_message')
+  final String lastMessage;
   final List<String> _participants;
   @override
   List<String> get participants {
@@ -126,7 +149,7 @@ class _$_ChatRoom extends _ChatRoom with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatRoom(chatRoomId: $chatRoomId, participants: $participants)';
+    return 'ChatRoom(chatRoomId: $chatRoomId, lastMessage: $lastMessage, participants: $participants)';
   }
 
   @override
@@ -135,6 +158,7 @@ class _$_ChatRoom extends _ChatRoom with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'ChatRoom'))
       ..add(DiagnosticsProperty('chatRoomId', chatRoomId))
+      ..add(DiagnosticsProperty('lastMessage', lastMessage))
       ..add(DiagnosticsProperty('participants', participants));
   }
 
@@ -145,13 +169,15 @@ class _$_ChatRoom extends _ChatRoom with DiagnosticableTreeMixin {
             other is _$_ChatRoom &&
             (identical(other.chatRoomId, chatRoomId) ||
                 other.chatRoomId == chatRoomId) &&
+            (identical(other.lastMessage, lastMessage) ||
+                other.lastMessage == lastMessage) &&
             const DeepCollectionEquality()
                 .equals(other._participants, _participants));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, chatRoomId,
+  int get hashCode => Object.hash(runtimeType, chatRoomId, lastMessage,
       const DeepCollectionEquality().hash(_participants));
 
   @JsonKey(ignore: true)
@@ -171,6 +197,7 @@ class _$_ChatRoom extends _ChatRoom with DiagnosticableTreeMixin {
 abstract class _ChatRoom extends ChatRoom {
   factory _ChatRoom(
       {required final String chatRoomId,
+      @JsonKey(name: 'last_message') required final String lastMessage,
       required final List<String> participants}) = _$_ChatRoom;
   _ChatRoom._() : super._();
 
@@ -178,6 +205,9 @@ abstract class _ChatRoom extends ChatRoom {
 
   @override
   String get chatRoomId;
+  @override
+  @JsonKey(name: 'last_message')
+  String get lastMessage;
   @override
   List<String> get participants;
   @override

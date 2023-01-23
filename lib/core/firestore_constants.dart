@@ -13,4 +13,5 @@ const String field_availability = "availability";
 
 // Messages Collection.
 const String participants = "participants";
+const String lastMessage = "last_message";
 const String timestamp = "timestamp";

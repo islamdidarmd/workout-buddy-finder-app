@@ -44,7 +44,14 @@ class MessageListItem extends HookWidget {
                 children: [
                   UserAvatar(profilePicture: participant.profilePicture),
                   const SizedBox(width: 16),
-                  mediumBody(context, participant.name),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      mediumBody(context, participant.name),
+                      caption(context, chat.lastMessage),
+                    ],
+                  ),
                 ],
               ),
             ),
