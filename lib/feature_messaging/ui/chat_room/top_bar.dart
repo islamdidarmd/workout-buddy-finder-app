@@ -39,7 +39,7 @@ class TopBar extends HookWidget {
             children: [
               UserAvatar(profilePicture: participant.first.profilePicture),
               const SizedBox(width: 12),
-              mediumBody(context, participant.first.name),
+              lightBody(context, participant.first.name),
             ],
           ),
         ),

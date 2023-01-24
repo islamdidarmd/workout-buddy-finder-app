@@ -36,7 +36,7 @@ class NearbyDistanceEditView extends StatelessWidget {
         caption(context, 'Suggest me people inside (1Km - 10Km)'),
         Row(
           children: [
-            mediumBody(context, '${appUser.nearbyDistance.toString()} Km'),
+            lightBody(context, '${appUser.nearbyDistance.toString()} Km'),
             Expanded(
               child: NearbyDistanceSlider(
                 min: 1,

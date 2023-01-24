@@ -3,9 +3,16 @@
 
 import 'package:flutter/material.dart';
 
-Text lightBody(context, String text, {Color? color}) => Text(
+Text lightBody(
+  context,
+  String text, {
+  Color? color,
+  TextAlign textAlign = TextAlign.start,
+}) =>
+    Text(
       text,
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: color),
+      textAlign: textAlign,
     );
 
 Text caption(context, String text, {Color? color}) => Text(

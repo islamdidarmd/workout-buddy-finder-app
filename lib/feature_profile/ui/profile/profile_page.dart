@@ -26,18 +26,21 @@ class ProfilePage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Stack(
             children: [
-              Column(
-                children: [
-                  UserInfoSection(appUser: appUser),
-                  const SizedBox(height: 8),
-                  UserPreferences(appUser: appUser),
-                  const SizedBox(height: 8),
-                  UserInterestSection(appUser: appUser),
-                  const SizedBox(height: 8),
-                  Expanded(child: ActivityTrackerSection(appUser: appUser)),
-                  const SizedBox(height: 8),
-                  OthersSection(appUser: appUser),
-                ],
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    UserInfoSection(appUser: appUser),
+                    const SizedBox(height: 8),
+                    UserPreferences(appUser: appUser),
+                    const SizedBox(height: 8),
+                    UserInterestSection(appUser: appUser),
+                    const SizedBox(height: 8),
+                    ActivityTrackerSection(appUser: appUser),
+                    const SizedBox(height: 8),
+                    OthersSection(appUser: appUser),
+                  ],
+                ),
               ),
               Positioned(
                 right: 0,
