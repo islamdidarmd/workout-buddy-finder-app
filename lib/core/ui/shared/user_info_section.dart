@@ -20,6 +20,16 @@ class UserInfoSection extends StatelessWidget {
     return age.toInt();
   }
 
+  String _mapGender(String genderEnum) {
+    if (genderEnum == "male") {
+      return "Male";
+    } else if (genderEnum == "female") {
+      return "Female";
+    }
+
+    return "Other";
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -44,9 +54,9 @@ class UserInfoSection extends StatelessWidget {
                   children: [
                     mediumTitle(context, appUser.name),
                     const VerticalSpacing(spacing: 4),
-                    mediumBody(
+                    lightBody(
                       context,
-                      '${_calculateAgeFromBirthDay(appUser.birthdate)}, ${appUser.gender}',
+                      '${_calculateAgeFromBirthDay(appUser.birthdate)}, ${_mapGender(appUser.gender)}',
                     ),
                     const VerticalSpacing(spacing: 4),
                     Row(

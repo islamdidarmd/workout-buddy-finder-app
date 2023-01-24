@@ -51,7 +51,7 @@ class AgeEditView extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: mediumBody(
+              child: lightBody(
                 context,
                 appUser.birthdate.formatTo(birthDateFormat),
               ),

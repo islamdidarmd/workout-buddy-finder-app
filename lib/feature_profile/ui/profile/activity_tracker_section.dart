@@ -1,11 +1,12 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health/health.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:workout_buddy_finder/core/core.dart';
+import 'package:workout_buddy_finder/feature_profile/ui/profile/activity_tracker_energy_burned_view.dart';
+
+import 'activity_permission_required_view.dart';
 
 class ActivityTrackerSection extends StatefulWidget {
   const ActivityTrackerSection({
@@ -21,21 +22,31 @@ class ActivityTrackerSection extends StatefulWidget {
 class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
   HealthFactory _health = HealthFactory();
   final _healthData = <HealthDataPoint>[];
+  bool _hasPermission = false;
 
   @override
   void initState() {
     super.initState();
-    _init();
+    _updatePermissionStatus();
   }
 
-  Future<void> _init() async {
-    // define the types to get
-    var types = [
+  Future<void> _updatePermissionStatus() async {
+    final types = [
       HealthDataType.ACTIVE_ENERGY_BURNED,
     ];
 
-    // Requesting access to the data types before reading them.
-    bool requested = await _health.requestAuthorization(types);
+    bool hasPermission = await _health.requestAuthorization(types);
+    setState(() {
+      _hasPermission = hasPermission;
+    });
+  }
+
+  Future<void> _readHealthData() async {
+    // Define the types to get.
+    final types = [
+      HealthDataType.ACTIVE_ENERGY_BURNED,
+    ];
+
     var now = DateTime.now();
     // Fetch health data from the last 24 hours.
     try {
@@ -54,40 +65,26 @@ class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    if (_hasPermission) {
+      _readHealthData();
+    }
+
     return ContentCard(
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          mediumBoldTitle(context, 'Activity Tracker'),
+          mediumBoldTitle(context, 'Energy Tracker'),
           const VerticalSpacing(),
-          Expanded(
-            child: SizedBox(
-              height: 300,
-              child: ListView.separated(
-                itemBuilder: (_, index) {
-                  final dataPoint = _healthData[index];
-
-                  return Card(
-                    child: ListTile(
-                      title: Text(
-                          '${dataPoint.typeString} (${dataPoint.value}/${dataPoint.unitString})'),
-                      subtitle: Text(
-                          '${dataPoint.dateFrom.toLocal().toString()} - ${dataPoint.dateTo.toLocal().toString()}'),
-                    ),
-                  );
-                },
-                separatorBuilder: (context, index) => const Divider(),
-                itemCount: _healthData.length,
-              ),
+          if (_hasPermission) ...{
+            ActivityTrackerEnergyBurnedView(energyBurnedData: _healthData),
+          } else ...{
+            ActivityPermissionRequiredView(
+              onTap: () => _updatePermissionStatus(),
             ),
-          ),
+          },
         ],
       ),
     );

@@ -48,7 +48,7 @@ class MessageListItem extends HookWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      mediumBody(context, participant.name),
+                      lightBody(context, participant.name),
                       caption(context, chat.lastMessage),
                     ],
                   ),
