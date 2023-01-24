@@ -15,7 +15,7 @@ class UserNearbyDistance extends StatelessWidget {
       children: [
         caption(context, 'Show me people in'),
         const VerticalSpacing(spacing: 4),
-        mediumBody(
+        lightBody(
           context,
           '${appUser.nearbyDistance} Km',
         ),

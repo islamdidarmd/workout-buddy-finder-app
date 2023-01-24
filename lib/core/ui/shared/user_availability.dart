@@ -27,7 +27,7 @@ class UserAvailability extends StatelessWidget {
       children: [
         caption(context, 'Availability'),
         const VerticalSpacing(spacing: 4),
-        mediumBody(
+        lightBody(
           context,
           _mapAvailability(appUser.availability),
         ),

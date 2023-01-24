@@ -47,7 +47,7 @@ class _LocationTextState extends State<LocationText> {
             final address =
                 snapshot.requireData.fold((address) => address, (right) => "");
 
-            return mediumBody(context, address);
+            return lightBody(context, address);
           }
 
           return const SizedBox();

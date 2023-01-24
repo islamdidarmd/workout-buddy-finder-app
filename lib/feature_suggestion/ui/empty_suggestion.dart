@@ -7,7 +7,7 @@ class EmptySuggestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: mediumBody(
+      child: lightBody(
         context,
         'You reached to the end of the new suggestions. Please come back later.',
         textAlign: TextAlign.center,
