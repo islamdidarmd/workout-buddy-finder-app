@@ -52,7 +52,7 @@ class UserInfoSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    mediumTitle(context, appUser.name),
+                    mediumBoldTitle(context, appUser.name),
                     const VerticalSpacing(spacing: 4),
                     lightBody(
                       context,

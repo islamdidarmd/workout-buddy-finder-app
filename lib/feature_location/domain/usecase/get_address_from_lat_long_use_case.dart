@@ -11,9 +11,15 @@ class GetAddressFromLatLongUseCase {
       if (placeMarkList.isEmpty) {
         return Right(DataNotFoundError());
       }
-      final buffer = StringBuffer()
-        ..write(placeMarkList.first.locality)
-        ..write(", ")
+      final buffer = StringBuffer();
+
+      if (placeMarkList.first.locality?.isNotEmpty == true) {
+        buffer
+          ..write(placeMarkList.first.locality)
+          ..write(", ");
+      }
+
+      buffer
         ..write(
           placeMarkList.first.country,
         );
