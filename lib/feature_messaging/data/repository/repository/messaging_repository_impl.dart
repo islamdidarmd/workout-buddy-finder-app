@@ -55,9 +55,6 @@ class MessagingRepositoryImpl implements MessagingRepository {
           toFirestore: (value, _) => value.toJson(),
         );
 
-    final _lastMessageUpdateQuery =
-        FirebaseFirestore.instance.collection(col_messages).doc(chatRoomId);
-
     final doc = _messagesQuery.doc();
     final chatMessage = ChatMessage(
       chatMessageId: doc.id,
@@ -68,9 +65,7 @@ class MessagingRepositoryImpl implements MessagingRepository {
 
     try {
       final result = await _messagesQuery.add(chatMessage);
-      final lastMessageResult = await _lastMessageUpdateQuery.update({
-        lastMessage: message,
-      });
+      await _updateLastMessage(chatRoomId: chatRoomId, message: message);
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -94,5 +89,16 @@ class MessagingRepositoryImpl implements MessagingRepository {
     }
 
     return null;
+  }
+
+  Future<void> _updateLastMessage({
+    required String chatRoomId,
+    required String message,
+  }) async {
+    final _lastMessageUpdateQuery =
+        FirebaseFirestore.instance.collection(col_messages).doc(chatRoomId);
+    final lastMessageResult = await _lastMessageUpdateQuery.update({
+      lastMessage: message,
+    });
   }
 }
