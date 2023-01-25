@@ -21,6 +21,7 @@ AppUserModel _$AppUserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppUserModel {
   String get userId => throw _privateConstructorUsedError;
+  String get deviceToken => throw _privateConstructorUsedError;
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get registered => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $AppUserModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
+      String deviceToken,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime registered,
       String name,
@@ -80,6 +82,7 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
   @override
   $Res call({
     Object? userId = null,
+    Object? deviceToken = null,
     Object? registered = null,
     Object? name = null,
     Object? gender = null,
@@ -97,6 +100,10 @@ class _$AppUserModelCopyWithImpl<$Res, $Val extends AppUserModel>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceToken: null == deviceToken
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
               as String,
       registered: null == registered
           ? _value.registered
@@ -160,6 +167,7 @@ abstract class _$$_AppUserModelCopyWith<$Res>
   @useResult
   $Res call(
       {String userId,
+      String deviceToken,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime registered,
       String name,
@@ -188,6 +196,7 @@ class __$$_AppUserModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? deviceToken = null,
     Object? registered = null,
     Object? name = null,
     Object? gender = null,
@@ -205,6 +214,10 @@ class __$$_AppUserModelCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceToken: null == deviceToken
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
               as String,
       registered: null == registered
           ? _value.registered
@@ -263,6 +276,7 @@ class __$$_AppUserModelCopyWithImpl<$Res>
 class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
   _$_AppUserModel(
       {required this.userId,
+      required this.deviceToken,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required this.registered,
       this.name = '',
@@ -285,6 +299,8 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
 
   @override
   final String userId;
+  @override
+  final String deviceToken;
   @override
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   final DateTime registered;
@@ -329,7 +345,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUserModel(userId: $userId, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestsList: $interestsList)';
+    return 'AppUserModel(userId: $userId, deviceToken: $deviceToken, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestsList: $interestsList)';
   }
 
   @override
@@ -338,6 +354,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'AppUserModel'))
       ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('deviceToken', deviceToken))
       ..add(DiagnosticsProperty('registered', registered))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('gender', gender))
@@ -358,6 +375,8 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
         (other.runtimeType == runtimeType &&
             other is _$_AppUserModel &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.deviceToken, deviceToken) ||
+                other.deviceToken == deviceToken) &&
             (identical(other.registered, registered) ||
                 other.registered == registered) &&
             (identical(other.name, name) || other.name == name) &&
@@ -383,6 +402,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
   int get hashCode => Object.hash(
       runtimeType,
       userId,
+      deviceToken,
       registered,
       name,
       gender,
@@ -413,6 +433,7 @@ class _$_AppUserModel extends _AppUserModel with DiagnosticableTreeMixin {
 abstract class _AppUserModel extends AppUserModel {
   factory _AppUserModel(
       {required final String userId,
+      required final String deviceToken,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required final DateTime registered,
       final String name,
@@ -434,6 +455,8 @@ abstract class _AppUserModel extends AppUserModel {
 
   @override
   String get userId;
+  @override
+  String get deviceToken;
   @override
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get registered;
