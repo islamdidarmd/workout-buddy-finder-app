@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'mocks/repo_search_response_mock_json.dart';
 
 void main() {
   test('Repo search response model generates successfully', () {

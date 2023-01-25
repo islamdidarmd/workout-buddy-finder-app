@@ -1,5 +1,4 @@
 import 'package:either_dart/either.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:workout_buddy_finder/core/core.dart';
 

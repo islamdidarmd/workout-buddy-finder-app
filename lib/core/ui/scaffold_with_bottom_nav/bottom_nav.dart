@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
-import '../../../navigation/routes.dart';
 import 'bottom_nav_item.dart';
 
 class BottomNav extends StatelessWidget {

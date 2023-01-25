@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_buddy_finder/core/core.dart';
 import 'package:workout_buddy_finder/feature_messaging/ui/messges/message_list.dart';
 
-import '../../domain/domain.dart';
 
 class MessagingPage extends StatefulWidget {
   const MessagingPage({Key? key, required this.onOpenChatRoom})

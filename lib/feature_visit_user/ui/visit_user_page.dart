@@ -36,11 +36,11 @@ class VisitUserPage extends HookWidget {
           AppBar(),
           LinearProgressIndicator(),
         } else if (userSnapShot.hasData && user != null) ...{
-          AppBar(title: Text(user!.name)),
+          AppBar(title: Text(user.name)),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
             child: Column(
-              children: _getUserAttributeSection(user!),
+              children: _getUserAttributeSection(user),
             ),
           ),
         },
