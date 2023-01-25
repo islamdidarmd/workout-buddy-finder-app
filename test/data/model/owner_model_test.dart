@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'mocks/owner_mock_json.dart';
 
 void main() {
   test('OwnerModel generates successfully', () {

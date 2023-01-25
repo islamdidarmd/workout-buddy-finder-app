@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 //import 'package:workout_buddy_finder/data/network/networking_client.dart';
 
 /*

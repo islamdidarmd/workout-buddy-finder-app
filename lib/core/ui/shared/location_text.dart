@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:workout_buddy_finder/core/core.dart';
 import '../../../feature_location/domain/domain.dart';
 
-import '../../error/app_error.dart';
 import '../../../di/service_locator.dart';
 
 class LocationText extends StatefulWidget {
