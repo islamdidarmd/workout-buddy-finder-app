@@ -19,9 +19,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final UploaderRepository uploaderRepository;
 
-  @override
-  bool get isSignedIn => FirebaseAuth.instance.currentUser != null;
-
   const AuthRepositoryImpl({required this.uploaderRepository});
 
   @override
