@@ -5,7 +5,6 @@ import 'package:workout_buddy_finder/core/core.dart';
 import '../domain.dart';
 
 abstract class AuthRepository {
-  bool get isSignedIn;
   Future<Either<void, AppError>> loginWithGoogle(Position location);
   Future<Either<void, AppError>> signOut();
   Stream<UserAuthState> getAuthStateStream();

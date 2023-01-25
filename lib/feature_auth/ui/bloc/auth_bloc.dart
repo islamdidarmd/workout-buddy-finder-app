@@ -18,8 +18,6 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
 
-  bool get isSignedIn => authRepository.isSignedIn;
-
   Stream<AppUser> get appUserStream => authRepository.getAppUserStream();
 
   AuthBloc({required this.authRepository}) : super(AuthState.initial()) {
