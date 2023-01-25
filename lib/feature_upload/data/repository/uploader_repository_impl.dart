@@ -6,7 +6,6 @@ import 'package:either_dart/src/either.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:workout_buddy_finder/core/error/app_error.dart';
-import 'package:workout_buddy_finder/core/model/models.dart';
 import 'package:workout_buddy_finder/feature_upload/domain/domain.dart';
 
 @Injectable(as: UploaderRepository)
@@ -51,7 +50,7 @@ class UploaderRepositoryImpl implements UploaderRepository {
       final downloadUrl = await fileRef.getDownloadURL();
 
       return Left(downloadUrl);
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       return Right(FileUploadError());
     }
   }
@@ -72,7 +71,7 @@ class UploaderRepositoryImpl implements UploaderRepository {
       final downloadUrl = await fileRef.getDownloadURL();
 
       return Left(downloadUrl);
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       return Right(FileUploadError());
     }
   }
@@ -92,7 +91,7 @@ class UploaderRepositoryImpl implements UploaderRepository {
       final downloadUrl = await fileRef.getDownloadURL();
 
       return Left(downloadUrl);
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       return Right(FileUploadError());
     }
   }
