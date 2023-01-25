@@ -6,6 +6,7 @@ class AppUserModel with _$AppUserModel {
 
   factory AppUserModel({
     required String userId,
+    required String deviceToken,
     @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
         required DateTime registered,
     @Default('') String name,
@@ -27,6 +28,7 @@ class AppUserModel with _$AppUserModel {
 
   factory AppUserModel.fromEntity(AppUser appUser) => AppUserModel(
         userId: appUser.userId,
+        deviceToken: appUser.deviceToken,
         registered: appUser.registered,
         name: appUser.name,
         birthdate: appUser.birthdate,
@@ -43,6 +45,7 @@ class AppUserModel with _$AppUserModel {
 
   AppUser toEntity(List<Interest> interestList) => AppUser(
         userId: userId,
+        deviceToken: deviceToken,
         name: name,
         gender: gender,
         birthdate: birthdate ?? DateTime.now(),

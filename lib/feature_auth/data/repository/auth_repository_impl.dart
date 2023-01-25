@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -141,9 +142,11 @@ class AuthRepositoryImpl implements AuthRepository {
         fileName: fileName,
       ))
           .fold((url) => url, (right) => '');
+      final deviceToken = await FirebaseMessaging.instance.getToken() ?? '';
 
       final appUserModel = AppUserModel(
         userId: firebaseUser.uid,
+        deviceToken: deviceToken,
         name: firebaseUser.displayName ?? '',
         email: firebaseUser.email ?? '',
         profilePicture: image,

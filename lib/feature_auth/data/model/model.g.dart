@@ -9,6 +9,7 @@ part of 'model.dart';
 _$_AppUserModel _$$_AppUserModelFromJson(Map<String, dynamic> json) =>
     _$_AppUserModel(
       userId: json['userId'] as String,
+      deviceToken: json['deviceToken'] as String,
       registered: dateTimeFromJson(json['registered'] as int?),
       name: json['name'] as String? ?? '',
       gender: json['gender'] as String? ?? 'male',
@@ -29,6 +30,7 @@ _$_AppUserModel _$$_AppUserModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_AppUserModelToJson(_$_AppUserModel instance) =>
     <String, dynamic>{
       'userId': instance.userId,
+      'deviceToken': instance.deviceToken,
       'registered': dateTimeToJson(instance.registered),
       'name': instance.name,
       'gender': instance.gender,

@@ -177,6 +177,7 @@ abstract class _Interest implements Interest {
 /// @nodoc
 mixin _$AppUser {
   String get userId => throw _privateConstructorUsedError;
+  String get deviceToken => throw _privateConstructorUsedError;
   DateTime get registered => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
@@ -201,6 +202,7 @@ abstract class $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
+      String deviceToken,
       DateTime registered,
       String name,
       String gender,
@@ -229,6 +231,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   @override
   $Res call({
     Object? userId = null,
+    Object? deviceToken = null,
     Object? registered = null,
     Object? name = null,
     Object? gender = null,
@@ -246,6 +249,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceToken: null == deviceToken
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
               as String,
       registered: null == registered
           ? _value.registered
@@ -308,6 +315,7 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
+      String deviceToken,
       DateTime registered,
       String name,
       String gender,
@@ -333,6 +341,7 @@ class __$$_AppUserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? deviceToken = null,
     Object? registered = null,
     Object? name = null,
     Object? gender = null,
@@ -350,6 +359,10 @@ class __$$_AppUserCopyWithImpl<$Res>
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceToken: null == deviceToken
+          ? _value.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
               as String,
       registered: null == registered
           ? _value.registered
@@ -408,6 +421,7 @@ class __$$_AppUserCopyWithImpl<$Res>
 class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   const _$_AppUser(
       {required this.userId,
+      required this.deviceToken,
       required this.registered,
       required this.name,
       required this.gender,
@@ -425,6 +439,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
 
   @override
   final String userId;
+  @override
+  final String deviceToken;
   @override
   final DateTime registered;
   @override
@@ -457,7 +473,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUser(userId: $userId, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
+    return 'AppUser(userId: $userId, deviceToken: $deviceToken, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
   }
 
   @override
@@ -466,6 +482,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'AppUser'))
       ..add(DiagnosticsProperty('userId', userId))
+      ..add(DiagnosticsProperty('deviceToken', deviceToken))
       ..add(DiagnosticsProperty('registered', registered))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('gender', gender))
@@ -486,6 +503,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
         (other.runtimeType == runtimeType &&
             other is _$_AppUser &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.deviceToken, deviceToken) ||
+                other.deviceToken == deviceToken) &&
             (identical(other.registered, registered) ||
                 other.registered == registered) &&
             (identical(other.name, name) || other.name == name) &&
@@ -510,6 +529,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   int get hashCode => Object.hash(
       runtimeType,
       userId,
+      deviceToken,
       registered,
       name,
       gender,
@@ -533,6 +553,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
 abstract class _AppUser extends AppUser {
   const factory _AppUser(
       {required final String userId,
+      required final String deviceToken,
       required final DateTime registered,
       required final String name,
       required final String gender,
@@ -549,6 +570,8 @@ abstract class _AppUser extends AppUser {
 
   @override
   String get userId;
+  @override
+  String get deviceToken;
   @override
   DateTime get registered;
   @override

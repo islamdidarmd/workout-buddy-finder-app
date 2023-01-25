@@ -10,6 +10,7 @@ const String col_chat_room_messages = "chat_messages";
 const String field_interest_list = "interestsList";
 const String field_gender = "gender";
 const String field_availability = "availability";
+const String field_device_token = "deviceToken";
 
 // Messages Collection.
 const String participants = "participants";
