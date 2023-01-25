@@ -8,6 +8,7 @@ class AppUser with _$AppUser {
 
   const factory AppUser({
     required String userId,
+    required String deviceToken,
     required DateTime registered,
     required String name,
     required String gender,
@@ -24,6 +25,7 @@ class AppUser with _$AppUser {
 
   factory AppUser.empty() => AppUser(
         userId: '',
+        deviceToken: '',
         registered: DateTime.now(),
         name: '',
         gender: '',
