@@ -41,7 +41,7 @@ class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
     });
   }
 
-  Future<void> _readHealthData() async {
+  Future<void> _readHealthData(BuildContext context) async {
     // Define the types to get.
     final types = [
       HealthDataType.ACTIVE_ENERGY_BURNED,
@@ -55,10 +55,12 @@ class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
         now,
         types,
       );
-      setState(() {
-        _healthData.clear();
-        _healthData.addAll(healthData);
-      });
+      if(context.mounted) {
+        setState(() {
+          _healthData.clear();
+          _healthData.addAll(healthData);
+        });
+      }
     } on PlatformException catch (e) {
       debugPrint(e.toString());
     }
@@ -67,7 +69,7 @@ class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
   @override
   Widget build(BuildContext context) {
     if (_hasPermission) {
-      _readHealthData();
+      _readHealthData(context);
     }
 
     return ContentCard(
