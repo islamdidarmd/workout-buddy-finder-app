@@ -15,13 +15,13 @@ class Env {
 
   Future<void> init({required GetIt slInstance}) async {
     final binding = WidgetsFlutterBinding.ensureInitialized();
-    _requestNotificationPermission();
     configureDependencies(getIt: slInstance);
     await ThemeManager.instance.init();
   }
 
   Future<void> startApplication() async {
     final firebaseApp = await Firebase.initializeApp();
+    _requestNotificationPermission();
     runApp(WBFApp(envType: envType, appName: appName));
   }
 
