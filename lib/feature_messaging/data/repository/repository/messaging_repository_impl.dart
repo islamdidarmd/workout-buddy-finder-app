@@ -2,12 +2,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:workout_buddy_finder/core/model/models.dart';
+import 'package:workout_buddy_finder/feature_push/domain/push_repository.dart';
+import '../../../../navigation/app_route.dart';
+import '../../../../navigation/routes.dart';
 import '../../../domain/domain.dart';
 
 import '../../../../core/firestore_constants.dart';
 
 @Injectable(as: MessagingRepository)
 class MessagingRepositoryImpl implements MessagingRepository {
+  final PushRepository pushRepository;
+
+  const MessagingRepositoryImpl(this.pushRepository);
+
   @override
   Future<List<ChatUser>> getParticipants({required String roomId}) async {
     final _messagesQuery = FirebaseFirestore.instance
@@ -63,9 +70,22 @@ class MessagingRepositoryImpl implements MessagingRepository {
       timestamp: DateTime.now(),
     );
 
+    final participants = await getParticipants(roomId: chatRoomId);
+
     try {
       final result = await _messagesQuery.add(chatMessage);
-      await _updateLastMessage(chatRoomId: chatRoomId, message: message);
+      _updateLastMessage(chatRoomId: chatRoomId, message: message);
+
+      /*for (ChatUser participant in participants) {
+        if (participant.userId == loggedInUser.userId) {
+          continue;
+        }
+
+        pushRepository.sendNotificationPush(participant.userId, {
+          "title": 'FCM Push',
+          "body": "${_buildChatRoomDeeplink(chatRoomId)}",
+        });
+      }*/
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -100,5 +120,12 @@ class MessagingRepositoryImpl implements MessagingRepository {
     final lastMessageResult = await _lastMessageUpdateQuery.update({
       lastMessage: message,
     });
+  }
+
+  String _buildChatRoomDeeplink(String chatRoomId) {
+    return ChatRoomRoute().generateNavRoute(
+      root: TopLevelRoute.messaging().route,
+      chatRoomId: chatRoomId,
+    );
   }
 }
