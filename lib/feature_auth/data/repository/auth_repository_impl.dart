@@ -142,11 +142,9 @@ class AuthRepositoryImpl implements AuthRepository {
         fileName: fileName,
       ))
           .fold((url) => url, (right) => '');
-      final deviceToken = await FirebaseMessaging.instance.getToken() ?? '';
 
       final appUserModel = AppUserModel(
         userId: firebaseUser.uid,
-        deviceToken: deviceToken,
         name: firebaseUser.displayName ?? '',
         email: firebaseUser.email ?? '',
         profilePicture: image,
