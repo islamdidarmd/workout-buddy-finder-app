@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:workout_buddy_finder/core/core.dart';
+import 'package:workout_buddy_finder/feature_auth/feature_auth.dart';
 import 'package:workout_buddy_finder/theme/theme_manager.dart';
 import '../di/service_locator.dart';
 import '../env/env.dart';
-import '../feature_auth/ui/bloc/auth_bloc.dart';
 import '../navigation/app_router.dart';
 import '../navigation/auth_router.dart';
 import '../theme/dark_theme.dart';
@@ -20,37 +20,24 @@ class WBFApp extends HookWidget {
     required this.envType,
   });
 
-  Widget _buildLoadingState() {
+  Widget _buildLoadingApp() {
     return MaterialApp(
-      title: appName,
-      themeMode: ThemeManager.instance.themeMode,
-      theme: theme,
-      darkTheme: darkTheme,
-      debugShowCheckedModeBanner: false,
       home: Scaffold(body: SafeArea(child: AppLoadingIndicator())),
-    );
-  }
-
-  Widget _buildEmptyState() {
-    return MaterialApp(
       title: appName,
-      themeMode: ThemeManager.instance.themeMode,
       theme: theme,
       darkTheme: darkTheme,
+      themeMode: ThemeManager.instance.themeMode,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: const SizedBox(),
-      ),
     );
   }
 
   Widget _buildAuthApp() {
     return MaterialApp.router(
+      routerConfig: authRouter,
       title: appName,
-      themeMode: ThemeManager.instance.themeMode,
       theme: theme,
       darkTheme: darkTheme,
-      routerConfig: authRouter,
+      themeMode: ThemeManager.instance.themeMode,
       debugShowCheckedModeBanner: false,
     );
   }
@@ -58,11 +45,11 @@ class WBFApp extends HookWidget {
   Widget _buildSignedInApp(AppUser appUser) {
     if (appUser.isEmpty) {
       return MaterialApp.router(
+        routerConfig: authRouter,
         title: appName,
-        themeMode: ThemeManager.instance.themeMode,
         theme: theme,
         darkTheme: darkTheme,
-        routerConfig: authRouter,
+        themeMode: ThemeManager.instance.themeMode,
         debugShowCheckedModeBanner: false,
       );
     }
@@ -70,60 +57,35 @@ class WBFApp extends HookWidget {
     return RepositoryProvider<AppUser>.value(
       value: appUser,
       child: MaterialApp.router(
+        routerConfig: router,
         title: appName,
-        themeMode: ThemeManager.instance.themeMode,
         theme: theme,
         darkTheme: darkTheme,
-        routerConfig: router,
+        themeMode: ThemeManager.instance.themeMode,
         debugShowCheckedModeBanner: false,
       ),
-    );
-  }
-
-  Widget buildAppBody(AuthBloc authBloc) {
-    return StreamBuilder<AppUser>(
-      stream: authBloc.appUserStream,
-      builder: (_, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return _buildLoadingState();
-        } else if (snapshot.connectionState == ConnectionState.active &&
-            snapshot.hasData) {
-          final appUser = snapshot.requireData;
-          if (appUser.isEmpty) {
-            return _buildAuthApp();
-          }
-
-          return _buildSignedInApp(snapshot.requireData);
-        }
-
-        return _buildEmptyState();
-      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
     final themeManager = useListenable(ThemeManager.instance);
+    final authStateStream =
+        useMemoized(() => sl<AuthStateStreamUseCase>().call());
+    final authStatSnapShot = useStream(authStateStream);
+    if (authStatSnapShot.connectionState == ConnectionState.waiting) {
+      return _buildLoadingApp();
+    }
 
-    return BlocProvider<AuthBloc>(
-      create: (_) => sl()..add(AuthEvent.initial()),
-      child: BlocBuilder<AuthBloc, AuthState>(
-        buildWhen: (_, current) {
-          return current.maybeWhen(
-            signedIn: () => true,
-            signedOut: () => true,
-            orElse: () => false,
-          );
-        },
-        builder: (context, state) {
-          return state.maybeWhen(
-            signedIn: () => buildAppBody(context.read()),
-            signedOut: () => buildAppBody(context.read()),
-            orElse: () => _buildLoadingState(),
-          );
-          final authBloc = context.read<AuthBloc>();
-        },
-      ),
-    );
+    final appUserStream = useMemoized(() => sl<AppUserStreamUseCase>().call());
+    final appUserSnapShot = useStream(appUserStream);
+    final appUser = appUserSnapShot.data;
+    if (appUserSnapShot.connectionState == ConnectionState.waiting) {
+      return _buildLoadingApp();
+    } else if (appUser?.isEmpty == true) {
+      return _buildSignedInApp(appUser!);
+    }
+
+    return _buildAuthApp();
   }
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../core/core.dart';
-import '../../../feature_auth/data/model/model.dart';
 
 class NameEditView extends HookWidget {
   const NameEditView({
@@ -18,7 +17,7 @@ class NameEditView extends HookWidget {
         .doc(appUser.userId)
         .withConverter<AppUser>(
           fromFirestore: (snapshot, options) => AppUser.empty(),
-          toFirestore: (value, _) => AppUserModel.fromEntity(value).toJson(),
+          toFirestore: (value, _) => value.toJson(),
         );
 
     await _updateQuery.set(appUser.copyWith(

@@ -17,10 +17,7 @@ class SuggestionsRepositoryImpl implements SuggestionsRepository {
         .collection(col_users)
         .where(field_gender, isEqualTo: appUser.gender)
         .where(field_availability, isEqualTo: appUser.availability)
-        .where(
-          field_interest_list,
-          arrayContainsAny: appUser.interestList.map((e) => e.id).toList(),
-        )
+        .where(field_interest_list, arrayContainsAny: appUser.interestList)
         .withConverter(
           fromFirestore: (snapshot, _) => Suggestion.fromJson(snapshot.data()!),
           toFirestore: (value, options) => value.toJson(),
