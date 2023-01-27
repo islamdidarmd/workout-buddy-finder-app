@@ -9,7 +9,8 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:workout_buddy_finder/feature_auth/data/repository/auth_repository_impl.dart'
     as _i18;
-import 'package:workout_buddy_finder/feature_auth/domain/domain.dart' as _i17;
+import 'package:workout_buddy_finder/feature_auth/domain/repository/auth_repository.dart'
+    as _i17;
 import 'package:workout_buddy_finder/feature_auth/ui/bloc/auth_bloc.dart'
     as _i24;
 import 'package:workout_buddy_finder/feature_location/domain/usecase/get_address_from_lat_long_use_case.dart'
