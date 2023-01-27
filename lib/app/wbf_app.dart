@@ -5,7 +5,7 @@ import 'package:workout_buddy_finder/core/core.dart';
 import 'package:workout_buddy_finder/theme/theme_manager.dart';
 import '../di/service_locator.dart';
 import '../env/env.dart';
-import '../feature_auth/ui/ui.dart';
+import '../feature_auth/ui/bloc/auth_bloc.dart';
 import '../navigation/app_router.dart';
 import '../navigation/auth_router.dart';
 import '../theme/dark_theme.dart';

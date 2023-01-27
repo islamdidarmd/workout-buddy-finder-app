@@ -5,9 +5,10 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/feature_push/domain/push_repository.dart';
-import '../../../feature_auth/domain/domain.dart';
+import '../../../feature_push/domain/push_repository.dart';
 import '../../../core/core.dart';
+import '../../domain/entity/user_auth_state.dart';
+import '../../domain/repository/auth_repository.dart';
 
 part 'auth_bloc.freezed.dart';
 
