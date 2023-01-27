@@ -44,8 +44,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       authRepository.getAuthStateStream(),
       onData: (userAuthState) {
         if (userAuthState == UserAuthState.signedIn) {
-          pushRepository.uploadDeviceToken();
-
           return AuthState.signedIn();
         } else if (userAuthState == UserAuthState.signedOut) {
           return AuthState.signedOut();
