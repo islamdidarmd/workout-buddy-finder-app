@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
@@ -30,8 +29,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthEvent>((event, emit) async {
       final result = await event.when(
         initial: () {
-          _listenToTokenChangeState();
-
           return _listenAuthState(emit);
         },
         signInWithGoogle: (location) => _signInWithGoogle(location, emit),
@@ -39,12 +36,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           final result = await authRepository.signOut();
         },
       );
-    });
-  }
-
-  Future<void> _listenToTokenChangeState() async {
-    return await FirebaseMessaging.instance.onTokenRefresh.forEach((e) {
-      pushRepository.uploadDeviceToken();
     });
   }
 
