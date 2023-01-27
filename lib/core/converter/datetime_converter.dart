@@ -6,9 +6,9 @@ DateTime dateTimeFromJson(int? millisecondsSinceEpoch) {
   return DateTime.fromMillisecondsSinceEpoch(millisecondsSinceEpoch);
 }
 
-int dateTimeToJson(DateTime? timestamp) {
+int? dateTimeToJson(DateTime? timestamp) {
   if (timestamp == null) {
-    return -1;
+    return null;
   }
 
   return timestamp.millisecondsSinceEpoch;
