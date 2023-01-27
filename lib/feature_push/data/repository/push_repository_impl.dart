@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/feature_auth/data/model/model.dart';
 import '../../../core/core.dart';
 import '../../domain/push_repository.dart';
 
@@ -101,7 +100,7 @@ class PushRepositoryImpl implements PushRepository {
     await _callPushApi(pushData);*/
   }
 
-  DocumentReference<AppUser> _buildUserDocRef(String userId) {
+ /* DocumentReference<AppUser> _buildUserDocRef(String userId) {
     return FirebaseFirestore.instance
         .collection(col_users)
         .doc(userId)
@@ -111,7 +110,7 @@ class PushRepositoryImpl implements PushRepository {
           toFirestore: (value, options) => {},
         );
   }
-
+*/
   Future<void> _callPushApi(Map<String, dynamic> data) async {
     try {
       final response = await dio.post(fcmSendUrl, data: data);

@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:workout_buddy_finder/core/core.dart';
-import 'package:workout_buddy_finder/feature_profile/ui/edit/nearby_distance_slider.dart';
+import 'nearby_distance_slider.dart';
 
-import '../../../feature_auth/data/model/model.dart';
 
 class NearbyDistanceEditView extends StatelessWidget {
   const NearbyDistanceEditView({
@@ -19,7 +18,7 @@ class NearbyDistanceEditView extends StatelessWidget {
         .doc(appUser.userId)
         .withConverter<AppUser>(
           fromFirestore: (snapshot, options) => AppUser.empty(),
-          toFirestore: (value, _) => AppUserModel.fromEntity(value).toJson(),
+          toFirestore: (value, _) => value.toJson(),
         );
 
     await _updateQuery.set(appUser.copyWith(

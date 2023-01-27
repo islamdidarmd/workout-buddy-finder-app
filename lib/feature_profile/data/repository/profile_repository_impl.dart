@@ -11,11 +11,17 @@ import 'profile_repository.dart';
 class ProfileRepositoryImpl implements ProfileRepository {
   @override
   Future<Either<List<Interest>, AppError>> getInterestList() async {
-    final collection =
-        await FirebaseFirestore.instance.collection('interests').get();
+    final fetchInterestQuery = await FirebaseFirestore.instance
+        .collection('interests')
+        .withConverter(
+          fromFirestore: (snapshot, _) => Interest.fromJson(snapshot.data()!),
+          toFirestore: (value, _) => value.toJson(),
+        )
+        .get();
+
     try {
-      final interestList = collection.docs
-          .map((doc) => InterestModel.fromJson(doc.data()).toEntity())
+      final interestList = fetchInterestQuery.docs
+          .map((doc) => doc.data())
           .toList(growable: false);
 
       return Left(interestList);

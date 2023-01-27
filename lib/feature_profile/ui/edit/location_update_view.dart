@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import '../../../core/core.dart';
 
-import '../../../feature_auth/data/model/model.dart';
 import '../../../feature_location/location.dart';
 
 class LocationUpdateView extends StatelessWidget {
@@ -20,7 +19,7 @@ class LocationUpdateView extends StatelessWidget {
         .doc(appUser.userId)
         .withConverter<AppUser>(
           fromFirestore: (snapshot, options) => AppUser.empty(),
-          toFirestore: (value, _) => AppUserModel.fromEntity(value).toJson(),
+          toFirestore: (value, _) => value.toJson(),
         );
 
     final Position? location = await showDialog(
