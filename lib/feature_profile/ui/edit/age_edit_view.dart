@@ -2,9 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:workout_buddy_finder/core/core.dart';
-import 'package:workout_buddy_finder/feature_profile/ui/fomatters/datetime_formatter.dart';
+import '../fomatters/datetime_formatter.dart';
 
-import '../../../feature_auth/data/model/model.dart';
 
 class AgeEditView extends StatelessWidget {
   const AgeEditView({
@@ -32,7 +31,7 @@ class AgeEditView extends StatelessWidget {
         .doc(appUser.userId)
         .withConverter<AppUser>(
           fromFirestore: (snapshot, options) => AppUser.empty(),
-          toFirestore: (value, _) => AppUserModel.fromEntity(value).toJson(),
+          toFirestore: (value, _) => value.toJson(),
         );
 
     await _updateQuery.set(appUser.copyWith(

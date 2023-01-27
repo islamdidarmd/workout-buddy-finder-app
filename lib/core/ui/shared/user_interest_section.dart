@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../core.dart';
 
@@ -24,16 +23,9 @@ class UserInterestSection extends StatelessWidget {
               const SizedBox(height: 8),
               Wrap(
                 spacing: 4,
-                children: appUser.interestList.map((interest) {
-                  return Chip(
-                    avatar: CircleAvatar(
-                      foregroundImage:
-                          CachedNetworkImageProvider(interest.icon),
-                      radius: 12,
-                    ),
-                    label: Text(interest.name),
-                  );
-                }).toList(),
+                children: appUser.interestList
+                    .map((id) => InterestChip(interestId: id))
+                    .toList(),
               ),
             ],
           ),
