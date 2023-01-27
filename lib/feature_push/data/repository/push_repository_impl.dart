@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:workout_buddy_finder/feature_auth/data/model/model.dart';
@@ -26,6 +25,7 @@ class PushRepositoryImpl implements PushRepository {
 
   @override
   Future<void> uploadDeviceToken() async {
+    throw UnimplementedError();
     final currentUser = FirebaseAuth.instance.currentUser;
     if (currentUser == null) {
       return;
@@ -33,10 +33,10 @@ class PushRepositoryImpl implements PushRepository {
     final _tokenUpdateQuery =
         FirebaseFirestore.instance.collection(col_users).doc(currentUser.uid);
     try {
-      final deviceToken = await FirebaseMessaging.instance.getToken() ?? '';
+    //  final deviceToken = await FirebaseMessaging.instance.getToken() ?? '';
 
       await _tokenUpdateQuery.update({
-        field_device_token: deviceToken,
+    //    field_device_token: deviceToken,
       });
     } catch (e) {
       debugPrint(e.toString());
@@ -48,7 +48,8 @@ class PushRepositoryImpl implements PushRepository {
     String userId,
     Map<String, dynamic> data,
   ) async {
-    final _appUserQuery = _buildUserDocRef(userId);
+    throw UnimplementedError();
+   /* final _appUserQuery = _buildUserDocRef(userId);
 
     final appUser = (await _appUserQuery.get()).data()!;
     final pushData = {
@@ -57,7 +58,7 @@ class PushRepositoryImpl implements PushRepository {
         'data': data,
       },
     };
-    await _callPushApi(pushData);
+    await _callPushApi(pushData);*/
   }
 
   @override
@@ -66,7 +67,9 @@ class PushRepositoryImpl implements PushRepository {
     Map<String, dynamic> notification,
     Map<String, dynamic> data,
   ) async {
-    final _appUserQuery = _buildUserDocRef(userId);
+    throw UnimplementedError();
+
+/*    final _appUserQuery = _buildUserDocRef(userId);
 
     final appUser = (await _appUserQuery.get()).data()!;
     final pushData = {
@@ -76,7 +79,7 @@ class PushRepositoryImpl implements PushRepository {
         'notification': notification,
       },
     };
-    await _callPushApi(pushData);
+    await _callPushApi(pushData);*/
   }
 
   @override
@@ -84,7 +87,9 @@ class PushRepositoryImpl implements PushRepository {
     String userId,
     Map<String, dynamic> notification,
   ) async {
-    final _appUserQuery = _buildUserDocRef(userId);
+    throw UnimplementedError();
+
+   /* final _appUserQuery = _buildUserDocRef(userId);
 
     final appUser = (await _appUserQuery.get()).data()!;
     final pushData = {
@@ -93,7 +98,7 @@ class PushRepositoryImpl implements PushRepository {
         'notification': notification,
       },
     };
-    await _callPushApi(pushData);
+    await _callPushApi(pushData);*/
   }
 
   DocumentReference<AppUser> _buildUserDocRef(String userId) {
