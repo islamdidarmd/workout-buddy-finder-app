@@ -8,19 +8,24 @@ class AppUser with _$AppUser {
 
   const factory AppUser({
     required String userId,
-    required DateTime registered,
-    required String name,
-    required String gender,
+    @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+        required DateTime registered,
+    @Default('') String name,
+    @Default('male')String gender,
+    @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
     required DateTime birthdate,
-    required String availability,
-    required int nearbyDistance,
-    required String email,
-    required String profilePicture,
-    required double lat,
-    required double long,
-    required String geoHash,
-    required List<Interest> interestList,
+    @Default('daily1hr') String availability,
+    @Default(10) int nearbyDistance,
+    @Default('') String email,
+    @Default('') String profilePicture,
+    @Default(0.0) double lat,
+    @Default(0.0) double long,
+    @Default("") String geoHash,
+    @Default([]) List<String> interestList,
   }) = _AppUser;
+
+  factory AppUser.fromJson(Map<String, dynamic> json) =>
+      _$AppUserFromJson(json);
 
   factory AppUser.empty() => AppUser(
         userId: '',

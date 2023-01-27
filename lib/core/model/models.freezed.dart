@@ -14,12 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Interest _$InterestFromJson(Map<String, dynamic> json) {
+  return _Interest.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Interest {
   String get id => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $InterestCopyWith<Interest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -110,9 +115,12 @@ class __$$_InterestCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Interest with DiagnosticableTreeMixin implements _Interest {
   _$_Interest({required this.id, required this.icon, required this.name});
+
+  factory _$_Interest.fromJson(Map<String, dynamic> json) =>
+      _$$_InterestFromJson(json);
 
   @override
   final String id;
@@ -146,6 +154,7 @@ class _$_Interest with DiagnosticableTreeMixin implements _Interest {
             (identical(other.name, name) || other.name == name));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, icon, name);
 
@@ -154,6 +163,13 @@ class _$_Interest with DiagnosticableTreeMixin implements _Interest {
   @pragma('vm:prefer-inline')
   _$$_InterestCopyWith<_$_Interest> get copyWith =>
       __$$_InterestCopyWithImpl<_$_Interest>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_InterestToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Interest implements Interest {
@@ -161,6 +177,8 @@ abstract class _Interest implements Interest {
       {required final String id,
       required final String icon,
       required final String name}) = _$_Interest;
+
+  factory _Interest.fromJson(Map<String, dynamic> json) = _$_Interest.fromJson;
 
   @override
   String get id;
@@ -174,12 +192,18 @@ abstract class _Interest implements Interest {
       throw _privateConstructorUsedError;
 }
 
+AppUser _$AppUserFromJson(Map<String, dynamic> json) {
+  return _AppUser.fromJson(json);
+}
+
 /// @nodoc
 mixin _$AppUser {
   String get userId => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get registered => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get birthdate => throw _privateConstructorUsedError;
   String get availability => throw _privateConstructorUsedError;
   int get nearbyDistance => throw _privateConstructorUsedError;
@@ -188,8 +212,9 @@ mixin _$AppUser {
   double get lat => throw _privateConstructorUsedError;
   double get long => throw _privateConstructorUsedError;
   String get geoHash => throw _privateConstructorUsedError;
-  List<Interest> get interestList => throw _privateConstructorUsedError;
+  List<String> get interestList => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
 }
@@ -201,10 +226,12 @@ abstract class $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
-      DateTime registered,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime registered,
       String name,
       String gender,
-      DateTime birthdate,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime birthdate,
       String availability,
       int nearbyDistance,
       String email,
@@ -212,7 +239,7 @@ abstract class $AppUserCopyWith<$Res> {
       double lat,
       double long,
       String geoHash,
-      List<Interest> interestList});
+      List<String> interestList});
 }
 
 /// @nodoc
@@ -294,7 +321,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
       interestList: null == interestList
           ? _value.interestList
           : interestList // ignore: cast_nullable_to_non_nullable
-              as List<Interest>,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -308,10 +335,12 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
-      DateTime registered,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime registered,
       String name,
       String gender,
-      DateTime birthdate,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime birthdate,
       String availability,
       int nearbyDistance,
       String email,
@@ -319,7 +348,7 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       double lat,
       double long,
       String geoHash,
-      List<Interest> interestList});
+      List<String> interestList});
 }
 
 /// @nodoc
@@ -398,58 +427,75 @@ class __$$_AppUserCopyWithImpl<$Res>
       interestList: null == interestList
           ? _value._interestList
           : interestList // ignore: cast_nullable_to_non_nullable
-              as List<Interest>,
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   const _$_AppUser(
       {required this.userId,
-      required this.registered,
-      required this.name,
-      required this.gender,
-      required this.birthdate,
-      required this.availability,
-      required this.nearbyDistance,
-      required this.email,
-      required this.profilePicture,
-      required this.lat,
-      required this.long,
-      required this.geoHash,
-      required final List<Interest> interestList})
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          required this.registered,
+      this.name = '',
+      this.gender = 'male',
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          required this.birthdate,
+      this.availability = 'daily1hr',
+      this.nearbyDistance = 10,
+      this.email = '',
+      this.profilePicture = '',
+      this.lat = 0.0,
+      this.long = 0.0,
+      this.geoHash = "",
+      final List<String> interestList = const []})
       : _interestList = interestList,
         super._();
+
+  factory _$_AppUser.fromJson(Map<String, dynamic> json) =>
+      _$$_AppUserFromJson(json);
 
   @override
   final String userId;
   @override
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   final DateTime registered;
   @override
+  @JsonKey()
   final String name;
   @override
+  @JsonKey()
   final String gender;
   @override
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   final DateTime birthdate;
   @override
+  @JsonKey()
   final String availability;
   @override
+  @JsonKey()
   final int nearbyDistance;
   @override
+  @JsonKey()
   final String email;
   @override
+  @JsonKey()
   final String profilePicture;
   @override
+  @JsonKey()
   final double lat;
   @override
+  @JsonKey()
   final double long;
   @override
+  @JsonKey()
   final String geoHash;
-  final List<Interest> _interestList;
+  final List<String> _interestList;
   @override
-  List<Interest> get interestList {
+  @JsonKey()
+  List<String> get interestList {
     if (_interestList is EqualUnmodifiableListView) return _interestList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_interestList);
@@ -506,6 +552,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
                 .equals(other._interestList, _interestList));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -528,34 +575,47 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   @pragma('vm:prefer-inline')
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>
       __$$_AppUserCopyWithImpl<_$_AppUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AppUserToJson(
+      this,
+    );
+  }
 }
 
 abstract class _AppUser extends AppUser {
   const factory _AppUser(
       {required final String userId,
-      required final DateTime registered,
-      required final String name,
-      required final String gender,
-      required final DateTime birthdate,
-      required final String availability,
-      required final int nearbyDistance,
-      required final String email,
-      required final String profilePicture,
-      required final double lat,
-      required final double long,
-      required final String geoHash,
-      required final List<Interest> interestList}) = _$_AppUser;
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          required final DateTime registered,
+      final String name,
+      final String gender,
+      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          required final DateTime birthdate,
+      final String availability,
+      final int nearbyDistance,
+      final String email,
+      final String profilePicture,
+      final double lat,
+      final double long,
+      final String geoHash,
+      final List<String> interestList}) = _$_AppUser;
   const _AppUser._() : super._();
+
+  factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
 
   @override
   String get userId;
   @override
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get registered;
   @override
   String get name;
   @override
   String get gender;
   @override
+  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get birthdate;
   @override
   String get availability;
@@ -572,7 +632,7 @@ abstract class _AppUser extends AppUser {
   @override
   String get geoHash;
   @override
-  List<Interest> get interestList;
+  List<String> get interestList;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>
