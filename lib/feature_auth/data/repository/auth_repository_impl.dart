@@ -10,8 +10,9 @@ import '../../../core/firebase_storage_constants.dart';
 import '../../../feature_location/location.dart';
 import '../../../feature_profile/data/model/model.dart';
 import '../../../core/core.dart';
+import '../../domain/entity/user_auth_state.dart';
+import '../../domain/repository/auth_repository.dart';
 import '../model/model.dart';
-import '../../../feature_auth/domain/domain.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
