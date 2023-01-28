@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../domain/domain.dart';
+import 'package:workout_buddy_finder/feature_auth/domain/use_case/get_user_profile_from_id_use_case.dart';
 import '../../core/core.dart';
 import '../../di/service_locator.dart';
 
@@ -24,7 +24,7 @@ class VisitUserPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final appUserFuture = useMemoized(
-      () => sl<VisitUserRepository>().getAppUserFromId(userId: userId),
+      () => sl<GetUserProfileFromIdUseCase>().call(uid: userId),
     );
     final userSnapShot = useFuture(appUserFuture);
 

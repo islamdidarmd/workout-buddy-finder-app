@@ -5,20 +5,22 @@ import '../feature_visit_user/ui/visit_user_page.dart';
 import 'navigation.dart';
 import '../feature_messaging/feature_messaging.dart';
 import '../feature_suggestion/suggestion.dart';
-import '../feature_profile/profile.dart';
+import '../feature_profile/feature_profile.dart';
 import '../feature_settings/settings.dart';
 import '../core/core.dart';
 
-final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _shellNavigatorKey = GlobalKey<NavigatorState>();
+class RouteNavigatorKey {
+  static final rootNavigatorKey = GlobalKey<NavigatorState>();
+  static final shellNavigatorKey = GlobalKey<NavigatorState>();
+}
 
 final router = GoRouter(
-  navigatorKey: _rootNavigatorKey,
+  navigatorKey: RouteNavigatorKey.rootNavigatorKey,
   initialLocation: TopLevelRoute.suggestion().route,
   errorBuilder: (_, state) => ErrorIndicator(error: state.error?.toString()),
   routes: [
     ShellRoute(
-      navigatorKey: _shellNavigatorKey,
+      navigatorKey: RouteNavigatorKey.shellNavigatorKey,
       builder: (context, state, child) => ScaffoldWithBottomNav(
         child: child,
         currentRoute: state.location,
