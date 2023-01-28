@@ -20,6 +20,7 @@ Interest _$InterestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Interest {
+  @JsonKey(name: 'doc_id')
   String get id => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -35,7 +36,7 @@ abstract class $InterestCopyWith<$Res> {
   factory $InterestCopyWith(Interest value, $Res Function(Interest) then) =
       _$InterestCopyWithImpl<$Res, Interest>;
   @useResult
-  $Res call({String id, String icon, String name});
+  $Res call({@JsonKey(name: 'doc_id') String id, String icon, String name});
 }
 
 /// @nodoc
@@ -79,7 +80,7 @@ abstract class _$$_InterestCopyWith<$Res> implements $InterestCopyWith<$Res> {
       __$$_InterestCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String icon, String name});
+  $Res call({@JsonKey(name: 'doc_id') String id, String icon, String name});
 }
 
 /// @nodoc
@@ -117,12 +118,16 @@ class __$$_InterestCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Interest with DiagnosticableTreeMixin implements _Interest {
-  _$_Interest({required this.id, required this.icon, required this.name});
+  _$_Interest(
+      {@JsonKey(name: 'doc_id') required this.id,
+      required this.icon,
+      required this.name});
 
   factory _$_Interest.fromJson(Map<String, dynamic> json) =>
       _$$_InterestFromJson(json);
 
   @override
+  @JsonKey(name: 'doc_id')
   final String id;
   @override
   final String icon;
@@ -174,13 +179,14 @@ class _$_Interest with DiagnosticableTreeMixin implements _Interest {
 
 abstract class _Interest implements Interest {
   factory _Interest(
-      {required final String id,
+      {@JsonKey(name: 'doc_id') required final String id,
       required final String icon,
       required final String name}) = _$_Interest;
 
   factory _Interest.fromJson(Map<String, dynamic> json) = _$_Interest.fromJson;
 
   @override
+  @JsonKey(name: 'doc_id')
   String get id;
   @override
   String get icon;
