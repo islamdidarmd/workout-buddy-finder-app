@@ -7,14 +7,14 @@ part of 'models.dart';
 // **************************************************************************
 
 _$_Interest _$$_InterestFromJson(Map<String, dynamic> json) => _$_Interest(
-      id: json['id'] as String,
+      id: json['doc_id'] as String,
       icon: json['icon'] as String,
       name: json['name'] as String,
     );
 
 Map<String, dynamic> _$$_InterestToJson(_$_Interest instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      'doc_id': instance.id,
       'icon': instance.icon,
       'name': instance.name,
     };

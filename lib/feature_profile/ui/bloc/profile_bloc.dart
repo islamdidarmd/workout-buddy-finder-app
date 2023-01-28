@@ -81,10 +81,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     return allInterest.map((interest) {
       var viewModel = InterestViewModel.fromInterest(interest);
-      if (userInterestList.firstWhereOrNull(
-            (userInterest) => userInterest == viewModel.docId,
-          ) !=
-          null) {
+      if (userInterestList.contains(viewModel.docId)) {
         viewModel = viewModel.copyWith(isSelected: true);
       }
 

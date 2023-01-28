@@ -13,14 +13,14 @@ class InterestChip extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _interestQuery = FirebaseFirestore.instance
+    final interestQuery = FirebaseFirestore.instance
         .collection(col_interests)
         .doc(interestId)
         .withConverter(
           fromFirestore: (snapshot, _) => Interest.fromJson(snapshot.data()!),
           toFirestore: (value, _) => value.toJson(),
         );
-    final interestFuture = useMemoized(() => _interestQuery.get());
+    final interestFuture = useMemoized(() => interestQuery.get());
     final interestSnapshot = useFuture(interestFuture);
 
     if (interestSnapshot.hasData) {
