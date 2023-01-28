@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import '../../../core/firestore_constants.dart';
 import '../../../core/model/models.dart';
 
-@singleton
+
 @injectable
 class AppUserStreamUseCase {
   Stream<AppUser> call() {

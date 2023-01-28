@@ -21,7 +21,8 @@ class AuthStateListenerApp extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authStatSnapShot = useStream(sl<AuthStateStreamUseCase>().call());
+    final stream = useMemoized(() => sl<AuthStateStreamUseCase>().call());
+    final authStatSnapShot = useStream(stream);
     final authState = authStatSnapShot.data;
 
     if (authState == UserAuthState.signedIn) {
