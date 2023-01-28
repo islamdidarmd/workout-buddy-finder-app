@@ -16,20 +16,22 @@ import 'package:workout_buddy_finder/feature_auth/domain/use_case/create_new_use
 import 'package:workout_buddy_finder/feature_auth/domain/use_case/get_user_profile_from_id_use_case.dart'
     as _i7;
 import 'package:workout_buddy_finder/feature_auth/domain/use_case/sign_in_with_google_use_case.dart'
-    as _i25;
+    as _i26;
 import 'package:workout_buddy_finder/feature_auth/domain/use_case/sign_out_use_case.dart'
     as _i11;
 import 'package:workout_buddy_finder/feature_auth/domain/use_case/update_last_seen_use_case.dart'
     as _i14;
 import 'package:workout_buddy_finder/feature_auth/feature_auth.dart' as _i23;
 import 'package:workout_buddy_finder/feature_auth/ui/bloc/auth_cubit.dart'
-    as _i27;
+    as _i28;
 import 'package:workout_buddy_finder/feature_location/domain/usecase/get_address_from_lat_long_use_case.dart'
     as _i5;
 import 'package:workout_buddy_finder/feature_location/ui/bloc/location_retriever_bloc.dart'
     as _i8;
 import 'package:workout_buddy_finder/feature_messaging/domain/use_case/get_chat_room_participants_use_case.dart'
     as _i22;
+import 'package:workout_buddy_finder/feature_messaging/domain/use_case/send_message_use_case.dart'
+    as _i25;
 import 'package:workout_buddy_finder/feature_messaging/domain/use_case/update_last_sent_message_use_case.dart'
     as _i15;
 import 'package:workout_buddy_finder/feature_profile/domain/use_case/add_user_interest_use_case.dart'
@@ -47,7 +49,7 @@ import 'package:workout_buddy_finder/feature_suggestion/data/repository/suggesti
 import 'package:workout_buddy_finder/feature_suggestion/domain/domain.dart'
     as _i12;
 import 'package:workout_buddy_finder/feature_suggestion/ui/bloc/suggestions_bloc.dart'
-    as _i26;
+    as _i27;
 import 'package:workout_buddy_finder/feature_upload/domain/use_case/replace_image_use_case.dart'
     as _i10;
 import 'package:workout_buddy_finder/feature_upload/domain/use_case/upload_image_from_bytes_use_case.dart'
@@ -108,13 +110,15 @@ _i1.GetIt $InitGetIt(
             gh<_i16.UpdateUserProfilePictureUseCase>(),
         replaceImageUseCase: gh<_i10.ReplaceImageUseCase>(),
       ));
-  gh.factory<_i25.SignInWithGoogleUseCase>(() => _i25.SignInWithGoogleUseCase(
+  gh.factory<_i25.SendMessageUseCase>(() => _i25.SendMessageUseCase(
+      updateLastSentMessageUseCase: gh<_i15.UpdateLastSentMessageUseCase>()));
+  gh.factory<_i26.SignInWithGoogleUseCase>(() => _i26.SignInWithGoogleUseCase(
         createNewUserUseCase: gh<_i20.CreateNewUserUseCase>(),
         getUserProfileFromIdUseCase: gh<_i7.GetUserProfileFromIdUseCase>(),
       ));
-  gh.factory<_i26.SuggestionsBloc>(
-      () => _i26.SuggestionsBloc(gh<_i12.SuggestionsRepository>()));
-  gh.factory<_i27.AuthCubit>(() => _i27.AuthCubit(
+  gh.factory<_i27.SuggestionsBloc>(
+      () => _i27.SuggestionsBloc(gh<_i12.SuggestionsRepository>()));
+  gh.factory<_i28.AuthCubit>(() => _i28.AuthCubit(
         signInWithGoogleUseCase: gh<_i23.SignInWithGoogleUseCase>(),
         signOutUseCase: gh<_i23.SignOutUseCase>(),
       ));
