@@ -1,17 +1,19 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/core/firebase_storage_constants.dart';
+import '../../../feature_upload/domain/use_case/replace_image_use_case.dart';
+import '../../domain/use_case/add_user_interest_use_case.dart';
+import '../../../core/firebase_storage_constants.dart';
 
 import '../../../core/core.dart';
-import '../../../feature_upload/domain/domain.dart';
-import '../../data/repository/profile_repository.dart';
+import '../../domain/use_case/get_interest_list_use_case.dart';
+import '../../domain/use_case/remove_user_interest_use_case.dart';
+import '../../domain/use_case/update_user_profile_picture_use_case.dart';
 import '../view_model/view_model.dart';
 
 part 'profile_bloc.freezed.dart';
@@ -22,12 +24,18 @@ part 'profile_state.dart';
 
 @injectable
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  final ProfileRepository profileRepository;
-  final UploaderRepository uploaderRepository;
+  final GetInterestListUseCase getInterestListUseCase;
+  final AddUserInterestUseCase addUserInterestUseCase;
+  final RemoveUserInterestUseCase removeUserInterestUseCase;
+  final UpdateUserProfilePictureUseCase updateUserProfilePictureUseCase;
+  final ReplaceImageUseCase replaceImageUseCase;
 
   ProfileBloc({
-    required this.profileRepository,
-    required this.uploaderRepository,
+    required this.getInterestListUseCase,
+    required this.addUserInterestUseCase,
+    required this.removeUserInterestUseCase,
+    required this.updateUserProfilePictureUseCase,
+    required this.replaceImageUseCase,
   }) : super(ProfileState.initial()) {
     on<ProfileEvent>((event, emit) async {
       final result = await event.when(
@@ -43,7 +51,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   Future<void> _onLoadInterest(Emitter emit, AppUser appUser) async {
     emit(ProfileState.loading());
-    final data = await profileRepository.getInterestList();
+    final data = await getInterestListUseCase();
 
     data.fold(
       (allInterest) {
@@ -61,16 +69,14 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     AppUser appUser,
     InterestViewModel interest,
   ) async {
-    final data =
-        await profileRepository.addInterestList(appUser, interest.docId);
+    final data = await addUserInterestUseCase(appUser, interest.docId);
   }
 
   Future<void> _onRemoveInterest(
     AppUser appUser,
     InterestViewModel interest,
   ) async {
-    final data =
-        await profileRepository.removeInterestList(appUser, interest.docId);
+    final data = await removeUserInterestUseCase(appUser, interest.docId);
   }
 
   List<InterestViewModel> _mapInterestModel(
@@ -98,24 +104,23 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     final path = '$profile_pictures';
     final fileName = appUser.userId;
-    final data = await uploaderRepository.replaceImage(
+    final imageUrl = await replaceImageUseCase(
       path: path,
       url: appUser.profilePicture,
       image: image,
       fileName: fileName,
     );
 
-    await data.fold<FutureOr<void>>(
-      (imageUrl) async {
-        final uploadData =
-            await profileRepository.updateProfilePicture(appUser, imageUrl);
+    if (imageUrl != null) {
+      final uploadData =
+          await updateUserProfilePictureUseCase(appUser, imageUrl);
 
-        return uploadData.fold(
-          (result) => emit(ProfileState.profilePictureUploadingSuccess()),
-          (error) => emit(ProfileState.profilePictureUploadingError(error)),
-        );
-      },
-      (error) => emit(ProfileState.profilePictureUploadingError(error)),
-    );
+      return uploadData.fold(
+        (result) => emit(ProfileState.profilePictureUploadingSuccess()),
+        (error) => emit(ProfileState.profilePictureUploadingError(error)),
+      );
+    }
+
+    emit(ProfileState.profilePictureUploadingError(FileUploadError()));
   }
 }
