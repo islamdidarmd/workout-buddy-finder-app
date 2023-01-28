@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeManager extends ChangeNotifier {
-  ThemeManager._();
-
   static ThemeManager? _themeManager;
 
   final String _prefKey = "uiMode";
 
   ThemeMode _themeMode = ThemeMode.system;
+
 
   ThemeMode get themeMode => _themeMode;
 
@@ -19,6 +18,8 @@ class ThemeManager extends ChangeNotifier {
 
     return _themeManager!;
   }
+
+  ThemeManager._();
 
   Future<void> switchTo(ThemeMode themeMode) async {
     if (themeMode != this.themeMode) {
@@ -67,6 +68,6 @@ class ThemeManager extends ChangeNotifier {
         break;
     }
 
-    await pref.setInt(_prefKey, uiMode);
+    final result = await pref.setInt(_prefKey, uiMode);
   }
 }

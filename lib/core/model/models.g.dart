@@ -32,7 +32,7 @@ _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
       lat: (json['lat'] as num?)?.toDouble() ?? 0.0,
       long: (json['long'] as num?)?.toDouble() ?? 0.0,
       geoHash: json['geoHash'] as String? ?? "",
-      interestList: (json['interestList'] as List<dynamic>?)
+      interestList: (json['interestsList'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
           const [],
@@ -52,5 +52,5 @@ Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) =>
       'lat': instance.lat,
       'long': instance.long,
       'geoHash': instance.geoHash,
-      'interestList': instance.interestList,
+      'interestsList': instance.interestList,
     };
