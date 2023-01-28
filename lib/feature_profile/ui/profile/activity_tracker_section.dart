@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:health/health.dart';
-import 'package:workout_buddy_finder/core/core.dart';
-import 'package:workout_buddy_finder/feature_profile/ui/profile/activity_tracker_energy_burned_view.dart';
+import '../../../core/core.dart';
+import 'activity_tracker_energy_burned_view.dart';
 
 import 'activity_permission_required_view.dart';
 
@@ -55,7 +55,7 @@ class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
         now,
         types,
       );
-      if(context.mounted) {
+      if (context.mounted) {
         setState(() {
           _healthData.clear();
           _healthData.addAll(healthData);
@@ -67,16 +67,19 @@ class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     if (_hasPermission) {
       _readHealthData(context);
     }
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return ContentCard(
-      width: double.infinity,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           mediumBoldTitle(context, 'Energy Tracker'),
           const VerticalSpacing(),
@@ -89,6 +92,7 @@ class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
           },
         ],
       ),
+      width: double.infinity,
     );
   }
 }
