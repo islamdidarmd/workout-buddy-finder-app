@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/src/either.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
-import '../../../feature_messaging/domain/domain.dart';
 
 import '../../../core/core.dart';
+import '../../../feature_messaging/domain/entity/entities.dart';
 import '../../domain/domain.dart';
 
 @Injectable(as: SuggestionsRepository)

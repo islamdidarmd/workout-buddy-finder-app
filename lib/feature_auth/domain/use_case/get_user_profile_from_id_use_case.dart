@@ -1,25 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../core/firestore_constants.dart';
 import '../../../core/model/models.dart';
 
-
 @injectable
-class AppUserStreamUseCase {
-  const AppUserStreamUseCase();
+class GetUserProfileFromIdUseCase {
+  const GetUserProfileFromIdUseCase();
 
-  Stream<AppUser> call() {
-    final firebaseUser = FirebaseAuth.instance.currentUser;
+  Future<AppUser?> call({required String uid}) async {
     final _userProfileQuery = FirebaseFirestore.instance
         .collection(col_users)
-        .doc(firebaseUser?.uid)
+        .doc(uid)
         .withConverter(
           fromFirestore: (snapshot, _) => AppUser.fromJson(snapshot.data()!),
           toFirestore: (value, _) => value.toJson(),
         );
 
-    return _userProfileQuery.snapshots().map((event) => event.data()!);
+    final profileSnapshot = await _userProfileQuery.get();
+
+    return profileSnapshot.data();
   }
 }
