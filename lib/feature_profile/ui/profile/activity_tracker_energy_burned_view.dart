@@ -22,7 +22,7 @@ class ActivityTrackerEnergyBurnedView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        lightBody(context, '$total/kCal'),
+        lightBody(context, '${total.toStringAsFixed(2)}/kCal'),
         const VerticalSpacing(spacing: 2),
         caption(context, 'Energy burned in last 24 Hrs'),
       ],
