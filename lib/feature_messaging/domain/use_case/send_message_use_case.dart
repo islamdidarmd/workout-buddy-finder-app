@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../core/firestore_constants.dart';
 import '../../../core/model/models.dart';
 import '../entity/entities.dart';
 import 'update_last_sent_message_use_case.dart';
 
+@injectable
 class SendMessageUseCase {
   final UpdateLastSentMessageUseCase updateLastSentMessageUseCase;
 
