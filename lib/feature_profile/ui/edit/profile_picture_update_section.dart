@@ -44,7 +44,7 @@ class ProfilePictureUpdateSection extends StatelessWidget {
           ..clearSnackBars()
           ..showSnackBar(
             SnackBar(
-              content: Text('Uploading Profile Picture. Don\'t leave the page'),
+              content: Text('Uploading Profile Picture...'),
             ),
           );
       },
@@ -55,7 +55,7 @@ class ProfilePictureUpdateSection extends StatelessWidget {
           ..clearSnackBars()
           ..showSnackBar(SnackBar(
             content: Text(
-              'Uploading Profile Picture. Don\'t leave the page',
+              'Uploading Profile Picture...',
             ),
             duration: Duration(days: 365),
           ));
