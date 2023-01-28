@@ -6,3 +6,4 @@ export 'domain/use_case/auth_state_stream_use_case.dart';
 export 'domain/use_case/create_new_user_use_case.dart';
 export 'domain/use_case/sign_in_with_google_use_case.dart';
 export 'domain/use_case/sign_out_use_case.dart';
+export 'domain/use_case/get_user_profile_from_id_use_case.dart';

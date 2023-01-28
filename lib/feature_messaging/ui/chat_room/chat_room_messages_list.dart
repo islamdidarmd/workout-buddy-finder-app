@@ -2,8 +2,8 @@ import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../core/firestore_constants.dart';
+import '../../domain/entity/entities.dart';
 import 'chat_message_list_item.dart';
-import '../../domain/domain.dart';
 
 class ChatRoomMessagesList extends StatelessWidget {
   const ChatRoomMessagesList({

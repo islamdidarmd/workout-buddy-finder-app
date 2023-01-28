@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import '../../../core/core.dart';
+import '../../domain/entity/entities.dart';
 import '../shared/user_avatar.dart';
-import '../../domain/domain.dart';
 import 'participant_avatar.dart';
 
 class ChatMessageListItem extends StatelessWidget {
