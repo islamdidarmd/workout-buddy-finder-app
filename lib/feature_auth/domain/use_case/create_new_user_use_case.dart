@@ -42,6 +42,7 @@ class CreateNewUserUseCase {
       registered: DateTime.now(),
       name: firebaseUser.displayName ?? '',
       birthdate: DateTime.now(),
+      lastSeen: DateTime.now(),
       email: firebaseUser.email ?? '',
       profilePicture: imageUrl,
       lat: currentLocation.latitude,

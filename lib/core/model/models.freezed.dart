@@ -214,6 +214,9 @@ mixin _$AppUser {
   @JsonKey(
       name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get birthdate => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  DateTime get lastSeen => throw _privateConstructorUsedError;
   @JsonKey(name: 'availability')
   String get availability => throw _privateConstructorUsedError;
   @JsonKey(name: 'nearbyDistance')
@@ -251,6 +254,8 @@ abstract class $AppUserCopyWith<$Res> {
           String gender,
       @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime birthdate,
+      @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime lastSeen,
       @JsonKey(name: 'availability')
           String availability,
       @JsonKey(name: 'nearbyDistance')
@@ -287,6 +292,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? name = null,
     Object? gender = null,
     Object? birthdate = null,
+    Object? lastSeen = null,
     Object? availability = null,
     Object? nearbyDistance = null,
     Object? email = null,
@@ -316,6 +322,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
       birthdate: null == birthdate
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastSeen: null == lastSeen
+          ? _value.lastSeen
+          : lastSeen // ignore: cast_nullable_to_non_nullable
               as DateTime,
       availability: null == availability
           ? _value.availability
@@ -370,6 +380,8 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
           String gender,
       @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime birthdate,
+      @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          DateTime lastSeen,
       @JsonKey(name: 'availability')
           String availability,
       @JsonKey(name: 'nearbyDistance')
@@ -403,6 +415,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? name = null,
     Object? gender = null,
     Object? birthdate = null,
+    Object? lastSeen = null,
     Object? availability = null,
     Object? nearbyDistance = null,
     Object? email = null,
@@ -432,6 +445,10 @@ class __$$_AppUserCopyWithImpl<$Res>
       birthdate: null == birthdate
           ? _value.birthdate
           : birthdate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      lastSeen: null == lastSeen
+          ? _value.lastSeen
+          : lastSeen // ignore: cast_nullable_to_non_nullable
               as DateTime,
       availability: null == availability
           ? _value.availability
@@ -482,6 +499,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
           this.gender = 'male',
       @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required this.birthdate,
+      @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          required this.lastSeen,
       @JsonKey(name: 'availability')
           this.availability = 'daily1hr',
       @JsonKey(name: 'nearbyDistance')
@@ -520,6 +539,10 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   final DateTime birthdate;
   @override
+  @JsonKey(
+      name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  final DateTime lastSeen;
+  @override
   @JsonKey(name: 'availability')
   final String availability;
   @override
@@ -551,7 +574,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUser(userId: $userId, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
+    return 'AppUser(userId: $userId, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, lastSeen: $lastSeen, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
   }
 
   @override
@@ -564,6 +587,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('gender', gender))
       ..add(DiagnosticsProperty('birthdate', birthdate))
+      ..add(DiagnosticsProperty('lastSeen', lastSeen))
       ..add(DiagnosticsProperty('availability', availability))
       ..add(DiagnosticsProperty('nearbyDistance', nearbyDistance))
       ..add(DiagnosticsProperty('email', email))
@@ -586,6 +610,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.birthdate, birthdate) ||
                 other.birthdate == birthdate) &&
+            (identical(other.lastSeen, lastSeen) ||
+                other.lastSeen == lastSeen) &&
             (identical(other.availability, availability) ||
                 other.availability == availability) &&
             (identical(other.nearbyDistance, nearbyDistance) ||
@@ -609,6 +635,7 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       name,
       gender,
       birthdate,
+      lastSeen,
       availability,
       nearbyDistance,
       email,
@@ -643,6 +670,8 @@ abstract class _AppUser extends AppUser {
           final String gender,
       @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required final DateTime birthdate,
+      @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+          required final DateTime lastSeen,
       @JsonKey(name: 'availability')
           final String availability,
       @JsonKey(name: 'nearbyDistance')
@@ -678,6 +707,10 @@ abstract class _AppUser extends AppUser {
   @JsonKey(
       name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get birthdate;
+  @override
+  @JsonKey(
+      name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  DateTime get lastSeen;
   @override
   @JsonKey(name: 'availability')
   String get availability;

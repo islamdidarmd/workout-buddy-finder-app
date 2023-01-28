@@ -14,6 +14,8 @@ class AppUser with _$AppUser {
     @JsonKey(name: 'gender') @Default('male') String gender,
     @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
         required DateTime birthdate,
+    @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+        required DateTime lastSeen,
     @JsonKey(name: 'availability') @Default('daily1hr') String availability,
     @JsonKey(name: 'nearbyDistance') @Default(10) int nearbyDistance,
     @JsonKey(name: 'email') @Default('') String email,
@@ -33,6 +35,7 @@ class AppUser with _$AppUser {
         name: '',
         gender: '',
         birthdate: DateTime.now(),
+        lastSeen: DateTime.now(),
         availability: '',
         nearbyDistance: 0,
         email: '',
