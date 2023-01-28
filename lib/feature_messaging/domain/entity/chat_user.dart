@@ -6,7 +6,8 @@ class ChatUser with _$ChatUser {
     required String userId,
     required String name,
     required String profilePicture,
-}) = _ChatUser;
+    @JsonKey(name: 'last_seen') required String lastSeen,
+  }) = _ChatUser;
 
   factory ChatUser.fromJson(Map<String, dynamic> json) =>
       _$ChatUserFromJson(json);

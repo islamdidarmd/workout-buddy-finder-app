@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:workout_buddy_finder/feature_messaging/domain/domain.dart';
 import '../../../di/service_locator.dart';
+import '../../feature_messaging.dart';
 import 'message_input.dart';
 import 'top_bar.dart';
 import 'chat_room_messages_list.dart';
@@ -23,10 +23,9 @@ class ChatRoomPage extends HookWidget {
     AppUser loggedInUser,
     TextEditingController controller,
   ) async {
-    final repository = sl<MessagingRepository>();
     final text = controller.text;
     controller.clear();
-    await repository.sendMessage(
+    await sl<SendMessageUseCase>().call(
       loggedInUser: loggedInUser,
       chatRoomId: chatRoomId,
       message: text,
@@ -49,18 +48,16 @@ class ChatRoomPage extends HookWidget {
           ),
         ),
         Container(
-          height: 80,
           padding:
               const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
-          child: Row(
-            children: [
-              Expanded(child: MessageInput(controller: textController)),
-              IconButton(
-                onPressed: () => _onSendMessage(loggedInUser, textController),
-                icon: Icon(FontAwesomeIcons.paperPlane),
-              ),
-            ],
-          ),
+          height: 80,
+          child: Row(children: [
+            Expanded(child: MessageInput(controller: textController)),
+            IconButton(
+              onPressed: () => _onSendMessage(loggedInUser, textController),
+              icon: Icon(FontAwesomeIcons.paperPlane),
+            ),
+          ]),
         ),
       ],
     );

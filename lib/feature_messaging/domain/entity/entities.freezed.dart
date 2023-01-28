@@ -225,6 +225,8 @@ mixin _$ChatUser {
   String get userId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get profilePicture => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_seen')
+  String get lastSeen => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -237,7 +239,11 @@ abstract class $ChatUserCopyWith<$Res> {
   factory $ChatUserCopyWith(ChatUser value, $Res Function(ChatUser) then) =
       _$ChatUserCopyWithImpl<$Res, ChatUser>;
   @useResult
-  $Res call({String userId, String name, String profilePicture});
+  $Res call(
+      {String userId,
+      String name,
+      String profilePicture,
+      @JsonKey(name: 'last_seen') String lastSeen});
 }
 
 /// @nodoc
@@ -256,6 +262,7 @@ class _$ChatUserCopyWithImpl<$Res, $Val extends ChatUser>
     Object? userId = null,
     Object? name = null,
     Object? profilePicture = null,
+    Object? lastSeen = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -270,6 +277,10 @@ class _$ChatUserCopyWithImpl<$Res, $Val extends ChatUser>
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
               as String,
+      lastSeen: null == lastSeen
+          ? _value.lastSeen
+          : lastSeen // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -281,7 +292,11 @@ abstract class _$$_ChatUserCopyWith<$Res> implements $ChatUserCopyWith<$Res> {
       __$$_ChatUserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, String name, String profilePicture});
+  $Res call(
+      {String userId,
+      String name,
+      String profilePicture,
+      @JsonKey(name: 'last_seen') String lastSeen});
 }
 
 /// @nodoc
@@ -298,6 +313,7 @@ class __$$_ChatUserCopyWithImpl<$Res>
     Object? userId = null,
     Object? name = null,
     Object? profilePicture = null,
+    Object? lastSeen = null,
   }) {
     return _then(_$_ChatUser(
       userId: null == userId
@@ -312,6 +328,10 @@ class __$$_ChatUserCopyWithImpl<$Res>
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
               as String,
+      lastSeen: null == lastSeen
+          ? _value.lastSeen
+          : lastSeen // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -320,7 +340,10 @@ class __$$_ChatUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ChatUser with DiagnosticableTreeMixin implements _ChatUser {
   const _$_ChatUser(
-      {required this.userId, required this.name, required this.profilePicture});
+      {required this.userId,
+      required this.name,
+      required this.profilePicture,
+      @JsonKey(name: 'last_seen') required this.lastSeen});
 
   factory _$_ChatUser.fromJson(Map<String, dynamic> json) =>
       _$$_ChatUserFromJson(json);
@@ -331,10 +354,13 @@ class _$_ChatUser with DiagnosticableTreeMixin implements _ChatUser {
   final String name;
   @override
   final String profilePicture;
+  @override
+  @JsonKey(name: 'last_seen')
+  final String lastSeen;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ChatUser(userId: $userId, name: $name, profilePicture: $profilePicture)';
+    return 'ChatUser(userId: $userId, name: $name, profilePicture: $profilePicture, lastSeen: $lastSeen)';
   }
 
   @override
@@ -344,7 +370,8 @@ class _$_ChatUser with DiagnosticableTreeMixin implements _ChatUser {
       ..add(DiagnosticsProperty('type', 'ChatUser'))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('profilePicture', profilePicture));
+      ..add(DiagnosticsProperty('profilePicture', profilePicture))
+      ..add(DiagnosticsProperty('lastSeen', lastSeen));
   }
 
   @override
@@ -355,12 +382,15 @@ class _$_ChatUser with DiagnosticableTreeMixin implements _ChatUser {
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.profilePicture, profilePicture) ||
-                other.profilePicture == profilePicture));
+                other.profilePicture == profilePicture) &&
+            (identical(other.lastSeen, lastSeen) ||
+                other.lastSeen == lastSeen));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, name, profilePicture);
+  int get hashCode =>
+      Object.hash(runtimeType, userId, name, profilePicture, lastSeen);
 
   @JsonKey(ignore: true)
   @override
@@ -378,9 +408,11 @@ class _$_ChatUser with DiagnosticableTreeMixin implements _ChatUser {
 
 abstract class _ChatUser implements ChatUser {
   const factory _ChatUser(
-      {required final String userId,
-      required final String name,
-      required final String profilePicture}) = _$_ChatUser;
+          {required final String userId,
+          required final String name,
+          required final String profilePicture,
+          @JsonKey(name: 'last_seen') required final String lastSeen}) =
+      _$_ChatUser;
 
   factory _ChatUser.fromJson(Map<String, dynamic> json) = _$_ChatUser.fromJson;
 
@@ -390,6 +422,9 @@ abstract class _ChatUser implements ChatUser {
   String get name;
   @override
   String get profilePicture;
+  @override
+  @JsonKey(name: 'last_seen')
+  String get lastSeen;
   @override
   @JsonKey(ignore: true)
   _$$_ChatUserCopyWith<_$_ChatUser> get copyWith =>

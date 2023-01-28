@@ -25,6 +25,7 @@ _$_ChatUser _$$_ChatUserFromJson(Map<String, dynamic> json) => _$_ChatUser(
       userId: json['userId'] as String,
       name: json['name'] as String,
       profilePicture: json['profilePicture'] as String,
+      lastSeen: json['last_seen'] as String,
     );
 
 Map<String, dynamic> _$$_ChatUserToJson(_$_ChatUser instance) =>
@@ -32,6 +33,7 @@ Map<String, dynamic> _$$_ChatUserToJson(_$_ChatUser instance) =>
       'userId': instance.userId,
       'name': instance.name,
       'profilePicture': instance.profilePicture,
+      'last_seen': instance.lastSeen,
     };
 
 _$_ChatMessage _$$_ChatMessageFromJson(Map<String, dynamic> json) =>

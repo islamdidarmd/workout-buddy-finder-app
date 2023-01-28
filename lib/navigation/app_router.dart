@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../feature_messaging/ui/chat_room/chat_room_page.dart';
 import '../feature_visit_user/ui/visit_user_page.dart';
 import 'navigation.dart';
-import '../feature_messaging/messaging.dart';
+import '../feature_messaging/feature_messaging.dart';
 import '../feature_suggestion/suggestion.dart';
 import '../feature_profile/profile.dart';
 import '../feature_settings/settings.dart';
