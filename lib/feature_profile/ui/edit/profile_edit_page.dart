@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_buddy_finder/core/core.dart';
-import 'package:workout_buddy_finder/feature_profile/ui/edit/preference_section.dart';
+import 'preference_section.dart';
 import 'basic_info_section.dart';
 import 'profile_picture_update_section.dart';
 import 'edit_interest_section.dart';
