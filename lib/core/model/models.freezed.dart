@@ -201,17 +201,28 @@ mixin _$AppUser {
   String get userId => throw _privateConstructorUsedError;
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get registered => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'gender')
   String get gender => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  @JsonKey(
+      name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get birthdate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'availability')
   String get availability => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nearbyDistance')
   int get nearbyDistance => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email')
   String get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profilePicture')
   String get profilePicture => throw _privateConstructorUsedError;
+  @JsonKey(name: 'lat')
   double get lat => throw _privateConstructorUsedError;
+  @JsonKey(name: 'long')
   double get long => throw _privateConstructorUsedError;
+  @JsonKey(name: 'geoHash')
   String get geoHash => throw _privateConstructorUsedError;
+  @JsonKey(name: 'interestsList')
   List<String> get interestList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -228,18 +239,28 @@ abstract class $AppUserCopyWith<$Res> {
       {String userId,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime registered,
-      String name,
-      String gender,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'name')
+          String name,
+      @JsonKey(name: 'gender')
+          String gender,
+      @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime birthdate,
-      String availability,
-      int nearbyDistance,
-      String email,
-      String profilePicture,
-      double lat,
-      double long,
-      String geoHash,
-      List<String> interestList});
+      @JsonKey(name: 'availability')
+          String availability,
+      @JsonKey(name: 'nearbyDistance')
+          int nearbyDistance,
+      @JsonKey(name: 'email')
+          String email,
+      @JsonKey(name: 'profilePicture')
+          String profilePicture,
+      @JsonKey(name: 'lat')
+          double lat,
+      @JsonKey(name: 'long')
+          double long,
+      @JsonKey(name: 'geoHash')
+          String geoHash,
+      @JsonKey(name: 'interestsList')
+          List<String> interestList});
 }
 
 /// @nodoc
@@ -337,18 +358,28 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       {String userId,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime registered,
-      String name,
-      String gender,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'name')
+          String name,
+      @JsonKey(name: 'gender')
+          String gender,
+      @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           DateTime birthdate,
-      String availability,
-      int nearbyDistance,
-      String email,
-      String profilePicture,
-      double lat,
-      double long,
-      String geoHash,
-      List<String> interestList});
+      @JsonKey(name: 'availability')
+          String availability,
+      @JsonKey(name: 'nearbyDistance')
+          int nearbyDistance,
+      @JsonKey(name: 'email')
+          String email,
+      @JsonKey(name: 'profilePicture')
+          String profilePicture,
+      @JsonKey(name: 'lat')
+          double lat,
+      @JsonKey(name: 'long')
+          double long,
+      @JsonKey(name: 'geoHash')
+          String geoHash,
+      @JsonKey(name: 'interestsList')
+          List<String> interestList});
 }
 
 /// @nodoc
@@ -439,18 +470,28 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       {required this.userId,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required this.registered,
-      this.name = '',
-      this.gender = 'male',
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'name')
+          this.name = '',
+      @JsonKey(name: 'gender')
+          this.gender = 'male',
+      @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required this.birthdate,
-      this.availability = 'daily1hr',
-      this.nearbyDistance = 10,
-      this.email = '',
-      this.profilePicture = '',
-      this.lat = 0.0,
-      this.long = 0.0,
-      this.geoHash = "",
-      final List<String> interestList = const []})
+      @JsonKey(name: 'availability')
+          this.availability = 'daily1hr',
+      @JsonKey(name: 'nearbyDistance')
+          this.nearbyDistance = 10,
+      @JsonKey(name: 'email')
+          this.email = '',
+      @JsonKey(name: 'profilePicture')
+          this.profilePicture = '',
+      @JsonKey(name: 'lat')
+          this.lat = 0.0,
+      @JsonKey(name: 'long')
+          this.long = 0.0,
+      @JsonKey(name: 'geoHash')
+          this.geoHash = "",
+      @JsonKey(name: 'interestsList')
+          final List<String> interestList = const []})
       : _interestList = interestList,
         super._();
 
@@ -463,38 +504,39 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   final DateTime registered;
   @override
-  @JsonKey()
+  @JsonKey(name: 'name')
   final String name;
   @override
-  @JsonKey()
+  @JsonKey(name: 'gender')
   final String gender;
   @override
-  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  @JsonKey(
+      name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   final DateTime birthdate;
   @override
-  @JsonKey()
+  @JsonKey(name: 'availability')
   final String availability;
   @override
-  @JsonKey()
+  @JsonKey(name: 'nearbyDistance')
   final int nearbyDistance;
   @override
-  @JsonKey()
+  @JsonKey(name: 'email')
   final String email;
   @override
-  @JsonKey()
+  @JsonKey(name: 'profilePicture')
   final String profilePicture;
   @override
-  @JsonKey()
+  @JsonKey(name: 'lat')
   final double lat;
   @override
-  @JsonKey()
+  @JsonKey(name: 'long')
   final double long;
   @override
-  @JsonKey()
+  @JsonKey(name: 'geoHash')
   final String geoHash;
   final List<String> _interestList;
   @override
-  @JsonKey()
+  @JsonKey(name: 'interestsList')
   List<String> get interestList {
     if (_interestList is EqualUnmodifiableListView) return _interestList;
     // ignore: implicit_dynamic_type
@@ -589,18 +631,28 @@ abstract class _AppUser extends AppUser {
       {required final String userId,
       @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required final DateTime registered,
-      final String name,
-      final String gender,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'name')
+          final String name,
+      @JsonKey(name: 'gender')
+          final String gender,
+      @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
           required final DateTime birthdate,
-      final String availability,
-      final int nearbyDistance,
-      final String email,
-      final String profilePicture,
-      final double lat,
-      final double long,
-      final String geoHash,
-      final List<String> interestList}) = _$_AppUser;
+      @JsonKey(name: 'availability')
+          final String availability,
+      @JsonKey(name: 'nearbyDistance')
+          final int nearbyDistance,
+      @JsonKey(name: 'email')
+          final String email,
+      @JsonKey(name: 'profilePicture')
+          final String profilePicture,
+      @JsonKey(name: 'lat')
+          final double lat,
+      @JsonKey(name: 'long')
+          final double long,
+      @JsonKey(name: 'geoHash')
+          final String geoHash,
+      @JsonKey(name: 'interestsList')
+          final List<String> interestList}) = _$_AppUser;
   const _AppUser._() : super._();
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
@@ -611,27 +663,38 @@ abstract class _AppUser extends AppUser {
   @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get registered;
   @override
+  @JsonKey(name: 'name')
   String get name;
   @override
+  @JsonKey(name: 'gender')
   String get gender;
   @override
-  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  @JsonKey(
+      name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
   DateTime get birthdate;
   @override
+  @JsonKey(name: 'availability')
   String get availability;
   @override
+  @JsonKey(name: 'nearbyDistance')
   int get nearbyDistance;
   @override
+  @JsonKey(name: 'email')
   String get email;
   @override
+  @JsonKey(name: 'profilePicture')
   String get profilePicture;
   @override
+  @JsonKey(name: 'lat')
   double get lat;
   @override
+  @JsonKey(name: 'long')
   double get long;
   @override
+  @JsonKey(name: 'geoHash')
   String get geoHash;
   @override
+  @JsonKey(name: 'interestsList')
   List<String> get interestList;
   @override
   @JsonKey(ignore: true)

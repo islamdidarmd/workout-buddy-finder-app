@@ -10,18 +10,18 @@ class AppUser with _$AppUser {
     required String userId,
     @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
         required DateTime registered,
-    @Default('') String name,
-    @Default('male')String gender,
-    @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
-    required DateTime birthdate,
-    @Default('daily1hr') String availability,
-    @Default(10) int nearbyDistance,
-    @Default('') String email,
-    @Default('') String profilePicture,
-    @Default(0.0) double lat,
-    @Default(0.0) double long,
-    @Default("") String geoHash,
-    @Default([]) List<String> interestList,
+    @JsonKey(name: 'name') @Default('') String name,
+    @JsonKey(name: 'gender') @Default('male') String gender,
+    @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+        required DateTime birthdate,
+    @JsonKey(name: 'availability') @Default('daily1hr') String availability,
+    @JsonKey(name: 'nearbyDistance') @Default(10) int nearbyDistance,
+    @JsonKey(name: 'email') @Default('') String email,
+    @JsonKey(name: 'profilePicture') @Default('') String profilePicture,
+    @JsonKey(name: 'lat') @Default(0.0) double lat,
+    @JsonKey(name: 'long') @Default(0.0) double long,
+    @JsonKey(name: 'geoHash') @Default("") String geoHash,
+    @JsonKey(name: 'interestsList') @Default([]) List<String> interestList,
   }) = _AppUser;
 
   factory AppUser.fromJson(Map<String, dynamic> json) =>
