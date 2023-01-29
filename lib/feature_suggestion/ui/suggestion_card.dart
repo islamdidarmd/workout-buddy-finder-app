@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 import 'package:swipable_stack/src/model/swipe_properties.dart';
-import 'package:workout_buddy_finder/core/core.dart';
-import 'package:workout_buddy_finder/feature_suggestion/ui/match_found_dialog.dart';
+import '../../core/core.dart';
+import '../domain/entity/entities.dart';
+import 'match_found_dialog.dart';
 import 'card_overlay.dart';
 import 'bloc/suggestions_bloc.dart';
 import 'empty_suggestion.dart';
 
-import '../domain/domain.dart';
 import 'suggestions_card_item.dart';
 import 'suggestion_action.dart';
 
