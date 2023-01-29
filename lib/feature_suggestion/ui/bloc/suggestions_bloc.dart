@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/core/core.dart';
-
-import '../../domain/domain.dart';
+import '../../../core/core.dart';
+import '../../domain/entity/entities.dart';
+import '../../feature_suggestion.dart';
 
 part 'suggestions_bloc.freezed.dart';
 
@@ -16,10 +16,17 @@ part 'suggestions_state.dart';
 
 @injectable
 class SuggestionsBloc extends Bloc<SuggestionsEvent, SuggestionsState> {
-  final SuggestionsRepository suggestionsRepository;
+  final GetSuggestionsUseCase getSuggestionsUseCase;
+  final LikeUserUseCase likeUserUseCase;
+  final DislikeUserUseCase dislikeUserUseCase;
+  final CheckIfHasMatchUseCase checkIfHasMatchUseCase;
 
-  SuggestionsBloc(this.suggestionsRepository)
-      : super(SuggestionsState.initial()) {
+  SuggestionsBloc({
+    required this.getSuggestionsUseCase,
+    required this.likeUserUseCase,
+    required this.dislikeUserUseCase,
+    required this.checkIfHasMatchUseCase,
+  }) : super(SuggestionsState.initial()) {
     on<SuggestionsEvent>((event, emit) async {
       final result = await event.when(
         loadSuggestions: (appUser) => _loadSuggestions(appUser, emit),
@@ -33,7 +40,7 @@ class SuggestionsBloc extends Bloc<SuggestionsEvent, SuggestionsState> {
 
   Future<void> _loadSuggestions(AppUser appUser, Emitter emit) async {
     emit(SuggestionsState.loading());
-    final data = await suggestionsRepository.getSuggestions(appUser);
+    final data = await getSuggestionsUseCase(appUser);
     data.fold(
       (suggestions) => emit(SuggestionsState.suggestionsFetched(suggestions)),
       (error) => emit(SuggestionsState.error(error)),
@@ -41,11 +48,7 @@ class SuggestionsBloc extends Bloc<SuggestionsEvent, SuggestionsState> {
   }
 
   Future<void> _onLikeUser(AppUser appUser, String userId, Emitter emit) async {
-    final data = await suggestionsRepository.likeUser(appUser, userId);
-    data.fold(
-      (success) => emit(SuggestionsState.interactionSuccess(userId)),
-      (error) => emit(SuggestionsState.interactionError(error)),
-    );
+    final data = await likeUserUseCase(appUser: appUser, likedUserId: userId);
   }
 
   Future<void> _onDislikeUser(
@@ -53,11 +56,8 @@ class SuggestionsBloc extends Bloc<SuggestionsEvent, SuggestionsState> {
     String userId,
     Emitter emit,
   ) async {
-    final data = await suggestionsRepository.dislikeUser(appUser, userId);
-    data.fold(
-      (success) => emit(SuggestionsState.interactionSuccess(userId)),
-      (error) => emit(SuggestionsState.interactionError(error)),
-    );
+    final data =
+        await dislikeUserUseCase(appUser: appUser, dislikedUserId: userId);
   }
 
   Future<void> _onCheckMatch(
@@ -65,9 +65,9 @@ class SuggestionsBloc extends Bloc<SuggestionsEvent, SuggestionsState> {
     String userId,
     Emitter emit,
   ) async {
-    final hasMatch = await suggestionsRepository.hasMatchWithUser(
-      appUser,
-      userId,
+    final hasMatch = await checkIfHasMatchUseCase(
+      userId1: appUser.userId,
+      userId2: userId,
     );
     if (hasMatch) {
       emit(SuggestionsState.matchFound(userId));

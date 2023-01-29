@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import '../../core/core.dart';
-import '../domain/domain.dart';
+import '../domain/entity/entities.dart';
 
 class SuggestionsCardItem extends StatelessWidget {
   final double overlayColorOpacity = 0.4;
