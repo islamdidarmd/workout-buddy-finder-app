@@ -1,14 +1,13 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:health/health.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:workout_buddy_finder/feature_profile/ui/bloc/activity_tracker_cubit.dart';
 import '../../../core/core.dart';
+import '../../../di/service_locator.dart';
 import 'activity_tracker_energy_burned_view.dart';
 
 import 'activity_permission_required_view.dart';
 
-class ActivityTrackerSection extends StatefulWidget {
+class ActivityTrackerSection extends StatelessWidget {
   const ActivityTrackerSection({
     Key? key,
     required this.appUser,
@@ -16,83 +15,29 @@ class ActivityTrackerSection extends StatefulWidget {
   final AppUser appUser;
 
   @override
-  State<ActivityTrackerSection> createState() => _ActivityTrackerSectionState();
-}
-
-class _ActivityTrackerSectionState extends State<ActivityTrackerSection> {
-  HealthFactory _health = HealthFactory();
-  final _healthData = <HealthDataPoint>[];
-  bool _hasPermission = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _updatePermissionStatus();
-  }
-
-  Future<void> _updatePermissionStatus() async {
-    final types = [
-      HealthDataType.ACTIVE_ENERGY_BURNED,
-    ];
-
-    bool hasPermission = await _health.requestAuthorization(types);
-    setState(() {
-      _hasPermission = hasPermission;
-    });
-  }
-
-  Future<void> _readHealthData(BuildContext context) async {
-    // Define the types to get.
-    final types = [
-      HealthDataType.ACTIVE_ENERGY_BURNED,
-    ];
-
-    var now = DateTime.now();
-    // Fetch health data from the last 24 hours.
-    try {
-      List<HealthDataPoint> healthData = await _health.getHealthDataFromTypes(
-        now.subtract(Duration(days: 1)),
-        now,
-        types,
-      );
-      if (context.mounted) {
-        setState(() {
-          _healthData.clear();
-          _healthData.addAll(healthData);
-        });
-      }
-    } on PlatformException catch (e) {
-      debugPrint(e.toString());
-    }
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_hasPermission) {
-      _readHealthData(context);
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return ContentCard(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          mediumBoldTitle(context, 'Energy Tracker'),
-          const VerticalSpacing(),
-          if (_hasPermission) ...{
-            ActivityTrackerEnergyBurnedView(energyBurnedData: _healthData),
-          } else ...{
-            ActivityPermissionRequiredView(
-              onTap: () => _updatePermissionStatus(),
+    return BlocProvider<ActivityTrackerCubit>(
+      create: (_) => sl()..readHealthData(),
+      child: BlocBuilder<ActivityTrackerCubit, ActivityTrackerState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            noPermission: () => ActivityPermissionRequiredView(),
+            healthDataUpdated: (healthData) => ContentCard(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  mediumBoldTitle(context, 'Energy Tracker'),
+                  const VerticalSpacing(),
+                  ActivityTrackerEnergyBurnedView(energyBurnedData: healthData),
+                ],
+              ),
+              width: double.infinity,
             ),
-          },
-        ],
+            orElse: () => const SizedBox(),
+          );
+        },
       ),
-      width: double.infinity,
     );
   }
 }
