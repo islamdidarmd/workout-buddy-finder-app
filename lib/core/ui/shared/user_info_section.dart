@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../core.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import '../../../feature_profile/ui/widgets/profile_avatar.dart';
 
 class UserInfoSection extends StatelessWidget {
   const UserInfoSection({

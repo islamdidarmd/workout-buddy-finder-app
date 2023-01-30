@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/core.dart';
+import '../../core.dart';
 
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({
@@ -15,10 +15,13 @@ class ProfileAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: size / 2,
-      backgroundColor: Theme.of(context).primaryColor,
-      foregroundImage: CachedNetworkImageProvider(user.profilePicture),
+    return Hero(
+      tag: user.userId,
+      child: CircleAvatar(
+        radius: size / 2,
+        backgroundColor: Theme.of(context).primaryColor,
+        foregroundImage: CachedNetworkImageProvider(user.profilePicture),
+      ),
     );
   }
 }

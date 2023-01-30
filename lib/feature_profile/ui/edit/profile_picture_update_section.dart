@@ -9,7 +9,7 @@ import '../widgets/image_source_sheet.dart';
 
 import '../../../core/model/models.dart';
 import '../bloc/profile_bloc.dart';
-import '../widgets/profile_avatar.dart';
+import '../../../core/ui/shared/profile_avatar.dart';
 
 class ProfilePictureUpdateSection extends StatelessWidget {
   const ProfilePictureUpdateSection({Key? key}) : super(key: key);
