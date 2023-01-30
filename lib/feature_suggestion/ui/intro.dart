@@ -25,10 +25,7 @@ class Intro extends StatelessWidget {
         const SizedBox(width: 8),
         InkWell(
           onTap: onTap,
-          child: CircleAvatar(
-            radius: avatarSize / 2,
-            foregroundImage: CachedNetworkImageProvider(appUser.profilePicture),
-          ),
+          child: ProfileAvatar(user: appUser, size: avatarSize),
         ),
       ],
     );
