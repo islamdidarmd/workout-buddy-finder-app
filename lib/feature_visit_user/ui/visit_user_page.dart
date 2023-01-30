@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:workout_buddy_finder/feature_auth/domain/use_case/get_user_profile_from_id_use_case.dart';
 import '../../core/core.dart';
@@ -40,7 +41,17 @@ class VisitUserPage extends HookWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
             child: Column(
-              children: _getUserAttributeSection(user),
+              children: AnimateList(
+                children: _getUserAttributeSection(user),
+                effects: [
+                  SlideEffect(
+                    duration: 300.milliseconds,
+                    begin: Offset(1.0, 0.0),
+                    end: Offset(0.0, 0.0),
+                  ),
+                ],
+                interval: 50.milliseconds,
+              ),
             ),
           ),
         },
