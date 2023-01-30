@@ -53,7 +53,7 @@ class _UserInterestSectionState extends State<UserInterestSection> {
                     .map(
                       (id) => InterestChip(interestId: id)
                           .animate()
-                          .fadeIn(duration: 200.milliseconds),
+                          .fadeIn(duration: 400.milliseconds),
                     )
                     .toList(),
               ),
