@@ -22,6 +22,7 @@ dependencies:
   firebase_core: 2.4.1
   firebase_storage: 11.0.10
   firebase_ui_firestore: 1.2.3
+  flutter_animate: 3.0.0
   flutter_bloc: 8.1.1
   flutter_hooks: 0.18.5+1
   font_awesome_flutter: 10.3.0

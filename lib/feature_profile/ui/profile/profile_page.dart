@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_buddy_finder/core/core.dart';
 import 'package:workout_buddy_finder/feature_profile/ui/profile/activity_tracker_section.dart';
@@ -29,17 +30,27 @@ class ProfilePage extends StatelessWidget {
               SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: [
-                    UserInfoSection(appUser: appUser),
-                    const SizedBox(height: 8),
-                    UserPreferences(appUser: appUser),
-                    const SizedBox(height: 8),
-                    UserInterestSection(appUser: appUser),
-                    const SizedBox(height: 8),
-                    ActivityTrackerSection(appUser: appUser),
-                    const SizedBox(height: 8),
-                    OthersSection(appUser: appUser),
-                  ],
+                  children: AnimateList(
+                    children: [
+                      UserInfoSection(appUser: appUser),
+                      const SizedBox(height: 8),
+                      UserPreferences(appUser: appUser),
+                      const SizedBox(height: 8),
+                      UserInterestSection(appUser: appUser),
+                      const SizedBox(height: 8),
+                      ActivityTrackerSection(appUser: appUser),
+                      const SizedBox(height: 8),
+                      OthersSection(appUser: appUser),
+                    ],
+                    effects: [
+                      SlideEffect(
+                        duration: 300.milliseconds,
+                        begin: Offset(1.0, 0.0),
+                        end: Offset(0.0, 0.0),
+                      ),
+                    ],
+                    interval: 50.milliseconds,
+                  ),
                 ),
               ),
               Positioned(
