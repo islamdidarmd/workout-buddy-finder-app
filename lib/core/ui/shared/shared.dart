@@ -10,3 +10,4 @@ export 'location_text.dart';
 export 'content_card.dart';
 export 'vertical_spacing.dart';
 export 'horizontal_spacing.dart';
+export 'profile_avatar.dart';
