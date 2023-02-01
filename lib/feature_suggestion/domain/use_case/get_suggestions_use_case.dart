@@ -23,6 +23,7 @@ class GetSuggestionsUseCase {
         .where(field_gender, isEqualTo: appUser.gender)
         .where(field_availability, isEqualTo: appUser.availability)
         .where(field_interest_list, arrayContainsAny: appUser.interestList)
+        .where(field_is_hidden, isEqualTo: false)
         .withConverter(
           fromFirestore: (snapshot, _) => Suggestion.fromJson(snapshot.data()!),
           toFirestore: (value, options) => value.toJson(),
