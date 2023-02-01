@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../domain/use_case/get_chat_room_participants_use_case.dart';
-import 'package:timeago/timeago.dart' as timeago;
 import '../../../core/core.dart';
 import '../shared/user_avatar.dart';
 

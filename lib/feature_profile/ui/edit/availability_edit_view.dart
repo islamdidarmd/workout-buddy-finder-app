@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:workout_buddy_finder/core/core.dart';
+import '../../../core/core.dart';
 
 class AvailabilityEditView extends StatelessWidget {
   const AvailabilityEditView({
@@ -11,46 +11,33 @@ class AvailabilityEditView extends StatelessWidget {
   final AppUser appUser;
 
   Future<void> _updateAvailability(String? availability) async {
-    if (availability == null) {
+    if (availability == null || availability.isEmpty) {
       return;
     }
 
-    final _updateQuery = FirebaseFirestore.instance
-        .collection(col_users)
-        .doc(appUser.userId)
-        .withConverter<AppUser>(
-          fromFirestore: (snapshot, options) => AppUser.empty(),
-          toFirestore: (value, _) => value.toJson(),
-        );
+    final _updateQuery =
+        FirebaseFirestore.instance.collection(col_users).doc(appUser.userId);
 
-    await _updateQuery.set(appUser.copyWith(
-      availability: availability,
-    ));
+    await _updateQuery.update({
+      field_availability: availability,
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
-      value: appUser.availability,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: 'Availability',
-      ),
       items: [
-        DropdownMenuItem(
-          child: Text('Daily 1 hr'),
-          value: 'daily1hr',
-        ),
-        DropdownMenuItem(
-          child: Text('Daily 2 hr'),
-          value: 'daily2hr',
-        ),
-        DropdownMenuItem(
-          child: Text('Daily 3 hr'),
-          value: 'daily3hr',
-        ),
+        DropdownMenuItem(value: '', child: Text('Select Availability')),
+        DropdownMenuItem(value: 'daily1hr', child: Text('Daily 1 hr')),
+        DropdownMenuItem(value: 'daily2hr', child: Text('Daily 2 hr')),
+        DropdownMenuItem(value: 'daily3hr', child: Text('Daily 3 hr')),
       ],
+      value: appUser.availability,
       onChanged: _updateAvailability,
+      decoration: InputDecoration(
+        labelText: 'Availability',
+        border: OutlineInputBorder(),
+      ),
     );
   }
 }

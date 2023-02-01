@@ -4,7 +4,11 @@ part of 'models.dart';
 class AppUser with _$AppUser {
   bool get isEmpty => userId.isEmpty;
 
-  bool get isInComplete => gender.isEmpty || birthdate == null;
+  bool get isOnBoardingNotComplete =>
+      gender.isEmpty ||
+      birthdate == null ||
+      availability.isEmpty ||
+      nearbyDistance == -1;
 
   const AppUser._();
 
@@ -15,11 +19,11 @@ class AppUser with _$AppUser {
     @JsonKey(name: 'name') @Default('') String name,
     @JsonKey(name: 'gender') @Default('') String gender,
     @JsonKey(name: 'birthdate', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
-    DateTime? birthdate,
+        DateTime? birthdate,
     @JsonKey(name: 'last_seen', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
-    DateTime? lastSeen,
-    @JsonKey(name: 'availability') @Default('daily1hr') String availability,
-    @JsonKey(name: 'nearbyDistance') @Default(10) int nearbyDistance,
+        DateTime? lastSeen,
+    @JsonKey(name: 'availability') @Default('') String availability,
+    @JsonKey(name: 'nearbyDistance') @Default(-1) int nearbyDistance,
     @JsonKey(name: 'email') @Default('') String email,
     @JsonKey(name: 'profilePicture') @Default('') String profilePicture,
     @JsonKey(name: 'lat') @Default(0.0) double lat,
