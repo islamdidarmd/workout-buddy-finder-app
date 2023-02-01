@@ -440,7 +440,9 @@ mixin _$ChatMessage {
   String get chatMessageId => throw _privateConstructorUsedError;
   String get sender => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  @JsonKey(
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   DateTime get timestamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -459,7 +461,7 @@ abstract class $ChatMessageCopyWith<$Res> {
       {String chatMessageId,
       String sender,
       String content,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           DateTime timestamp});
 }
 
@@ -514,7 +516,7 @@ abstract class _$$_ChatMessageCopyWith<$Res>
       {String chatMessageId,
       String sender,
       String content,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           DateTime timestamp});
 }
 
@@ -562,7 +564,7 @@ class _$_ChatMessage with DiagnosticableTreeMixin implements _ChatMessage {
       {required this.chatMessageId,
       required this.sender,
       required this.content,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           required this.timestamp});
 
   factory _$_ChatMessage.fromJson(Map<String, dynamic> json) =>
@@ -575,7 +577,9 @@ class _$_ChatMessage with DiagnosticableTreeMixin implements _ChatMessage {
   @override
   final String content;
   @override
-  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  @JsonKey(
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   final DateTime timestamp;
 
   @override
@@ -631,7 +635,7 @@ abstract class _ChatMessage implements ChatMessage {
       {required final String chatMessageId,
       required final String sender,
       required final String content,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           required final DateTime timestamp}) = _$_ChatMessage;
 
   factory _ChatMessage.fromJson(Map<String, dynamic> json) =
@@ -644,7 +648,9 @@ abstract class _ChatMessage implements ChatMessage {
   @override
   String get content;
   @override
-  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  @JsonKey(
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   DateTime get timestamp;
   @override
   @JsonKey(ignore: true)

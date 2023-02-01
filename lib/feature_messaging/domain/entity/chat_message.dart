@@ -6,7 +6,7 @@ class ChatMessage with _$ChatMessage {
     required String chatMessageId,
     required String sender,
     required String content,
-    @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+    @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
         required DateTime timestamp,
   }) = _ChatMessage;
 

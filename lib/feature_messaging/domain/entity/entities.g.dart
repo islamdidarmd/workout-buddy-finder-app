@@ -41,7 +41,7 @@ _$_ChatMessage _$$_ChatMessageFromJson(Map<String, dynamic> json) =>
       chatMessageId: json['chatMessageId'] as String,
       sender: json['sender'] as String,
       content: json['content'] as String,
-      timestamp: dateTimeFromJson(json['timestamp'] as int?),
+      timestamp: DateTimeConverter.dateTimeFromJson(json['timestamp'] as int?),
     );
 
 Map<String, dynamic> _$$_ChatMessageToJson(_$_ChatMessage instance) =>
@@ -49,5 +49,5 @@ Map<String, dynamic> _$$_ChatMessageToJson(_$_ChatMessage instance) =>
       'chatMessageId': instance.chatMessageId,
       'sender': instance.sender,
       'content': instance.content,
-      'timestamp': dateTimeToJson(instance.timestamp),
+      'timestamp': DateTimeConverter.dateTimeToJson(instance.timestamp),
     };

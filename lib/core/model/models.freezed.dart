@@ -205,17 +205,23 @@ AppUser _$AppUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppUser {
   String get userId => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  @JsonKey(
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   DateTime get registered => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'gender')
   String get gender => throw _privateConstructorUsedError;
   @JsonKey(
-      name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      name: 'birthdate',
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   DateTime get birthdate => throw _privateConstructorUsedError;
   @JsonKey(
-      name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      name: 'last_seen',
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   DateTime get lastSeen => throw _privateConstructorUsedError;
   @JsonKey(name: 'availability')
   String get availability => throw _privateConstructorUsedError;
@@ -248,15 +254,15 @@ abstract class $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           DateTime registered,
       @JsonKey(name: 'name')
           String name,
       @JsonKey(name: 'gender')
           String gender,
-      @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'birthdate', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           DateTime birthdate,
-      @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'last_seen', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           DateTime lastSeen,
       @JsonKey(name: 'availability')
           String availability,
@@ -381,15 +387,15 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           DateTime registered,
       @JsonKey(name: 'name')
           String name,
       @JsonKey(name: 'gender')
           String gender,
-      @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'birthdate', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           DateTime birthdate,
-      @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'last_seen', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           DateTime lastSeen,
       @JsonKey(name: 'availability')
           String availability,
@@ -507,15 +513,15 @@ class __$$_AppUserCopyWithImpl<$Res>
 class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   const _$_AppUser(
       {required this.userId,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           required this.registered,
       @JsonKey(name: 'name')
           this.name = '',
       @JsonKey(name: 'gender')
           this.gender = 'male',
-      @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'birthdate', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           required this.birthdate,
-      @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'last_seen', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           required this.lastSeen,
       @JsonKey(name: 'availability')
           this.availability = 'daily1hr',
@@ -544,7 +550,9 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   @override
   final String userId;
   @override
-  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  @JsonKey(
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   final DateTime registered;
   @override
   @JsonKey(name: 'name')
@@ -554,11 +562,15 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   final String gender;
   @override
   @JsonKey(
-      name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      name: 'birthdate',
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   final DateTime birthdate;
   @override
   @JsonKey(
-      name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      name: 'last_seen',
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   final DateTime lastSeen;
   @override
   @JsonKey(name: 'availability')
@@ -688,15 +700,15 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
 abstract class _AppUser extends AppUser {
   const factory _AppUser(
       {required final String userId,
-      @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           required final DateTime registered,
       @JsonKey(name: 'name')
           final String name,
       @JsonKey(name: 'gender')
           final String gender,
-      @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'birthdate', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           required final DateTime birthdate,
-      @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      @JsonKey(name: 'last_seen', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           required final DateTime lastSeen,
       @JsonKey(name: 'availability')
           final String availability,
@@ -723,7 +735,9 @@ abstract class _AppUser extends AppUser {
   @override
   String get userId;
   @override
-  @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+  @JsonKey(
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   DateTime get registered;
   @override
   @JsonKey(name: 'name')
@@ -733,11 +747,15 @@ abstract class _AppUser extends AppUser {
   String get gender;
   @override
   @JsonKey(
-      name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      name: 'birthdate',
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   DateTime get birthdate;
   @override
   @JsonKey(
-      name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+      name: 'last_seen',
+      fromJson: DateTimeConverter.dateTimeFromJson,
+      toJson: DateTimeConverter.dateTimeToJson)
   DateTime get lastSeen;
   @override
   @JsonKey(name: 'availability')
