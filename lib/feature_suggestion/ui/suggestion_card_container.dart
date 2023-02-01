@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:workout_buddy_finder/core/core.dart';
+import 'package:workout_buddy_finder/feature_suggestion/ui/complete_profile_message_card.dart';
 import 'suggestion_card.dart';
 
 import '../../di/service_locator.dart';
@@ -24,7 +26,12 @@ class SuggestionCardContainer extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext _) {
+  Widget build(BuildContext context) {
+    final appUser = context.read<AppUser>();
+    if (appUser.isOnBoardingNotComplete) {
+      return CompleteProfileMessageCard();
+    }
+
     return BlocProvider<SuggestionsBloc>(
       create: (context) =>
           sl()..add(SuggestionsEvent.loadSuggestions(context.read())),

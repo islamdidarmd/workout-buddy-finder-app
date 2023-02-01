@@ -17,7 +17,7 @@ class UserAvailability extends StatelessWidget {
       return "Daily 3 Hr";
     }
 
-    return "";
+    return "Not Set";
   }
 
   @override

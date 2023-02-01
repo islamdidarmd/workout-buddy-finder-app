@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:timeago/timeago.dart' as timeago;
 import 'package:workout_buddy_finder/core/core.dart';
 import '../../domain/use_case/get_chat_room_participants_use_case.dart';
 import '../../../di/service_locator.dart';
