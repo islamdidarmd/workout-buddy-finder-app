@@ -5,3 +5,4 @@ export 'domain/use_case/add_user_interest_use_case.dart';
 export 'domain/use_case/get_interest_list_use_case.dart';
 export 'domain/use_case/remove_user_interest_use_case.dart';
 export 'domain/use_case/update_user_profile_picture_use_case.dart';
+export 'domain/use_case/update_profile_hidden_status_use_case.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_buddy_finder/core/core.dart';
+import 'package:workout_buddy_finder/feature_profile/ui/edit/hide_profile_from_discovery_view.dart';
 import 'preference_section.dart';
 import 'basic_info_section.dart';
 import 'profile_picture_update_section.dart';
@@ -55,6 +56,9 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                     PreferenceSection(appUser: loggedInUser),
                     const SizedBox(height: 16),
                     const EditInterestSection(),
+                    const SizedBox(height: 8),
+                    HideProfileFromDiscoveryView(appUser: loggedInUser),
+                    const SizedBox(height: 8),
                   ],
                 ),
               ),

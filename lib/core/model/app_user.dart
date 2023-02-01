@@ -24,6 +24,7 @@ class AppUser with _$AppUser {
     @JsonKey(name: 'long') @Default(0.0) double long,
     @JsonKey(name: 'geoHash') @Default("") String geoHash,
     @JsonKey(name: 'interestsList') @Default([]) List<String> interestList,
+    @JsonKey(name: 'is_hidden') @Default(false) bool isHidden,
   }) = _AppUser;
 
   factory AppUser.fromJson(Map<String, dynamic> json) =>
@@ -44,5 +45,6 @@ class AppUser with _$AppUser {
         long: 0.0,
         geoHash: '',
         interestList: [],
+        isHidden: false,
       );
 }
