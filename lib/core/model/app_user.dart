@@ -8,13 +8,13 @@ class AppUser with _$AppUser {
 
   const factory AppUser({
     required String userId,
-    @JsonKey(fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+    @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
         required DateTime registered,
     @JsonKey(name: 'name') @Default('') String name,
     @JsonKey(name: 'gender') @Default('male') String gender,
-    @JsonKey(name: 'birthdate', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+    @JsonKey(name: 'birthdate', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
         required DateTime birthdate,
-    @JsonKey(name: 'last_seen', fromJson: dateTimeFromJson, toJson: dateTimeToJson)
+    @JsonKey(name: 'last_seen', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
         required DateTime lastSeen,
     @JsonKey(name: 'availability') @Default('daily1hr') String availability,
     @JsonKey(name: 'nearbyDistance') @Default(10) int nearbyDistance,

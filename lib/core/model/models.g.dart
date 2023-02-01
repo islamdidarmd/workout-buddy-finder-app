@@ -21,11 +21,12 @@ Map<String, dynamic> _$$_InterestToJson(_$_Interest instance) =>
 
 _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
       userId: json['userId'] as String,
-      registered: dateTimeFromJson(json['registered'] as int?),
+      registered:
+          DateTimeConverter.dateTimeFromJson(json['registered'] as int?),
       name: json['name'] as String? ?? '',
       gender: json['gender'] as String? ?? 'male',
-      birthdate: dateTimeFromJson(json['birthdate'] as int?),
-      lastSeen: dateTimeFromJson(json['last_seen'] as int?),
+      birthdate: DateTimeConverter.dateTimeFromJson(json['birthdate'] as int?),
+      lastSeen: DateTimeConverter.dateTimeFromJson(json['last_seen'] as int?),
       availability: json['availability'] as String? ?? 'daily1hr',
       nearbyDistance: json['nearbyDistance'] as int? ?? 10,
       email: json['email'] as String? ?? '',
@@ -43,11 +44,11 @@ _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
 Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) =>
     <String, dynamic>{
       'userId': instance.userId,
-      'registered': dateTimeToJson(instance.registered),
+      'registered': DateTimeConverter.dateTimeToJson(instance.registered),
       'name': instance.name,
       'gender': instance.gender,
-      'birthdate': dateTimeToJson(instance.birthdate),
-      'last_seen': dateTimeToJson(instance.lastSeen),
+      'birthdate': DateTimeConverter.dateTimeToJson(instance.birthdate),
+      'last_seen': DateTimeConverter.dateTimeToJson(instance.lastSeen),
       'availability': instance.availability,
       'nearbyDistance': instance.nearbyDistance,
       'email': instance.email,
