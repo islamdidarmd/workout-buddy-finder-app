@@ -1,7 +1,7 @@
 class DateTimeConverter {
-  static DateTime dateTimeFromJson(int? millisecondsSinceEpoch) {
+  static DateTime? dateTimeFromJson(int? millisecondsSinceEpoch) {
     if (millisecondsSinceEpoch == null) {
-      return DateTime.now();
+      return null;
     }
 
     return DateTime.fromMillisecondsSinceEpoch(millisecondsSinceEpoch);

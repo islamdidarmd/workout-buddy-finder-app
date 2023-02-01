@@ -443,7 +443,7 @@ mixin _$ChatMessage {
   @JsonKey(
       fromJson: DateTimeConverter.dateTimeFromJson,
       toJson: DateTimeConverter.dateTimeToJson)
-  DateTime get timestamp => throw _privateConstructorUsedError;
+  DateTime? get timestamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -462,7 +462,7 @@ abstract class $ChatMessageCopyWith<$Res> {
       String sender,
       String content,
       @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
-          DateTime timestamp});
+          DateTime? timestamp});
 }
 
 /// @nodoc
@@ -481,7 +481,7 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
     Object? chatMessageId = null,
     Object? sender = null,
     Object? content = null,
-    Object? timestamp = null,
+    Object? timestamp = freezed,
   }) {
     return _then(_value.copyWith(
       chatMessageId: null == chatMessageId
@@ -496,10 +496,10 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      timestamp: null == timestamp
+      timestamp: freezed == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -517,7 +517,7 @@ abstract class _$$_ChatMessageCopyWith<$Res>
       String sender,
       String content,
       @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
-          DateTime timestamp});
+          DateTime? timestamp});
 }
 
 /// @nodoc
@@ -534,7 +534,7 @@ class __$$_ChatMessageCopyWithImpl<$Res>
     Object? chatMessageId = null,
     Object? sender = null,
     Object? content = null,
-    Object? timestamp = null,
+    Object? timestamp = freezed,
   }) {
     return _then(_$_ChatMessage(
       chatMessageId: null == chatMessageId
@@ -549,10 +549,10 @@ class __$$_ChatMessageCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      timestamp: null == timestamp
+      timestamp: freezed == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -580,7 +580,7 @@ class _$_ChatMessage with DiagnosticableTreeMixin implements _ChatMessage {
   @JsonKey(
       fromJson: DateTimeConverter.dateTimeFromJson,
       toJson: DateTimeConverter.dateTimeToJson)
-  final DateTime timestamp;
+  final DateTime? timestamp;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -636,7 +636,7 @@ abstract class _ChatMessage implements ChatMessage {
       required final String sender,
       required final String content,
       @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
-          required final DateTime timestamp}) = _$_ChatMessage;
+          required final DateTime? timestamp}) = _$_ChatMessage;
 
   factory _ChatMessage.fromJson(Map<String, dynamic> json) =
       _$_ChatMessage.fromJson;
@@ -651,7 +651,7 @@ abstract class _ChatMessage implements ChatMessage {
   @JsonKey(
       fromJson: DateTimeConverter.dateTimeFromJson,
       toJson: DateTimeConverter.dateTimeToJson)
-  DateTime get timestamp;
+  DateTime? get timestamp;
   @override
   @JsonKey(ignore: true)
   _$$_ChatMessageCopyWith<_$_ChatMessage> get copyWith =>

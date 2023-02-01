@@ -39,10 +39,7 @@ class TopBar extends HookWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 lightBody(context, participant.first.name),
-                caption(
-                  context,
-                  'Last Seen: ${timeago.format(participant.first.lastSeen)}',
-                ),
+                UserLastSeenView(appUser: participant.first),
               ],
             ),
           ]),

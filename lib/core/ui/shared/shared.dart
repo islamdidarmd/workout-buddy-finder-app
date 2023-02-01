@@ -11,3 +11,5 @@ export 'content_card.dart';
 export 'vertical_spacing.dart';
 export 'horizontal_spacing.dart';
 export 'profile_avatar.dart';
+export 'user_age_with_gender_view.dart';
+export 'user_last_seen_view.dart';

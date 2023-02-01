@@ -7,7 +7,7 @@ class ChatMessage with _$ChatMessage {
     required String sender,
     required String content,
     @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
-        required DateTime timestamp,
+        required DateTime? timestamp,
   }) = _ChatMessage;
 
   factory ChatMessage.fromJson(Map<String, dynamic> json) =>

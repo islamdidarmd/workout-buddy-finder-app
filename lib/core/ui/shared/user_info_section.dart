@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../core.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 class UserInfoSection extends StatelessWidget {
   const UserInfoSection({
@@ -43,10 +42,7 @@ class UserInfoSection extends StatelessWidget {
                         LocationText(lat: appUser.lat, long: appUser.long),
                       ],
                     ),
-                    caption(
-                      context,
-                      'Last Online: ${timeago.format(appUser.lastSeen)}',
-                    ),
+                    UserLastSeenView(appUser: appUser),
                   ],
                 ),
               ),

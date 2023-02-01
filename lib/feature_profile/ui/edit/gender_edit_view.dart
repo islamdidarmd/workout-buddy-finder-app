@@ -11,46 +11,31 @@ class GenderEditView extends StatelessWidget {
   final AppUser appUser;
 
   Future<void> _updateGender(String? gender) async {
-    if (gender == null) {
+    if (gender == null || gender.isEmpty) {
       return;
     }
 
-    final _updateQuery = FirebaseFirestore.instance
-        .collection(col_users)
-        .doc(appUser.userId)
-        .withConverter<AppUser>(
-          fromFirestore: (snapshot, options) => AppUser.empty(),
-          toFirestore: (value, _) => value.toJson(),
-        );
+    final query =
+        FirebaseFirestore.instance.collection(col_users).doc(appUser.userId);
 
-    await _updateQuery.set(appUser.copyWith(
-      gender: gender,
-    ));
+    await query.update({
+      field_gender: gender,
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
-      value: appUser.gender,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: 'Gender',
-      ),
       items: [
-        DropdownMenuItem(
-          child: Text('Male'),
-          value: 'male',
-        ),
-        DropdownMenuItem(
-          child: Text('Female'),
-          value: 'female',
-        ),
-        DropdownMenuItem(
-          child: Text('Other'),
-          value: 'other',
-        ),
+        DropdownMenuItem(value: '', child: Text('Select Gender')),
+        DropdownMenuItem(value: 'male', child: Text('Male')),
+        DropdownMenuItem(value: 'female', child: Text('Female')),
+        DropdownMenuItem(value: 'other', child: Text('Other')),
       ],
+      value: appUser.gender,
       onChanged: _updateGender,
+      decoration:
+          InputDecoration(labelText: 'Gender', border: OutlineInputBorder()),
     );
   }
 }
