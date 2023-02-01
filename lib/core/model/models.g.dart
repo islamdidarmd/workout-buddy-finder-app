@@ -37,6 +37,7 @@ _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      isHidden: json['is_hidden'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) =>
@@ -55,4 +56,5 @@ Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) =>
       'long': instance.long,
       'geoHash': instance.geoHash,
       'interestsList': instance.interestList,
+      'is_hidden': instance.isHidden,
     };

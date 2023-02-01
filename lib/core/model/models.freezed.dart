@@ -233,6 +233,8 @@ mixin _$AppUser {
   String get geoHash => throw _privateConstructorUsedError;
   @JsonKey(name: 'interestsList')
   List<String> get interestList => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_hidden')
+  bool get isHidden => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -271,7 +273,9 @@ abstract class $AppUserCopyWith<$Res> {
       @JsonKey(name: 'geoHash')
           String geoHash,
       @JsonKey(name: 'interestsList')
-          List<String> interestList});
+          List<String> interestList,
+      @JsonKey(name: 'is_hidden')
+          bool isHidden});
 }
 
 /// @nodoc
@@ -301,6 +305,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? long = null,
     Object? geoHash = null,
     Object? interestList = null,
+    Object? isHidden = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
@@ -359,6 +364,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.interestList
           : interestList // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isHidden: null == isHidden
+          ? _value.isHidden
+          : isHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -397,7 +406,9 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       @JsonKey(name: 'geoHash')
           String geoHash,
       @JsonKey(name: 'interestsList')
-          List<String> interestList});
+          List<String> interestList,
+      @JsonKey(name: 'is_hidden')
+          bool isHidden});
 }
 
 /// @nodoc
@@ -424,6 +435,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? long = null,
     Object? geoHash = null,
     Object? interestList = null,
+    Object? isHidden = null,
   }) {
     return _then(_$_AppUser(
       userId: null == userId
@@ -482,6 +494,10 @@ class __$$_AppUserCopyWithImpl<$Res>
           ? _value._interestList
           : interestList // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isHidden: null == isHidden
+          ? _value.isHidden
+          : isHidden // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -516,7 +532,9 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       @JsonKey(name: 'geoHash')
           this.geoHash = "",
       @JsonKey(name: 'interestsList')
-          final List<String> interestList = const []})
+          final List<String> interestList = const [],
+      @JsonKey(name: 'is_hidden')
+          this.isHidden = false})
       : _interestList = interestList,
         super._();
 
@@ -573,8 +591,12 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
   }
 
   @override
+  @JsonKey(name: 'is_hidden')
+  final bool isHidden;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppUser(userId: $userId, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, lastSeen: $lastSeen, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList)';
+    return 'AppUser(userId: $userId, registered: $registered, name: $name, gender: $gender, birthdate: $birthdate, lastSeen: $lastSeen, availability: $availability, nearbyDistance: $nearbyDistance, email: $email, profilePicture: $profilePicture, lat: $lat, long: $long, geoHash: $geoHash, interestList: $interestList, isHidden: $isHidden)';
   }
 
   @override
@@ -595,7 +617,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('lat', lat))
       ..add(DiagnosticsProperty('long', long))
       ..add(DiagnosticsProperty('geoHash', geoHash))
-      ..add(DiagnosticsProperty('interestList', interestList));
+      ..add(DiagnosticsProperty('interestList', interestList))
+      ..add(DiagnosticsProperty('isHidden', isHidden));
   }
 
   @override
@@ -623,7 +646,9 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
             (identical(other.long, long) || other.long == long) &&
             (identical(other.geoHash, geoHash) || other.geoHash == geoHash) &&
             const DeepCollectionEquality()
-                .equals(other._interestList, _interestList));
+                .equals(other._interestList, _interestList) &&
+            (identical(other.isHidden, isHidden) ||
+                other.isHidden == isHidden));
   }
 
   @JsonKey(ignore: true)
@@ -643,7 +668,8 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       lat,
       long,
       geoHash,
-      const DeepCollectionEquality().hash(_interestList));
+      const DeepCollectionEquality().hash(_interestList),
+      isHidden);
 
   @JsonKey(ignore: true)
   @override
@@ -687,7 +713,9 @@ abstract class _AppUser extends AppUser {
       @JsonKey(name: 'geoHash')
           final String geoHash,
       @JsonKey(name: 'interestsList')
-          final List<String> interestList}) = _$_AppUser;
+          final List<String> interestList,
+      @JsonKey(name: 'is_hidden')
+          final bool isHidden}) = _$_AppUser;
   const _AppUser._() : super._();
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
@@ -735,6 +763,9 @@ abstract class _AppUser extends AppUser {
   @override
   @JsonKey(name: 'interestsList')
   List<String> get interestList;
+  @override
+  @JsonKey(name: 'is_hidden')
+  bool get isHidden;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

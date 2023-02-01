@@ -13,6 +13,7 @@ const String field_gender = "gender";
 const String field_availability = "availability";
 const String field_last_seen = "last_seen";
 const String field_device_token = "deviceToken";
+const String field_is_hidden = "is_hidden";
 
 // Messages Collection.
 const String participants = "participants";
