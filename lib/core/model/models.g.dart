@@ -24,7 +24,7 @@ _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
       registered:
           DateTimeConverter.dateTimeFromJson(json['registered'] as int?),
       name: json['name'] as String? ?? '',
-      gender: json['gender'] as String? ?? 'male',
+      gender: json['gender'] as String? ?? '',
       birthdate: DateTimeConverter.dateTimeFromJson(json['birthdate'] as int?),
       lastSeen: DateTimeConverter.dateTimeFromJson(json['last_seen'] as int?),
       availability: json['availability'] as String? ?? 'daily1hr',

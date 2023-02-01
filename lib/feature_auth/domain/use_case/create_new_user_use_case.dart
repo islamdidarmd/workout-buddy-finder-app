@@ -41,8 +41,6 @@ class CreateNewUserUseCase {
       userId: firebaseUser.uid,
       registered: DateTime.now(),
       name: firebaseUser.displayName ?? '',
-      birthdate: DateTime.now(),
-      lastSeen: DateTime.now(),
       email: firebaseUser.email ?? '',
       profilePicture: imageUrl,
       lat: currentLocation.latitude,
@@ -55,6 +53,7 @@ class CreateNewUserUseCase {
     } catch (e) {
       return null;
     }
+    return null;
   }
 
   Future<String?> _uploadDefaultUserAvatar(User user) async {

@@ -33,7 +33,7 @@ class ChatMessageListItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   lightBody(context, chatMessage.content),
-                  caption(context, timeago.format(chatMessage.timestamp)),
+                  caption(context, timeago.format(chatMessage.timestamp!)),
                 ],
               ),
             ),

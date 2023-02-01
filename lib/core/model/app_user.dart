@@ -4,18 +4,20 @@ part of 'models.dart';
 class AppUser with _$AppUser {
   bool get isEmpty => userId.isEmpty;
 
+  bool get isInComplete => gender.isEmpty || birthdate == null;
+
   const AppUser._();
 
   const factory AppUser({
     required String userId,
     @JsonKey(fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
-        required DateTime registered,
+        required DateTime? registered,
     @JsonKey(name: 'name') @Default('') String name,
-    @JsonKey(name: 'gender') @Default('male') String gender,
+    @JsonKey(name: 'gender') @Default('') String gender,
     @JsonKey(name: 'birthdate', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
-        required DateTime birthdate,
+    DateTime? birthdate,
     @JsonKey(name: 'last_seen', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
-        required DateTime lastSeen,
+    DateTime? lastSeen,
     @JsonKey(name: 'availability') @Default('daily1hr') String availability,
     @JsonKey(name: 'nearbyDistance') @Default(10) int nearbyDistance,
     @JsonKey(name: 'email') @Default('') String email,
@@ -35,8 +37,8 @@ class AppUser with _$AppUser {
         registered: DateTime.now(),
         name: '',
         gender: '',
-        birthdate: DateTime.now(),
-        lastSeen: DateTime.now(),
+        birthdate: null,
+        lastSeen: null,
         availability: '',
         nearbyDistance: 0,
         email: '',

@@ -2,8 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:workout_buddy_finder/core/core.dart';
-import '../fomatters/datetime_formatter.dart';
-
+import 'package:workout_buddy_finder/feature_profile/ui/edit/birth_day_view.dart';
 
 class AgeEditView extends StatelessWidget {
   const AgeEditView({
@@ -42,25 +41,18 @@ class AgeEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         caption(context, 'Birthday'),
         const HorizontalSpacing(),
-        Row(
-          children: [
-            Expanded(
-              child: lightBody(
-                context,
-                appUser.birthdate.formatTo(birthDateFormat),
-              ),
-            ),
-            InkWell(
-              onTap: () => _updateBirthDate(context),
-              child: Icon(FontAwesomeIcons.pen),
-            ),
-          ],
-        ),
+        Row(children: [
+          Expanded(child: BirthDayView(appUser: appUser)),
+          InkWell(
+            child: Icon(FontAwesomeIcons.pen),
+            onTap: () => _updateBirthDate(context),
+          ),
+        ]),
       ],
     );
   }
