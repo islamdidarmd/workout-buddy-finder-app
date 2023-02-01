@@ -44,7 +44,7 @@ class SignInWithGoogleButton extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthState>(
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () => const AppLoadingIndicator(),
+            loading: () => const CircularProgressIndicator(),
             signedIn: () => const SizedBox(),
             orElse: () {
               return ElevatedButton.icon(
