@@ -39,11 +39,7 @@ class SuggestionCardContainer extends StatelessWidget {
         buildWhen: _suggestionBlocBuildWhen,
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () => const SizedBox(
-              height: 40,
-              width: 40,
-              child: const FittedBox(child: const CircularProgressIndicator()),
-            ),
+            loading: () => const AppLoadingIndicator(),
             suggestionsFetched: (suggestions) {
               return SuggestionCard(
                 suggestion: suggestions,

@@ -35,7 +35,7 @@ class VisitUserPage extends HookWidget {
       children: [
         if (userSnapShot.connectionState == ConnectionState.waiting) ...{
           AppBar(),
-          LinearProgressIndicator(),
+          AppLoadingIndicator(),
         } else if (userSnapShot.hasData && user != null) ...{
           AppBar(title: Text(user.name)),
           Padding(
