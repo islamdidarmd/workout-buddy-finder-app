@@ -12,23 +12,6 @@ class UserInfoSection extends StatelessWidget {
   final double _padding = 16.0;
   final AppUser appUser;
 
-  int _calculateAgeFromBirthDay(DateTime birthday) {
-    final diff = DateTime.now().difference(birthday).inDays;
-    final age = diff / 365;
-
-    return age.toInt();
-  }
-
-  String _mapGender(String genderEnum) {
-    if (genderEnum == "male") {
-      return "Male";
-    } else if (genderEnum == "female") {
-      return "Female";
-    }
-
-    return "Other";
-  }
-
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -38,41 +21,32 @@ class UserInfoSection extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(_padding),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ProfileAvatar(
-                user: appUser,
-                size: 100,
-              ),
+              ProfileAvatar(user: appUser, size: 100),
               SizedBox(width: 8),
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     mediumBoldTitle(context, appUser.name),
                     const VerticalSpacing(spacing: 4),
-                    lightBody(
-                      context,
-                      '${_calculateAgeFromBirthDay(appUser.birthdate)}, ${_mapGender(appUser.gender)}',
-                    ),
+                    UserAgeWithGenderView(appUser: appUser),
                     const VerticalSpacing(spacing: 4),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Icon(
-                          FontAwesomeIcons.locationCrosshairs,
-                          size: 12,
-                        ),
+                        Icon(FontAwesomeIcons.locationCrosshairs, size: 12),
                         SizedBox(width: 2),
-                        LocationText(
-                          lat: appUser.lat,
-                          long: appUser.long,
-                        ),
+                        LocationText(lat: appUser.lat, long: appUser.long),
                       ],
                     ),
-                    caption(context, 'Last Online: ${timeago.format(appUser.lastSeen)}'),
+                    caption(
+                      context,
+                      'Last Online: ${timeago.format(appUser.lastSeen)}',
+                    ),
                   ],
                 ),
               ),
