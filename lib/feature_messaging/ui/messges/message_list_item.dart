@@ -47,7 +47,7 @@ class MessageListItem extends HookWidget {
                           children: [
                             lightBody(context, participant.name),
                             caption(context, chat.lastMessage),
-                            UserLastSeenView(appUser: appUser),
+                            UserLastSeenView(appUser: participant),
                           ])
                     ])))),
         onTap: () => onTap(chat.chatRoomId),
