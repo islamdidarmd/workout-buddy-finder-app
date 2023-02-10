@@ -101,14 +101,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     File image,
   ) async {
     emit(ProfileState.profilePictureUploading());
-
-    final path = '$profile_pictures';
     final fileName = appUser.userId;
     final imageUrl = await replaceImageUseCase(
-      path: path,
       url: appUser.profilePicture,
       image: image,
-      fileName: fileName,
     );
 
     if (imageUrl != null) {
