@@ -524,9 +524,9 @@ class _$_AppUser extends _AppUser with DiagnosticableTreeMixin {
       @JsonKey(name: 'last_seen', fromJson: DateTimeConverter.dateTimeFromJson, toJson: DateTimeConverter.dateTimeToJson)
           this.lastSeen,
       @JsonKey(name: 'availability')
-          this.availability = 'daily1hr',
+          this.availability = '',
       @JsonKey(name: 'nearbyDistance')
-          this.nearbyDistance = 10,
+          this.nearbyDistance = -1,
       @JsonKey(name: 'email')
           this.email = '',
       @JsonKey(name: 'profilePicture')
