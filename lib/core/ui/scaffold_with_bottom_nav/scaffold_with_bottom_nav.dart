@@ -24,8 +24,10 @@ class ScaffoldWithBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey('Scaffold'),
       body: child,
       bottomNavigationBar: BottomNav(
+        key: ValueKey('Bottom Nav'),
         currentRoute: currentRoute,
         onOpenSuggestion: onOpenSuggestion,
         onOpenMessaging: onOpenMessaging,
