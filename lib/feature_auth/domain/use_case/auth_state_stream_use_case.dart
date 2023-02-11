@@ -12,7 +12,7 @@ class AuthStateStreamUseCase {
     required this.updateLastSeenUseCase,
   });
 
-  Stream<UserAuthState> call() {
+  Stream<UserAuthState> execute() {
     return FirebaseAuth.instance.authStateChanges().map(
       (firebaseUser) {
         if (firebaseUser == null) {

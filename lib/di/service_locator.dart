@@ -5,6 +5,4 @@ import 'service_locator.config.dart';
 final GetIt sl = GetIt.instance;
 
 @InjectableInit(initializerName: 'initGetIt', preferRelativeImports: true)
-void configureDependencies() {
-  final result = sl.initGetIt();
-}
+GetIt configureDependencies() => sl.initGetIt();

@@ -1,6 +1,3 @@
-import 'package:workout_buddy_finder/env/constants.dart';
-import 'package:get_it/get_it.dart';
-
 import 'env.dart';
 
 void main() async {
@@ -11,8 +8,8 @@ void main() async {
 
 class ProductionEnv extends Env {
   @override
-  EnvType get envType => prodEnv;
+  EnvType get envType => Env.prodEnv;
 
   @override
-  String get appName => prodAppName;
+  String get appName => Env.prodAppName;
 }
