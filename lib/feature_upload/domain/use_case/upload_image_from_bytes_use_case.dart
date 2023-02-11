@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class UploadImageFromBytesUseCase {
-  Future<String?> call({
+  Future<String?> execute({
     required String path,
     required Uint8List bytes,
     String? fileName,

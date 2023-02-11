@@ -25,7 +25,7 @@ class VisitUserPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final appUserFuture = useMemoized(
-      () => sl<GetUserProfileFromIdUseCase>().call(uid: userId),
+      () => sl<GetUserProfileFromIdUseCase>().execute(uid: userId),
     );
     final userSnapShot = useFuture(appUserFuture);
 

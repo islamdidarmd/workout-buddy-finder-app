@@ -17,7 +17,7 @@ class SignInWithGoogleUseCase {
     required this.getUserProfileFromIdUseCase,
   });
 
-  Future<Either<void, AppError>> call(Position currentLocation) async {
+  Future<Either<void, AppError>> execute(Position currentLocation) async {
     Either<void, AppError>? result;
     try {
       final userCredential = await _getCredentialsFromGoogle();
@@ -44,9 +44,9 @@ class SignInWithGoogleUseCase {
     required User firebaseUser,
     required Position currentLocation,
   }) async {
-    final appUser = await getUserProfileFromIdUseCase(uid: firebaseUser.uid);
+    final appUser = await getUserProfileFromIdUseCase.execute(uid: firebaseUser.uid);
     if (appUser == null) {
-      return await createNewUserUseCase.call(
+      return await createNewUserUseCase.execute(
         firebaseUser: firebaseUser,
         currentLocation: currentLocation,
       );

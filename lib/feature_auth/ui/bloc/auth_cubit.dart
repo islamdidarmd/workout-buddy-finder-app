@@ -23,7 +23,7 @@ class AuthCubit extends Cubit<AuthState> {
   }) : super(AuthState.initial());
 
   Future<void> signInWithGoogle(Position location) async {
-    final result = await signInWithGoogleUseCase.call(location);
+    final result = await signInWithGoogleUseCase.execute(location);
     result.fold(
       (success) => null,
       (error) => emit(
@@ -33,7 +33,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signOut() async {
-    final result = await signOutUseCase.call();
+    final result = await signOutUseCase.execute();
     result.fold(
       (success) => emit(AuthState.signedOut()),
       (error) => emit(

@@ -15,7 +15,7 @@ class ParticipantAvatar extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final participantFuture = useMemoized(
-      () => sl<GetUserProfileFromIdUseCase>().call(uid: participantId),
+      () => sl<GetUserProfileFromIdUseCase>().execute(uid: participantId),
     );
     final participantSnapshot = useFuture(participantFuture);
     if (participantSnapshot.hasData) {
