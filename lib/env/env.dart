@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import '../theme/theme_manager.dart';
-import 'constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../app/wbf_app.dart';
 import '../di/service_locator.dart';
@@ -9,6 +7,15 @@ import '../di/service_locator.dart';
 enum EnvType { Development, Production }
 
 class Env {
+  static const defaultAppName = 'Workout Buddy Finder';
+  static const defaultEnv = EnvType.Development;
+
+  static const devAppName = 'Workout Buddy Finder Dev';
+  static const devEnv = EnvType.Development;
+
+  static const prodAppName = 'Workout Buddy Finder';
+  static const prodEnv = EnvType.Production;
+
   final EnvType envType = defaultEnv;
   final String appName = defaultAppName;
 
