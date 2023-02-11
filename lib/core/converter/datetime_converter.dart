@@ -1,4 +1,6 @@
 class DateTimeConverter {
+  DateTimeConverter._();
+
   static DateTime? dateTimeFromJson(int? millisecondsSinceEpoch) {
     if (millisecondsSinceEpoch == null) {
       return null;
