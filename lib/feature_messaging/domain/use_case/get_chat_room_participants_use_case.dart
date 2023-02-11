@@ -35,7 +35,7 @@ class GetChatRoomParticipantsUseCase {
 
     final participants = <AppUser>[];
     for (String userId in chatRoom.participants) {
-      final appUser = await getUserProfileFromIdUseCase(uid: userId);
+      final appUser = await getUserProfileFromIdUseCase.execute(uid: userId);
       if (appUser != null) {
         participants.add(appUser);
       }

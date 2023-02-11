@@ -8,7 +8,7 @@ import '../../../core/error/app_error.dart';
 class SignOutUseCase {
   const SignOutUseCase();
 
-  Future<Either<void, AppError>> call() async {
+  Future<Either<void, AppError>> execute() async {
     try {
       final result = await FirebaseAuth.instance.signOut();
     } catch (e) {
