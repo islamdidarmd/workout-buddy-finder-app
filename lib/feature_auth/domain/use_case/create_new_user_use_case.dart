@@ -16,7 +16,7 @@ class CreateNewUserUseCase {
     required this.uploadImageFromBytesUseCase,
   });
 
-  Future<AppUser?> call({
+  Future<AppUser?> execute({
     required User firebaseUser,
     required Position currentLocation,
   }) async {
@@ -61,7 +61,7 @@ class CreateNewUserUseCase {
     final imagePath = '$profile_pictures';
     final fileName = user.uid;
 
-    return await uploadImageFromBytesUseCase.call(
+    return await uploadImageFromBytesUseCase.execute(
       path: imagePath,
       bytes: imageBytes.buffer.asUint8List(),
       fileName: fileName,

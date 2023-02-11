@@ -8,7 +8,7 @@ import '../../../core/model/models.dart';
 class GetUserProfileFromIdUseCase {
   const GetUserProfileFromIdUseCase();
 
-  Future<AppUser?> call({required String uid}) async {
+  Future<AppUser?> execute({required String uid}) async {
     final _userProfileQuery = FirebaseFirestore.instance
         .collection(col_users)
         .doc(uid)
