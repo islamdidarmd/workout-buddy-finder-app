@@ -79,86 +79,89 @@ import 'package:workout_buddy_finder/feature_upload/feature_upload.dart'
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
-/// initializes the registration of main-scope dependencies inside of [GetIt]
-_i1.GetIt $InitGetIt(
-  _i1.GetIt getIt, {
-  String? environment,
-  _i2.EnvironmentFilter? environmentFilter,
-}) {
-  final gh = _i2.GetItHelper(
-    getIt,
-    environment,
-    environmentFilter,
-  );
-  gh.factory<_i3.ActivityTrackerCubit>(() => _i3.ActivityTrackerCubit());
-  gh.factory<_i4.AddUserInterestUseCase>(() => _i4.AddUserInterestUseCase());
-  gh.factory<_i5.AppUserStreamUseCase>(() => _i5.AppUserStreamUseCase());
-  gh.factory<_i6.CheckIfDisLikedByUseCase>(
-      () => _i6.CheckIfDisLikedByUseCase());
-  gh.factory<_i7.CheckIfLikedByUseCase>(() => _i7.CheckIfLikedByUseCase());
-  gh.factory<_i8.CreateChatRoomUseCase>(() => _i8.CreateChatRoomUseCase());
-  gh.factory<_i9.DislikeUserUseCase>(() => _i9.DislikeUserUseCase());
-  gh.factory<_i10.GetAddressFromLatLongUseCase>(
-      () => _i10.GetAddressFromLatLongUseCase());
-  gh.factory<_i11.GetInterestListUseCase>(() => _i11.GetInterestListUseCase());
-  gh.factory<_i12.GetSuggestionsUseCase>(() => _i12.GetSuggestionsUseCase(
-        checkIfLikedByUseCase: gh<_i7.CheckIfLikedByUseCase>(),
-        checkIfDisLikedByUseCase: gh<_i6.CheckIfDisLikedByUseCase>(),
-      ));
-  gh.factory<_i13.GetUserProfileFromIdUseCase>(
-      () => _i13.GetUserProfileFromIdUseCase());
-  gh.factory<_i14.LikeUserUseCase>(() => _i14.LikeUserUseCase(
-        checkIfLikedByUseCase: gh<_i7.CheckIfLikedByUseCase>(),
-        createChatRoomUseCase: gh<_i15.CreateChatRoomUseCase>(),
-      ));
-  gh.factory<_i16.LocationRetrieverBloc>(() => _i16.LocationRetrieverBloc());
-  gh.factory<_i17.RemoveUserInterestUseCase>(
-      () => _i17.RemoveUserInterestUseCase());
-  gh.factory<_i18.ReplaceImageUseCase>(() => _i18.ReplaceImageUseCase());
-  gh.factory<_i19.SignOutUseCase>(() => _i19.SignOutUseCase());
-  gh.factory<_i20.UpdateLastSeenUseCase>(() => _i20.UpdateLastSeenUseCase());
-  gh.factory<_i21.UpdateLastSentMessageUseCase>(
-      () => _i21.UpdateLastSentMessageUseCase());
-  gh.factory<_i22.UpdateProfileHiddenStatusUseCase>(
-      () => _i22.UpdateProfileHiddenStatusUseCase());
-  gh.factory<_i23.UpdateUserProfilePictureUseCase>(
-      () => _i23.UpdateUserProfilePictureUseCase());
-  gh.factory<_i24.UploadImageFromBytesUseCase>(
-      () => _i24.UploadImageFromBytesUseCase());
-  gh.factory<_i25.UploadImageFromFileUseCase>(
-      () => _i25.UploadImageFromFileUseCase());
-  gh.factory<_i26.AuthStateStreamUseCase>(() => _i26.AuthStateStreamUseCase(
-      updateLastSeenUseCase: gh<_i20.UpdateLastSeenUseCase>()));
-  gh.factory<_i27.CheckIfHasMatchUseCase>(() => _i27.CheckIfHasMatchUseCase(
-      checkIfLikedByUseCase: gh<_i7.CheckIfLikedByUseCase>()));
-  gh.factory<_i28.CreateNewUserUseCase>(() => _i28.CreateNewUserUseCase(
-      uploadImageFromBytesUseCase: gh<_i29.UploadImageFromBytesUseCase>()));
-  gh.factory<_i30.GetChatRoomParticipantsUseCase>(() =>
-      _i30.GetChatRoomParticipantsUseCase(
-          getUserProfileFromIdUseCase: gh<_i31.GetUserProfileFromIdUseCase>()));
-  gh.factory<_i32.ProfileBloc>(() => _i32.ProfileBloc(
-        getInterestListUseCase: gh<_i11.GetInterestListUseCase>(),
-        addUserInterestUseCase: gh<_i4.AddUserInterestUseCase>(),
-        removeUserInterestUseCase: gh<_i17.RemoveUserInterestUseCase>(),
-        updateUserProfilePictureUseCase:
-            gh<_i23.UpdateUserProfilePictureUseCase>(),
-        replaceImageUseCase: gh<_i18.ReplaceImageUseCase>(),
-      ));
-  gh.factory<_i33.SendMessageUseCase>(() => _i33.SendMessageUseCase(
-      updateLastSentMessageUseCase: gh<_i21.UpdateLastSentMessageUseCase>()));
-  gh.factory<_i34.SignInWithGoogleUseCase>(() => _i34.SignInWithGoogleUseCase(
-        createNewUserUseCase: gh<_i28.CreateNewUserUseCase>(),
-        getUserProfileFromIdUseCase: gh<_i13.GetUserProfileFromIdUseCase>(),
-      ));
-  gh.factory<_i35.SuggestionsBloc>(() => _i35.SuggestionsBloc(
-        getSuggestionsUseCase: gh<_i36.GetSuggestionsUseCase>(),
-        likeUserUseCase: gh<_i36.LikeUserUseCase>(),
-        dislikeUserUseCase: gh<_i36.DislikeUserUseCase>(),
-        checkIfHasMatchUseCase: gh<_i36.CheckIfHasMatchUseCase>(),
-      ));
-  gh.factory<_i37.AuthCubit>(() => _i37.AuthCubit(
-        signInWithGoogleUseCase: gh<_i31.SignInWithGoogleUseCase>(),
-        signOutUseCase: gh<_i31.SignOutUseCase>(),
-      ));
-  return getIt;
+extension GetItInjectableX on _i1.GetIt {
+  /// initializes the registration of main-scope dependencies inside of [GetIt]
+  _i1.GetIt initGetIt({
+    String? environment,
+    _i2.EnvironmentFilter? environmentFilter,
+  }) {
+    final gh = _i2.GetItHelper(
+      this,
+      environment,
+      environmentFilter,
+    );
+    gh.factory<_i3.ActivityTrackerCubit>(() => _i3.ActivityTrackerCubit());
+    gh.factory<_i4.AddUserInterestUseCase>(() => _i4.AddUserInterestUseCase());
+    gh.factory<_i5.AppUserStreamUseCase>(() => _i5.AppUserStreamUseCase());
+    gh.factory<_i6.CheckIfDisLikedByUseCase>(
+        () => _i6.CheckIfDisLikedByUseCase());
+    gh.factory<_i7.CheckIfLikedByUseCase>(() => _i7.CheckIfLikedByUseCase());
+    gh.factory<_i8.CreateChatRoomUseCase>(() => _i8.CreateChatRoomUseCase());
+    gh.factory<_i9.DislikeUserUseCase>(() => _i9.DislikeUserUseCase());
+    gh.factory<_i10.GetAddressFromLatLongUseCase>(
+        () => _i10.GetAddressFromLatLongUseCase());
+    gh.factory<_i11.GetInterestListUseCase>(
+        () => _i11.GetInterestListUseCase());
+    gh.factory<_i12.GetSuggestionsUseCase>(() => _i12.GetSuggestionsUseCase(
+          checkIfLikedByUseCase: gh<_i7.CheckIfLikedByUseCase>(),
+          checkIfDisLikedByUseCase: gh<_i6.CheckIfDisLikedByUseCase>(),
+        ));
+    gh.factory<_i13.GetUserProfileFromIdUseCase>(
+        () => _i13.GetUserProfileFromIdUseCase());
+    gh.factory<_i14.LikeUserUseCase>(() => _i14.LikeUserUseCase(
+          checkIfLikedByUseCase: gh<_i7.CheckIfLikedByUseCase>(),
+          createChatRoomUseCase: gh<_i15.CreateChatRoomUseCase>(),
+        ));
+    gh.factory<_i16.LocationRetrieverBloc>(() => _i16.LocationRetrieverBloc());
+    gh.factory<_i17.RemoveUserInterestUseCase>(
+        () => _i17.RemoveUserInterestUseCase());
+    gh.factory<_i18.ReplaceImageUseCase>(() => _i18.ReplaceImageUseCase());
+    gh.factory<_i19.SignOutUseCase>(() => _i19.SignOutUseCase());
+    gh.factory<_i20.UpdateLastSeenUseCase>(() => _i20.UpdateLastSeenUseCase());
+    gh.factory<_i21.UpdateLastSentMessageUseCase>(
+        () => _i21.UpdateLastSentMessageUseCase());
+    gh.factory<_i22.UpdateProfileHiddenStatusUseCase>(
+        () => _i22.UpdateProfileHiddenStatusUseCase());
+    gh.factory<_i23.UpdateUserProfilePictureUseCase>(
+        () => _i23.UpdateUserProfilePictureUseCase());
+    gh.factory<_i24.UploadImageFromBytesUseCase>(
+        () => _i24.UploadImageFromBytesUseCase());
+    gh.factory<_i25.UploadImageFromFileUseCase>(
+        () => _i25.UploadImageFromFileUseCase());
+    gh.factory<_i26.AuthStateStreamUseCase>(() => _i26.AuthStateStreamUseCase(
+        updateLastSeenUseCase: gh<_i20.UpdateLastSeenUseCase>()));
+    gh.factory<_i27.CheckIfHasMatchUseCase>(() => _i27.CheckIfHasMatchUseCase(
+        checkIfLikedByUseCase: gh<_i7.CheckIfLikedByUseCase>()));
+    gh.factory<_i28.CreateNewUserUseCase>(() => _i28.CreateNewUserUseCase(
+        uploadImageFromBytesUseCase: gh<_i29.UploadImageFromBytesUseCase>()));
+    gh.factory<_i30.GetChatRoomParticipantsUseCase>(() =>
+        _i30.GetChatRoomParticipantsUseCase(
+            getUserProfileFromIdUseCase:
+                gh<_i31.GetUserProfileFromIdUseCase>()));
+    gh.factory<_i32.ProfileBloc>(() => _i32.ProfileBloc(
+          getInterestListUseCase: gh<_i11.GetInterestListUseCase>(),
+          addUserInterestUseCase: gh<_i4.AddUserInterestUseCase>(),
+          removeUserInterestUseCase: gh<_i17.RemoveUserInterestUseCase>(),
+          updateUserProfilePictureUseCase:
+              gh<_i23.UpdateUserProfilePictureUseCase>(),
+          replaceImageUseCase: gh<_i18.ReplaceImageUseCase>(),
+        ));
+    gh.factory<_i33.SendMessageUseCase>(() => _i33.SendMessageUseCase(
+        updateLastSentMessageUseCase: gh<_i21.UpdateLastSentMessageUseCase>()));
+    gh.factory<_i34.SignInWithGoogleUseCase>(() => _i34.SignInWithGoogleUseCase(
+          createNewUserUseCase: gh<_i28.CreateNewUserUseCase>(),
+          getUserProfileFromIdUseCase: gh<_i13.GetUserProfileFromIdUseCase>(),
+        ));
+    gh.factory<_i35.SuggestionsBloc>(() => _i35.SuggestionsBloc(
+          getSuggestionsUseCase: gh<_i36.GetSuggestionsUseCase>(),
+          likeUserUseCase: gh<_i36.LikeUserUseCase>(),
+          dislikeUserUseCase: gh<_i36.DislikeUserUseCase>(),
+          checkIfHasMatchUseCase: gh<_i36.CheckIfHasMatchUseCase>(),
+        ));
+    gh.factory<_i37.AuthCubit>(() => _i37.AuthCubit(
+          signInWithGoogleUseCase: gh<_i31.SignInWithGoogleUseCase>(),
+          signOutUseCase: gh<_i31.SignOutUseCase>(),
+        ));
+    return this;
+  }
 }

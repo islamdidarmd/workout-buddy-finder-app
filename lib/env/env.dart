@@ -12,9 +12,9 @@ class Env {
   final EnvType envType = defaultEnv;
   final String appName = defaultAppName;
 
-  Future<void> init({required GetIt slInstance}) async {
+  Future<void> init() async {
     final binding = WidgetsFlutterBinding.ensureInitialized();
-    configureDependencies(getIt: slInstance);
+    configureDependencies();
     await ThemeManager.instance.init();
   }
 
