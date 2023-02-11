@@ -8,7 +8,7 @@ class WBFApp extends HookWidget {
   final String appName;
   final EnvType envType;
 
-  const WBFApp({
+  WBFApp({
     required this.appName,
     required this.envType,
   });
