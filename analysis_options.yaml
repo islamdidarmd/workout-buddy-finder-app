@@ -9,6 +9,8 @@ dart_code_metrics:
     maximum-nesting-level: 5
   metrics-exclude:
     - test/**
+  rules-exclude:
+    - test/**
   extends:
     - package:dart_code_metrics/presets/all.yaml
   anti-patterns:
