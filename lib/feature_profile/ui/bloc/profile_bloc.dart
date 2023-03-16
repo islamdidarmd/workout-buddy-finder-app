@@ -100,22 +100,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     File image,
   ) async {
     emit(const ProfileState.profilePictureUploading());
-    final fileName = appUser.userId;
-    final imageUrl = await replaceImageUseCase(
-      url: appUser.profilePicture,
-      image: image,
+    final uploadData =
+        await updateUserProfilePictureUseCase.execute(appUser, image);
+
+    return uploadData.fold(
+      (result) => emit(const ProfileState.profilePictureUploadingSuccess()),
+      (error) => emit(ProfileState.profilePictureUploadingError(error)),
     );
-
-    if (imageUrl != null) {
-      final uploadData =
-          await updateUserProfilePictureUseCase(appUser, imageUrl);
-
-      return uploadData.fold(
-        (result) => emit(const ProfileState.profilePictureUploadingSuccess()),
-        (error) => emit(ProfileState.profilePictureUploadingError(error)),
-      );
-    }
-
-    emit(const ProfileState.profilePictureUploadingError(FileUploadError()));
   }
 }

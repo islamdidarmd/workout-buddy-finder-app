@@ -12,11 +12,11 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i10;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:workout_buddy_finder/feature_auth/domain/use_case/app_user_stream_use_case.dart'
-    as _i22;
-import 'package:workout_buddy_finder/feature_auth/domain/use_case/auth_state_stream_use_case.dart'
     as _i23;
+import 'package:workout_buddy_finder/feature_auth/domain/use_case/auth_state_stream_use_case.dart'
+    as _i24;
 import 'package:workout_buddy_finder/feature_auth/domain/use_case/create_new_user_use_case.dart'
-    as _i27;
+    as _i28;
 import 'package:workout_buddy_finder/feature_auth/domain/use_case/get_user_profile_from_id_use_case.dart'
     as _i9;
 import 'package:workout_buddy_finder/feature_auth/domain/use_case/sign_in_with_google_use_case.dart'
@@ -33,7 +33,7 @@ import 'package:workout_buddy_finder/feature_location/domain/usecase/get_address
 import 'package:workout_buddy_finder/feature_location/ui/bloc/location_retriever_bloc.dart'
     as _i11;
 import 'package:workout_buddy_finder/feature_messaging/domain/use_case/create_chat_room_use_case.dart'
-    as _i26;
+    as _i27;
 import 'package:workout_buddy_finder/feature_messaging/domain/use_case/get_chat_room_participants_use_case.dart'
     as _i30;
 import 'package:workout_buddy_finder/feature_messaging/domain/use_case/send_message_use_case.dart'
@@ -43,7 +43,7 @@ import 'package:workout_buddy_finder/feature_messaging/domain/use_case/update_la
 import 'package:workout_buddy_finder/feature_messaging/feature_messaging.dart'
     as _i34;
 import 'package:workout_buddy_finder/feature_profile/domain/use_case/add_user_interest_use_case.dart'
-    as _i21;
+    as _i22;
 import 'package:workout_buddy_finder/feature_profile/domain/use_case/get_interest_list_use_case.dart'
     as _i8;
 import 'package:workout_buddy_finder/feature_profile/domain/use_case/remove_user_interest_use_case.dart'
@@ -57,11 +57,11 @@ import 'package:workout_buddy_finder/feature_profile/ui/bloc/activity_tracker_cu
 import 'package:workout_buddy_finder/feature_profile/ui/bloc/profile_bloc.dart'
     as _i35;
 import 'package:workout_buddy_finder/feature_suggestion/domain/use_case/check_if_disliked_by_use_case.dart'
-    as _i24;
+    as _i25;
 import 'package:workout_buddy_finder/feature_suggestion/domain/use_case/check_if_has_match_use_case.dart'
     as _i39;
 import 'package:workout_buddy_finder/feature_suggestion/domain/use_case/check_if_liked_by_use_case.dart'
-    as _i25;
+    as _i26;
 import 'package:workout_buddy_finder/feature_suggestion/domain/use_case/dislike_user_use_case.dart'
     as _i29;
 import 'package:workout_buddy_finder/feature_suggestion/domain/use_case/get_suggestions_use_case.dart'
@@ -75,11 +75,11 @@ import 'package:workout_buddy_finder/feature_suggestion/ui/bloc/suggestions_bloc
 import 'package:workout_buddy_finder/feature_upload/domain/use_case/replace_image_use_case.dart'
     as _i13;
 import 'package:workout_buddy_finder/feature_upload/domain/use_case/upload_image_from_bytes_use_case.dart'
-    as _i19;
-import 'package:workout_buddy_finder/feature_upload/domain/use_case/upload_image_from_file_use_case.dart'
     as _i20;
+import 'package:workout_buddy_finder/feature_upload/domain/use_case/upload_image_from_file_use_case.dart'
+    as _i21;
 import 'package:workout_buddy_finder/feature_upload/feature_upload.dart'
-    as _i28;
+    as _i19;
 
 import 'firebase_module.dart' as _i42;
 
@@ -121,30 +121,33 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i16.UpdateLastSentMessageUseCase(gh<_i5.FirebaseFirestore>()));
     gh.factory<_i17.UpdateProfileHiddenStatusUseCase>(() =>
         _i17.UpdateProfileHiddenStatusUseCase(gh<_i5.FirebaseFirestore>()));
-    gh.factory<_i18.UpdateUserProfilePictureUseCase>(() =>
-        _i18.UpdateUserProfilePictureUseCase(gh<_i5.FirebaseFirestore>()));
-    gh.factory<_i19.UploadImageFromBytesUseCase>(
-        () => _i19.UploadImageFromBytesUseCase(gh<_i6.FirebaseStorage>()));
-    gh.factory<_i20.UploadImageFromFileUseCase>(
-        () => _i20.UploadImageFromFileUseCase(gh<_i6.FirebaseStorage>()));
-    gh.factory<_i21.AddUserInterestUseCase>(
-        () => _i21.AddUserInterestUseCase(gh<_i5.FirebaseFirestore>()));
-    gh.factory<_i22.AppUserStreamUseCase>(() => _i22.AppUserStreamUseCase(
+    gh.factory<_i18.UpdateUserProfilePictureUseCase>(
+        () => _i18.UpdateUserProfilePictureUseCase(
+              gh<_i5.FirebaseFirestore>(),
+              gh<_i19.ReplaceImageUseCase>(),
+            ));
+    gh.factory<_i20.UploadImageFromBytesUseCase>(
+        () => _i20.UploadImageFromBytesUseCase(gh<_i6.FirebaseStorage>()));
+    gh.factory<_i21.UploadImageFromFileUseCase>(
+        () => _i21.UploadImageFromFileUseCase(gh<_i6.FirebaseStorage>()));
+    gh.factory<_i22.AddUserInterestUseCase>(
+        () => _i22.AddUserInterestUseCase(gh<_i5.FirebaseFirestore>()));
+    gh.factory<_i23.AppUserStreamUseCase>(() => _i23.AppUserStreamUseCase(
           gh<_i5.FirebaseFirestore>(),
           gh<_i4.FirebaseAuth>(),
         ));
-    gh.factory<_i23.AuthStateStreamUseCase>(() => _i23.AuthStateStreamUseCase(
+    gh.factory<_i24.AuthStateStreamUseCase>(() => _i24.AuthStateStreamUseCase(
           updateLastSeenUseCase: gh<_i15.UpdateLastSeenUseCase>(),
           firebaseAuth: gh<_i4.FirebaseAuth>(),
         ));
-    gh.factory<_i24.CheckIfDisLikedByUseCase>(
-        () => _i24.CheckIfDisLikedByUseCase(gh<_i5.FirebaseFirestore>()));
-    gh.factory<_i25.CheckIfLikedByUseCase>(
-        () => _i25.CheckIfLikedByUseCase(gh<_i5.FirebaseFirestore>()));
-    gh.factory<_i26.CreateChatRoomUseCase>(
-        () => _i26.CreateChatRoomUseCase(gh<_i5.FirebaseFirestore>()));
-    gh.factory<_i27.CreateNewUserUseCase>(() => _i27.CreateNewUserUseCase(
-          uploadImageFromBytesUseCase: gh<_i28.UploadImageFromBytesUseCase>(),
+    gh.factory<_i25.CheckIfDisLikedByUseCase>(
+        () => _i25.CheckIfDisLikedByUseCase(gh<_i5.FirebaseFirestore>()));
+    gh.factory<_i26.CheckIfLikedByUseCase>(
+        () => _i26.CheckIfLikedByUseCase(gh<_i5.FirebaseFirestore>()));
+    gh.factory<_i27.CreateChatRoomUseCase>(
+        () => _i27.CreateChatRoomUseCase(gh<_i5.FirebaseFirestore>()));
+    gh.factory<_i28.CreateNewUserUseCase>(() => _i28.CreateNewUserUseCase(
+          uploadImageFromBytesUseCase: gh<_i19.UploadImageFromBytesUseCase>(),
           firestore: gh<_i5.FirebaseFirestore>(),
         ));
     gh.factory<_i29.DislikeUserUseCase>(
@@ -155,18 +158,18 @@ extension GetItInjectableX on _i1.GetIt {
           firestore: gh<_i5.FirebaseFirestore>(),
         ));
     gh.factory<_i32.GetSuggestionsUseCase>(() => _i32.GetSuggestionsUseCase(
-          checkIfLikedByUseCase: gh<_i25.CheckIfLikedByUseCase>(),
-          checkIfDisLikedByUseCase: gh<_i24.CheckIfDisLikedByUseCase>(),
+          checkIfLikedByUseCase: gh<_i26.CheckIfLikedByUseCase>(),
+          checkIfDisLikedByUseCase: gh<_i25.CheckIfDisLikedByUseCase>(),
           firestore: gh<_i5.FirebaseFirestore>(),
         ));
     gh.factory<_i33.LikeUserUseCase>(() => _i33.LikeUserUseCase(
-          checkIfLikedByUseCase: gh<_i25.CheckIfLikedByUseCase>(),
+          checkIfLikedByUseCase: gh<_i26.CheckIfLikedByUseCase>(),
           createChatRoomUseCase: gh<_i34.CreateChatRoomUseCase>(),
           firestore: gh<_i5.FirebaseFirestore>(),
         ));
     gh.factory<_i35.ProfileBloc>(() => _i35.ProfileBloc(
           getInterestListUseCase: gh<_i8.GetInterestListUseCase>(),
-          addUserInterestUseCase: gh<_i21.AddUserInterestUseCase>(),
+          addUserInterestUseCase: gh<_i22.AddUserInterestUseCase>(),
           removeUserInterestUseCase: gh<_i12.RemoveUserInterestUseCase>(),
           updateUserProfilePictureUseCase:
               gh<_i18.UpdateUserProfilePictureUseCase>(),
@@ -177,7 +180,7 @@ extension GetItInjectableX on _i1.GetIt {
           firestore: gh<_i5.FirebaseFirestore>(),
         ));
     gh.factory<_i37.SignInWithGoogleUseCase>(() => _i37.SignInWithGoogleUseCase(
-          createNewUserUseCase: gh<_i27.CreateNewUserUseCase>(),
+          createNewUserUseCase: gh<_i28.CreateNewUserUseCase>(),
           getUserProfileFromIdUseCase: gh<_i9.GetUserProfileFromIdUseCase>(),
           firebaseAuth: gh<_i4.FirebaseAuth>(),
           firestore: gh<_i5.FirebaseFirestore>(),
@@ -188,7 +191,7 @@ extension GetItInjectableX on _i1.GetIt {
           signOutUseCase: gh<_i31.SignOutUseCase>(),
         ));
     gh.factory<_i39.CheckIfHasMatchUseCase>(() => _i39.CheckIfHasMatchUseCase(
-        checkIfLikedByUseCase: gh<_i25.CheckIfLikedByUseCase>()));
+        checkIfLikedByUseCase: gh<_i26.CheckIfLikedByUseCase>()));
     gh.factory<_i40.SuggestionsBloc>(() => _i40.SuggestionsBloc(
           getSuggestionsUseCase: gh<_i41.GetSuggestionsUseCase>(),
           likeUserUseCase: gh<_i41.LikeUserUseCase>(),
