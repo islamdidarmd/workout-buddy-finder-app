@@ -22,7 +22,7 @@ class CreateNewUserUseCase {
     required User firebaseUser,
     required Position currentLocation,
   }) async {
-    final _createNewUserQuery = firestore
+    final createNewUserQuery = firestore
         .collection(col_users)
         .doc(firebaseUser.uid)
         .withConverter(
@@ -51,7 +51,7 @@ class CreateNewUserUseCase {
     );
 
     try {
-      await _createNewUserQuery.set(appUser);
+      await createNewUserQuery.set(appUser);
     } catch (e) {
       return null;
     }
@@ -60,7 +60,7 @@ class CreateNewUserUseCase {
 
   Future<String?> _uploadDefaultUserAvatar(User user) async {
     final imageBytes = await rootBundle.load('assets/icon/app_logo.png');
-    final imagePath = '$profile_pictures';
+    const imagePath = profile_pictures;
     final fileName = user.uid;
 
     return await uploadImageFromBytesUseCase.execute(

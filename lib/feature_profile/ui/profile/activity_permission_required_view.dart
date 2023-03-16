@@ -9,7 +9,7 @@ class ActivityPermissionRequiredView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      child: Center(
+      child: const Center(
         child: Text(
           'Permission to Read Activity Data is required. Tap to approve permission.',
         ),

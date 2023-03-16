@@ -24,9 +24,9 @@ class RemoveUserInterestUseCase {
         field_interest_list: FieldValue.arrayRemove([interestId]),
       });
 
-      return Left(null);
+      return const Left(null);
     } catch (e) {
-      return Right(UnknownError());
+      return const Right(UnknownError());
     }
   }
 }

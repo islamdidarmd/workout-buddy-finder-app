@@ -27,7 +27,7 @@ class GetInterestListUseCase {
 
       return Left(interestList);
     } catch (e) {
-      return Right(InvalidDataError());
+      return const Right(InvalidDataError());
     }
   }
 }

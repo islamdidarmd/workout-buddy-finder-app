@@ -12,9 +12,7 @@ class ThemeManager extends ChangeNotifier {
   ThemeMode get themeMode => _themeMode;
 
   static ThemeManager get instance {
-    if(_themeManager == null) {
-      _themeManager = ThemeManager._();
-    }
+    _themeManager ??= ThemeManager._();
 
     return _themeManager!;
   }
@@ -24,7 +22,7 @@ class ThemeManager extends ChangeNotifier {
   Future<void> switchTo(ThemeMode themeMode) async {
     if (themeMode != this.themeMode) {
       await _saveThemeInPrefs(themeMode);
-      this._themeMode = themeMode;
+      _themeMode = themeMode;
       notifyListeners();
     }
   }

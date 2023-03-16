@@ -17,7 +17,7 @@ class GetChatRoomParticipantsUseCase {
   });
 
   Future<List<AppUser>> call({required String roomId}) async {
-    final _messagesQuery = firestore
+    final messagesQuery = firestore
         .collection(col_messages)
         .doc(roomId)
         .withConverter(
@@ -27,7 +27,7 @@ class GetChatRoomParticipantsUseCase {
 
     ChatRoom chatRoom;
     try {
-      final snapshot = await _messagesQuery.get();
+      final snapshot = await messagesQuery.get();
       chatRoom = snapshot.data()!;
     } catch (e) {
       debugPrint(e.toString());

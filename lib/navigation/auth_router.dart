@@ -8,17 +8,17 @@ import 'app_route.dart';
 final _authNavigatorKey = GlobalKey<NavigatorState>();
 final authRouter = GoRouter(
   navigatorKey: _authNavigatorKey,
-  initialLocation: TopLevelRoute.signIn().route,
+  initialLocation: const TopLevelRoute.signIn().route,
   routes: _authRoutes,
 );
 
 List<GoRoute> get _authRoutes => [
       GoRoute(
-        path: TopLevelRoute.signIn().route,
-        pageBuilder: (context, state) => MaterialPage(child: SignInPage()),
+        path: const TopLevelRoute.signIn().route,
+        pageBuilder: (context, state) => const MaterialPage(child: SignInPage()),
       ),
       GoRoute(
-        path: TopLevelRoute.signUp().route,
-        pageBuilder: (context, state) => MaterialPage(child: SignUpPage()),
+        path: const TopLevelRoute.signUp().route,
+        pageBuilder: (context, state) => const MaterialPage(child: SignUpPage()),
       ),
     ];

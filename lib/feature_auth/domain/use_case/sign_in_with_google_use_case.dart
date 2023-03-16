@@ -30,7 +30,7 @@ class SignInWithGoogleUseCase {
       final userCredential = await _getCredentialsFromGoogle();
       final firebaseUser = userCredential.user;
       if (firebaseUser == null) {
-        result = Left({});
+        result = const Left({});
       } else {
         final appUser = await _getUserProfile(
           firebaseUser: firebaseUser,

@@ -41,7 +41,7 @@ class _LocationTextState extends State<LocationText> {
         future: addressFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Text('Fetching location...', style: textTheme.caption);
+            return Text('Fetching location...', style: textTheme.bodySmall);
           } else if (snapshot.hasData) {
             final address =
                 snapshot.requireData.fold((address) => address, (right) => "");

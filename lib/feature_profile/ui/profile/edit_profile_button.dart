@@ -14,7 +14,7 @@ class EditProfileButton extends StatelessWidget {
     return FloatingActionButton.extended(
       onPressed: onEditProfile,
       heroTag: 'edit-profile',
-      label: Text('Edit Profile'),
+      label: const Text('Edit Profile'),
       icon: const Icon(FontAwesomeIcons.penToSquare),
     );
   }

@@ -9,7 +9,7 @@ class GetAddressFromLatLongUseCase {
     try {
       List<Placemark> placeMarkList = await placemarkFromCoordinates(lat, long);
       if (placeMarkList.isEmpty) {
-        return Right(DataNotFoundError());
+        return const Right(DataNotFoundError());
       }
       final buffer = StringBuffer();
 
@@ -20,13 +20,13 @@ class GetAddressFromLatLongUseCase {
       }
 
       buffer
-        ..write(
+        .write(
           placeMarkList.first.country,
         );
 
       return Left(buffer.toString());
     } catch (e) {
-      return Right(UnknownError());
+      return const Right(UnknownError());
     }
   }
 }

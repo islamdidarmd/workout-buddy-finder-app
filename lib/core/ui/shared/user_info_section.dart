@@ -13,41 +13,37 @@ class UserInfoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
-    return Container(
-      child: Card(
-        child: Padding(
-          padding: EdgeInsets.all(_padding),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ProfileAvatar(user: appUser, size: 100),
-              SizedBox(width: 8),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    mediumBoldTitle(context, appUser.name),
-                    const VerticalSpacing(spacing: 4),
-                    UserAgeWithGenderView(appUser: appUser),
-                    const VerticalSpacing(spacing: 4),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(FontAwesomeIcons.locationCrosshairs, size: 12),
-                        SizedBox(width: 2),
-                        LocationText(lat: appUser.lat, long: appUser.long),
-                      ],
-                    ),
-                    UserLastSeenView(appUser: appUser),
-                  ],
-                ),
+    return Card(
+      child: Padding(
+        padding: EdgeInsets.all(_padding),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ProfileAvatar(user: appUser, size: 100),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  mediumBoldTitle(context, appUser.name),
+                  const VerticalSpacing(spacing: 4),
+                  UserAgeWithGenderView(appUser: appUser),
+                  const VerticalSpacing(spacing: 4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Icon(FontAwesomeIcons.locationCrosshairs, size: 12),
+                      const SizedBox(width: 2),
+                      LocationText(lat: appUser.lat, long: appUser.long),
+                    ],
+                  ),
+                  UserLastSeenView(appUser: appUser),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

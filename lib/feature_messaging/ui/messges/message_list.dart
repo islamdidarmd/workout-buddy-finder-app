@@ -18,7 +18,7 @@ class MessageList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _messagesQuery = FirebaseFirestore.instance
+    final messagesQuery = FirebaseFirestore.instance
         .collection(col_messages)
         .where(participants, arrayContains: appUser.userId)
         .withConverter(
@@ -27,7 +27,7 @@ class MessageList extends StatelessWidget {
         );
 
     return FirestoreListView(
-      query: _messagesQuery,
+      query: messagesQuery,
       itemBuilder: (context, doc) {
         final chat = doc.data();
 

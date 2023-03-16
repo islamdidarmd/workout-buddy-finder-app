@@ -22,7 +22,7 @@ class OthersSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<AuthCubit>(
       create: (_) => sl(),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Card(
           child: Padding(
@@ -37,7 +37,7 @@ class OthersSection extends StatelessWidget {
                     return ElevatedButton.icon(
                       onPressed: () => _onLogout(context),
                       icon: const Icon(FontAwesomeIcons.arrowRightFromBracket),
-                      label: Text('Log Out'),
+                      label: const Text('Log Out'),
                     );
                   },
                 ),

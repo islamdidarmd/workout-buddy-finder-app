@@ -8,7 +8,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import '../../../feature_upload/domain/use_case/replace_image_use_case.dart';
 import '../../domain/use_case/add_user_interest_use_case.dart';
-import '../../../core/firebase_storage_constants.dart';
 
 import '../../../core/core.dart';
 import '../../domain/use_case/get_interest_list_use_case.dart';
@@ -36,7 +35,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     required this.removeUserInterestUseCase,
     required this.updateUserProfilePictureUseCase,
     required this.replaceImageUseCase,
-  }) : super(ProfileState.initial()) {
+  }) : super(const ProfileState.initial()) {
     on<ProfileEvent>((event, emit) async {
       final result = await event.when(
         loadInterests: (appUser) => _onLoadInterest(emit, appUser),
@@ -50,7 +49,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   Future<void> _onLoadInterest(Emitter emit, AppUser appUser) async {
-    emit(ProfileState.loading());
+    emit(const ProfileState.loading());
     final data = await getInterestListUseCase();
 
     data.fold(
@@ -100,7 +99,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     AppUser appUser,
     File image,
   ) async {
-    emit(ProfileState.profilePictureUploading());
+    emit(const ProfileState.profilePictureUploading());
     final fileName = appUser.userId;
     final imageUrl = await replaceImageUseCase(
       url: appUser.profilePicture,
@@ -112,11 +111,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           await updateUserProfilePictureUseCase(appUser, imageUrl);
 
       return uploadData.fold(
-        (result) => emit(ProfileState.profilePictureUploadingSuccess()),
+        (result) => emit(const ProfileState.profilePictureUploadingSuccess()),
         (error) => emit(ProfileState.profilePictureUploadingError(error)),
       );
     }
 
-    emit(ProfileState.profilePictureUploadingError(FileUploadError()));
+    emit(const ProfileState.profilePictureUploadingError(FileUploadError()));
   }
 }

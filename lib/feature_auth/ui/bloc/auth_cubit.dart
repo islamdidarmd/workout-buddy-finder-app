@@ -20,7 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit({
     required this.signInWithGoogleUseCase,
     required this.signOutUseCase,
-  }) : super(AuthState.initial());
+  }) : super(const AuthState.initial());
 
   Future<void> signInWithGoogle(Position location) async {
     final result = await signInWithGoogleUseCase.execute(location);
@@ -35,7 +35,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signOut() async {
     final result = await signOutUseCase.execute();
     result.fold(
-      (success) => emit(AuthState.signedOut()),
+      (success) => emit(const AuthState.signedOut()),
       (error) => emit(
         AuthState.signOutFailure(error),
       ),

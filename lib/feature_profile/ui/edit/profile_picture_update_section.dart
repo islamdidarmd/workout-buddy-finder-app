@@ -43,7 +43,7 @@ class ProfilePictureUpdateSection extends StatelessWidget {
         final result = ScaffoldMessenger.of(context)
           ..clearSnackBars()
           ..showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Uploading Profile Picture...'),
             ),
           );
@@ -53,7 +53,7 @@ class ProfilePictureUpdateSection extends StatelessWidget {
 
         final result = ScaffoldMessenger.of(context)
           ..clearSnackBars()
-          ..showSnackBar(SnackBar(
+          ..showSnackBar(const SnackBar(
             content: Text(
               'Uploading Profile Picture...',
             ),
@@ -89,7 +89,7 @@ class ProfilePictureUpdateSection extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Colors.white,
                 ),
-                child: Icon(
+                child: const Icon(
                   FontAwesomeIcons.pen,
                   color: Colors.black,
                   size: 16,

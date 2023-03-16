@@ -4,7 +4,7 @@ class ErrorIndicator extends StatelessWidget {
   const ErrorIndicator({
     Key? key,
     String? error,
-  })  : this.error = error ?? 'Something went wrong',
+  })  : error = error ?? 'Something went wrong',
         super(
           key: key,
         );

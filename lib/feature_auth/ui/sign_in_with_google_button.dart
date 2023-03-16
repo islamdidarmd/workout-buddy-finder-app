@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
-import '../../core/core.dart';
 import '../../di/service_locator.dart';
 import '../../feature_location/location.dart';
 
@@ -15,7 +14,7 @@ class SignInWithGoogleButton extends StatelessWidget {
     final Position? location = await showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
+        return const AlertDialog(
           content: LocationRetrieverDialog(),
         );
       },
@@ -49,8 +48,8 @@ class SignInWithGoogleButton extends StatelessWidget {
             orElse: () {
               return ElevatedButton.icon(
                 onPressed: () => _onContinue(context),
-                icon: Icon(FontAwesomeIcons.google),
-                label: Text('Continue with Google'),
+                icon: const Icon(FontAwesomeIcons.google),
+                label: const Text('Continue with Google'),
               );
             },
           );

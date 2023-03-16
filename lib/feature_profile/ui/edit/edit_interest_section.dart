@@ -27,7 +27,7 @@ class EditInterestSection extends StatelessWidget {
               ),
               builder: (context, state) {
                 return state.maybeWhen(
-                  loading: () => CircularProgressIndicator(),
+                  loading: () => const CircularProgressIndicator(),
                   interestsLoaded: (interestList) {
                     return Wrap(
                       children: interestList

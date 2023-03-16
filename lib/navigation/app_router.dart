@@ -9,83 +9,89 @@ import '../feature_profile/feature_profile.dart';
 import '../feature_settings/settings.dart';
 import '../core/core.dart';
 
+/// ignore_for_file: prefer-match-file-name
+/// ignore_for_file: prefer-static-class
+
 class RouteNavigatorKey {
   static final rootNavigatorKey = GlobalKey<NavigatorState>();
   static final shellNavigatorKey = GlobalKey<NavigatorState>();
 }
 
 final router = GoRouter(
-  navigatorKey: RouteNavigatorKey.rootNavigatorKey,
-  initialLocation: TopLevelRoute.suggestion().route,
-  errorBuilder: (_, state) => ErrorIndicator(error: state.error?.toString()),
-  routes: [
-    ShellRoute(
-      navigatorKey: RouteNavigatorKey.shellNavigatorKey,
-      builder: (context, state, child) => ScaffoldWithBottomNav(
-        child: child,
-        currentRoute: state.location,
-        onOpenSuggestion: () => context.go(TopLevelRoute.suggestion().route),
-        onOpenMessaging: () => context.go(TopLevelRoute.messaging().route),
-        onOpenProfile: () => context.go(TopLevelRoute.profile().route),
-        onOpenSettings: () => context.go(TopLevelRoute.settings().route),
-      ),
-      routes: _appRoutes,
-    ),
-  ],
-);
+    routes: [
+      ShellRoute(
+          builder: (context, state, child) => ScaffoldWithBottomNav(
+                currentRoute: state.location,
+                onOpenSuggestion: () =>
+                    context.go(const TopLevelRoute.suggestion().route),
+                onOpenMessaging: () =>
+                    context.go(const TopLevelRoute.messaging().route),
+                onOpenProfile: () =>
+                    context.go(const TopLevelRoute.profile().route),
+                onOpenSettings: () =>
+                    context.go(const TopLevelRoute.settings().route),
+                child: child,
+              ),
+          routes: _appRoutes,
+          navigatorKey: RouteNavigatorKey.shellNavigatorKey),
+    ],
+    errorBuilder: (_, state) => ErrorIndicator(error: state.error?.toString()),
+    initialLocation: const TopLevelRoute.suggestion().route,
+    navigatorKey: RouteNavigatorKey.rootNavigatorKey);
 
 List<GoRoute> get _appRoutes => [
       GoRoute(
-        path: TopLevelRoute.suggestion().route,
+        path: const TopLevelRoute.suggestion().route,
         pageBuilder: (context, _) {
           return NoTransitionPage(
             child: SuggestionsPage(
-              onShowProfile: () => context.go(TopLevelRoute.profile().route),
+              onShowProfile: () =>
+                  context.go(const TopLevelRoute.profile().route),
               onOpenMessaging: () =>
-                  context.go(TopLevelRoute.messaging().route),
+                  context.go(const TopLevelRoute.messaging().route),
               onOpenProfile: (userId) => context.go(
-                '${VisitUserRoute().generateNavRoute(
-                  root: TopLevelRoute.suggestion().route,
+                const VisitUserRoute().generateNavRoute(
+                  root: const TopLevelRoute.suggestion().route,
                   userId: userId,
-                )}',
+                ),
               ),
             ),
           );
         },
         routes: [
           GoRoute(
-            path: VisitUserRoute().route,
+            path: const VisitUserRoute().route,
             builder: (context, state) =>
                 VisitUserPage(userId: state.params['userId']!),
           ),
         ],
       ),
       GoRoute(
-        path: TopLevelRoute.profile().route,
+        path: const TopLevelRoute.profile().route,
         pageBuilder: (context, _) {
           return NoTransitionPage(
             child: ProfilePage(
               onEditProfile: () => context.go(
-                EditProfileRoute()
-                    .generateNavRoute(root: TopLevelRoute.profile().route),
+                const EditProfileRoute().generateNavRoute(
+                    root: const TopLevelRoute.profile().route),
               ),
             ),
           );
         },
         routes: [
           GoRoute(
-            path: EditProfileRoute().route,
-            builder: (context, _) => ProfileEditPage(),
+            path: const EditProfileRoute().route,
+            builder: (context, _) => const ProfileEditPage(),
           ),
         ],
       ),
       GoRoute(
-        path: TopLevelRoute.messaging().route,
+        path: const TopLevelRoute.messaging().route,
         pageBuilder: (context, _) => NoTransitionPage(
           child: MessagingPage(
             onOpenChatRoom: (chatRoomId) => context.go(
-              ChatRoomRoute().generateNavRoute(
-                root: TopLevelRoute.messaging().route,
+              const ChatRoomRoute().generateNavRoute(
+                root: const TopLevelRoute.messaging().route,
                 chatRoomId: chatRoomId,
               ),
             ),
@@ -93,22 +99,22 @@ List<GoRoute> get _appRoutes => [
         ),
         routes: [
           GoRoute(
-            path: ChatRoomRoute().route,
+            path: const ChatRoomRoute().route,
             builder: (context, state) => ChatRoomPage(
               chatRoomId: state.params['chatRoomId']!,
               onVisitProfile: (userId) => context.go(
-                VisitUserRoute().generateNavRoute(
-                  root: '${ChatRoomRoute().generateNavRoute(
-                    root: TopLevelRoute.messaging().route,
+                const VisitUserRoute().generateNavRoute(
+                  root: const ChatRoomRoute().generateNavRoute(
+                    root: const TopLevelRoute.messaging().route,
                     chatRoomId: state.params['chatRoomId']!,
-                  )}',
+                  ),
                   userId: userId,
                 ),
               ),
             ),
             routes: [
               GoRoute(
-                path: VisitUserRoute().route,
+                path: const VisitUserRoute().route,
                 builder: (_, state) =>
                     VisitUserPage(userId: state.params['userId']!),
               ),
@@ -117,7 +123,8 @@ List<GoRoute> get _appRoutes => [
         ],
       ),
       GoRoute(
-        path: TopLevelRoute.settings().route,
-        pageBuilder: (context, _) => NoTransitionPage(child: SettingsPage()),
+        path: const TopLevelRoute.settings().route,
+        pageBuilder: (context, _) =>
+            const NoTransitionPage(child: SettingsPage()),
       ),
     ];

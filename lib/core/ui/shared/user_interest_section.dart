@@ -37,7 +37,7 @@ class _UserInterestSectionState extends State<UserInterestSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Card(
         child: Padding(

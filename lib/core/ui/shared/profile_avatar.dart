@@ -30,7 +30,7 @@ class ProfileAvatar extends StatelessWidget {
             painter: CircularGradientBorderPainter(
               radius: size / 2,
               strokeWidth: 2,
-              gradient: LinearGradient(colors: [
+              gradient: const LinearGradient(colors: [
                 Colors.redAccent,
                 Colors.greenAccent,
                 Colors.blueAccent

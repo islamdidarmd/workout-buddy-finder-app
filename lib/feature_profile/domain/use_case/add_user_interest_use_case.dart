@@ -24,9 +24,9 @@ class AddUserInterestUseCase {
         field_interest_list: FieldValue.arrayUnion([interestId]),
       });
 
-      return Left(null);
+      return const Left(null);
     } catch (e) {
-      return Right(UnknownError());
+      return const Right(UnknownError());
     }
   }
 }

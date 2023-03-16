@@ -17,10 +17,10 @@ class FakeSignInWithGoogleUseCase implements SignInWithGoogleUseCase {
   @override
   Future<Either<void, AppError>> execute(Position currentLocation) async {
     if (error != null) {
-      return Right(UnknownError());
+      return const Right(UnknownError());
     }
 
-    return Left(null);
+    return const Left(null);
   }
 
   @override

@@ -15,9 +15,9 @@ class AgeEditView extends StatelessWidget {
   Future<void> _updateBirthDate(BuildContext context) async {
     final pickedDateTime = await showDatePicker(
       context: context,
-      initialDate: DateTime.now().subtract(Duration(days: 365 * 18)),
+      initialDate: DateTime.now().subtract(const Duration(days: 365 * 18)),
       firstDate: DateTime(1923),
-      lastDate: DateTime.now().subtract(Duration(days: 365 * 18)),
+      lastDate: DateTime.now().subtract(const Duration(days: 365 * 18)),
       helpText: 'Select you BirthDay',
     );
 
@@ -25,7 +25,7 @@ class AgeEditView extends StatelessWidget {
       return;
     }
 
-    final _updateQuery = FirebaseFirestore.instance
+    final updateQuery = FirebaseFirestore.instance
         .collection(col_users)
         .doc(appUser.userId)
         .withConverter<AppUser>(
@@ -33,7 +33,7 @@ class AgeEditView extends StatelessWidget {
           toFirestore: (value, _) => value.toJson(),
         );
 
-    await _updateQuery.set(appUser.copyWith(
+    await updateQuery.set(appUser.copyWith(
       birthdate: pickedDateTime,
     ));
   }
@@ -49,7 +49,7 @@ class AgeEditView extends StatelessWidget {
         Row(children: [
           Expanded(child: BirthDayView(appUser: appUser)),
           InkWell(
-            child: Icon(FontAwesomeIcons.pen),
+            child: const Icon(FontAwesomeIcons.pen),
             onTap: () => _updateBirthDate(context),
           ),
         ]),

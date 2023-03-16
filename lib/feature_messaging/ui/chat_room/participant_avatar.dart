@@ -26,6 +26,6 @@ class ParticipantAvatar extends HookWidget {
       );
     }
 
-    return UserAvatar(profilePicture: '');
+    return const UserAvatar(profilePicture: '');
   }
 }
