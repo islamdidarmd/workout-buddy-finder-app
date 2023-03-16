@@ -7,15 +7,15 @@ import '../../../core/model/models.dart';
 
 @injectable
 class DislikeUserUseCase {
-  const DislikeUserUseCase();
+  final FirebaseFirestore firestore;
+
+  const DislikeUserUseCase(this.firestore);
 
   Future<void> call({
     required AppUser appUser,
     required String dislikedUserId,
   }) async {
-    final query = FirebaseFirestore.instance
-        .collection(col_disliked_users)
-        .doc(appUser.userId);
+    final query = firestore.collection(col_disliked_users).doc(appUser.userId);
 
     try {
       final doc = await query.get();

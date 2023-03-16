@@ -5,11 +5,15 @@ import '../../../core/core.dart';
 
 @injectable
 class UpdateProfileHiddenStatusUseCase {
+  final FirebaseFirestore firestore;
+
+  UpdateProfileHiddenStatusUseCase(this.firestore);
+
   Future<void> call({
     required String userId,
     required bool status,
   }) async {
-    final query = FirebaseFirestore.instance.collection(col_users).doc(userId);
+    final query = firestore.collection(col_users).doc(userId);
 
     try {
       final result = await query.update({

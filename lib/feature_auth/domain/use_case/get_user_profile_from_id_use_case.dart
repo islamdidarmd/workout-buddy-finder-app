@@ -6,10 +6,12 @@ import '../../../core/model/models.dart';
 
 @injectable
 class GetUserProfileFromIdUseCase {
-  const GetUserProfileFromIdUseCase();
+  final FirebaseFirestore firestore;
+
+  const GetUserProfileFromIdUseCase(this.firestore);
 
   Future<AppUser?> execute({required String uid}) async {
-    final _userProfileQuery = FirebaseFirestore.instance
+    final _userProfileQuery = firestore
         .collection(col_users)
         .doc(uid)
         .withConverter(

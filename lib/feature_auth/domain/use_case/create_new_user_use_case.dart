@@ -11,16 +11,18 @@ import '../../../feature_upload/feature_upload.dart';
 @injectable
 class CreateNewUserUseCase {
   final UploadImageFromBytesUseCase uploadImageFromBytesUseCase;
+  final FirebaseFirestore firestore;
 
   const CreateNewUserUseCase({
     required this.uploadImageFromBytesUseCase,
+    required this.firestore,
   });
 
   Future<AppUser?> execute({
     required User firebaseUser,
     required Position currentLocation,
   }) async {
-    final _createNewUserQuery = FirebaseFirestore.instance
+    final _createNewUserQuery = firestore
         .collection(col_users)
         .doc(firebaseUser.uid)
         .withConverter(

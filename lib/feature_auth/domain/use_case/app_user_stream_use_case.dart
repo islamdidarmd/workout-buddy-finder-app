@@ -5,14 +5,16 @@ import 'package:injectable/injectable.dart';
 import '../../../core/firestore_constants.dart';
 import '../../../core/model/models.dart';
 
-
 @injectable
 class AppUserStreamUseCase {
-  const AppUserStreamUseCase();
+  final FirebaseFirestore firestore;
+  final FirebaseAuth firebaseAuth;
 
-  Stream<AppUser> call() {
-    final firebaseUser = FirebaseAuth.instance.currentUser;
-    final _userProfileQuery = FirebaseFirestore.instance
+  const AppUserStreamUseCase(this.firestore, this.firebaseAuth);
+
+  Stream<AppUser> execute() {
+    final firebaseUser = firebaseAuth.currentUser;
+    final _userProfileQuery = firestore
         .collection(col_users)
         .doc(firebaseUser?.uid)
         .withConverter(

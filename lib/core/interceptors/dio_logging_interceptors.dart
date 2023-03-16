@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
-/// Log Level
+/// ignore_for_file: prefer-match-file-name.
+/// Log Level.
 enum Level {
   /// No logs.
   none,

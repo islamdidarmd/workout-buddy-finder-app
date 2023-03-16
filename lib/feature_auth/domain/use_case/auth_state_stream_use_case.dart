@@ -7,13 +7,15 @@ import 'update_last_seen_use_case.dart';
 @injectable
 class AuthStateStreamUseCase {
   final UpdateLastSeenUseCase updateLastSeenUseCase;
+  final FirebaseAuth firebaseAuth;
 
   const AuthStateStreamUseCase({
     required this.updateLastSeenUseCase,
+    required this.firebaseAuth,
   });
 
   Stream<UserAuthState> execute() {
-    return FirebaseAuth.instance.authStateChanges().map(
+    return firebaseAuth.authStateChanges().map(
       (firebaseUser) {
         if (firebaseUser == null) {
           return UserAuthState.signedOut;

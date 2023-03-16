@@ -1,9 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_buddy_finder/feature_auth/domain/use_case/get_user_profile_from_id_use_case.dart';
+import 'get_user_profile_from_id_use_case.dart';
 import '../../../core/core.dart';
 import 'create_new_user_use_case.dart';
 
@@ -11,10 +12,16 @@ import 'create_new_user_use_case.dart';
 class SignInWithGoogleUseCase {
   final CreateNewUserUseCase createNewUserUseCase;
   final GetUserProfileFromIdUseCase getUserProfileFromIdUseCase;
+  final FirebaseAuth firebaseAuth;
+  final FirebaseFirestore firestore;
+  final GoogleSignIn googleSign;
 
   const SignInWithGoogleUseCase({
     required this.createNewUserUseCase,
     required this.getUserProfileFromIdUseCase,
+    required this.firebaseAuth,
+    required this.firestore,
+    required this.googleSign,
   });
 
   Future<Either<void, AppError>> execute(Position currentLocation) async {
@@ -56,7 +63,7 @@ class SignInWithGoogleUseCase {
   }
 
   Future<UserCredential> _getCredentialsFromGoogle() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAccount? googleUser = await googleSign.signIn();
 
     // Obtain the auth details from the request.
     final GoogleSignInAuthentication? googleAuth =
@@ -69,6 +76,6 @@ class SignInWithGoogleUseCase {
     );
 
     // Once signed in, return the UserCredential.
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    return await firebaseAuth.signInWithCredential(credential);
   }
 }
