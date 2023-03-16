@@ -1,4 +1,5 @@
 import 'package:either_dart/src/either.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:workout_buddy_finder/core/error/app_error.dart';
 import 'package:workout_buddy_finder/feature_auth/feature_auth.dart';
 
@@ -15,4 +16,8 @@ class FakeSignOutUseCase implements SignOutUseCase {
 
     return Left(null);
   }
+
+  @override
+  // TODO: implement firebaseAuth
+  FirebaseAuth get firebaseAuth => throw UnimplementedError();
 }
