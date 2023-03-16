@@ -1,4 +1,11 @@
+include: package:flutter_lints/flutter.yaml
+
 analyzer:
+  exclude:
+    - 'build/**'
+    - '**/*.g.dart'
+    - '**/*.freezed.dart'
+    - '**/*.config.dart'
   plugins:
     - dart_code_metrics
 
@@ -7,12 +14,18 @@ dart_code_metrics:
     cyclomatic-complexity: 20
     number-of-parameters: 4
     maximum-nesting-level: 5
+
   metrics-exclude:
     - test/**
+    - lib/di/**
   rules-exclude:
     - test/**
+    - lib/di/**
+
   extends:
     - package:dart_code_metrics/presets/all.yaml
+  rules:
+    - avoid-ignoring-return-values: false
   anti-patterns:
     - long-method
     - long-parameter-list

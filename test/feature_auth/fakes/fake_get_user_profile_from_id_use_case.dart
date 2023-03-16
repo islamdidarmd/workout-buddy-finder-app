@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:workout_buddy_finder/core/model/models.dart';
 import 'package:workout_buddy_finder/feature_auth/feature_auth.dart';
 
@@ -6,4 +7,8 @@ class FakeGetUserProfileFromIdUseCase implements GetUserProfileFromIdUseCase {
   Future<AppUser?> execute({required String uid}) {
     return Future.value(AppUser.empty());
   }
+
+  @override
+  // TODO: implement firestore
+  FirebaseFirestore get firestore => throw UnimplementedError();
 }

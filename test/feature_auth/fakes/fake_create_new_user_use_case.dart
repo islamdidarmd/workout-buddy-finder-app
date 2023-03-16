@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:workout_buddy_finder/core/core.dart';
@@ -16,4 +17,8 @@ class FakeCreateNewUserUseCas implements CreateNewUserUseCase {
   @override
   UploadImageFromBytesUseCase get uploadImageFromBytesUseCase =>
       FakeUploadImageFromBytesUseCase();
+
+  @override
+  // TODO: implement firestore
+  FirebaseFirestore get firestore => throw UnimplementedError();
 }
