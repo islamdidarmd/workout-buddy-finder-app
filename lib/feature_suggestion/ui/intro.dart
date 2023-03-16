@@ -17,8 +17,8 @@ class Intro extends StatelessWidget {
     final appUser = context.read<AppUser>();
 
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         mediumBoldTitle(context, 'Hi, ${appUser.name}'),
         const SizedBox(width: 8),
