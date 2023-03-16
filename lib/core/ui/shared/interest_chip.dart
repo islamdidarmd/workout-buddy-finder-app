@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../core.dart';
 
@@ -32,7 +33,7 @@ class InterestChip extends HookWidget {
           radius: 12,
         ),
         label: Text(interest.name),
-      );
+      ).animate().fadeIn(duration: 400.milliseconds);
     }
 
     return const SizedBox();

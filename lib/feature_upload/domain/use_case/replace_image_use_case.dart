@@ -7,9 +7,9 @@ import 'package:injectable/injectable.dart';
 class ReplaceImageUseCase {
   final FirebaseStorage firebaseStorage;
 
-  ReplaceImageUseCase(this.firebaseStorage);
+  const ReplaceImageUseCase(this.firebaseStorage);
 
-  Future<String?> call({
+  Future<String?> execute({
     required String url,
     required File image,
   }) async {
