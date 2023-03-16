@@ -13,14 +13,14 @@ dependencies:
   bloc_test: 9.1.1
   cached_network_image: 3.2.3
   collection: 1.17.0
-  cloud_firestore: 4.3.1
+  cloud_firestore: ^4.4.4
   cupertino_icons: 1.0.5
   dart_geohash: 2.0.2
   dio: 4.0.6
   either_dart: 0.3.0
   equatable: 2.0.5
   firebase_auth: 4.2.5
-  firebase_core: 2.4.1
+  firebase_core: ^2.7.1
   firebase_storage: 11.0.10
   firebase_ui_firestore: 1.2.3
   flutter_animate: 3.0.0
