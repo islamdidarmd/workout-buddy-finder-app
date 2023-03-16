@@ -45,8 +45,8 @@ class ProfilePage extends StatelessWidget {
                     effects: [
                       SlideEffect(
                         duration: 300.milliseconds,
-                        begin: Offset(1.0, 0.0),
-                        end: Offset(0.0, 0.0),
+                        begin: const Offset(1.0, 0.0),
+                        end: const Offset(0.0, 0.0),
                       ),
                     ],
                     interval: 50.milliseconds,

@@ -8,7 +8,7 @@ class SignInPage extends StatelessWidget {
 
   Widget _slogan(BuildContext context) => Text(
         'Welcome to Fitness Buddy Finder',
-        key: ValueKey('Login Page Slogan'),
+        key: const ValueKey('Login Page Slogan'),
         style: Theme.of(context)
             .textTheme
             .titleLarge
@@ -18,7 +18,7 @@ class SignInPage extends StatelessWidget {
 
   Widget _subSlogan(BuildContext context) => Text(
         'Login to see nearby fitness enthusiasts',
-        style: Theme.of(context).textTheme.caption?.copyWith(fontSize: 16),
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 16),
       );
 
   @override
@@ -40,7 +40,7 @@ class SignInPage extends StatelessWidget {
               const SizedBox(height: 8),
               _subSlogan(context),
               const SizedBox(height: 60),
-              SignInWithGoogleButton()
+              const SignInWithGoogleButton()
             ],
           ),
         ),

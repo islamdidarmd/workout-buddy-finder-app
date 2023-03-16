@@ -55,7 +55,7 @@ class ChatRoomPage extends HookWidget {
             Expanded(child: MessageInput(controller: textController)),
             IconButton(
               onPressed: () => _onSendMessage(loggedInUser, textController),
-              icon: Icon(FontAwesomeIcons.paperPlane),
+              icon: const Icon(FontAwesomeIcons.paperPlane),
             ),
           ]),
         ),

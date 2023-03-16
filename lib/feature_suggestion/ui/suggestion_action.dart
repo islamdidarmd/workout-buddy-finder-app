@@ -17,15 +17,15 @@ class SuggestionAction extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         FloatingActionButton(
-          child: Icon(FontAwesomeIcons.xmark),
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           onPressed: onDislike,
+          child: const Icon(FontAwesomeIcons.xmark),
         ),
         const SizedBox(width: 48),
         FloatingActionButton(
-          child: Icon(FontAwesomeIcons.solidHandshake),
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           onPressed: onLike,
+          child: const Icon(FontAwesomeIcons.solidHandshake),
         ),
       ],
     );

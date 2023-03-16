@@ -14,9 +14,9 @@ class SignOutUseCase {
     try {
       await firebaseAuth.signOut();
     } catch (e) {
-      return Right(LogoutFailedError());
+      return const Right(LogoutFailedError());
     }
 
-    return Left(null);
+    return const Left(null);
   }
 }

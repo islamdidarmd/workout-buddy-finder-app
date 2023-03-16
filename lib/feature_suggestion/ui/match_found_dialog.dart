@@ -12,17 +12,17 @@ class MatchFoundDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Buddy Found!'),
+      title: const Text('Buddy Found!'),
       content:
-          Text('It seems that you both can workout together. Want to say Hi?'),
+          const Text('It seems that you both can workout together. Want to say Hi?'),
       actions: [
-        TextButton(onPressed: context.pop, child: Text('Later')),
+        TextButton(onPressed: context.pop, child: const Text('Later')),
         ElevatedButton(
             onPressed: () {
               context.pop();
               onOpenMessaging();
             },
-            child: Text('Say Hi'),
+            child: const Text('Say Hi'),
         ),
       ],
     );

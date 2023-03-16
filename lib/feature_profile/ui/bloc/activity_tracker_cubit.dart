@@ -11,7 +11,7 @@ part 'activity_tracker_cubit.freezed.dart';
 
 @injectable
 class ActivityTrackerCubit extends Cubit<ActivityTrackerState> {
-  HealthFactory _health = HealthFactory();
+  final HealthFactory _health = HealthFactory();
 
   ActivityTrackerCubit() : super(const ActivityTrackerState.initial());
 
@@ -22,7 +22,7 @@ class ActivityTrackerCubit extends Cubit<ActivityTrackerState> {
     ];
     final hasPermission = await _requestPermission(types);
     if (!hasPermission) {
-      emit(ActivityTrackerState.noPermission());
+      emit(const ActivityTrackerState.noPermission());
 
       return;
     }
@@ -31,7 +31,7 @@ class ActivityTrackerCubit extends Cubit<ActivityTrackerState> {
     // Fetch health data from the last 24 hours.
     try {
       List<HealthDataPoint> healthData = await _health.getHealthDataFromTypes(
-        now.subtract(Duration(days: 1)),
+        now.subtract(const Duration(days: 1)),
         now,
         types,
       );

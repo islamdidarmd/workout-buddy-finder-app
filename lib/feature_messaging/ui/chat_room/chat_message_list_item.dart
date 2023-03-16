@@ -21,7 +21,7 @@ class ChatMessageListItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         if (chatMessage.sender == loggedInUser.userId) ...{
-          Spacer(),
+          const Spacer(),
         } else ...{
           ParticipantAvatar(participantId: chatMessage.sender),
         },
@@ -42,7 +42,7 @@ class ChatMessageListItem extends StatelessWidget {
         if (chatMessage.sender == loggedInUser.userId) ...{
           UserAvatar(profilePicture: loggedInUser.profilePicture),
         } else ...{
-          Spacer(),
+          const Spacer(),
         },
       ],
     );

@@ -80,7 +80,7 @@ class SuggestionCard extends StatelessWidget {
     state.maybeWhen(
       interactionError: (userId) {
         final snackbarState = ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed')),
+          const SnackBar(content: Text('Failed')),
         );
       },
       matchFound: (userId) {
@@ -97,14 +97,14 @@ class SuggestionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (_suggestions.isEmpty) {
-      return EmptySuggestion();
+      return const EmptySuggestion();
     }
 
     return BlocListener<SuggestionsBloc, SuggestionsState>(
       listener: _listenToSuggestionBlocState,
       child: Stack(
         children: [
-          EmptySuggestion(),
+          const EmptySuggestion(),
           Positioned(
             top: 0,
             left: 0,

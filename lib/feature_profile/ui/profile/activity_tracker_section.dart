@@ -21,8 +21,9 @@ class ActivityTrackerSection extends StatelessWidget {
       child: BlocBuilder<ActivityTrackerCubit, ActivityTrackerState>(
         builder: (context, state) {
           return state.maybeWhen(
-            noPermission: () => ActivityPermissionRequiredView(),
+            noPermission: () => const ActivityPermissionRequiredView(),
             healthDataUpdated: (healthData) => ContentCard(
+              width: double.infinity,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +33,6 @@ class ActivityTrackerSection extends StatelessWidget {
                   ActivityTrackerEnergyBurnedView(energyBurnedData: healthData),
                 ],
               ),
-              width: double.infinity,
             ),
             orElse: () => const SizedBox(),
           );

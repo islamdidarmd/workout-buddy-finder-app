@@ -14,7 +14,7 @@ class LocationUpdateView extends StatelessWidget {
   final AppUser appUser;
 
   Future<void> _updateLocation(BuildContext context) async {
-    final _updateQuery = FirebaseFirestore.instance
+    final updateQuery = FirebaseFirestore.instance
         .collection(col_users)
         .doc(appUser.userId)
         .withConverter<AppUser>(
@@ -25,14 +25,14 @@ class LocationUpdateView extends StatelessWidget {
     final Position? location = await showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
+        return const AlertDialog(
           content: LocationRetrieverDialog(),
         );
       },
     );
 
     if (location != null) {
-      await _updateQuery.set(appUser.copyWith(
+      await updateQuery.set(appUser.copyWith(
         lat: location.latitude,
         long: location.longitude,
       ));
@@ -52,7 +52,7 @@ class LocationUpdateView extends StatelessWidget {
             Expanded(child: LocationText(lat: appUser.lat, long: appUser.long)),
             InkWell(
               onTap: () => _updateLocation(context),
-              child: Icon(FontAwesomeIcons.arrowsRotate),
+              child: const Icon(FontAwesomeIcons.arrowsRotate),
             ),
           ],
         ),

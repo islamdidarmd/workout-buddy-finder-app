@@ -22,7 +22,7 @@ class HideProfileFromDiscoveryView extends StatelessWidget {
         onChanged: (bool value) {
           updateStatus(userId: appUser.userId, status: value);
         },
-        title: Text('Hide profile from discovery'),
+        title: const Text('Hide profile from discovery'),
       ),
     );
   }

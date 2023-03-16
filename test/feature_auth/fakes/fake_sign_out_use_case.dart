@@ -11,10 +11,10 @@ class FakeSignOutUseCase implements SignOutUseCase {
   @override
   Future<Either<void, AppError>> execute() async {
     if (error != null) {
-      return Right(UnknownError());
+      return const Right(UnknownError());
     }
 
-    return Left(null);
+    return const Left(null);
   }
 
   @override

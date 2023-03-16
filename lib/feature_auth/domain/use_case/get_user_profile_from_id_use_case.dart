@@ -11,7 +11,7 @@ class GetUserProfileFromIdUseCase {
   const GetUserProfileFromIdUseCase(this.firestore);
 
   Future<AppUser?> execute({required String uid}) async {
-    final _userProfileQuery = firestore
+    final userProfileQuery = firestore
         .collection(col_users)
         .doc(uid)
         .withConverter(
@@ -19,7 +19,7 @@ class GetUserProfileFromIdUseCase {
           toFirestore: (value, _) => value.toJson(),
         );
 
-    final profileSnapshot = await _userProfileQuery.get();
+    final profileSnapshot = await userProfileQuery.get();
 
     return profileSnapshot.data();
   }

@@ -15,10 +15,10 @@ class AvailabilityEditView extends StatelessWidget {
       return;
     }
 
-    final _updateQuery =
+    final updateQuery =
         FirebaseFirestore.instance.collection(col_users).doc(appUser.userId);
 
-    await _updateQuery.update({
+    await updateQuery.update({
       field_availability: availability,
     });
   }
@@ -26,7 +26,7 @@ class AvailabilityEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
-      items: [
+      items: const [
         DropdownMenuItem(value: '', child: Text('Select Availability')),
         DropdownMenuItem(value: 'daily1hr', child: Text('Daily 1 hr')),
         DropdownMenuItem(value: 'daily2hr', child: Text('Daily 2 hr')),
@@ -34,7 +34,7 @@ class AvailabilityEditView extends StatelessWidget {
       ],
       value: appUser.availability,
       onChanged: _updateAvailability,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: 'Availability',
         border: OutlineInputBorder(),
       ),

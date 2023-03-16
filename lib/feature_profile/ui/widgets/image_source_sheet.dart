@@ -5,7 +5,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImageSourceSheet extends StatelessWidget {
-  ImageSourceSheet({required this.onImageSelected});
+  ImageSourceSheet({super.key, required this.onImageSelected});
 
   final void Function(File) onImageSelected;
   final bottomSheetHeight = 200.0;
@@ -16,7 +16,7 @@ class ImageSourceSheet extends StatelessWidget {
     final croppedImage = await ImageCropper().cropImage(
       sourcePath: image.path,
       aspectRatioPresets: [CropAspectRatioPreset.ratio5x3],
-      aspectRatio: CropAspectRatio(ratioX: 3, ratioY: 5),
+      aspectRatio: const CropAspectRatio(ratioX: 3, ratioY: 5),
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: "Crop Image",
@@ -50,8 +50,8 @@ class ImageSourceSheet extends StatelessWidget {
         children: <Widget>[
           const SizedBox(height: 16),
           ElevatedButton.icon(
-            icon: Icon(Icons.photo_library, color: Colors.grey, size: 27),
-            label: Text('Gallery', style: TextStyle(fontSize: 16)),
+            icon: const Icon(Icons.photo_library, color: Colors.grey, size: 27),
+            label: const Text('Gallery', style: TextStyle(fontSize: 16)),
             onPressed: () => _onTapGallery(context),
           ),
         ],

@@ -14,7 +14,7 @@ class AppUserStreamUseCase {
 
   Stream<AppUser> execute() {
     final firebaseUser = firebaseAuth.currentUser;
-    final _userProfileQuery = firestore
+    final userProfileQuery = firestore
         .collection(col_users)
         .doc(firebaseUser?.uid)
         .withConverter(
@@ -22,6 +22,6 @@ class AppUserStreamUseCase {
           toFirestore: (value, _) => value.toJson(),
         );
 
-    return _userProfileQuery.snapshots().map((event) => event.data()!);
+    return userProfileQuery.snapshots().map((event) => event.data()!);
   }
 }
