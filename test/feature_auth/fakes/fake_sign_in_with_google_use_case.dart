@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:workout_buddy_finder/core/error/app_error.dart';
 import 'package:workout_buddy_finder/feature_auth/feature_auth.dart';
 
@@ -28,4 +31,16 @@ class FakeSignInWithGoogleUseCase implements SignInWithGoogleUseCase {
   // TODO: implement getUserProfileFromIdUseCase
   GetUserProfileFromIdUseCase get getUserProfileFromIdUseCase =>
       FakeGetUserProfileFromIdUseCase();
+
+  @override
+  // TODO: implement firebaseAuth
+  FirebaseAuth get firebaseAuth => throw UnimplementedError();
+
+  @override
+  // TODO: implement firestore
+  FirebaseFirestore get firestore => throw UnimplementedError();
+
+  @override
+  // TODO: implement googleSign
+  GoogleSignIn get googleSign => throw UnimplementedError();
 }
