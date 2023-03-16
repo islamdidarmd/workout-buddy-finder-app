@@ -8,7 +8,7 @@ main() {
   testWidgets('Builds and widget that has scaffold and bottom nav', (
     widgetTester,
   ) async {
-    final result = await widgetTester.pumpWidget(WidgetWrapper(
+    await widgetTester.pumpWidget(WidgetWrapper(
       child: ScaffoldWithBottomNav(
         child: Text('', key: ValueKey("child")),
         currentRoute: "currentRoute",
@@ -19,6 +19,8 @@ main() {
       ),
     ));
     final childFinder = find.byKey(ValueKey("child"));
+    final bottomNavFinder = find.byKey(ValueKey("Bottom Nav"));
     expect(childFinder, findsOneWidget);
+    expect(bottomNavFinder, findsOneWidget);
   });
 }
