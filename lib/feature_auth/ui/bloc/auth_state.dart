@@ -1,6 +1,7 @@
 part of 'auth_cubit.dart';
 
 @freezed
+/// ignore_for_file: avoid-dynamic
 class AuthState with _$AuthState{
  const factory AuthState.initial() = _InitialState;
  const factory AuthState.loading() = _LoadingState;
