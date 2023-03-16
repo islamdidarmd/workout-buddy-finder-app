@@ -5,6 +5,10 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class UploadImageFromBytesUseCase {
+  final FirebaseStorage firebaseStorage;
+
+  UploadImageFromBytesUseCase(this.firebaseStorage);
+
   Future<String?> execute({
     required String path,
     required Uint8List bytes,
@@ -13,8 +17,7 @@ class UploadImageFromBytesUseCase {
     final imageName = fileName ?? '${DateTime.now().millisecondsSinceEpoch}';
 
     try {
-      final fileRef =
-      FirebaseStorage.instance.ref().child(path).child(imageName);
+      final fileRef = firebaseStorage.ref().child(path).child(imageName);
       final uploaderTask = await fileRef.putData(bytes);
 
       return await fileRef.getDownloadURL();

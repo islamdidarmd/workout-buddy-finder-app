@@ -8,12 +8,16 @@ import '../../../core/model/models.dart';
 
 @injectable
 class AddUserInterestUseCase {
+  final FirebaseFirestore firestore;
+
+  const AddUserInterestUseCase(this.firestore);
+
   Future<Either<void, AppError>> call(
     AppUser appUser,
     String interestId,
   ) async {
     final addInterestQuery =
-        FirebaseFirestore.instance.collection(col_users).doc(appUser.userId);
+        firestore.collection(col_users).doc(appUser.userId);
 
     try {
       await addInterestQuery.update({

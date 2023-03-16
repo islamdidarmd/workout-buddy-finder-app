@@ -6,14 +6,16 @@ import '../../../core/firestore_constants.dart';
 
 @injectable
 class UpdateLastSentMessageUseCase {
-  const UpdateLastSentMessageUseCase();
+  final FirebaseFirestore firestore;
+
+  const UpdateLastSentMessageUseCase(this.firestore);
 
   Future<void> call({
     required String chatRoomId,
     required String message,
   }) async {
     final lastMessageUpdateQuery =
-        FirebaseFirestore.instance.collection(col_messages).doc(chatRoomId);
+        firestore.collection(col_messages).doc(chatRoomId);
     try {
       final lastMessageResult = await lastMessageUpdateQuery.update({
         lastMessage: message,

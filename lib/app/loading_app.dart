@@ -18,7 +18,7 @@ class LoadingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(body: SafeArea(child: AppLoadingIndicator())),
+      home: const Scaffold(body: SafeArea(child: AppLoadingIndicator())),
       title: appName,
       theme: theme,
       darkTheme: darkTheme,

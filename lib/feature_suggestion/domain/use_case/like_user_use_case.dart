@@ -11,19 +11,19 @@ import '../../../core/model/models.dart';
 class LikeUserUseCase {
   final CheckIfLikedByUseCase checkIfLikedByUseCase;
   final CreateChatRoomUseCase createChatRoomUseCase;
+  final FirebaseFirestore firestore;
 
   const LikeUserUseCase({
     required this.checkIfLikedByUseCase,
     required this.createChatRoomUseCase,
+    required this.firestore,
   });
 
   Future<void> call({
     required AppUser appUser,
     required String likedUserId,
   }) async {
-    final query = FirebaseFirestore.instance
-        .collection(col_liked_users)
-        .doc(appUser.userId);
+    final query = firestore.collection(col_liked_users).doc(appUser.userId);
 
     try {
       final doc = await query.get();

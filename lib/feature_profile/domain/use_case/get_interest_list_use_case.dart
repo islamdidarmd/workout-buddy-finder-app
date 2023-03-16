@@ -7,6 +7,10 @@ import '../../../core/model/models.dart';
 
 @injectable
 class GetInterestListUseCase {
+  final FirebaseFirestore firestore;
+
+  const GetInterestListUseCase(this.firestore);
+
   Future<Either<List<Interest>, AppError>> call() async {
     final fetchInterestQuery = FirebaseFirestore.instance
         .collection('interests')

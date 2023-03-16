@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../theme/theme_manager.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../app/wbf_app.dart';
 import '../di/service_locator.dart';
 
+/// ignore_for_file: prefer-match-file-name.
 enum EnvType { Development, Production }
 
 class Env {

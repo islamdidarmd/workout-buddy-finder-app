@@ -5,13 +5,16 @@ import '../../../core/firestore_constants.dart';
 
 @injectable
 class CheckIfDisLikedByUseCase {
+  final FirebaseFirestore firestore;
+
+  CheckIfDisLikedByUseCase(this.firestore);
+
   Future<bool> call({
     required String userId,
     required String testDisLikedByUserId,
   }) async {
-    final query = FirebaseFirestore.instance
-        .collection(col_disliked_users)
-        .doc(testDisLikedByUserId);
+    final query =
+        firestore.collection(col_disliked_users).doc(testDisLikedByUserId);
 
     try {
       final doc = await query.get();

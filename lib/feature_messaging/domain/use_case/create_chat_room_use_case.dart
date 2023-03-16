@@ -7,13 +7,14 @@ import '../entity/entities.dart';
 
 @injectable
 class CreateChatRoomUseCase {
+  final FirebaseFirestore firestore;
+
+  const CreateChatRoomUseCase(this.firestore);
+
   Future<String?> call({
     required List<String> participants,
   }) async {
-    final query = FirebaseFirestore.instance
-        .collection(col_messages)
-        .doc()
-        .withConverter(
+    final query = firestore.collection(col_messages).doc().withConverter(
           fromFirestore: (snapshot, _) => ChatRoom.fromJson(snapshot.data()!),
           toFirestore: (value, _) => value.toJson(),
         );
