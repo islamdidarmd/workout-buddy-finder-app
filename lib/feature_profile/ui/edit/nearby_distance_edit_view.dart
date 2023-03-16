@@ -13,7 +13,7 @@ class NearbyDistanceEditView extends StatelessWidget {
   final AppUser appUser;
 
   Future<void> _updateNearbyDistance(double nearybyDistance) async {
-    final _updateQuery = FirebaseFirestore.instance
+    final updateQuery = FirebaseFirestore.instance
         .collection(col_users)
         .doc(appUser.userId)
         .withConverter<AppUser>(
@@ -21,7 +21,7 @@ class NearbyDistanceEditView extends StatelessWidget {
           toFirestore: (value, _) => value.toJson(),
         );
 
-    await _updateQuery.set(appUser.copyWith(
+    await updateQuery.set(appUser.copyWith(
       nearbyDistance: nearybyDistance.toInt(),
     ));
   }

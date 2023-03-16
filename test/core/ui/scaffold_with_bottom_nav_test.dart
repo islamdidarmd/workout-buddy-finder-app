@@ -10,16 +10,16 @@ main() {
   ) async {
     await widgetTester.pumpWidget(WidgetWrapper(
       child: ScaffoldWithBottomNav(
-        child: Text('', key: ValueKey("child")),
         currentRoute: "currentRoute",
         onOpenSuggestion: () => {},
         onOpenMessaging: () => {},
         onOpenProfile: () => {},
         onOpenSettings: () => {},
+        child: const Text('', key: ValueKey("child")),
       ),
     ));
-    final childFinder = find.byKey(ValueKey("child"));
-    final bottomNavFinder = find.byKey(ValueKey("Bottom Nav"));
+    final childFinder = find.byKey(const ValueKey("child"));
+    final bottomNavFinder = find.byKey(const ValueKey("Bottom Nav"));
     expect(childFinder, findsOneWidget);
     expect(bottomNavFinder, findsOneWidget);
   });

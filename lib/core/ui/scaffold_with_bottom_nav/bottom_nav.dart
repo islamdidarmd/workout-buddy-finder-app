@@ -55,7 +55,7 @@ class BottomNav extends StatelessWidget {
     return NavigationBar(
       labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
       selectedIndex: _getIndexForLocation(currentRoute),
-      destinations: [
+      destinations: const [
         BottomNavItem(
           icon: Icon(FontAwesomeIcons.compass),
           label: 'Suggestions',

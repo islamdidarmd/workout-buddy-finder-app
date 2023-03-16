@@ -29,7 +29,7 @@ class SuggestionCardContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final appUser = context.read<AppUser>();
     if (appUser.isOnBoardingNotComplete) {
-      return CompleteProfileMessageCard();
+      return const CompleteProfileMessageCard();
     }
 
     return BlocProvider<SuggestionsBloc>(

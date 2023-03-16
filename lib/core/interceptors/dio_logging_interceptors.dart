@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
-/// ignore_for_file: prefer-match-file-name.
+/// ignore_for_file: prefer-match-file-name
 /// Log Level.
 enum Level {
   /// No logs.
@@ -73,8 +73,8 @@ class DioLoggingInterceptor extends Interceptor {
   /// Print compact json response
   final bool compact;
 
-  final JsonDecoder decoder = JsonDecoder();
-  final JsonEncoder encoder = JsonEncoder.withIndent('  ');
+  final JsonDecoder decoder = const JsonDecoder();
+  final JsonEncoder encoder = const JsonEncoder.withIndent('  ');
 
   DioLoggingInterceptor({
     this.level = Level.none,

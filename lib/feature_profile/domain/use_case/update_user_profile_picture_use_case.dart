@@ -24,9 +24,9 @@ class UpdateUserProfilePictureUseCase {
         field_profile_picture: newUrl,
       });
 
-      return Left(null);
+      return const Left(null);
     } catch (e) {
-      return Right(UnknownError());
+      return const Right(UnknownError());
     }
   }
 }

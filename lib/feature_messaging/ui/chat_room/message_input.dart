@@ -11,12 +11,12 @@ class MessageInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'Send Message',
         isDense: true,
         filled: true,
         border: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
       ),
     );

@@ -8,13 +8,13 @@ import 'fakes/fake_sign_in_with_google_use_case.dart';
 import 'fakes/fake_sign_out_use_case.dart';
 
 main() {
-  final unknownError = UnknownError();
+  const unknownError = UnknownError();
 
   blocTest<AuthCubit, AuthState>(
     'Emits [] state when created',
     build: () => AuthCubit(
-      signInWithGoogleUseCase: FakeSignInWithGoogleUseCase(null),
-      signOutUseCase: FakeSignOutUseCase(null),
+      signInWithGoogleUseCase: const FakeSignInWithGoogleUseCase(null),
+      signOutUseCase: const FakeSignOutUseCase(null),
     ),
     act: (bloc) {},
     expect: () => <AuthState>[],
@@ -23,8 +23,8 @@ main() {
   blocTest<AuthCubit, AuthState>(
     'Emits [] when login success',
     build: () => AuthCubit(
-      signInWithGoogleUseCase: FakeSignInWithGoogleUseCase(null),
-      signOutUseCase: FakeSignOutUseCase(null),
+      signInWithGoogleUseCase: const FakeSignInWithGoogleUseCase(null),
+      signOutUseCase: const FakeSignOutUseCase(null),
     ),
     act: (bloc) {
       bloc.signInWithGoogle(FakePosition());
@@ -36,35 +36,35 @@ main() {
   blocTest<AuthCubit, AuthState>(
     'Emits signInFailure State when login fails',
     build: () => AuthCubit(
-      signInWithGoogleUseCase: FakeSignInWithGoogleUseCase(unknownError),
-      signOutUseCase: FakeSignOutUseCase(null),
+      signInWithGoogleUseCase: const FakeSignInWithGoogleUseCase(unknownError),
+      signOutUseCase: const FakeSignOutUseCase(null),
     ),
     act: (bloc) {
       bloc.signInWithGoogle(FakePosition());
     },
     wait: const Duration(milliseconds: 300),
-    expect: () => [AuthState.signInFailure(unknownError)],
+    expect: () => [const AuthState.signInFailure(unknownError)],
   );
 
   group('Signout tests', () {
     blocTest(
       'Emits Signout success',
       build: () => AuthCubit(
-          signInWithGoogleUseCase: FakeSignInWithGoogleUseCase(unknownError),
-          signOutUseCase: FakeSignOutUseCase(null)),
+          signInWithGoogleUseCase: const FakeSignInWithGoogleUseCase(unknownError),
+          signOutUseCase: const FakeSignOutUseCase(null)),
       act: (bloc) => bloc.signOut(),
       wait: const Duration(milliseconds: 300),
-      expect: () => [AuthState.signedOut()],
+      expect: () => [const AuthState.signedOut()],
     );
 
     blocTest(
       'Emits Signout Failure',
       build: () => AuthCubit(
-          signInWithGoogleUseCase: FakeSignInWithGoogleUseCase(unknownError),
-          signOutUseCase: FakeSignOutUseCase(unknownError)),
+          signInWithGoogleUseCase: const FakeSignInWithGoogleUseCase(unknownError),
+          signOutUseCase: const FakeSignOutUseCase(unknownError)),
       act: (bloc) => bloc.signOut(),
       wait: const Duration(milliseconds: 300),
-      expect: () => [AuthState.signOutFailure(unknownError)],
+      expect: () => [const AuthState.signOutFailure(unknownError)],
     );
   });
 }

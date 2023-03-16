@@ -8,14 +8,14 @@ class WBFApp extends HookWidget {
   final String appName;
   final EnvType envType;
 
-  WBFApp({
+  const WBFApp({super.key, 
     required this.appName,
     required this.envType,
   });
 
   @override
   Widget build(BuildContext context) {
-    final themeManager = useListenable(ThemeManager.instance);
+    useListenable(ThemeManager.instance);
 
     return AuthStateListenerApp(appName: appName, envType: envType);
   }

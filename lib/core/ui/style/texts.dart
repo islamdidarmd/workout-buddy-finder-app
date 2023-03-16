@@ -17,7 +17,7 @@ Text lightBody(
 
 Text caption(context, String text, {Color? color}) => Text(
       text,
-      style: Theme.of(context).textTheme.caption?.copyWith(color: color),
+      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: color),
     );
 
 Text mediumBody(

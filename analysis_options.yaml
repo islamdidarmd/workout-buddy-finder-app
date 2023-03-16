@@ -26,6 +26,8 @@ dart_code_metrics:
     - package:dart_code_metrics/presets/all.yaml
   rules:
     - avoid-ignoring-return-values: false
+    - arguments-ordering:
+        child-last: true
   anti-patterns:
     - long-method
     - long-parameter-list

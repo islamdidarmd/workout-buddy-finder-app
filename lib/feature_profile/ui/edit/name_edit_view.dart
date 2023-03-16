@@ -12,7 +12,7 @@ class NameEditView extends HookWidget {
   final AppUser appUser;
 
   Future<void> _onSubmit(String text) async {
-    final _updateQuery = FirebaseFirestore.instance
+    final updateQuery = FirebaseFirestore.instance
         .collection(col_users)
         .doc(appUser.userId)
         .withConverter<AppUser>(
@@ -20,7 +20,7 @@ class NameEditView extends HookWidget {
           toFirestore: (value, _) => value.toJson(),
         );
 
-    await _updateQuery.set(appUser.copyWith(
+    await updateQuery.set(appUser.copyWith(
       name: text,
     ));
   }
@@ -34,10 +34,10 @@ class NameEditView extends HookWidget {
       onSubmitted: _onSubmit,
       decoration: InputDecoration(
         labelText: 'Display Name',
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
         suffix: InkWell(
           onTap: () => _onSubmit(controller.text),
-          child: Icon(FontAwesomeIcons.check),
+          child: const Icon(FontAwesomeIcons.check),
         ),
       ),
     );

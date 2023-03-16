@@ -22,7 +22,7 @@ class SendMessageUseCase {
     required String chatRoomId,
     required String message,
   }) async {
-    final _messagesQuery = firestore
+    final messagesQuery = firestore
         .collection(col_messages)
         .doc(chatRoomId)
         .collection(col_chat_room_messages)
@@ -32,7 +32,7 @@ class SendMessageUseCase {
           toFirestore: (value, _) => value.toJson(),
         );
 
-    final doc = _messagesQuery.doc();
+    final doc = messagesQuery.doc();
     final chatMessage = ChatMessage(
       chatMessageId: doc.id,
       sender: loggedInUser.userId,
@@ -41,7 +41,7 @@ class SendMessageUseCase {
     );
 
     try {
-      final result = await _messagesQuery.add(chatMessage);
+      final result = await messagesQuery.add(chatMessage);
       updateLastSentMessageUseCase(chatRoomId: chatRoomId, message: message);
     } catch (e) {
       debugPrint(e.toString());

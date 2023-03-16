@@ -15,7 +15,7 @@ class ChatRoomMessagesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _messagesQuery = FirebaseFirestore.instance
+    final messagesQuery = FirebaseFirestore.instance
         .collection(col_messages)
         .doc(chatRoomId)
         .collection(col_chat_room_messages)
@@ -27,7 +27,7 @@ class ChatRoomMessagesList extends StatelessWidget {
         );
 
     return FirestoreListView(
-      query: _messagesQuery,
+      query: messagesQuery,
       reverse: true,
       itemBuilder: (_, doc) => ChatMessageListItem(chatMessage: doc.data()),
     );

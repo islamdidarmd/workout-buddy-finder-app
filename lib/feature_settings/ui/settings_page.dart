@@ -8,11 +8,11 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppBar(title: Text('Settings')),
+        AppBar(title: const Text('Settings')),
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
-            children: [
+            children: const [
               ThemeSelectorView(),
             ],
           ),

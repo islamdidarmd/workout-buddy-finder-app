@@ -47,7 +47,7 @@ class SuggestionsCardItem extends StatelessWidget {
                   Theme.of(context).shadowColor,
                   Colors.transparent,
                 ],
-                stops: [
+                stops: const [
                   0.0,
                   0.5,
                 ],
@@ -62,7 +62,7 @@ class SuggestionsCardItem extends StatelessWidget {
               children: [
                 mediumTitle(context, suggestion.name, color: Colors.white),
                 Chip(
-                  avatar: Icon(FontAwesomeIcons.locationDot, size: 16),
+                  avatar: const Icon(FontAwesomeIcons.locationDot, size: 16),
                   label: lightBody(context, getDistance(context)),
                 ),
               ],

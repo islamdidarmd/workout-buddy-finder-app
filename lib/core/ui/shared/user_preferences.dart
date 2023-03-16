@@ -11,6 +11,7 @@ class UserPreferences extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ContentCard(
+      width: double.infinity,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         mediumBoldTitle(context, 'Preferences'),
         const VerticalSpacing(spacing: 8),
@@ -18,7 +19,6 @@ class UserPreferences extends StatelessWidget {
         const VerticalSpacing(spacing: 16),
         UserNearbyDistance(appUser: appUser),
       ]),
-      width: double.infinity,
     );
   }
 }

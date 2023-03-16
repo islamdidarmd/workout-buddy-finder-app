@@ -24,13 +24,13 @@ class ThemeSelectorView extends StatelessWidget {
     }
 
     return ListTile(
-      title: Text('App Theme'),
+      title: const Text('App Theme'),
       trailing: DropdownButton<String>(
         value: selected,
         items: <String>['Light', 'Dark', 'System']
             .map((String value) => DropdownMenuItem<String>(
-          child: Text(value),
           value: value,
+          child: Text(value),
         ))
             .toList(),
         onChanged: (value) {

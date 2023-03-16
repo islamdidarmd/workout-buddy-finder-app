@@ -26,7 +26,7 @@ class GenderEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
-      items: [
+      items: const [
         DropdownMenuItem(value: '', child: Text('Select Gender')),
         DropdownMenuItem(value: 'male', child: Text('Male')),
         DropdownMenuItem(value: 'female', child: Text('Female')),
@@ -35,7 +35,7 @@ class GenderEditView extends StatelessWidget {
       value: appUser.gender,
       onChanged: _updateGender,
       decoration:
-          InputDecoration(labelText: 'Gender', border: OutlineInputBorder()),
+          const InputDecoration(labelText: 'Gender', border: OutlineInputBorder()),
     );
   }
 }

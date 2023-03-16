@@ -10,10 +10,10 @@ class UpdateLastSeenUseCase {
   const UpdateLastSeenUseCase(this.firestore);
 
   Future<void> call({required String userId}) async {
-    final _userQuery = firestore.collection(col_users).doc(userId);
+    final userQuery = firestore.collection(col_users).doc(userId);
 
     try {
-      await _userQuery
+      await userQuery
           .update({field_last_seen: DateTime.now().millisecondsSinceEpoch});
     } catch (e) {
       debugPrint(e.toString());

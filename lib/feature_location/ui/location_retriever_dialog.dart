@@ -25,20 +25,20 @@ class LocationRetrieverDialog extends StatelessWidget {
   // ignore: avoid-dynamic
   Widget _buildUiForState(BuildContext _, LocationRetrieverState state) {
     if (state is LocationPermissionDeniedState) {
-      return Text(
+      return const Text(
         'We need your location to continue. Please allow location permission',
       );
     } else if (state is LocationPermissionDeniedForEverState) {
-      return Text(
+      return const Text(
         'We need your location to continue. Please allow location permission from Device Settings',
       );
     } else if (state is LocationServiceDisabledState) {
-      return Text(
+      return const Text(
         'We need your location to continue. Please enable Location Services',
       );
     }
 
-    return Text(
+    return const Text(
       'Please wait while we retrieve your location',
     );
   }

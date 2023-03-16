@@ -63,7 +63,7 @@ class GetSuggestionsUseCase {
       return Left(suggestions);
     } catch (e) {
 
-      return Right(UnknownError());
+      return const Right(UnknownError());
     }
   }
 }

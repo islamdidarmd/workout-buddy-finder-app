@@ -20,7 +20,7 @@ class _MessagingPageState extends State<MessagingPage> {
 
     return Column(
       children: [
-        AppBar(title: Text('Messages')),
+        AppBar(title: const Text('Messages')),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
