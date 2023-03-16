@@ -1,4 +1,3 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:workout_buddy_finder/core/core.dart';
 import 'package:workout_buddy_finder/feature_auth/feature_auth.dart';
 import 'package:bloc_test/bloc_test.dart';
@@ -34,7 +33,7 @@ main() {
   );
 
   blocTest<AuthCubit, AuthState>(
-    'Emits signInFailure State when login success',
+    'Emits signInFailure State when login fails',
     build: () => AuthCubit(
       signInWithGoogleUseCase: FakeSignInWithGoogleUseCase(unknownError),
       signOutUseCase: FakeSignOutUseCase(),
@@ -43,6 +42,6 @@ main() {
       bloc.signInWithGoogle(FakePosition());
     },
     wait: const Duration(milliseconds: 300),
-    expect: () => [isA<AuthState>()],
+    expect: () => [AuthState.signInFailure(unknownError)],
   );
 }
