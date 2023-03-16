@@ -5,11 +5,12 @@ import 'package:workout_buddy_finder/core/core.dart';
 
 @injectable
 class UpdateLastSeenUseCase {
-  const UpdateLastSeenUseCase();
+  final FirebaseFirestore firestore;
+
+  const UpdateLastSeenUseCase(this.firestore);
 
   Future<void> call({required String userId}) async {
-    final _userQuery =
-        FirebaseFirestore.instance.collection(col_users).doc(userId);
+    final _userQuery = firestore.collection(col_users).doc(userId);
 
     try {
       await _userQuery

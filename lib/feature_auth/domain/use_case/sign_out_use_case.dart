@@ -6,11 +6,13 @@ import '../../../core/error/app_error.dart';
 
 @injectable
 class SignOutUseCase {
-  const SignOutUseCase();
+  final FirebaseAuth firebaseAuth;
+
+  const SignOutUseCase(this.firebaseAuth);
 
   Future<Either<void, AppError>> execute() async {
     try {
-      final result = await FirebaseAuth.instance.signOut();
+      await firebaseAuth.signOut();
     } catch (e) {
       return Right(LogoutFailedError());
     }

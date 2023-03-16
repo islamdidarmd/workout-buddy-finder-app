@@ -9,13 +9,15 @@ import '../entity/entities.dart';
 @injectable
 class GetChatRoomParticipantsUseCase {
   final GetUserProfileFromIdUseCase getUserProfileFromIdUseCase;
+  final FirebaseFirestore firestore;
 
   const GetChatRoomParticipantsUseCase({
     required this.getUserProfileFromIdUseCase,
+    required this.firestore,
   });
 
   Future<List<AppUser>> call({required String roomId}) async {
-    final _messagesQuery = FirebaseFirestore.instance
+    final _messagesQuery = firestore
         .collection(col_messages)
         .doc(roomId)
         .withConverter(

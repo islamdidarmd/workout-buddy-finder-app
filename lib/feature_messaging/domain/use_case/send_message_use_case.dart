@@ -10,9 +10,11 @@ import 'update_last_sent_message_use_case.dart';
 @injectable
 class SendMessageUseCase {
   final UpdateLastSentMessageUseCase updateLastSentMessageUseCase;
+  final FirebaseFirestore firestore;
 
   const SendMessageUseCase({
     required this.updateLastSentMessageUseCase,
+    required this.firestore,
   });
 
   Future<void> call({
@@ -20,7 +22,7 @@ class SendMessageUseCase {
     required String chatRoomId,
     required String message,
   }) async {
-    final _messagesQuery = FirebaseFirestore.instance
+    final _messagesQuery = firestore
         .collection(col_messages)
         .doc(chatRoomId)
         .collection(col_chat_room_messages)

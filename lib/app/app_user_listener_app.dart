@@ -24,7 +24,7 @@ class AppUserListenerApp extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final stream = useMemoized(() => sl<AppUserStreamUseCase>().call());
+    final stream = useMemoized(() => sl<AppUserStreamUseCase>().execute());
     final appUserSnapShot = useStream(stream);
     final appUser = appUserSnapShot.data;
 

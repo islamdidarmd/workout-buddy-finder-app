@@ -11,14 +11,16 @@ import '../entity/entities.dart';
 class GetSuggestionsUseCase {
   final CheckIfLikedByUseCase checkIfLikedByUseCase;
   final CheckIfDisLikedByUseCase checkIfDisLikedByUseCase;
+  final FirebaseFirestore firestore;
 
   const GetSuggestionsUseCase({
     required this.checkIfLikedByUseCase,
     required this.checkIfDisLikedByUseCase,
+    required this.firestore,
   });
 
   Future<Either<List<Suggestion>, AppError>> call(AppUser appUser) async {
-    final suggestionQuery = FirebaseFirestore.instance
+    final suggestionQuery = firestore
         .collection(col_users)
         .where(field_gender, isEqualTo: appUser.gender)
         .where(field_availability, isEqualTo: appUser.availability)
@@ -60,6 +62,7 @@ class GetSuggestionsUseCase {
 
       return Left(suggestions);
     } catch (e) {
+
       return Right(UnknownError());
     }
   }
