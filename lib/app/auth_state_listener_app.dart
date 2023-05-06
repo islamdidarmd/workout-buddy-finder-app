@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import '../features/auth/domain/entity/user_auth_state.dart';
+import '../features/auth/domain/use_case/auth_state_stream_use_case.dart';
 import 'app_user_listener_app.dart';
 import 'auth_app.dart';
 
 import '../di/service_locator.dart';
 import '../env/env.dart';
-import '../feature_auth/feature_auth.dart';
 import 'loading_app.dart';
 
 class AuthStateListenerApp extends HookWidget {

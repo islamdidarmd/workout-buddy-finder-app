@@ -28,6 +28,7 @@ dart_code_metrics:
     - avoid-ignoring-return-values: false
     - arguments-ordering:
         child-last: true
+    - prefer_relative_imports: true
   anti-patterns:
     - long-method
     - long-parameter-list

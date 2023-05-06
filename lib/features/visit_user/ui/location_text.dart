@@ -1,9 +1,9 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
-import 'package:workout_buddy_finder/core/core.dart';
 
+import '../../../core/error/app_error.dart';
 import '../../../di/service_locator.dart';
-import '../../../features/location/domain/usecase/get_address_from_lat_long_use_case.dart';
+import '../../location/domain/usecase/get_address_from_lat_long_use_case.dart';
 
 class LocationText extends StatefulWidget {
   const LocationText({
@@ -46,7 +46,7 @@ class _LocationTextState extends State<LocationText> {
             final address =
                 snapshot.requireData.fold((address) => address, (right) => "");
 
-            return lightBody(context, address);
+            return Text(address, style: textTheme.bodySmall);
           }
 
           return const SizedBox();

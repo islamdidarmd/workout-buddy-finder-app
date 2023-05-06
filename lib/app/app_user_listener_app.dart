@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../core/model/models.dart';
 import '../di/service_locator.dart';
 import '../env/env.dart';
-import '../feature_auth/feature_auth.dart';
+import '../features/auth/domain/use_case/app_user_stream_use_case.dart';
 import '../navigation/app_router.dart';
 import '../theme/dark_theme.dart';
 import '../theme/light_theme.dart';
