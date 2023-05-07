@@ -1,4 +1,5 @@
-import 'package:workout_buddy_finder/navigation/app_route.dart';
+
+import 'app_route.dart';
 
 class EditProfileRoute extends ChildRoute {
   const EditProfileRoute() : super(route: 'edit-profile');

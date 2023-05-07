@@ -31,6 +31,14 @@ class ProfilePage extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: AnimateList(
+                    effects: [
+                      SlideEffect(
+                        duration: 300.milliseconds,
+                        begin: const Offset(1.0, 0.0),
+                        end: const Offset(0.0, 0.0),
+                      ),
+                    ],
+                    interval: 50.milliseconds,
                     children: [
                       UserInfoSection(appUser: appUser),
                       const SizedBox(height: 8),
@@ -42,14 +50,6 @@ class ProfilePage extends StatelessWidget {
                       const SizedBox(height: 8),
                       OthersSection(appUser: appUser),
                     ],
-                    effects: [
-                      SlideEffect(
-                        duration: 300.milliseconds,
-                        begin: const Offset(1.0, 0.0),
-                        end: const Offset(0.0, 0.0),
-                      ),
-                    ],
-                    interval: 50.milliseconds,
                   ),
                 ),
               ),

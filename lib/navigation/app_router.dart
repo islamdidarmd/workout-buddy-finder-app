@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../features/messaging/ui/chat_room/chat_room_page.dart';
-import '../features/messaging/ui/messges/messaging_page.dart';
-import '../features/profile/ui/edit/profile_edit_page.dart';
-import '../features/profile/ui/profile/profile_page.dart';
-import '../features/settings/ui/settings_page.dart';
-import '../features/suggestion/ui/suggestions_page.dart';
-import '../features/visit_user/ui/visit_user_page.dart';
+import '../../features/messaging/ui/chat_room/chat_room_page.dart';
+import '../../features/messaging/ui/messges/messaging_page.dart';
+import '../../features/profile/ui/edit/profile_edit_page.dart';
+import '../../features/profile/ui/profile/profile_page.dart';
+import '../../features/settings/ui/settings_page.dart';
+import '../../features/suggestion/ui/suggestions_page.dart';
+import '../../features/visit_user/ui/visit_user_page.dart';
 import 'navigation.dart';
-import '../core/core.dart';
+import '../../core/core.dart';
 
 /// ignore_for_file: prefer-match-file-name
 /// ignore_for_file: prefer-static-class

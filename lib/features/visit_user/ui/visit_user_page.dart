@@ -44,7 +44,7 @@ class VisitUserPage extends HookWidget {
         } else if (userSnapShot.hasData && user != null) ...{
           AppBar(title: Text(user.name)),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
+            padding: const EdgeInsets.symmetric(horizontal: page_horizontal_spacing),
             child: Column(
               children: AnimateList(
                 children: _getUserAttributeSection(user),
