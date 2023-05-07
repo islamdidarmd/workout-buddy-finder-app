@@ -23,7 +23,7 @@ dart_code_metrics:
     - lib/di/**
 
   extends:
-    - package:dart_code_metrics/presets/all.yaml
+    - package:dart_code_metrics_presets/all.yaml
   rules:
     - avoid-ignoring-return-values: false
     - arguments-ordering:
