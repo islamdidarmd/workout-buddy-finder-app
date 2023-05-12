@@ -4,12 +4,10 @@ This app will help people find nearby people with similar interests. It was crea
 ## Demo
 <img src="https://github.com/islamdidarmd/workout-buddy-finder-app/assets/27812028/a27c93a6-4dad-463c-b258-5b9dde1ca29b" width="200" height="400" />
 <img src="https://github.com/islamdidarmd/workout-buddy-finder-app/assets/27812028/eb843bd1-b02c-4bf0-a591-75ad86892fb9" width="200" height="400" /> 
-<img src="https://github.com/islamdidarmd/workout-buddy-finder-app/assets/27812028/19ac6c00-816f-4f9a-84cb-6f6f91071af3" width="200" height="400" /> 
-<img src="https://github.com/islamdidarmd/workout-buddy-finder-app/assets/27812028/e09c9530-b393-4ef8-a43d-e829f291b7c2" width="200" height="400" /> 
+<img src="https://github.com/islamdidarmd/workout-buddy-finder-app/assets/27812028/c52f7572-a8ad-4e42-bd26-9d91402e9262" width="200" height="400" /><img src="https://github.com/islamdidarmd/workout-buddy-finder-app/assets/27812028/e09c9530-b393-4ef8-a43d-e829f291b7c2" width="200" height="400" /> 
 <img src="https://github.com/islamdidarmd/workout-buddy-finder-app/assets/27812028/9099608c-aa7c-4127-97d0-567665b98578" width="200" height="400" /> 
 
 <img src="https://github.com/islamdidarmd/workout-buddy-finder-app/assets/27812028/496817c3-2b2f-477b-b5ef-2ded49478de9" width="200" height="400" /> 
-
 
 
 ## Functionality
