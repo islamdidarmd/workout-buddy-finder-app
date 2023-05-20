@@ -7,7 +7,7 @@ class SignInPage extends StatelessWidget {
   String get _logo => 'assets/icon/app_logo.png';
 
   Widget _slogan(BuildContext context) => Text(
-        'Welcome to Fitness Buddy Finder',
+        'Welcome to Workout Buddy Finder',
         key: const ValueKey('Login Page Slogan'),
         style: Theme.of(context)
             .textTheme

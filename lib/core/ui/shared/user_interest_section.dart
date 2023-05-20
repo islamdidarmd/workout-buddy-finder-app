@@ -13,21 +13,24 @@ class UserInterestSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
+      height: 200,
       child: Card(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              mediumBoldTitle(context, 'Interests'),
-              const SizedBox(height: 8),
-              Wrap(
-                spacing: 4,
-                children: appUser.interestList
-                    .map((id) => InterestChip(interestId: id))
-                    .toList(),
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                mediumBoldTitle(context, 'Interests'),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 4,
+                  children: appUser.interestList
+                      .map((id) => InterestChip(interestId: id))
+                      .toList(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
